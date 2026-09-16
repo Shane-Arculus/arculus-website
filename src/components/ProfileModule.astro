@@ -1,0 +1,32 @@
+---
+/**
+ * ProfileModule — Figma 158:11910 / 160:3008 / 158:12106 → 209:12092….
+ * White band, H1 title + Lead intro, three columns of profile cards (97px
+ * round photo, Lead Medium name, body title, body bio) with warm separators.
+ * Two-person groups keep the three-column rhythm (the frame uses an invisible
+ * spacer card). Mobile stacks.
+ */
+import Section from "./Section.astro";
+interface Props { title: string; intro?: string; people: readonly { name: string; title: string; bio: string; photo: string }[]; }
+const { title, intro, people } = Astro.props;
+---
+<Section bg="white">
+  <div class="flex flex-col gap-8 md:gap-[60px]">
+    <div class="flex flex-col gap-3">
+      <h2 class="text-h3 font-medium text-navy md:text-h1">{title}</h2>
+      {intro && <p class="text-lead text-body">{intro}</p>}
+    </div>
+    <ul class="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-9">
+      {people.map((p) => (
+        <li class="flex flex-col gap-4 md:border-l md:border-line-warm md:pl-9 md:first:border-l-0 md:first:pl-0">
+          <img src={p.photo} alt={p.name} width="97" height="97" loading="lazy" class="h-[97px] w-[97px] rounded-full object-cover" />
+          <div class="flex flex-col gap-0.5">
+            <p class="text-lead font-medium text-navy">{p.name}</p>
+            <p class="text-body text-body">{p.title}</p>
+          </div>
+          <p class="text-body text-body">{p.bio}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Section>

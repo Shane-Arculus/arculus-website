@@ -163,7 +163,8 @@
     "formspreeEndpoint": "[TO SET]",
     "mailchimp": {
       "audienceId": "[TO SET]",
-      "formAction": "[TO SET]"
+      "formAction": "[TO SET]",
+      "mergeFieldIAm": "[TO SET — e.g. MMERGE3]"
     }
   },
   "externalUrls": {
@@ -216,6 +217,17 @@
         "href": "/contact"
       }
     ],
-    "_note": "[Unverified] popular-search hrefs are my mapping of the frame's labels; the frame shows labels only"
+    "_note": "[Unverified] popular-search hrefs are my mapping of the frame's labels; the frame shows labels only",
+    "download": "Download",
+    "viewAllDocuments": "View all documents",
+    "seeMore": "See all documents",
+    "wholesaleOnlyTag": "Wholesale clients only",
+    "readingTimeSeparator": "·",
+    "formErrorBanner": "Please check the highlighted fields and try again.",
+    "formSendFailed": "We couldn't send your message. Please email info@arculus.com.au instead.",
+    "requiredField": "This field is required.",
+    "consentRequired": "Please tick the consent box to continue.",
+    "closeDialog": "Close",
+    "_formNote": "[Unverified] error-banner and failure wording — the frame shows the banner but its text was not captured"
   }
 }

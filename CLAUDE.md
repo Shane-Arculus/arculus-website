@@ -19,7 +19,8 @@ Priority is a fast launch. Build what is in the frames; do not add features.
 - Hosting: Cloudflare Workers (static assets, `wrangler.jsonc`, no adapter), Git-connected. `main` is production; any other branch builds as a preview at a `*.workers.dev` preview URL. The verified gate reads the CI branch: on `main` it fails while content is unverified, elsewhere it passes.
 - Analytics: Cloudflare Web Analytics (cookieless) — snippet in the base layout.
 - Contact form: Formspree (endpoint in `content/site.json`). Subscribe: Mailchimp embedded form, double opt-in.
-- Wholesale attestation: modal, state in `sessionStorage` key `arculus-wholesale-attested`.
+- Wholesale attestation: `AttestationModal` (native `<dialog>`), state in `sessionStorage` key `arculus-wholesale-attested`; Escape does not dismiss it.
+- Forms: `ContactForm` posts to Formspree with `fetch` + `Accept: application/json`; `SubscribeModal` calls Mailchimp's `post-json` JSONP endpoint so double opt-in fires and the done state shows in-page. Both validate client-side; `novalidate` on the form, `aria-invalid` on fields.
 - Search: Pagefind, indexing pages and PDF text.
 - Fonts: Fira Sans self-hosted (Regular, Medium, SemiBold), `font-display: swap`.
 - Icons: Lucide only, inlined as paths in `src/components/Icon.astro` (no icon dependency); add a path when a module needs a new glyph.
@@ -48,6 +49,11 @@ Colours are the library variables actually bound on the canonical frames. They a
 | `outline-warm` | `#DFC6AD` | ellipse outline on light heroes |
 | `orange` | `#EC7826` | wholesale kicker and stat labels (`[Unverified]` raw hex; logo gradient uses #EE7624) |
 | `card-line` | `#EBE5DE` | white card borders on cream bands |
+| `muted` | `#99A1A8` | search result source line, placeholders |
+| `error-tint` | `#FCF0ED` | error banner background |
+| `disabled` / `disabled-copy` | `#CCD1D9` / `#737A85` | disabled button |
+| `banner-copy` | `#D6D1C6` | body copy on the navy-mid contact banner |
+| `line-warm` | `#EAD9C8` | column separators on white bands (profile module) |
 | `line-secondary` | `#A8ADB3` | secondary button stroke (`[Unverified]` raw hex) |
 | `line-strong` | `#7E868F` | footer outline button, search field border (`[Unverified]` raw hex on frames) |
 | `gold` | `#B08A3C` | external links only (Olivia123, SS&C registry) — "Antique gold" |
@@ -225,11 +231,26 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 | `LeftRight` | `title`, `paragraphs`, `image {src, alt}`, `button?`, `flip?`, `bg?` | `157:11910`→`208:12143`; home `123:31759` |
 | `FundOverviewPerformance` | `about {title, body}`, `ratingReportUrl?`, `performance {...}`, `fundName` | `88:828`→`207:17684`; PIF `97:1110`→`207:17732` |
 | `RatingsRow` | `reportUrl` (copy from `site.json` ratings) | `244:9689`→`228:9407`; Approach `244:9709` |
+| `Documents` | `title`, `intro?`, `items {title, href, meta?}[]`, `viewAll?`, `collapseAfter?`, `bg?`, `id?` | `95:1133`→`249:20747`; library `186:3637…` |
+| `DownloadSlice` | `title`, `href`, `meta?` | Download_slice |
+| `KeyDocuments` | `title`, `items {title, meta, href}[]` | `249:9545`→`249:9623` |
+| `ProfileModule` | `title`, `intro?`, `people {name, title, bio, photo}[]` | `158:11910`→`209:12092` |
+| `ProductCards` | `title`, `cards {title, subtitle, button}[]` | `123:31760`→`207:16555` |
+| `InsightsRow` | `title`, `button?`, `featured: Article`, `list: Article[]` | `123:31761`→`207:16556`; hub `175:11902` |
+| `ArticleCard` / `Tag` | `article`, `featured?` | article-block, highlighted-article |
+| `InsightsList` | `id`, `title`, `articles`, `readLabel`, `thumbs?`, `emptyLabel?` | `176:3456`→`210:14607` |
+| `FilterTabs` | `tabs: string[]`, `target` (id of list), `bg?` | `175:11893`; `186:3624`; `191:5006` |
+| `SearchInput` | `title`, `buttonLabel`, `placeholder?`, `query?`, `resultsLine?` | `191:4999`→`210:15079` |
+| `SearchResultRow` | `kicker`, `title`, `href`, `snippet?`, `source?` | `191:5014`→`210:15094` |
+| `ThreeColumnsContactBanner` | `title`, `columns {title, body, button}[]` | `88:13075`→`248:9650`; contact `181:12119` |
+| `ContactForm` / `FormField` | none — reads pages/contact.json + site.json | `181:12164`→`210:12398`; errors `189:4027`; sent `189:4288` |
+| `SubscribeModal` | none — opened by any `[data-open-subscribe]` | `189:4552`→`236:9567`; done `189:4713` |
+| `AttestationModal` | none — include on gated pages; opens when session key absent | `189:4010`→`236:9091`; scrim `130:13793` |
 | `Breadcrumb` | `items: string[]` (labels; hrefs from nav) | `88:826`→`207:16878` |
 | `ImportantInformation` | `variant: generic` \| `fund` + `fundName, arsn, apir` \| `wholesale` + `riskSubject, asAt` | `123:31763`, `88:994`, `103:1344` |
 | `CtaBanner` | `title`, `body`, `button` | `113:830`→`207:17867` |
 | `Button` | `label`, `href?`, `style: primary \| secondary \| external`, `full?`, `type?` | set `74:295` |
-| `Icon` | `name` (chevron-down/up/right, search, menu, x, arrow-up-right), `size?` | Lucide, inlined paths |
+| `Icon` | `name` (chevron-down/up/right, search, menu, x, arrow-up-right, download, file-text), `size?` | Lucide, inlined paths |
 
 `/dev/components` is a gallery page built only when `PUBLIC_ALLOW_UNVERIFIED=1`. Add every new component to it; it is the review surface until pages exist.
 

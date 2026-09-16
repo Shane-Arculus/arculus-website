@@ -1,0 +1,95 @@
+---
+/**
+ * ContactForm — Figma 181:12164 (default) → 210:12398; errors 189:4027; sent 189:4288.
+ * Left: the form (788px): name row, email/phone row, "I am a" select, message,
+ * consent, primary submit. Right (456px): details blocks. Posts to Formspree via
+ * fetch; on success swaps the form for the cream success panel. Client
+ * validation marks fields aria-invalid, shows per-field errors and the error
+ * banner. `?topic=` on the page pre-fills the hidden topic field.
+ * All copy from pages/contact.json and site.json.
+ */
+import FormField from "./FormField.astro";
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+import { getSite, getPage } from "../content/loaders";
+const site = await getSite();
+const c = await getPage("contact");
+const { ui, forms, externalUrls } = site;
+const resolve = (href: string) => (href in externalUrls ? externalUrls[href as keyof typeof externalUrls] : href);
+const privacyLinked = (label: string) => label.replace("Privacy Notice", `<a href="/privacy" class="underline">Privacy Notice</a>`);
+---
+<section class="bg-white">
+  <div class="mx-auto flex max-w-site flex-col gap-12 px-4 pb-16 pt-10 md:flex-row md:gap-24 md:px-12 md:pb-24 md:pt-20">
+    <div class="flex flex-col gap-6 md:w-[788px] md:shrink-0" data-contact>
+      <form action={forms.formspreeEndpoint} method="post" novalidate class="flex flex-col gap-6" data-contact-form>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-h5 font-medium text-navy md:text-h3">{c.form.title}</h2>
+          <p class="text-body text-body">{c.form.intro}</p>
+        </div>
+        <div role="alert" class="hidden items-center gap-3 rounded-[3px] border border-error bg-error-tint px-4 py-3.5 text-body text-error" data-form-banner>{ui.formErrorBanner}</div>
+        <div class="grid gap-6 md:grid-cols-2">
+          {c.form.fields.filter((f) => ["firstName", "lastName", "email", "phone"].includes(f.name)).map((f) => (
+            <FormField name={f.name} label={f.label} type={f.type} placeholder={f.placeholder} required={f.required} error={f.error ?? ui.requiredField} autocomplete={f.name === "email" ? "email" : f.name === "phone" ? "tel" : f.name === "firstName" ? "given-name" : "family-name"} />
+          ))}
+        </div>
+        {c.form.fields.filter((f) => !["firstName", "lastName", "email", "phone"].includes(f.name)).map((f) => (
+          <FormField name={f.name} label={f.type === "checkbox" ? privacyLinked(f.label ?? "") : f.label} type={f.type} placeholder={f.placeholder} required={f.required} options={f.options} error={f.error ?? (f.type === "checkbox" ? ui.consentRequired : ui.requiredField)} />
+        ))}
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+        <div><Button label={c.form.submit} type="submit" /></div>
+      </form>
+      <div class="hidden flex-col gap-4 rounded-lg bg-cream p-6 md:p-10" data-contact-sent>
+        <h2 class="text-h5 font-medium text-navy md:text-h3">{c.sent.title}</h2>
+        <p class="text-lead text-body">{c.sent.body}</p>
+        <div class="flex flex-wrap gap-6">
+          {c.sent.links.map((l) => <a href={l.href} class="inline-flex items-center gap-1 text-body font-medium text-rust hover:underline">{l.label}<Icon name="chevron-right" size={14} /></a>)}
+        </div>
+      </div>
+    </div>
+    <aside class="flex flex-col gap-8 md:w-[456px]">
+      {c.details.map((d) => (
+        <div class="flex flex-col gap-2">
+          <h3 class="text-lead font-medium text-navy">{d.title}</h3>
+          <div class="flex flex-col text-body text-body">{d.lines.map((l) => <p>{l}</p>)}</div>
+          {d.link && <a href={resolve(d.link.href)} target={d.link.external ? "_blank" : undefined} rel={d.link.external ? "noopener noreferrer" : undefined} class:list={["inline-flex items-center gap-1 text-body font-medium hover:underline", d.link.external ? "text-gold" : "text-rust"]}>{d.link.label}<Icon name={d.link.external ? "arrow-up-right" : "chevron-right"} size={14} /></a>}
+        </div>
+      ))}
+    </aside>
+  </div>
+</section>
+<script define:vars={{ failed: ui.formSendFailed }}>
+  const root = document.querySelector("[data-contact]");
+  const form = root?.querySelector("[data-contact-form]");
+  if (form) {
+    const topic = new URLSearchParams(location.search).get("topic");
+    const topicField = form.querySelector('input[name="topic"]'); if (topic && topicField) topicField.value = topic;
+    const banner = form.querySelector("[data-form-banner]");
+    const setError = (field, on) => {
+      const wrap = field.closest("[data-field]"); if (!wrap) return;
+      field.setAttribute("aria-invalid", on ? "true" : "false");
+      wrap.querySelector("[data-error]")?.classList.toggle("hidden", !on);
+    };
+    const validate = () => {
+      let ok = true;
+      for (const el of form.querySelectorAll("[required]")) {
+        const bad = el.type === "checkbox" ? !el.checked : el.type === "email" ? !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()) : el.value.trim() === "";
+        setError(el, bad); if (bad) ok = false;
+      }
+      banner.classList.toggle("hidden", ok); banner.classList.toggle("flex", !ok);
+      if (!ok) form.querySelector('[aria-invalid="true"]')?.focus();
+      return ok;
+    };
+    for (const el of form.querySelectorAll("[required]")) el.addEventListener("input", () => setError(el, false));
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); if (!validate()) return;
+      const btn = form.querySelector('button[type="submit"]'); btn.disabled = true;
+      try {
+        const r = await fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
+        if (!r.ok) throw new Error(String(r.status));
+        form.classList.add("hidden"); const sent = root.querySelector("[data-contact-sent]"); sent.classList.remove("hidden"); sent.classList.add("flex"); sent.querySelector("h2")?.setAttribute("tabindex", "-1"); sent.querySelector("h2")?.focus();
+      } catch {
+        banner.textContent = failed; banner.classList.remove("hidden"); banner.classList.add("flex"); btn.disabled = false;
+      }
+    });
+  }
+</script>

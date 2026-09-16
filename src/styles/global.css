@@ -28,7 +28,13 @@
   --color-outline-warm: #DFC6AD; /* ellipse outline on light heroes */
   --color-orange: #EC7826; /* wholesale kicker and stat labels ([Unverified] raw hex; logo gradient uses #EE7624) */
   --color-line-secondary: #A8ADB3;
-  --color-card-line: #EBE5DE; /* white card border on cream bands (ratings bar, performance card) */ /* [Unverified] secondary button stroke on frames */ /* decorative outline strokes on navy gradient bands */
+  --color-card-line: #EBE5DE;
+  --color-line-warm: #EAD9C8;
+  --color-muted: #99A1A8;
+  --color-error-tint: #FCF0ED; /* error banner background */
+  --color-disabled: #CCD1D9; /* disabled button fill */
+  --color-disabled-copy: #737A85;
+  --color-banner-copy: #D6D1C6; /* body copy on the navy-mid contact banner */ /* search result URL line */ /* column separators on white bands (profile module) */ /* white card border on cream bands (ratings bar, performance card) */ /* [Unverified] secondary button stroke on frames */ /* decorative outline strokes on navy gradient bands */
   --color-line-strong: #7E868F; /* [Unverified] raw hex on frames: footer outline button, search field border */
   --color-gold: #B08A3C;
   --color-error: #B82823;

@@ -64,14 +64,14 @@ const site = defineCollection({
     }),
     forms: z.object({
       formspreeEndpoint: z.string(),
-      mailchimp: z.object({ audienceId: z.string(), formAction: z.string() }),
+      mailchimp: z.object({ audienceId: z.string(), formAction: z.string(), mergeFieldIAm: z.string() }),
     }),
     externalUrls: z.object({ olivia123: z.string(), ssandcRegistry: z.string(), arculusCapital: z.string() }),
     wholesaleKicker: z.string(),
     ui: z.object({
       skipToContent: z.string(), logoAlt: z.string(), menuOpen: z.string(), menuClose: z.string(),
       searchOpen: z.string(), searchClose: z.string(), searchPlaceholder: z.string(), searchSubmit: z.string(),
-      popularSearchesTitle: z.string(), popularSearches: z.array(link), _note: note,
+      popularSearchesTitle: z.string(), popularSearches: z.array(link), download: z.string(), viewAllDocuments: z.string(), seeMore: z.string(), wholesaleOnlyTag: z.string(), readingTimeSeparator: z.string(), formErrorBanner: z.string(), formSendFailed: z.string(), requiredField: z.string(), consentRequired: z.string(), closeDialog: z.string(), _formNote: note, _note: note,
     }),
   }),
 });

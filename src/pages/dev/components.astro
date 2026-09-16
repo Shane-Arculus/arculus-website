@@ -20,6 +20,21 @@ import ContentColumns from "../../components/ContentColumns.astro";
 import TwoColumnsContent from "../../components/TwoColumnsContent.astro";
 import LeftRight from "../../components/LeftRight.astro";
 import FundOverviewPerformance from "../../components/FundOverviewPerformance.astro";
+import Documents from "../../components/Documents.astro";
+import KeyDocuments from "../../components/KeyDocuments.astro";
+import ProfileModule from "../../components/ProfileModule.astro";
+import ProductCards from "../../components/ProductCards.astro";
+import InsightsRow from "../../components/InsightsRow.astro";
+import InsightsList from "../../components/InsightsList.astro";
+import FilterTabs from "../../components/FilterTabs.astro";
+import SearchInput from "../../components/SearchInput.astro";
+import SearchResultRow from "../../components/SearchResultRow.astro";
+import ThreeColumnsContactBanner from "../../components/ThreeColumnsContactBanner.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import SubscribeModal from "../../components/SubscribeModal.astro";
+import AttestationModal from "../../components/AttestationModal.astro";
+import { getInsights, getArticle } from "../../content/loaders";
+import { getDocuments, getDoc } from "../../content/loaders";
 import { getPage, getAbout, getWholesaleLanding } from "../../content/loaders";
 import { getStrategy } from "../../content/loaders";
 import Button from "../../components/Button.astro";
@@ -33,6 +48,14 @@ const a = await getStrategy("a-minus");
 const home = await getPage("home");
 const approach = await getAbout("approach");
 const wl = await getWholesaleLanding();
+const team = await getAbout("team");
+const ins = await getInsights();
+const featured = await getArticle(home.insights.featured);
+const rowList = await Promise.all(home.insights.list.map(getArticle));
+const searchPage = await getPage("search");
+const afiDocs = await Promise.all(afi.documents.items.map((id) => getDoc(id)));
+const lib = await getDocuments();
+const allAfi = lib.documents.filter((d) => d.fund === "afi");
 ---
 <Base title="Component gallery" description="Preview-only component gallery." noindex>
   <Header slot="header" />
@@ -49,6 +72,26 @@ const wl = await getWholesaleLanding();
   <HeroWholesale kicker={wl.hero.kicker} title={wl.hero.title} subtitle={wl.hero.subtitle} />
   <Breadcrumb items={afi.breadcrumb} />
   <FundOverviewPerformance about={afi.about} ratingReportUrl={afi.ratings.ratingReportUrl} performance={afi.performance} fundName={afi.name} />
+  <KeyDocuments title={afi.keyDocuments.title} items={afi.keyDocuments.items.map((k) => ({ title: k.title, meta: k.meta, href: "#" }))} />
+  <Documents title={afi.documents.title} intro={afi.documents.intro} items={afiDocs.map((d) => ({ title: d.title, href: d.path }))} viewAll={{ label: afi.documents.button.label, href: afi.documents.button.href ?? "/documents" }} />
+  <Documents title={lib.page.sections[0].title} intro={lib.page.sections[0].intro} items={allAfi.map((d) => ({ title: d.title, href: d.path, meta: d.meta }))} collapseAfter={5} bg="cream" />
+  <ProfileModule title={team.groups[0].title} intro={team.groups[0].intro} people={team.groups[0].people.map((p) => ({ ...p, photo: "/images/team-placeholder.webp" }))} />
+  <ProductCards title={home.productCards.title} cards={home.productCards.cards} />
+  <InsightsRow title={home.insights.title} button={home.insights.button} featured={featured} list={rowList} />
+  <FilterTabs tabs={ins.page.filters} target="insights-list" />
+  <InsightsList id="insights-list" title={ins.page.listTitle} articles={ins.articles} readLabel={ins.page.readLabel} emptyLabel="No insights in this category yet." />
+  <ThreeColumnsContactBanner title={afi.howToInvest.title} columns={afi.howToInvest.columns.map((c) => ({ ...c, button: { ...c.button, href: c.button.href === "olivia123" ? "#" : c.button.href } }))} />
+  <ContactForm />
+  <section class="bg-cream"><div class="mx-auto flex max-w-site gap-4 px-4 py-8 md:px-12"><Button label="Open subscribe modal" data-open-subscribe /><Button label="Open attestation (clears session)" id="dev-attest" style="secondary" /></div></section>
+  <SubscribeModal />
+  <AttestationModal />
+  <script>document.getElementById("dev-attest")?.addEventListener("click",()=>{sessionStorage.removeItem("arculus-wholesale-attested");location.reload();});</script>
+  <SearchInput title={searchPage.title} buttonLabel={searchPage.button} query="duration" resultsLine={searchPage.resultsLabel.replace("{n}", "3").replace("{q}", "duration")} />
+  <section class="bg-white"><div class="mx-auto max-w-site px-4 pb-16 md:px-12 md:pb-24"><ul class="max-w-[888px]">
+    <SearchResultRow kicker={searchPage.kickers.page} title="Our approach" href="/about/our-approach" snippet="…Duration is set by where we are in the cycle, not by an index…" source="arculus.com.au/about/our-approach" />
+    <SearchResultRow kicker={searchPage.kickers.document} title="Arculus Fixed Income Fund — Monthly report, July 2026" href="#" snippet="…portfolio duration extended modestly over the month…" source="Document library" />
+    <SearchResultRow kicker={searchPage.kickers.insight.replace("{category}", "Research note")} title="Taylor Rule sensitivity analysis: United States and Australia" href="#" snippet="…the rule's prescription is far more sensitive to where core PCE prints…" source="Insights · 13 Jul 2026" />
+  </ul></div></section>
   <Statement title={a.statement.title} points={a.statement.points} footnote={a.statement.footnote} />
   <StrategyAtAGlance items={a.strategyAtAGlance} ladder={1} />
   <ContentColumns title={a.processRiskControls.title} items={a.processRiskControls.items} />
@@ -57,7 +100,7 @@ const wl = await getWholesaleLanding();
   <section class="bg-cream">
     <div class="mx-auto max-w-site px-4 py-12 md:px-12">
       <h1 class="text-h2 font-medium text-navy">Component gallery</h1>
-      <p class="mt-2 text-body text-body">Preview builds only. T3: KeyValueList and ChartImage. T4: Header, Button, Icon. T5: Footer. T6: Breadcrumb, ImportantInformation, CtaBanner. T7: HeroLevel1, HeroLevel2, HeroWholesale, HeroImage. T8: Statement, StrategyAtAGlance, ContentColumns, TwoColumnsContent, LeftRight, Section. T9: FundOverviewPerformance, RatingsRow.</p>
+      <p class="mt-2 text-body text-body">Preview builds only. T3: KeyValueList and ChartImage. T4: Header, Button, Icon. T5: Footer. T6: Breadcrumb, ImportantInformation, CtaBanner. T7: HeroLevel1, HeroLevel2, HeroWholesale, HeroImage. T8: Statement, StrategyAtAGlance, ContentColumns, TwoColumnsContent, LeftRight, Section. T9: FundOverviewPerformance, RatingsRow. T10: Documents, DownloadSlice, KeyDocuments, ProfileModule, ProductCards. T11: InsightsRow, ArticleCard, Tag, InsightsList, FilterTabs, SearchInput, SearchResultRow. T12: ThreeColumnsContactBanner, ContactForm, FormField, SubscribeModal, AttestationModal.</p>
       <div class="mt-6 flex flex-wrap gap-4"><Button label="Primary" href="#" /><Button label="Secondary" href="#" style="secondary" /><Button label="External" href="#" style="external" /></div>
     </div>
   </section>

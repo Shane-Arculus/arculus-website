@@ -1,0 +1,40 @@
+---
+/**
+ * InsightsList — Figma 176:3456 → 210:14607. White band, H1 title, rule, then
+ * rows: 200×134 thumbnail, meta column (rust SemiBold category, date · reading
+ * time, "Wholesale clients only"), title + summary, rust "Read ›". Rows carry
+ * data-filter-item for FilterTabs. Thumbnail treatment is TBC (parked) — `thumbs`
+ * prop toggles it. Mobile stacks each row.
+ */
+import Icon from "./Icon.astro";
+import { fmtDate, slugify } from "../lib/format";
+import { getSite } from "../content/loaders";
+import type { Article } from "../content/loaders";
+interface Props { title: string; articles: Article[]; readLabel: string; id: string; thumbs?: boolean; emptyLabel?: string; }
+const { title, articles, readLabel, id, thumbs = true, emptyLabel } = Astro.props;
+const { ui } = await getSite();
+const img = (a: Article) => (a.image && !a.image.startsWith("[") ? a.image : "/images/insight-placeholder.webp");
+---
+<section class="bg-white">
+  <div class="mx-auto max-w-site px-4 pb-16 pt-10 md:px-12 md:pb-24 md:pt-12">
+    <h2 class="text-h3 font-medium text-navy md:text-h1">{title}</h2>
+    <ul id={id} class="mt-6 border-t border-line md:mt-8">
+      {articles.map((a) => (
+        <li class="flex flex-col gap-4 border-b border-line py-6 md:flex-row md:gap-12 md:py-8" data-filter-item={slugify(a.filter)}>
+          {thumbs && <img src={img(a)} alt="" width="200" height="134" loading="lazy" class="aspect-[200/134] w-full rounded object-cover md:w-[200px] md:shrink-0" />}
+          <div class="flex flex-col gap-1.5 md:w-[220px] md:shrink-0">
+            <p class="text-small font-semibold uppercase tracking-kicker text-rust">{a.category}</p>
+            <p class="text-small text-body">{fmtDate(a.date)}{a.readingTime && ` ${ui.readingTimeSeparator} ${a.readingTime}`}</p>
+            {a.wholesaleOnly && <p class="text-small text-navy">{ui.wholesaleOnlyTag}</p>}
+          </div>
+          <div class="flex flex-1 flex-col gap-2">
+            <h3 class="text-h5 font-medium text-navy"><a href={a.pdf} target="_blank" rel="noopener" class="hover:text-rust">{a.title}</a></h3>
+            <p class="text-body text-body">{a.summary}</p>
+          </div>
+          <a href={a.pdf} target="_blank" rel="noopener" class="inline-flex shrink-0 items-center gap-1 self-start text-body font-medium text-rust hover:underline">{readLabel}<Icon name="chevron-right" size={14} /></a>
+        </li>
+      ))}
+      {emptyLabel && <li class="hidden py-8 text-body text-body" data-filter-empty>{emptyLabel}</li>}
+    </ul>
+  </div>
+</section>

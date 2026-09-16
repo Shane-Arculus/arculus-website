@@ -3,7 +3,7 @@
  * Lucide icons, inlined (ISC licence, lucide.dev). Only the glyphs the site
  * uses are here; add a path when a module needs another Lucide icon.
  */
-interface Props { name: "chevron-down" | "chevron-up" | "chevron-right" | "search" | "menu" | "x" | "arrow-up-right"; size?: number; class?: string; }
+interface Props { name: "chevron-down" | "chevron-up" | "chevron-right" | "search" | "menu" | "x" | "arrow-up-right" | "download" | "file-text"; size?: number; class?: string; }
 const { name, size = 24, class: className = "" } = Astro.props;
 const paths: Record<Props["name"], string> = {
   "chevron-down": "m6 9 6 6 6-6",
@@ -13,6 +13,8 @@ const paths: Record<Props["name"], string> = {
   "menu": "M4 5h16M4 12h16M4 19h16",
   "x": "M18 6 6 18M6 6l12 12",
   "arrow-up-right": "M7 7h10v10M7 17 17 7",
+  "download": "M12 15V3M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5",
+  "file-text": "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7ZM14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8",
 };
 ---
 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class={className}><path d={paths[name]} /></svg>

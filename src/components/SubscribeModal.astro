@@ -1,0 +1,76 @@
+---
+/**
+ * SubscribeModal — Figma 189:4552 → 236:9567 (form), 189:4713 → 236:9712 (done).
+ * 560px white dialog: H3 title, body, email field, "I am a" radios, consent,
+ * primary Subscribe. Submits to Mailchimp via JSONP (post-json) so the double
+ * opt-in email is sent and the "Check your inbox" panel shows here. Opened by
+ * any element with data-open-subscribe. Native <dialog>; Escape and the ✕ close it.
+ */
+import FormField from "./FormField.astro";
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+import { getSite, getPage } from "../content/loaders";
+const { ui, forms } = await getSite();
+const s = await getPage("subscribe");
+const email = s.modal.fields.find((f) => f.name === "email")!;
+const iAm = s.modal.fields.find((f) => f.name === "iAm")!;
+const consent = s.modal.fields.find((f) => f.name === "consent")!;
+const consentLabel = consent.label!.replace("Privacy Notice", `<a href="/privacy" class="underline">Privacy Notice</a>`);
+---
+<dialog id="subscribe-modal" class="m-auto w-[calc(100%-32px)] max-w-[560px] rounded-lg bg-white p-0 text-left backdrop:bg-ink/65" aria-labelledby="subscribe-title">
+  <div class="relative flex flex-col gap-5 px-6 py-8 md:px-12 md:py-10" data-subscribe-form>
+    <button type="button" class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center text-body hover:text-navy" aria-label={ui.closeDialog} data-close><Icon name="x" size={20} /></button>
+    <h2 id="subscribe-title" class="text-h5 font-medium text-navy md:text-h3">{s.modal.title}</h2>
+    <p class="text-body text-body">{s.modal.body}</p>
+    <form method="post" novalidate class="flex flex-col gap-5" data-mc-form data-action={forms.mailchimp.formAction} data-merge={forms.mailchimp.mergeFieldIAm}>
+      <div class="md:w-[254px]"><FormField name="EMAIL" label={email.label} type="email" placeholder={email.placeholder} required error={ui.requiredField} autocomplete="email" /></div>
+      <fieldset class="flex flex-col gap-2.5" data-field="iAm">
+        <legend class="mb-2.5 text-small font-medium text-navy">{iAm.label}</legend>
+        {iAm.options!.map((o, i) => <label class="flex items-center gap-2.5 text-body text-body"><input type="radio" name="IAM" value={o} checked={i === 0} class="h-[18px] w-[18px] accent-rust" />{o}</label>)}
+      </fieldset>
+      <FormField name="consent" label={consentLabel} type="checkbox" required error={ui.consentRequired} />
+      <div role="alert" class="hidden text-small text-error" data-mc-error>{ui.formSendFailed}</div>
+      <div><Button label={s.modal.submit} type="submit" /></div>
+    </form>
+  </div>
+  <div class="hidden flex-col gap-4 px-6 py-8 md:px-12 md:py-10" data-subscribe-done>
+    <h2 class="text-h5 font-medium text-navy md:text-h3">{s.done.title}</h2>
+    <p class="text-body text-body" data-done-body data-template={s.done.body}>{s.done.body}</p>
+    <div><Button label={s.done.close} type="button" data-close /></div>
+  </div>
+</dialog>
+<script>
+  const dlg = document.getElementById("subscribe-modal") as HTMLDialogElement | null;
+  if (dlg) {
+    for (const opener of document.querySelectorAll("[data-open-subscribe]")) opener.addEventListener("click", (e) => { e.preventDefault(); dlg.showModal(); });
+    for (const c of dlg.querySelectorAll("[data-close]")) c.addEventListener("click", () => dlg.close());
+    const form = dlg.querySelector<HTMLFormElement>("[data-mc-form]")!;
+    const err = dlg.querySelector<HTMLElement>("[data-mc-error]")!;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = form.querySelector<HTMLInputElement>('input[name="EMAIL"]')!;
+      const consent = form.querySelector<HTMLInputElement>('input[name="consent"]')!;
+      let ok = true;
+      const mark = (el: HTMLInputElement, bad: boolean) => { el.setAttribute("aria-invalid", String(bad)); el.closest("[data-field]")?.querySelector("[data-error]")?.classList.toggle("hidden", !bad); if (bad) ok = false; };
+      mark(email, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())); mark(consent, !consent.checked);
+      if (!ok) return;
+      const action = form.dataset.action || "";
+      if (!action.startsWith("http")) { err.classList.remove("hidden"); return; } // [TO SET] until Mailchimp is configured
+      const iam = form.querySelector<HTMLInputElement>('input[name="IAM"]:checked')?.value ?? "";
+      const cb = "mc_cb_" + Date.now();
+      const url = new URL(action.replace("/post?", "/post-json?"));
+      url.searchParams.set("EMAIL", email.value.trim());
+      if ((form.dataset.merge || "").startsWith("MMERGE")) url.searchParams.set(form.dataset.merge!, iam);
+      url.searchParams.set("c", cb);
+      (window as any)[cb] = (res: { result: string; msg: string }) => {
+        delete (window as any)[cb];
+        if (res.result === "success") {
+          dlg.querySelector("[data-subscribe-form]")!.classList.add("hidden");
+          const done = dlg.querySelector<HTMLElement>("[data-subscribe-done]")!; done.classList.remove("hidden"); done.classList.add("flex");
+          const body = done.querySelector<HTMLElement>("[data-done-body]")!; body.textContent = (body.dataset.template || "").replace("{email}", email.value.trim());
+        } else { err.textContent = res.msg.replace(/^\d+ - /, ""); err.classList.remove("hidden"); }
+      };
+      const s = document.createElement("script"); s.src = url.toString(); s.onerror = () => err.classList.remove("hidden"); document.body.appendChild(s);
+    });
+  }
+</script>

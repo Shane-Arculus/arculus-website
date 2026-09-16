@@ -1,0 +1,29 @@
+---
+/**
+ * ThreeColumnsContactBanner — Figma 88:13075 → 248:9650 (fund "How to invest"),
+ * contact page 181:12119 → 210:12353 ("Who to contact").
+ * navy-mid band, 48px inset, H3 white title, 2–3 columns with warm separators:
+ * Lead Medium title, banner-copy body, button. Mobile stacks.
+ */
+import Button from "./Button.astro";
+interface Props { title: string; columns: readonly { title: string; body: string; button: { label: string; href?: string; style?: "primary" | "secondary" | "external" } }[]; }
+const { title, columns } = Astro.props;
+---
+<section class="bg-navy-mid text-white">
+  <div class="mx-auto max-w-site px-4 py-10 md:px-[96px] md:py-16">
+    <div class="flex flex-col gap-8 md:gap-[60px]">
+      <h2 class="text-h5 font-medium md:text-h3">{title}</h2>
+      <div class:list={["flex flex-col gap-8 md:grid md:gap-9", columns.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"]}>
+        {columns.map((c) => (
+          <div class="flex flex-col gap-6 md:border-l md:border-line-warm/40 md:pl-9 md:first:border-l-0 md:first:pl-0">
+            <div class="flex flex-col gap-3 md:gap-6">
+              <h3 class="text-lead font-medium">{c.title}</h3>
+              <p class="text-body text-banner-copy">{c.body}</p>
+            </div>
+            <div><Button label={c.button.label} href={c.button.href} style={c.button.style ?? "primary"} /></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

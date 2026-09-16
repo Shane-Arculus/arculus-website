@@ -1,0 +1,6 @@
+---
+/** Tag — the pill on article cards (Tags instance). 12px body-grey, 1px line border, fully rounded. */
+interface Props { label: string; }
+const { label } = Astro.props;
+---
+<span class="inline-flex items-center rounded-full border border-line bg-white px-2 py-0.5 text-small text-body">{label}</span>

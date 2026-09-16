@@ -1,0 +1,27 @@
+---
+/**
+ * KeyDocuments — Figma 249:9545 → 249:9623. Three cream tiles: file icon,
+ * H6 title, 13px meta, rust "Download" link. White band, no bottom padding
+ * (the Documents module follows). Mobile stacks.
+ */
+import Icon from "./Icon.astro";
+import { getSite } from "../content/loaders";
+interface Props { title: string; items: readonly { title: string; meta: string; href: string }[]; }
+const { title, items } = Astro.props;
+const { ui } = await getSite();
+---
+<section class="bg-white">
+  <div class="mx-auto flex max-w-site flex-col gap-6 px-4 pt-10 md:px-12 md:pt-20">
+    <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
+    <div class="flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-6">
+      {items.map((d) => (
+        <a href={d.href} target="_blank" rel="noopener" class="flex flex-col gap-3 rounded-lg bg-cream p-7 hover:bg-sand">
+          <Icon name="file-text" size={20} class="text-rust" />
+          <span class="text-h6 font-medium text-navy">{d.title}</span>
+          <span class="text-small text-body">{d.meta}</span>
+          <span class="inline-flex items-center gap-2 text-body font-medium text-rust">{ui.download}<Icon name="download" size={16} /></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

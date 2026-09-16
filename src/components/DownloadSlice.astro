@@ -1,0 +1,17 @@
+---
+/**
+ * DownloadSlice — one document row. Figma Download_slice inside 95:1133.
+ * 64px row, 1px line top/bottom, Lead-size navy name, rust download icon.
+ * Opens the PDF in a new tab (a PDF served from this site is not an external
+ * link, so no gold).
+ */
+import Icon from "./Icon.astro";
+import { getSite } from "../content/loaders";
+interface Props { title: string; href: string; meta?: string; }
+const { title, href, meta } = Astro.props;
+const { ui } = await getSite();
+---
+<a href={href} target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 border-b border-line py-[18px] first:border-t hover:bg-cream">
+  <span class="flex flex-col"><span class="text-lead text-navy group-hover:text-rust">{title}</span>{meta && <span class="text-small text-body">{meta}</span>}</span>
+  <span class="sr-only">{ui.download}</span><Icon name="download" size={20} class="shrink-0 text-rust" />
+</a>

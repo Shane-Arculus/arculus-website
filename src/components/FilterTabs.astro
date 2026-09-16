@@ -1,0 +1,37 @@
+---
+/**
+ * FilterTabs — Figma 175:11893 → 210:14277 (Insights), 186:3624 (Documents),
+ * 191:5006 (Search). Row of 15px tabs on a 1px rule; active tab rust SemiBold.
+ * Filters sibling elements carrying `data-filter-item="<slug>"` inside the
+ * element with id `target` (client-side, no framework); "All" shows everything.
+ * Reads `?filter=` on load so links like /insights?filter=research work.
+ */
+import { slugify } from "../lib/format";
+interface Props { tabs: readonly string[]; target: string; bg?: "white" | "cream"; }
+const { tabs, target, bg = "white" } = Astro.props;
+---
+<div class:list={[bg === "cream" ? "bg-cream" : "bg-white"]} data-filter-tabs={target}>
+  <div class="mx-auto max-w-site px-4 pt-6 md:px-12 md:pt-8">
+    <div role="tablist" class="flex gap-6 overflow-x-auto border-b border-line pb-3 md:gap-8">
+      {tabs.map((t, i) => (
+        <button type="button" role="tab" aria-selected={i === 0 ? "true" : "false"} data-filter={i === 0 ? "all" : slugify(t)} class="shrink-0 whitespace-nowrap text-body text-body hover:text-navy aria-selected:font-semibold aria-selected:text-rust">{t}</button>
+      ))}
+    </div>
+  </div>
+</div>
+<script>
+  for (const bar of document.querySelectorAll<HTMLElement>("[data-filter-tabs]")) {
+    const target = document.getElementById(bar.dataset.filterTabs!);
+    if (!target) continue;
+    const tabs = Array.from(bar.querySelectorAll<HTMLButtonElement>("[data-filter]"));
+    const apply = (f: string) => {
+      for (const t of tabs) t.setAttribute("aria-selected", String(t.dataset.filter === f));
+      for (const el of target.querySelectorAll<HTMLElement>("[data-filter-item]")) el.classList.toggle("hidden", f !== "all" && el.dataset.filterItem !== f);
+      const empty = target.querySelector<HTMLElement>("[data-filter-empty]");
+      if (empty) empty.classList.toggle("hidden", Array.from(target.querySelectorAll<HTMLElement>("[data-filter-item]")).some((el) => !el.classList.contains("hidden")));
+    };
+    for (const t of tabs) t.addEventListener("click", () => { apply(t.dataset.filter!); history.replaceState(null, "", t.dataset.filter === "all" ? location.pathname : `?filter=${t.dataset.filter}`); });
+    const initial = new URLSearchParams(location.search).get("filter");
+    if (initial && tabs.some((t) => t.dataset.filter === initial)) apply(initial);
+  }
+</script>

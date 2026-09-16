@@ -1,0 +1,41 @@
+---
+/**
+ * FormField — label + input/select/textarea/checkbox as on the contact frame
+ * 181:12164: 13px Medium navy label, 52px input with 1px line border, radius 3,
+ * muted placeholder; error state swaps the border to error and shows a 13px
+ * error line (189:4027). Validation runs client-side in the parent form.
+ */
+interface Props {
+  name: string; label?: string; type: string; placeholder?: string; required?: boolean;
+  options?: readonly string[]; error?: string; value?: string; autocomplete?: string;
+}
+const { name, label, type, placeholder, required = false, options = [], error, value, autocomplete } = Astro.props;
+const id = `f-${name}`;
+const box = "w-full rounded-[3px] border border-line bg-white px-3.5 text-body text-navy placeholder:text-muted focus:border-navy focus:outline-none aria-[invalid=true]:border-error";
+---
+{type === "hidden" ? (
+  <input type="hidden" name={name} value={value} data-field={name} />
+) : type === "checkbox" ? (
+  <div class="flex flex-col gap-2" data-field={name}>
+    <label class="flex items-start gap-3 text-small text-body">
+      <input type="checkbox" id={id} name={name} required={required} class="mt-0.5 h-[18px] w-[18px] shrink-0 rounded-[3px] border border-line accent-rust aria-[invalid=true]:outline aria-[invalid=true]:outline-1 aria-[invalid=true]:outline-error" />
+      <span set:html={label} />
+    </label>
+    <p class="hidden text-small text-error" data-error>{error}</p>
+  </div>
+) : (
+  <div class="flex flex-col gap-2" data-field={name}>
+    <label for={id} class="text-small font-medium text-navy">{label}</label>
+    {type === "select" ? (
+      <select id={id} name={name} required={required} class:list={[box, "h-[52px] appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2357626D%22 stroke-width=%222%22><path d=%22m6 9 6 6 6-6%22/></svg>')] bg-[length:16px] bg-[right_14px_center] bg-no-repeat pr-10 invalid:text-muted"]}>
+        <option value="" disabled selected>{placeholder}</option>
+        {options.map((o) => <option value={o}>{o}</option>)}
+      </select>
+    ) : type === "textarea" ? (
+      <textarea id={id} name={name} required={required} rows={6} placeholder={placeholder} class:list={[box, "min-h-[160px] py-3.5"]}></textarea>
+    ) : (
+      <input id={id} name={name} type={type as astroHTML.JSX.HTMLInputTypeAttribute} required={required} placeholder={placeholder} autocomplete={autocomplete} value={value} class:list={[box, "h-[52px]"]} />
+    )}
+    <p class="hidden text-small text-error" data-error>{error}</p>
+  </div>
+)}

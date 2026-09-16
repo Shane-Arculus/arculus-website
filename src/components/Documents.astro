@@ -1,0 +1,57 @@
+---
+/**
+ * Documents — Figma 95:1133 → 249:20747 (fund page "Documents & statements")
+ * and the four sections of the Document library 186:3637… → 210:13018….
+ * White band, title + intro left (664), rows right (664) with a rust "View all"
+ * link, or a see-more expander when `collapseAfter` is set and the list is
+ * longer (client-side, no framework). Mobile stacks.
+ */
+import Section from "./Section.astro";
+import DownloadSlice from "./DownloadSlice.astro";
+import Icon from "./Icon.astro";
+import { getSite } from "../content/loaders";
+interface Props {
+  title: string; intro?: string;
+  items: readonly { title: string; href: string; meta?: string }[];
+  viewAll?: { label: string; href: string };
+  collapseAfter?: number;
+  bg?: "white" | "cream";
+  id?: string;
+}
+const { title, intro, items, viewAll, collapseAfter, bg = "white", id } = Astro.props;
+const { ui } = await getSite();
+const collapsed = collapseAfter !== undefined && items.length > collapseAfter;
+const uid = id ?? `docs-${Math.random().toString(36).slice(2, 7)}`;
+---
+<Section bg={bg} id={id}>
+  <div class="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-4">
+    <div class="flex flex-col gap-4 md:gap-9 md:pr-12">
+      <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
+      {intro && <p class="text-lead text-body">{intro}</p>}
+    </div>
+    <div class="flex flex-col" data-docs={uid}>
+      {items.map((d, i) => (
+        <div class:list={[collapsed && i >= collapseAfter! && "hidden"]} data-docs-extra={collapsed && i >= collapseAfter! ? "" : undefined}>
+          <DownloadSlice title={d.title} href={d.href} meta={d.meta} />
+        </div>
+      ))}
+      {collapsed && (
+        <button type="button" class="mt-5 inline-flex items-center gap-2 self-start text-body font-medium text-rust hover:underline" data-docs-more aria-expanded="false" aria-controls={uid}>
+          <span>{ui.seeMore}</span><Icon name="chevron-down" size={16} />
+        </button>
+      )}
+      {viewAll && !collapsed && (
+        <a href={viewAll.href} class="mt-5 inline-flex items-center gap-2 self-start text-body font-medium text-rust hover:underline">{viewAll.label}<Icon name="chevron-right" size={16} /></a>
+      )}
+    </div>
+  </div>
+</Section>
+<script>
+  for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-docs-more]")) {
+    btn.addEventListener("click", () => {
+      const list = btn.closest("[data-docs]")!;
+      for (const el of list.querySelectorAll("[data-docs-extra]")) el.classList.remove("hidden");
+      btn.setAttribute("aria-expanded", "true"); btn.remove();
+    });
+  }
+</script>

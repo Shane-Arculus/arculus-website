@@ -1,0 +1,51 @@
+---
+/**
+ * AttestationModal — Figma 189:4010 → 236:9091, overlay 130:13793 (scrim ink @65%).
+ * 640px white dialog: orange kicker, H3 title, body, checkbox row, error line,
+ * Continue (disabled until ticked) + "Return to homepage", 12px footnote.
+ * Include it on every gated page; on load, if sessionStorage lacks the key the
+ * dialog opens and cannot be dismissed except by Continue (stores the key) or
+ * Return (goes to /). Deep links to strategy pages hit the same gate.
+ * All copy from site.json attestation.
+ */
+import Button from "./Button.astro";
+import { getSite } from "../content/loaders";
+const { attestation: a } = await getSite();
+---
+<dialog id="attestation-modal" class="m-auto w-[calc(100%-32px)] max-w-[640px] rounded-lg bg-white p-0 text-left backdrop:bg-ink/65" aria-labelledby="attest-title" data-key={a.storageKey}>
+  <form method="dialog" class="flex flex-col gap-5 px-6 py-8 md:px-12 md:py-11" data-attest-form>
+    <p class="text-kicker font-semibold uppercase tracking-kicker text-orange md:text-[14px]">{a.kicker}</p>
+    <h2 id="attest-title" class="text-h5 font-medium text-navy md:text-h3">{a.title}</h2>
+    <p class="text-body text-body">{a.body}</p>
+    <label class="flex items-start gap-3.5 pt-1.5 text-body font-medium text-navy">
+      <input type="checkbox" name="attest" class="mt-0.5 h-5 w-5 shrink-0 rounded-[3px] border border-line accent-rust aria-[invalid=true]:outline aria-[invalid=true]:outline-1 aria-[invalid=true]:outline-error" data-attest-check />
+      <span>{a.checkbox}</span>
+    </label>
+    <p class="hidden text-small text-error" data-attest-error>{a.validation}</p>
+    <div class="flex items-center gap-6 pt-2">
+      <Button label={a.continue} type="submit" disabled />
+      <a href="/" class="text-body font-medium text-body underline underline-offset-2 hover:text-navy">{a.decline}</a>
+    </div>
+    <p class="text-small text-body">{a.footnote}</p>
+  </form>
+</dialog>
+<script>
+  const dlg = document.getElementById("attestation-modal") as HTMLDialogElement | null;
+  if (dlg) {
+    const key = dlg.dataset.key!;
+    let ok = false; try { ok = sessionStorage.getItem(key) === "1"; } catch {}
+    if (!ok) {
+      dlg.showModal();
+      dlg.addEventListener("cancel", (e) => e.preventDefault()); // Escape does not dismiss the gate
+      const form = dlg.querySelector<HTMLFormElement>("[data-attest-form]")!;
+      const check = dlg.querySelector<HTMLInputElement>("[data-attest-check]")!;
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+      const err = dlg.querySelector<HTMLElement>("[data-attest-error]")!;
+      check.addEventListener("change", () => { btn.disabled = !check.checked; check.setAttribute("aria-invalid", "false"); err.classList.add("hidden"); });
+      form.addEventListener("submit", (e) => {
+        if (!check.checked) { e.preventDefault(); check.setAttribute("aria-invalid", "true"); err.classList.remove("hidden"); return; }
+        try { sessionStorage.setItem(key, "1"); } catch {}
+      });
+    }
+  }
+</script>

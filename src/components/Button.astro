@@ -6,8 +6,9 @@
  * Renders <a> when href is given, otherwise <button>.
  */
 import Icon from "./Icon.astro";
-interface Props {
+interface Props extends astroHTML.JSX.HTMLAttributes {
   label: string;
+  disabled?: boolean;
   href?: string;
   style?: "primary" | "secondary" | "external";
   type?: "button" | "submit";
@@ -15,8 +16,8 @@ interface Props {
   class?: string;
   id?: string;
 }
-const { label, href, style = "primary", type = "button", full = false, class: className = "", id } = Astro.props;
-const base = "inline-flex items-center justify-center gap-3 rounded-[4px] px-5 py-2 min-h-[50px] text-body font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy";
+const { label, href, style = "primary", type = "button", full = false, class: className = "", id, disabled = false, ...rest } = Astro.props as Props & { href?: string; type?: "button" | "submit" };
+const base = "inline-flex items-center justify-center gap-3 rounded-[4px] px-5 py-2 min-h-[50px] text-body font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy disabled:bg-disabled disabled:text-disabled-copy disabled:cursor-not-allowed [&:disabled_svg]:text-disabled-copy";
 const styles = {
   primary: "bg-rust text-white hover:bg-rust-hi",
   secondary: "bg-white text-ink border border-line-secondary hover:bg-cream",
@@ -26,9 +27,9 @@ const chevron = style === "secondary" ? "text-rust-hi" : "text-white";
 const cls = [base, styles[style], full ? "w-full" : "", className].join(" ");
 ---
 {href ? (
-  <a id={id} href={href} class={cls} target={style === "external" ? "_blank" : undefined} rel={style === "external" ? "noopener noreferrer" : undefined}>
+  <a id={id} href={href} class={cls} {...rest} target={style === "external" ? "_blank" : undefined} rel={style === "external" ? "noopener noreferrer" : undefined}>
     <span>{label}</span><Icon name="chevron-right" size={16} class={chevron} />
   </a>
 ) : (
-  <button id={id} type={type} class={cls}><span>{label}</span><Icon name="chevron-right" size={16} class={chevron} /></button>
+  <button id={id} type={type} class={cls} disabled={disabled} {...rest}><span>{label}</span><Icon name="chevron-right" size={16} class={chevron} /></button>
 )}

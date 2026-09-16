@@ -30,9 +30,9 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [x] T8 `Statement`, `StrategyAtAGlance` (ladder 1–3 gradients as CSS tokens), `ContentColumns` (3/4 columns, optional Lucide icons), `TwoColumnsContent` (paragraphs split across two columns), `LeftRight` (flip prop), plus a `Section` band wrapper — 16 Sep
 - [x] T9 `FundOverviewPerformance` (About + RatingsRow + Performance card: chart beside table on desktop, table only on mobile) and `RatingsRow` (Lonsec only, three-column bar on desktop, card on mobile, per-fund report URL) — 16 Sep
-- [ ] T10 `Documents` + `DownloadSlice` (+ see-more expander), `ProfileModule` (3-col, 2-col rhythm), `ProductCards`
-- [ ] T11 `InsightsRow`, `InsightsList` (thumbnail treatment TBC — build with a prop), `FilterTabs`, `SearchInput`, `SearchResultRow`
-- [ ] T12 `ThreeColumnsContactBanner`, `ContactForm` (Formspree, client validation, success state, `?topic=` pre-fill incl. `private-mandate`), `SubscribeModal` (Mailchimp embed, double opt-in), `AttestationModal` (sessionStorage; ss708/761G wording; decline → home)
+- [x] T10 `Documents` (title/intro + rows; `viewAll` link or `collapseAfter` see-more expander, vanilla JS), `DownloadSlice`, `KeyDocuments` (cream tiles), `ProfileModule` (3-col cards, warm separators), `ProductCards` (navy radial cards with mark outline) — 16 Sep
+- [x] T11 `InsightsRow` + `ArticleCard` + `Tag`, `InsightsList` (rows with `data-filter-item`; `thumbs` prop for the parked thumbnail question), `FilterTabs` (client-side, reads `?filter=`), `SearchInput`, `SearchResultRow`; `src/lib/format.ts` (dates, slugs) — 16 Sep
+- [x] T12 `ThreeColumnsContactBanner`, `ContactForm` + `FormField` (Formspree via fetch, client validation with per-field errors and banner, success panel, `?topic=` pre-fill), `SubscribeModal` (native dialog, Mailchimp JSONP double opt-in, 'Check your inbox' state), `AttestationModal` (native dialog, cannot be dismissed, sessionStorage key, decline → home; include on every gated page) — 16 Sep. [Unverified] error-banner wording; Formspree endpoint, Mailchimp action URL and merge field are `[TO SET]` in site.json
 - [ ] T12a `PrivateMandates` module (tint band, copy left + one button "Talk to us about a mandate", key-value facts right) for the wholesale landing page
 
 ## 4 · Pages
@@ -63,6 +63,10 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [ ] C6 Lonsec citation rules applied to ratings row
 - [ ] C7 Note to Renny: ratings now Lonsec only (his item 6 still lists three houses)
 - [ ] C8 Olivia123 dedicated URL swapped in when supplied
+
+## 6a · QA notes from previews (fix in T23)
+
+- [ ] Header dropdown panels open too far below the label (they hang from the 104px header bottom); bring them up to sit just under the trigger (Jim, 16 Sep)
 
 ## 7 · Launch
 

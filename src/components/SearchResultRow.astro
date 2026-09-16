@@ -1,0 +1,15 @@
+---
+/**
+ * SearchResultRow — Figma results 191:5014 → 210:15094. 11px rust SemiBold
+ * kicker (PAGE / DOCUMENT · PDF / INSIGHT · category), 22px Medium navy title,
+ * body snippet, 13px muted source line; 1px rule between rows.
+ */
+interface Props { kicker: string; title: string; href: string; snippet?: string; source?: string; }
+const { kicker, title, href, snippet, source } = Astro.props;
+---
+<li class="flex flex-col gap-1.5 border-b border-line py-7">
+  <p class="text-kicker font-semibold uppercase tracking-kicker text-rust">{kicker}</p>
+  <h3 class="text-body-lg font-medium text-navy leading-[1.3]"><a href={href} class="hover:text-rust">{title}</a></h3>
+  {snippet && <p class="text-body text-body">{snippet}</p>}
+  {source && <p class="text-small text-muted">{source}</p>}
+</li>

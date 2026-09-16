@@ -1,0 +1,21 @@
+---
+/**
+ * SearchInput — Figma search-header 191:4999 → 210:15079. Cream band, H1
+ * "Search", 60px white field with 1px navy border and a rust text "Search ›"
+ * submit inside, then the results count line. GET form to /search?q=.
+ */
+import Icon from "./Icon.astro";
+interface Props { title: string; placeholder?: string; buttonLabel: string; query?: string; resultsLine?: string; }
+const { title, placeholder = "", buttonLabel, query = "", resultsLine } = Astro.props;
+---
+<section class="bg-cream">
+  <div class="mx-auto flex max-w-site flex-col gap-5 px-4 pb-8 pt-10 md:px-12 md:pt-12">
+    <h1 class="text-h3 font-medium text-navy md:text-h1">{title}</h1>
+    <form action="/search" method="get" role="search" class="flex h-[60px] w-full max-w-[888px] items-center gap-4 rounded-[3px] border border-navy bg-white px-[18px]">
+      <label for="q" class="sr-only">{title}</label>
+      <input id="q" name="q" type="search" value={query} placeholder={placeholder} class="h-full w-full bg-transparent text-lead text-navy placeholder:text-body focus:outline-none" />
+      <button type="submit" class="inline-flex shrink-0 items-center gap-1 text-body font-medium text-rust hover:underline">{buttonLabel}<Icon name="chevron-right" size={14} /></button>
+    </form>
+    {resultsLine && <p class="text-body text-body" aria-live="polite">{resultsLine}</p>}
+  </div>
+</section>
