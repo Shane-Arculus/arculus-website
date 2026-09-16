@@ -1,0 +1,46 @@
+---
+/**
+ * Wholesale strategy template — Figma A− 103:1334 → 207:17858, BBB 118:12535 →
+ * 207:18186, PEP 120:986 → 207:18514. Gated (deep-link safety net).
+ * Order: header · hero-level-2 (navy, kicker, stats, photo) · breadcrumb ·
+ * statement · strategy-at-a-glance · about + at a glance · content-columns
+ * (process & risk controls) · two-columns (key risks) · CTA banner ·
+ * important-information (wholesale, strategy-specific) · footer.
+ * PEP carries no performance figures anywhere on the page.
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import Statement from "../../components/Statement.astro";
+import StrategyAtAGlance from "../../components/StrategyAtAGlance.astro";
+import StrategyAbout from "../../components/StrategyAbout.astro";
+import ContentColumns from "../../components/ContentColumns.astro";
+import TwoColumnsContent from "../../components/TwoColumnsContent.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import AttestationModal from "../../components/AttestationModal.astro";
+import { getStrategies } from "../../content/loaders";
+import { strategyRoutes } from "./index.astro";
+
+export async function getStaticPaths() {
+  return (await getStrategies()).map((s) => ({ params: { slug: strategyRoutes[s.slug].split("/").pop()! }, props: { s } }));
+}
+const { s } = Astro.props;
+const images: Record<string, string> = { "a-minus": "/images/hero-a-minus.webp", bbb: "/images/hero-afi.webp", pep: "/images/insight-placeholder.webp" };
+---
+<Base title={`${s.name} — Arculus Funds Management`} description={s.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={s.hero.title} description={s.hero.subtitle} kicker={s.kicker} theme="navy" layout="full" buttons={[s.hero.button]} stats={s.hero.facts} image={{ src: images[s.slug], alt: s.card.image }} />
+  <Breadcrumb items={s.breadcrumb} />
+  <Statement title={s.statement.title} points={s.statement.points} footnote={s.statement.footnote} />
+  <StrategyAtAGlance items={s.strategyAtAGlance} ladder={s.ladder as 1 | 2 | 3} />
+  <StrategyAbout about={{ title: s.about.title, paragraphs: [s.about.body] }} glance={s.atAGlance} />
+  <ContentColumns title={s.processRiskControls.title} items={s.processRiskControls.items} />
+  <TwoColumnsContent title={s.keyRisks.title} paragraphs={s.keyRisks.paragraphs} />
+  <CtaBanner title={s.cta.title} body={s.cta.body} button={s.cta.button} />
+  <ImportantInformation variant="wholesale" riskSubject={s.importantInformation.riskSubject} asAt={s.importantInformation.asAt.startsWith("[") ? null : s.importantInformation.asAt} />
+  <AttestationModal />
+  <Footer slot="footer" />
+</Base>

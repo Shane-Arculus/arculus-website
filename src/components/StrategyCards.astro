@@ -1,0 +1,49 @@
+---
+/**
+ * StrategyCards — Figma 133:2137 → 286:9535 (wholesale landing).
+ * Cream band, H3 title + intro, three cards: gradient band (ladder colour)
+ * with orange kicker, H4 white title and a round photo with circle outline
+ * overflowing top-right; white body with description, hero stat (36px navy),
+ * two facts on a rule, primary "View strategy". Mobile stacks; the intro is
+ * omitted because the mobile frame carries it in a separate Statement.
+ */
+import Button from "./Button.astro";
+import type { Strategy } from "../content/loaders";
+interface Props { title: string; intro: string; strategies: Strategy[]; buttonLabel: string; hrefs: Record<string, string>; images: Record<string, string>; }
+const { title, intro, strategies, buttonLabel, hrefs, images } = Astro.props;
+---
+<section class="bg-cream">
+  <div class="mx-auto flex max-w-site flex-col gap-6 px-4 pb-6 pt-2 md:gap-9 md:px-12 md:pb-[100px] md:pt-[90px]">
+    <div class="hidden flex-col gap-3 md:flex">
+      <h2 class="text-h3 font-medium text-navy">{title}</h2>
+      <p>{intro}</p>
+    </div>
+    <div class="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-8">
+      {strategies.map((s) => (
+        <article class="flex flex-col overflow-hidden rounded-lg border border-card-line-2 bg-white">
+          <div class="relative overflow-hidden px-7 py-[46px] text-white" style={`background: var(--gradient-ladder-${s.ladder});`}>
+            <div class="pointer-events-none absolute right-[-60px] top-[-108px] h-[331px] w-[331px] rounded-full border border-outline-card" aria-hidden="true"></div>
+            <img src={images[s.slug]} alt="" width="244" height="244" loading="lazy" class="pointer-events-none absolute right-[-16px] top-[-64px] h-[244px] w-[244px] rounded-full object-cover" />
+            <div class="relative flex flex-col gap-2.5">
+              <p class="text-kicker font-semibold uppercase tracking-kicker text-orange">{s.card.kicker}</p>
+              <h3 class="max-w-[220px] text-h4 font-medium">{s.card.title}</h3>
+            </div>
+          </div>
+          <div class="flex flex-col gap-6 px-7 pb-[30px] pt-[26px]">
+            <div class="flex flex-col gap-[22px]">
+              <p>{s.card.body}</p>
+              <div class="flex flex-col gap-1.5">
+                <p class="text-kicker font-semibold uppercase tracking-kicker text-orange">{s.card.heroStat[0]}</p>
+                <p class="text-h2 font-medium text-navy">{s.card.heroStat[1]}</p>
+              </div>
+              <dl class="flex gap-6 border-t border-card-line-2 pt-[18px]">
+                {s.card.facts.map(([k, v]) => <div class="flex flex-1 flex-col gap-1"><dt class="text-kicker font-semibold uppercase tracking-kicker text-orange">{k}</dt><dd class="text-h6 font-medium text-navy">{v}</dd></div>)}
+              </dl>
+            </div>
+            <div><Button label={buttonLabel} href={hrefs[s.slug]} /></div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

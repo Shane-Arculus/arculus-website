@@ -1,0 +1,18 @@
+---
+/** ESG — Figma 150:13882 → 209:20263. No hero; breadcrumb, prose, Important Information. */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProseArticle from "../../components/ProseArticle.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import { getMarkdown } from "../../content/loaders";
+const esg = await getMarkdown("aboutMd", "esg");
+---
+<Base title={`${esg.title} — Arculus Funds Management`} description={esg.lead ?? esg.title} noindex>
+  <Header slot="header" />
+  <Breadcrumb items={["Home", "About", esg.title]} />
+  <ProseArticle title={esg.title} lead={esg.lead} Content={esg.Content} />
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

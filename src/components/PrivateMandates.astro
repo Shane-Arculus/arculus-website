@@ -1,0 +1,23 @@
+---
+/**
+ * PrivateMandates — Figma 256:9531 → 256:9566 (wholesale landing). Cream band,
+ * copy left (H3, Lead body, 16px aside, primary button), facts table right
+ * (Medium navy label / body value rows on rules). Anchor id for the nav link.
+ */
+import Button from "./Button.astro";
+interface Props { anchor: string; title: string; body: string; aside: string; button: { label: string; href?: string }; facts: readonly (readonly [string, string])[]; }
+const { anchor, title, body, aside, button, facts } = Astro.props;
+---
+<section id={anchor} class="scroll-mt-24 bg-cream">
+  <div class="mx-auto flex max-w-site flex-col gap-8 px-4 py-10 md:flex-row md:gap-24 md:px-12 md:py-24">
+    <div class="flex flex-col gap-5 md:w-[560px] md:shrink-0">
+      <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
+      <p class="text-lead">{body}</p>
+      <p class="text-subhead font-normal">{aside}</p>
+      <div><Button label={button.label} href={button.href} /></div>
+    </div>
+    <dl class="flex-1">
+      {facts.map(([k, v]) => <div class="flex flex-col gap-1 border-b border-line py-3.5 md:flex-row md:gap-6"><dt class="font-medium text-navy md:w-[220px] md:shrink-0">{k}</dt><dd>{v}</dd></div>)}
+    </dl>
+  </div>
+</section>

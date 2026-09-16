@@ -1,0 +1,36 @@
+---
+/**
+ * Investment Management — Figma 170:3269 → 207:18842. Gated.
+ * Order: header · hero-level-2 (navy, kicker, two buttons, stats) · breadcrumb
+ * · statement · about + at a glance · content-columns (how we build, anchored)
+ * · two-columns (key risks) · CTA banner · important-information (wholesale,
+ * IM variant) · footer. Entity name is [Unverified] in content.
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import Statement from "../../components/Statement.astro";
+import StrategyAbout from "../../components/StrategyAbout.astro";
+import ContentColumns from "../../components/ContentColumns.astro";
+import TwoColumnsContent from "../../components/TwoColumnsContent.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import AttestationModal from "../../components/AttestationModal.astro";
+import { getIm } from "../../content/loaders";
+const im = await getIm();
+---
+<Base title={`${im.hero.title} — Arculus Funds Management`} description={im.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={im.hero.title} description={im.hero.subtitle} kicker={im.kicker} theme="navy" layout="full" buttons={im.hero.buttons} stats={im.hero.facts} image={{ src: "/images/hero-a-minus.webp", alt: "[image register IMG-09 — IM needs its own]" }} />
+  <Breadcrumb items={im.breadcrumb} />
+  <Statement title={im.statement.title} points={im.statement.points} footnote={im.statement.footnote} />
+  <StrategyAbout about={{ title: im.about.title, paragraphs: im.about.paragraphs }} glance={im.atAGlance} />
+  <div id={im.howWeBuild.anchor} class="scroll-mt-24"><ContentColumns title={im.howWeBuild.title} items={im.howWeBuild.items} /></div>
+  <TwoColumnsContent title={im.keyRisks.title} paragraphs={im.keyRisks.paragraphs} />
+  <CtaBanner title={im.cta.title} body={im.cta.body} button={im.cta.button} />
+  <ImportantInformation variant="wholesale" riskSubject={im.importantInformation.riskSubject} asAt={im.importantInformation.asAt} />
+  <AttestationModal />
+  <Footer slot="footer" />
+</Base>

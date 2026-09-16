@@ -39,9 +39,9 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [x] T13 Home (`src/pages/index.astro`) + home-only modules `FundCards` (warm mesh cards, CSS approximation `[Unverified]`) and `ImportantDisclosure`; `LeftRight` now takes `blocks[]` for the home's two stacked text blocks; `RatingsRow` button optional — 16 Sep. Fixed a T1 token collision: `text-body` was colour only, so body copy had been 16px; size is now `text-base` (15px) on `body`.
 - [x] T14 Fund page template `src/pages/funds/[slug].astro` → AFI and PIF; `FundFeesFacts`, `FundPortfolio` (allocation donut drawn as inline SVG from the JSON rows — no chart library); first real performance charts exported from the frames to `public/charts/<fund>-2026-06.webp` (the export carries its own title, so the slot renders no caption) — 16 Sep
-- [ ] T15 Wholesale landing (gate at entry; strategy cards click through once attested) + Private mandates module + strategy template → A−, BBB, PEP (gated as deep-link safety net; PEP performance figures entirely off-page)
-- [ ] T16 Investment Management (gated; entity name pending)
-- [ ] T17 About: Our approach, Governance & oversight (RE = DDH Graham), Team (CEO = Sunetha Parag); ESG (needs an inbound link — see register)
+- [x] T15 Wholesale landing `src/pages/wholesale/index.astro` (gate, `StrategyCards`, `PrivateMandates`, wholesale Important Information) and strategy template `[slug].astro` → A− SMA, BBB SMA, PEP (gated, `StrategyAbout`, no PEP performance figures) — 16 Sep
+- [x] T16 Investment Management `src/pages/investment-management/index.astro` (gated; IM Important Information drops the 'Portfolio figures' sentence when no as-at date) — 16 Sep. Entity name and minimum portfolio still [Unverified] (Q12).
+- [x] T17 About: Our approach, Governance & oversight, Team, ESG (`src/pages/about/*.astro`); `ProseArticle` for markdown pages; `ContentColumns` gains per-item links, a module link and an H1 title size; `TwoColumnsContent` gains titled columns with bullet lists — 16 Sep
 - [ ] T18 Insights hub (PDF links at launch), Contact, Document library
 - [ ] T19 Legal: T&Cs, Privacy Notice, Cookie Policy (short — cookieless analytics; add footer link), Disclosure (copy pending)
 - [ ] T20 Search (Pagefind incl. PDF text), 404

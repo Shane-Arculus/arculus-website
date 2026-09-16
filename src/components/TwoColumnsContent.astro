@@ -5,17 +5,22 @@
  * list; first half left, second half right). Mobile: one column.
  */
 import Section from "./Section.astro";
-interface Props { title: string; paragraphs: readonly string[]; bg?: "white" | "cream"; }
-const { title, paragraphs, bg = "white" } = Astro.props;
+type ListItem = string | { text: string; link: { label: string; href: string } };
+type Column = { title?: string; paragraphs?: readonly string[]; items?: readonly ListItem[] };
+interface Props { title?: string; paragraphs?: readonly string[]; columns?: readonly [Column, Column]; bg?: "white" | "cream"; }
+const { title, paragraphs = [], columns, bg = "white" } = Astro.props;
+// Default: one title, paragraphs split across two columns (key risks). `columns` gives each column its own title and paragraphs/bullets (Approach: What we do / For our clients).
 const mid = Math.ceil(paragraphs.length / 2);
-const left = paragraphs.slice(0, mid), right = paragraphs.slice(mid);
+const cols: readonly [Column, Column] = columns ?? [{ title, paragraphs: paragraphs.slice(0, mid) }, { paragraphs: paragraphs.slice(mid) }];
 ---
 <Section bg={bg}>
-  <div class="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-4">
-    <div class="flex flex-col gap-4 md:gap-9 md:pr-12">
-      <h2 class="text-h3 font-medium text-navy">{title}</h2>
-      <div class="flex flex-col gap-4 text-body text-body">{left.map((p) => <p>{p}</p>)}</div>
-    </div>
-    <div class="flex flex-col gap-4 text-body text-body md:pt-[74px]">{right.map((p) => <p>{p}</p>)}</div>
+  <div class="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-4">
+    {cols.map((c, i) => (
+      <div class:list={["flex flex-col gap-4 md:gap-9", i === 0 && "md:pr-12", i === 1 && !c.title && "md:pt-[74px]"]}>
+        {c.title && <h2 class="text-h3 font-medium text-navy">{c.title}</h2>}
+        {c.paragraphs && <div class="flex flex-col gap-4">{c.paragraphs.map((p) => <p>{p}</p>)}</div>}
+        {c.items && <ul class="flex list-disc flex-col gap-2 pl-5">{c.items.map((it) => <li>{typeof it === "string" ? it : <>{it.text} <a href={it.link.href} class="font-medium text-rust hover:underline">{it.link.label}</a></>}</li>)}</ul>}
+      </div>
+    ))}
   </div>
 </Section>

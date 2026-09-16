@@ -1,0 +1,26 @@
+---
+/** Governance & oversight — Figma 157:14081 → 208:12575. */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import LeftRight from "../../components/LeftRight.astro";
+import ContentColumns from "../../components/ContentColumns.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import { getAbout } from "../../content/loaders";
+const g = await getAbout("governance");
+const roles = g.fourRoles.items.map((r) => [r.title, r.body, r.link] as const);
+---
+<Base title={`${g.hero.title} — Arculus Funds Management`} description={g.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={g.hero.title} description={g.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[g.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <Breadcrumb items={g.breadcrumb} />
+  <LeftRight title={g.howItWorks.title} paragraphs={g.howItWorks.paragraphs} image={{ src: "/images/left-right-city.webp", alt: "[image register IMG-04]" }} />
+  <ContentColumns title={g.fourRoles.title} items={roles} bg="white" titleSize="h1" />
+  <LeftRight title={g.investmentCommittee.title} paragraphs={g.investmentCommittee.paragraphs} image={{ src: "/images/left-right-city.webp", alt: "[image register IMG-04 — needs a second image]" }} flip button={{ ...g.investmentCommittee.link, style: "secondary" }} />
+  <CtaBanner title={g.cta.title} body={g.cta.body} button={g.cta.button} />
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

@@ -1,0 +1,26 @@
+---
+/** Team — Figma 158:11833 → 209:12086. Three profile groups, distribution, CTA. */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProfileModule from "../../components/ProfileModule.astro";
+import TwoColumnsContent from "../../components/TwoColumnsContent.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import { getAbout } from "../../content/loaders";
+import { slugify } from "../../lib/format";
+const t = await getAbout("team");
+const photo = (p: string, name: string) => (p.startsWith("[") ? "/images/team-placeholder.webp" : p) || `/images/team/${slugify(name)}.webp`;
+---
+<Base title={`${t.hero.title} — Arculus Funds Management`} description={t.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={t.hero.title} description={t.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[t.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <Breadcrumb items={t.breadcrumb} />
+  {t.groups.map((g) => <ProfileModule title={g.title} intro={g.intro} people={g.people.map((p) => ({ ...p, photo: photo(p.photo, p.name) }))} />)}
+  <TwoColumnsContent title={t.distribution.title} paragraphs={[t.distribution.body]} />
+  <CtaBanner title={t.cta.title} body={t.cta.body} button={t.cta.button} />
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

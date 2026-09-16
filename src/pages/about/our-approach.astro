@@ -1,0 +1,28 @@
+---
+/** Our approach — Figma 157:11833 → 208:12136. */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import LeftRight from "../../components/LeftRight.astro";
+import RatingsRow from "../../components/RatingsRow.astro";
+import ContentColumns from "../../components/ContentColumns.astro";
+import TwoColumnsContent from "../../components/TwoColumnsContent.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import { getAbout } from "../../content/loaders";
+const a = await getAbout("approach");
+---
+<Base title={`${a.hero.title} — Arculus Funds Management`} description={a.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={a.hero.title} description={a.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[a.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <Breadcrumb items={a.breadcrumb} />
+  <LeftRight title={a.whoWeAre.title} paragraphs={a.whoWeAre.paragraphs} image={{ src: "/images/left-right-city.webp", alt: "[image register IMG-04]" }} />
+  {a.showRatings && <section class="bg-white"><div class="mx-auto max-w-site px-4 pb-10 md:px-12 md:pb-20"><RatingsRow /></div></section>}
+  <ContentColumns title={a.philosophy.title} items={a.philosophy.items} link={a.philosophy.link} />
+  <TwoColumnsContent columns={[{ title: a.whatWeDo.title, items: a.whatWeDo.items }, { title: a.forOurClients.title, items: a.forOurClients.items }]} />
+  <CtaBanner title={a.cta.title} body={a.cta.body} button={a.cta.button} />
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

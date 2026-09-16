@@ -49,6 +49,8 @@ Colours are the library variables actually bound on the canonical frames. They a
 | `outline-warm` | `#DFC6AD` | ellipse outline on light heroes |
 | `orange` | `#EC7826` | wholesale kicker and stat labels (`[Unverified]` raw hex; logo gradient uses #EE7624) |
 | `card-line` | `#EBE5DE` | white card borders on cream bands |
+| `card-line-2` | `#E5E0D8` | strategy card border and facts rule |
+| `outline-card` | `#8D93AC` | circle outline on strategy card bands |
 | `muted` | `#99A1A8` | search result source line, placeholders |
 | `error-tint` | `#FCF0ED` | error banner background |
 | `disabled` / `disabled-copy` | `#CCD1D9` / `#737A85` | disabled button |
@@ -226,8 +228,8 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 | `Section` | `bg: white \| cream \| sand \| navy-deep`, `pad: default \| tight \| none`, `id?` | the standard band; every content module uses it |
 | `Statement` | `title`, `points: [heading, body][]`, `footnote?`, `bg?` | `107:841`→`207:19154` |
 | `StrategyAtAGlance` | `items: [value, label][]`, `ladder: 1 \| 2 \| 3` | `104:13320`→`207:18170`; BBB `118:12579`; PEP `120:1030` |
-| `ContentColumns` | `title`, `items: [heading, body][]`, `icons?`, `columns?`, `bg?` | `103:1341`→`207:17865` |
-| `TwoColumnsContent` | `title`, `paragraphs: string[]`, `bg?` | `103:1340`→`207:17864` |
+| `ContentColumns` | `title`, `items: [heading, body, link?][]`, `icons?`, `columns?`, `bg?`, `link?`, `titleSize?` | `103:1341`→`207:17865` |
+| `TwoColumnsContent` | `title`+`paragraphs` (split) or `columns: [{title, paragraphs?, items?}, …]`, `bg?` | `103:1340`→`207:17864` |
 | `LeftRight` | `title`+`paragraphs` or `blocks {title, paragraphs}[]`, `image {src, alt}`, `button?`, `flip?`, `bg?` | `157:11910`→`208:12143`; home `123:31759` |
 | `FundOverviewPerformance` | `about {title, body}`, `ratingReportUrl?`, `performance {...}`, `fundName` | `88:828`→`207:17684`; PIF `97:1110`→`207:17732` |
 | `RatingsRow` | `reportUrl` (copy from `site.json` ratings) | `244:9689`→`228:9407`; Approach `244:9709` |
@@ -250,6 +252,10 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 | `ImportantDisclosure` | none — reads `site.json` | `123:31758`→`207:16553` |
 | `FundFeesFacts` | `suit {title, body}`, `managed {title, body[], button}`, `features {title, items}` | `88:935`→`207:16882` |
 | `FundPortfolio` | `title`, `metrics`, `allocation {columns, rows}` — donut is inline SVG from rows | `88:957`→`207:16884` |
+| `StrategyCards` | `title`, `intro`, `strategies: Strategy[]`, `buttonLabel`, `hrefs`, `images` | `133:2137`→`286:9535` |
+| `PrivateMandates` | `anchor`, `title`, `body`, `aside`, `button`, `facts` | `256:9531`→`256:9566` |
+| `StrategyAbout` | `about {title, paragraphs}`, `glance {title, note, items}` | `107:859`→`207:17863` |
+| `ProseArticle` | `title`, `lead?`, `Content` (from `getMarkdown`) | ESG `150:13941`; legal `150:13536` etc. |
 | `Breadcrumb` | `items: string[]` (labels; hrefs from nav) | `88:826`→`207:16878` |
 | `ImportantInformation` | `variant: generic` \| `fund` + `fundName, arsn, apir` \| `wholesale` + `riskSubject, asAt` | `123:31763`, `88:994`, `103:1344` |
 | `CtaBanner` | `title`, `body`, `button` | `113:830`→`207:17867` |

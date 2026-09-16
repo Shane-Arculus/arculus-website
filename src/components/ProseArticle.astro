@@ -1,0 +1,23 @@
+---
+/**
+ * ProseArticle — the long-form page body used by ESG (150:13941 → 209:20517)
+ * and the legal pages (150:13536, 150:13671, 150:13806). White band, 888px
+ * column: H1 42 + Lead 18, then rendered markdown: H2 24 Medium navy, body 18,
+ * bullet lists, links in rust. Pass the `Content` component from getMarkdown.
+ */
+interface Props { title: string; lead?: string; Content: any; note?: string; }
+const { title, lead, Content, note } = Astro.props;
+---
+<section class="bg-white">
+  <div class="mx-auto max-w-site px-4 pb-16 pt-10 md:px-12 md:pb-24 md:pt-12">
+    <article class="flex max-w-[888px] flex-col gap-8 md:gap-12">
+      <header class="flex flex-col gap-4">
+        <h1 class="text-h3 font-medium text-navy md:text-h1">{title}</h1>
+        {lead && <p class="text-lead">{lead}</p>}
+      </header>
+      <div class="prose-arculus flex flex-col gap-4 text-lead [&_h2]:mt-8 [&_h2]:text-h5 [&_h2]:font-medium [&_h2]:text-navy [&_h2:first-child]:mt-0 [&_h3]:mt-4 [&_h3]:text-lead [&_h3]:font-medium [&_h3]:text-navy [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-2 [&_ul]:pl-6 [&_a]:font-medium [&_a]:text-rust [&_a]:underline [&_a]:underline-offset-2 [&_strong]:font-medium [&_strong]:text-navy">
+        <Content />
+      </div>
+    </article>
+  </div>
+</section>

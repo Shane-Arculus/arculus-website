@@ -29,6 +29,8 @@
   --color-orange: #EC7826; /* wholesale kicker and stat labels ([Unverified] raw hex; logo gradient uses #EE7624) */
   --color-line-secondary: #A8ADB3;
   --color-card-line: #EBE5DE;
+  --color-card-line-2: #E5E0D8; /* strategy card border and facts rule */
+  --color-outline-card: #8D93AC; /* ellipse outline on strategy card bands */
   --color-line-warm: #EAD9C8;
   --color-muted: #99A1A8;
   --color-error-tint: #FCF0ED; /* error banner background */

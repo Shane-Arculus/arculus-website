@@ -1,0 +1,31 @@
+---
+/**
+ * Wholesale landing — Figma 130:2004 → 209:19001. Gated (AttestationModal).
+ * Order: header · hero-wholesale · [statement, mobile only] · strategy cards
+ * · private-mandates · important-information (wholesale) · footer.
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroWholesale from "../../components/HeroWholesale.astro";
+import StrategyCards from "../../components/StrategyCards.astro";
+import PrivateMandates from "../../components/PrivateMandates.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import AttestationModal from "../../components/AttestationModal.astro";
+import { getWholesaleLanding, getStrategies, getPrivateMandates } from "../../content/loaders";
+export const strategyRoutes: Record<string, string> = { "a-minus": "/wholesale/a-minus-sma", bbb: "/wholesale/bbb-sma", pep: "/wholesale/protected-equity-portfolio" };
+const wl = await getWholesaleLanding();
+const strategies = (await getStrategies()).filter((s) => wl.strategies.cards.includes(s.slug));
+const pm = await getPrivateMandates();
+const images = { "a-minus": "/images/hero-a-minus.webp", bbb: "/images/hero-afi.webp", pep: "/images/insight-placeholder.webp" };
+---
+<Base title="Wholesale strategies — Arculus Funds Management" description={wl.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroWholesale kicker={wl.hero.kicker} title={wl.hero.title} subtitle={wl.hero.subtitle} />
+  <section class="bg-cream md:hidden"><div class="mx-auto flex max-w-site flex-col gap-3 px-4 pt-12 text-center"><h2 class="text-h3 font-medium text-navy">{wl.strategies.title}</h2><p>{wl.strategies.intro}</p></div></section>
+  <StrategyCards title={wl.strategies.title} intro={wl.strategies.intro} strategies={strategies} buttonLabel={wl.strategies.buttonLabel} hrefs={strategyRoutes} images={images} />
+  <PrivateMandates anchor={pm.anchor} title={pm.title} body={pm.body} aside={pm.aside} button={pm.button} facts={pm.facts} />
+  <ImportantInformation variant="wholesale" riskSubject={wl.importantInformation.riskSubject} asAt={wl.importantInformation.asAt} />
+  <AttestationModal />
+  <Footer slot="footer" />
+</Base>

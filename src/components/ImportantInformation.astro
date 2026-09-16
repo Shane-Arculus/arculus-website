@@ -22,7 +22,9 @@ let paragraphs: string[] = [];
 if (props.variant === "generic") paragraphs = ii.generic;
 else if (props.variant === "fund") paragraphs = [fill(ii.fund.template, { fundName: props.fundName, arsn: props.arsn, apir: props.apir })];
 else {
-  const first = fill(ii.wholesale.template, { riskSubject: props.riskSubject, asAt: props.asAt ?? "" }).replace(/\s+as at\s+\.\s*/, ". ");
+  // IM (170:3269) omits the "Portfolio figures…" sentence: drop it when there is no as-at date.
+  const template = props.asAt ? ii.wholesale.template : ii.wholesale.template.replace(/\s*Portfolio figures[^.]*\.(?:[^.]*audited\.)?/, "");
+  const first = fill(template, { riskSubject: props.riskSubject, asAt: props.asAt ?? "" });
   paragraphs = ii.wholesale.thenGeneric ? [first, ...ii.generic] : [first];
 }
 ---
