@@ -1,0 +1,155 @@
+{
+  "kind": "contact",
+  "verified": false,
+  "breadcrumb": [
+    "Home",
+    "Contact"
+  ],
+  "hero": {
+    "title": "Contact",
+    "subtitle": "Tell us what you need and the right person will reply. Existing investors can reach the registry below."
+  },
+  "form": {
+    "title": "Send us a message",
+    "intro": "Tell us who you are and what you need. For account matters, use the registry link above.",
+    "fields": [
+      {
+        "name": "firstName",
+        "label": "First name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "lastName",
+        "label": "Last name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "placeholder": "name@example.com",
+        "required": true,
+        "error": "Enter a valid email address."
+      },
+      {
+        "name": "phone",
+        "label": "Phone (optional)",
+        "type": "tel",
+        "required": false
+      },
+      {
+        "name": "iAm",
+        "label": "I am a",
+        "type": "select",
+        "placeholder": "Select",
+        "options": [
+          "Financial adviser",
+          "Wholesale investor",
+          "Existing investor",
+          "Other"
+        ],
+        "_note": "[Unverified] option list copied from the subscribe modal; contact frame shows a closed select only"
+      },
+      {
+        "name": "topic",
+        "type": "hidden",
+        "_note": "pre-filled from ?topic= (afi, pif, a-minus, bbb, pep, im, private-mandate, wholesale)"
+      },
+      {
+        "name": "message",
+        "label": "Message",
+        "type": "textarea",
+        "required": true,
+        "error": "Tell us briefly what you need."
+      },
+      {
+        "name": "consent",
+        "label": "I have read the Privacy Notice and consent to Arculus contacting me about my enquiry.",
+        "type": "checkbox",
+        "required": true
+      }
+    ],
+    "submit": "Send message"
+  },
+  "sent": {
+    "title": "Thanks. We've received your message.",
+    "body": "We reply within two business days. If your enquiry is about an existing holding, the registry can help sooner.",
+    "referenceLabel": "Reference: {ref}",
+    "_note": "[Unverified] Formspree does not issue a reference in this format; either generate client-side or drop the line",
+    "links": [
+      {
+        "label": "Back to home",
+        "href": "/"
+      },
+      {
+        "label": "See the funds",
+        "href": "/#funds"
+      }
+    ]
+  },
+  "details": [
+    {
+      "title": "Arculus Funds Management",
+      "lines": [
+        "[Office address — TBC]",
+        "+61 (0) 432 815 354",
+        "info@arculus.com.au"
+      ],
+      "_note": "Office address open on compliance register (Q6)"
+    },
+    {
+      "title": "Registry (SS&C)",
+      "lines": [
+        "Unit prices, statements, applications and redemptions.",
+        "[SS&C investor services phone and email — TBC]"
+      ],
+      "link": {
+        "label": "Link to SS&C fund registry",
+        "href": "ssandcRegistry",
+        "external": true
+      }
+    },
+    {
+      "title": "Complaints",
+      "lines": [
+        "If you have a complaint about our services or the handling of your personal information, write to our Chief Executive Officer at info@arculus.com.au. We acknowledge complaints promptly and aim to resolve them within 30 days.",
+        "[IDR process and AFCA membership details — TBC with compliance]"
+      ],
+      "_note": "Open on compliance register (Q9)"
+    }
+  ],
+  "whoToContact": {
+    "title": "Who to contact",
+    "columns": [
+      {
+        "title": "Advisers and wholesale investors",
+        "body": "Strategy papers, mandate discussions, seminars and the weekly commentary. Enquiries go to the portfolio management team.",
+        "button": {
+          "label": "Email the team",
+          "href": "mailto:info@arculus.com.au",
+          "style": "primary"
+        }
+      },
+      {
+        "title": "Existing investors",
+        "body": "Unit prices, statements, applications and redemptions are handled by the Fund's registry, operated by SS&C.",
+        "button": {
+          "label": "Link to SS&C fund registry",
+          "href": "ssandcRegistry",
+          "style": "external"
+        }
+      },
+      {
+        "title": "General enquiries",
+        "body": "Media, partnerships and anything else. We reply within two business days.",
+        "button": {
+          "label": "info@arculus.com.au",
+          "href": "mailto:info@arculus.com.au",
+          "style": "secondary"
+        }
+      }
+    ]
+  }
+}

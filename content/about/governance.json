@@ -1,0 +1,90 @@
+{
+  "kind": "governance",
+  "verified": false,
+  "breadcrumb": [
+    "Home",
+    "About",
+    "Governance & oversight"
+  ],
+  "hero": {
+    "title": "Governance & oversight",
+    "subtitle": "Four parties are involved in every transaction. Three of them are independent of Arculus.",
+    "button": {
+      "label": "See the funds",
+      "href": "/#funds",
+      "style": "secondary"
+    }
+  },
+  "howItWorks": {
+    "title": "How the structure works",
+    "paragraphs": [
+      "Arculus does not own the funds or administer them like some other fund managers.",
+      "Arculus makes the investment decisions. It does not hold the assets, value them, or sign off on its own mandate compliance. Those roles sit with three independent institutions, each accountable to investors in its own right.",
+      "The funds are monitored for mandate compliance by the external responsible entity, trustee or wholesale investor. The administrator daily values the portfolios and calculates the performance outcomes independently of us.",
+      "There are 4 eyes on every transaction: Custody – Administration – Investment Management and the Responsible Entity."
+    ],
+    "image": "[image register]"
+  },
+  "fourRoles": {
+    "title": "The four roles",
+    "items": [
+      {
+        "title": "Investment Manager — Arculus Funds Management",
+        "body": "Sets strategy, selects securities and manages the portfolio within the mandate. Reports to the Investment Committee.",
+        "link": {
+          "label": "Meet the team",
+          "href": "/about/team"
+        }
+      },
+      {
+        "title": "Responsible Entity — DDH Graham",
+        "body": "Holds the AFSL under which the funds are operated, holds scheme property on trust for investors, monitors mandate compliance and is responsible for the funds' regulatory obligations and audited annual reporting. The RE's duty is to investors, not to Arculus.",
+        "link": {
+          "label": "ddhgraham.au",
+          "href": "https://ddhgraham.au",
+          "external": true
+        }
+      },
+      {
+        "title": "Administrator — SS&C",
+        "body": "Values the portfolio and calculates performance daily, independently of the investment manager. Maintains the unit register and processes applications and redemptions.",
+        "link": {
+          "label": "ssctech.com",
+          "href": "https://www.ssctech.com",
+          "external": true
+        }
+      },
+      {
+        "title": "Custodian — Northern Trust",
+        "body": "Holds the securities on behalf of the funds. Assets are never held by Arculus.",
+        "link": {
+          "label": "northerntrust.com",
+          "href": "https://www.northerntrust.com",
+          "external": true
+        }
+      }
+    ],
+    "_note": "External URLs are [Unverified] — frame shows domain labels only"
+  },
+  "investmentCommittee": {
+    "title": "Investment Committee",
+    "paragraphs": [
+      "Portfolio decisions are made within a framework set and reviewed by the Investment Committee: Renny Ellis, Michael Saba and Andrew McQueen. The committee brings more than 100 years of combined fixed income, broking and institutional investment experience."
+    ],
+    "_note": "[Unverified] frame carries the note '[Renny to confirm membership and the specific role of the committee]' — open with Renny",
+    "link": {
+      "label": "More about the team",
+      "href": "/about/team"
+    },
+    "image": "[image register]"
+  },
+  "cta": {
+    "title": "Talk to us about governance",
+    "body": "Questions on structure, oversight or reporting go directly to the team.",
+    "button": {
+      "label": "Get in touch",
+      "href": "/contact",
+      "style": "primary"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+---
+/**
+ * Footer — Figma 123:31764 (desktop) → 207:16559 (mobile).
+ * navy-deep band. Logo (white), link columns from site.json nav + footer.extra,
+ * outline "Arculus Capital" external button, then licensing line and legal links.
+ * Columns: About, Funds, Wholesale, Investment Management, then Insights /
+ * Contact / Document library stacked as direct links. Direct links (no children)
+ * are Medium with a chevron; group headings are Regular.
+ * The frame has the licensing line overflowing across the legal links; here it
+ * is its own paragraph above the links row.
+ */
+import Icon from "./Icon.astro";
+import { getSite } from "../content/loaders";
+const site = await getSite();
+const { nav, footer, ui, externalUrls } = site;
+const resolve = (href: string) => (href in externalUrls ? externalUrls[href as keyof typeof externalUrls] : href);
+const directs = [...nav.filter((n) => !n.children && n.label !== "Investment Management"), ...footer.extra];
+const directHrefs = new Set(directs.map((d) => d.href));
+// Group columns omit anything that is also a direct link (the frame lists Document library once)
+const groups = nav.filter((n) => n.children).map((n) => ({ ...n, children: n.children!.filter((c: { href: string }) => !directHrefs.has(c.href)) }));
+const im = nav.find((n) => n.label === "Investment Management");
+const year = new Date().getFullYear();
+---
+<footer class="bg-navy-deep text-white">
+  <div class="mx-auto max-w-site px-4 pb-6 pt-10 md:px-12 md:pb-9 md:pt-20">
+    <a href="/" class="inline-block" aria-label={ui.logoAlt}>
+      <img src="/brand/logo-white.svg" alt="" width="248" height="64" class="h-[52px] w-auto md:h-[64px]" />
+    </a>
+
+    <div class="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 md:mt-[60px] md:grid-cols-6 md:gap-x-4">
+      {groups.map((g) => (
+        <div class="flex flex-col gap-3 md:gap-4">
+          <p class="text-body">{g.label}</p>
+          <ul class="flex flex-col gap-3 md:gap-4">
+            {g.children!.map((c: { label: string; href: string }) => (
+              <li><a href={resolve(c.href)} class="text-body hover:underline">{c.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {im && (
+        <div><a href={im.href} class="inline-flex items-start gap-3 text-body font-medium hover:underline">{im.label}<Icon name="chevron-right" size={12} class="mt-1 shrink-0 text-rust-hi" /></a></div>
+      )}
+      <div class="flex flex-col gap-3 md:gap-4">
+        {directs.map((d) => (
+          <a href={resolve(d.href)} class="inline-flex items-center gap-3 text-body font-medium hover:underline">{d.label}<Icon name="chevron-right" size={12} class="text-rust-hi" /></a>
+        ))}
+      </div>
+      <div class="col-span-2 md:col-span-6 md:mt-2">
+        <a href={resolve(footer.externalButton.href)} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[50px] items-center gap-3 rounded-[4px] border border-line-strong px-5 py-2 text-body font-medium text-footer-copy hover:bg-white/5">
+          {footer.externalButton.label}<Icon name="arrow-up-right" size={12} class="text-footer-copy" />
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 text-small md:mt-[60px] md:gap-4">
+      <p>{footer.licensingLine}</p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+        {footer.legalLinks.map((l) => <a href={l.href} class="hover:underline">{l.label}</a>)}
+        <span>{footer.copyright.replace(/\d{4}/, String(year))}</span>
+      </div>
+    </div>
+  </div>
+</footer>

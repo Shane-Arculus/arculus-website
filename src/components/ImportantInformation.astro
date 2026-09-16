@@ -1,0 +1,36 @@
+---
+/**
+ * ImportantInformation — the compliance band at the foot of every page.
+ * Figma 123:31763 (generic), 88:994 (fund), 103:1344 (wholesale) → mobile 207:16558 etc.
+ * Cream band, 80/48 padding desktop, 40/16 mobile, small body-grey text with a
+ * 36px inner inset on desktop. Mobile frames show a section title; desktop none.
+ *
+ * variant generic: site.importantInformation.generic paragraphs.
+ * variant fund: the fund template filled with {fundName} {arsn} {apir}.
+ * variant wholesale: the wholesale template filled with {riskSubject} {asAt}, then the generic paragraphs.
+ * Template text is verbatim compliance copy (site.json); only braces change.
+ */
+import { getSite, fill } from "../content/loaders";
+type Props =
+  | { variant: "generic" }
+  | { variant: "fund"; fundName: string; arsn: string; apir: string }
+  | { variant: "wholesale"; riskSubject: string; asAt: string | null };
+const props = Astro.props as Props;
+const site = await getSite();
+const ii = site.importantInformation;
+let paragraphs: string[] = [];
+if (props.variant === "generic") paragraphs = ii.generic;
+else if (props.variant === "fund") paragraphs = [fill(ii.fund.template, { fundName: props.fundName, arsn: props.arsn, apir: props.apir })];
+else {
+  const first = fill(ii.wholesale.template, { riskSubject: props.riskSubject, asAt: props.asAt ?? "" }).replace(/\s+as at\s+\.\s*/, ". ");
+  paragraphs = ii.wholesale.thenGeneric ? [first, ...ii.generic] : [first];
+}
+---
+<section class="bg-cream" aria-labelledby="important-information-title">
+  <div class="mx-auto max-w-site px-4 py-10 md:px-[84px] md:py-20">
+    <h2 id="important-information-title" class="mb-6 text-body font-medium text-navy md:sr-only">{ii.title}</h2>
+    <div class="flex flex-col gap-4 text-small text-body">
+      {paragraphs.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>

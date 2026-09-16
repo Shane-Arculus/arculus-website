@@ -1,0 +1,37 @@
+---
+/**
+ * Base layout — every page renders through this.
+ * Header (T4) and Footer (T5) slot in above and below <main> later; nothing else changes here.
+ */
+interface Props {
+  title: string;
+  description: string;
+  /** Set true on staging and gated/unverified pages. */
+  noindex?: boolean;
+}
+const { title, description, noindex = false } = Astro.props;
+const analyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN as string | undefined;
+import "../styles/global.css";
+---
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="preload" href="/fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/FiraSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body class="min-h-dvh flex flex-col">
+    <slot name="header" />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <slot name="footer" />
+    {analyticsToken && (
+      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${analyticsToken}"}`}></script>
+    )}
+  </body>
+</html>

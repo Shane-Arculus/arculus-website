@@ -1,0 +1,28 @@
+{
+  "kind": "landing",
+  "verified": false,
+  "breadcrumb": [
+    "Home",
+    "Wholesale"
+  ],
+  "gated": true,
+  "hero": {
+    "kicker": "WHOLESALE INVESTORS ONLY",
+    "title": "Wholesale strategies",
+    "subtitle": "Strategies for wholesale investors, run with the capital-first discipline applied across every Arculus portfolio."
+  },
+  "strategies": {
+    "title": "Three strategies, one discipline",
+    "intro": "Three strategies available to wholesale clients. Performance and strategy papers are available on request.",
+    "cards": [
+      "a-minus",
+      "bbb",
+      "pep"
+    ],
+    "buttonLabel": "View strategy"
+  },
+  "importantInformation": {
+    "riskSubject": "[Unverified] — generic wording needed; frame reuses 'the A− SMA'",
+    "asAt": "31 July 2026"
+  }
+}

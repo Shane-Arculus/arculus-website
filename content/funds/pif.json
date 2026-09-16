@@ -1,0 +1,275 @@
+{
+  "verified": false,
+  "slug": "pif",
+  "name": "Arculus Preferred Income Fund",
+  "theme": "warm",
+  "breadcrumb": [
+    "Home",
+    "Funds",
+    "Arculus Preferred Income Fund"
+  ],
+  "hero": {
+    "title": "Arculus Preferred Income Fund",
+    "subtitle": "Australian government and corporate bonds across the capital structure, actively managed to earn higher income through the rate cycle.",
+    "buttons": [
+      {
+        "label": "Apply via Olivia123",
+        "href": "olivia123",
+        "style": "external"
+      },
+      {
+        "label": "Download the PDS",
+        "href": "pds",
+        "style": "secondary"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Target return:",
+        "value": "90-day BBSW +3.5% p.a.",
+        "note": "before fees"
+      },
+      {
+        "label": "Redemption requests:",
+        "value": "Any business day"
+      },
+      {
+        "label": "Distributions:",
+        "value": "Quarterly"
+      },
+      {
+        "label": "Inception:",
+        "value": "October 2004"
+      }
+    ]
+  },
+  "about": {
+    "title": "About the Fund",
+    "body": "The Fund draws on the widest toolkit in the Arculus range: government and semi-government bonds, investment grade corporate senior and subordinated debt, ASX-listed hybrids and cash, with up to 30% permitted below investment grade. The discipline is structural: no leverage, no structured credit, no foreign currency. Net asset value was $108 million as at 31 January 2026.",
+    "_note": "[Unverified] NAV date (31 January) is stale against 30 June performance — reconcile"
+  },
+  "ratings": {
+    "show": true,
+    "ratingReportUrl": "[TO SET — Lonsec report PDF for PIF]"
+  },
+  "performance": {
+    "title": "Performance",
+    "note": "Returns to 30 June 2026, annualised and net of all fees. Cash distributions were 5.00% over the year and have averaged 5.42% p.a. since inception. Past performance is not an indicator of future performance.",
+    "performanceAsAt": "2026-06-30",
+    "chartTitle": "Performance Comparison",
+    "chartImage": "/charts/pif-2026-06.webp",
+    "chartSeries": [
+      "1-year total return",
+      "Running yield",
+      "Yield to maturity",
+      "90-day BBSW"
+    ],
+    "tableTitle": "Performance to 30 June 2026 (annualised)",
+    "periods": [
+      [
+        "3 months",
+        "1.98%"
+      ],
+      [
+        "6 months",
+        "2.30%"
+      ],
+      [
+        "1 year",
+        "3.86%"
+      ],
+      [
+        "2 years",
+        "5.10%"
+      ],
+      [
+        "3 years",
+        "5.55%"
+      ],
+      [
+        "5 years",
+        "3.86%"
+      ],
+      [
+        "Since inception (Oct 2004)",
+        "4.51%"
+      ]
+    ]
+  },
+  "whoItMaySuit": {
+    "title": "Who it may suit",
+    "body": "Investors seeking higher income than cash and traditional debt provide, with medium risk over a three to five-year horizon — a regular income draw, or the return-seeking sleeve of a fixed income allocation alongside a defensive core."
+  },
+  "howManaged": {
+    "title": "How the Fund is managed",
+    "body": [
+      "Government bonds provide ballast; investment grade senior and subordinated debt carries the income; a measured allocation to hybrids and higher-yielding paper adds return where it is paid for. Positioning follows the team’s reading of the rate cycle and credit margins — never an index weight.",
+      "Allocations below investment grade sit inside a hard mandate cap, and every decision passes four-eyes governance before it settles, with operational oversight independent of the investment desk."
+    ],
+    "button": {
+      "label": "Talk to us about the Fund",
+      "href": "/contact?topic=pif"
+    }
+  },
+  "features": {
+    "title": "Fund features",
+    "items": [
+      [
+        "Objective",
+        "BBSW +3.5% p.a. before fees"
+      ],
+      [
+        "Approach",
+        "Active, benchmark unaware"
+      ],
+      [
+        "Asset class",
+        "Specialised fixed income"
+      ],
+      [
+        "Liquidity",
+        "Daily redemption requests"
+      ],
+      [
+        "Distributions",
+        "Quarterly"
+      ],
+      [
+        "Management fee",
+        "0.72% p.a. incl. GST"
+      ],
+      [
+        "Buy–sell spread",
+        "+0.15% / −0.15%"
+      ],
+      [
+        "Performance fee",
+        "Nil"
+      ],
+      [
+        "Minimum investment",
+        "$2,000"
+      ]
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "asAt": "[Unverified] — align to performanceAsAt",
+    "metrics": [
+      [
+        "Running yield",
+        "7.19%"
+      ],
+      [
+        "Yield to maturity",
+        "7.93%"
+      ],
+      [
+        "Average margin",
+        "3.47%"
+      ],
+      [
+        "Average years to maturity",
+        "2.92"
+      ],
+      [
+        "Number of securities held",
+        "51"
+      ],
+      [
+        "Modified duration",
+        "1.09"
+      ],
+      [
+        "Credit duration",
+        "1.60"
+      ]
+    ],
+    "allocation": {
+      "columns": [
+        "Portfolio sector",
+        "Allocation"
+      ],
+      "rows": [
+        [
+          "Floating rate notes",
+          "67.3%"
+        ],
+        [
+          "Fixed rate securities",
+          "29.7%"
+        ],
+        [
+          "Cash",
+          "3.0%"
+        ]
+      ]
+    }
+  },
+  "howToInvest": {
+    "title": "How to invest",
+    "columns": [
+      {
+        "title": "Online",
+        "body": "Apply and complete identity verification in one step through Olivia123. Applications are processed by the Fund's registry, operated by SS&C.",
+        "button": {
+          "label": "Apply via Olivia123",
+          "href": "olivia123",
+          "style": "external"
+        }
+      },
+      {
+        "title": "Through your adviser or platform",
+        "body": "The Fund is available on BT Panorama, Allan Gray, HUB24 and Netwealth. Your adviser can apply on your behalf.",
+        "button": {
+          "label": "Talk to us about the Fund",
+          "href": "/contact?topic=pif",
+          "style": "primary"
+        }
+      }
+    ]
+  },
+  "keyDocuments": {
+    "title": "Key documents",
+    "items": [
+      {
+        "title": "Product Disclosure Statement",
+        "meta": "PDS · DDH Graham · 1 July 2026 · PDF 1.2 MB",
+        "doc": "pif-pds"
+      },
+      {
+        "title": "Latest monthly report",
+        "meta": "July 2026 · PDF 0.8 MB",
+        "doc": "pif-monthly-latest"
+      },
+      {
+        "title": "Annual report",
+        "meta": "FY2025 · DDH Graham · PDF 2.4 MB",
+        "doc": "pif-annual-fy2025"
+      }
+    ],
+    "_note": "[Unverified] meta strings (dates, sizes) are placeholders from the frame; derive from documents.json at build"
+  },
+  "documents": {
+    "title": "Documents & statements",
+    "intro": "Statements for your own holding — distribution and annual tax statements — are available through the registry portal.",
+    "items": [
+      "pif-pds",
+      "pif-tmd",
+      "pif-monthly-2026-06",
+      "pif-annual-fy2025"
+    ],
+    "button": {
+      "label": "View all documents",
+      "href": "/documents?fund=pif"
+    }
+  },
+  "regulatory": {
+    "re": "DDH Graham Limited",
+    "arsn": "108 161 575",
+    "apir": "DDH0001AU",
+    "administrator": "SS&C",
+    "custodian": "Northern Trust",
+    "_note": "[Unverified] ARSN — open item Q5 on compliance register"
+  }
+}

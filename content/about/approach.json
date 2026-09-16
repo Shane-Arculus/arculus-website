@@ -1,0 +1,84 @@
+{
+  "kind": "approach",
+  "verified": false,
+  "breadcrumb": [
+    "Home",
+    "About",
+    "Our approach"
+  ],
+  "hero": {
+    "title": "Our approach",
+    "subtitle": "In fixed income, the money you don't lose matters more than the yield you chase.",
+    "button": {
+      "label": "See the funds",
+      "href": "/#funds",
+      "style": "secondary"
+    }
+  },
+  "whoWeAre": {
+    "title": "Who we are",
+    "paragraphs": [
+      "Arculus Funds Management (GCI Australia AFSL 346034) is an Australian fixed income manager, operating since 2013. We manage over $1.2bn (AUD) across two retail unit trusts, wholesale strategies and private mandates for family offices, charities and wealth advisory groups.",
+      "The team has amassed more than a century's collective knowledge through several full market cycles, across fixed income, equities, derivatives and hybrids. That experience shapes a simple view: in fixed income, the money you don't lose matters more than the yield you chase."
+    ],
+    "image": "[image register]",
+    "_note": "[Unverified] $1.2bn FUM figure — confirm with Renny"
+  },
+  "showRatings": true,
+  "philosophy": {
+    "title": "Our philosophy",
+    "items": [
+      [
+        "Capital preservation first",
+        "Every portfolio is built to preserve capital before it pursues return. We hold investment grade rated bonds issued under Australian law, in Australian dollars. No leverage, no structured credit, no foreign currency exposure."
+      ],
+      [
+        "Income from the rate cycle",
+        "We are benchmark unaware. Duration is set by where we are in the cycle, not by an index. When rates are rising and supported by the inflation story, we run low fixed duration and low credit-spread duration. When rates peak we increase duration to capture capital gains in a falling rate environment. Income comes from our experience in getting that read right, rather than moving down the credit curve."
+      ],
+      [
+        "Independent oversight",
+        "We do not hold, value, or administer the assets we manage. The funds are monitored for mandate compliance by the external responsible entity, trustee or investor. The administrator values the portfolio daily and calculates performance independently of us. There are 4 eyes on every transaction: Custody – Administration – Investment Management and the Responsible Entity."
+      ]
+    ],
+    "link": {
+      "label": "More on governance & oversight",
+      "href": "/about/governance-and-oversight"
+    }
+  },
+  "whatWeDo": {
+    "title": "What we do",
+    "items": [
+      "We invest only in investment grade bonds (S&P, Fitch or Moody's rated) issued under Australian law, in AUD",
+      "Offer daily pricing and daily redemption on both public funds",
+      "Charge a flat management fee. No performance fee, so there is no incentive to take on risk",
+      {
+        "text": "We have a strong and simple ESG approach that will deliver an ESG outcome that is easily explained",
+        "link": {
+          "label": "More on ESG",
+          "href": "/about/esg"
+        }
+      },
+      "Support advisers with weekly market commentary, monthly fund reports and client seminars"
+    ]
+  },
+  "forOurClients": {
+    "title": "For our clients",
+    "items": [
+      "We help investors preserve capital in a sustainable and compliant manner.",
+      "We are a trusted partner providing high quality investment services",
+      "We help our clients and the sector to stay compliant",
+      "We act as a guardian and facilitate our client's investments",
+      "Our people invest the time to get to know our clients, so that we know how to best service them"
+    ]
+  },
+  "cta": {
+    "title": "Talk to us about how we invest",
+    "body": "Enquiries go directly to the portfolio management team.",
+    "button": {
+      "label": "Get in touch",
+      "href": "/contact",
+      "style": "primary"
+    }
+  }
+}

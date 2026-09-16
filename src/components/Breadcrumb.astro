@@ -1,0 +1,30 @@
+---
+/**
+ * Breadcrumb — Figma 88:826 → 207:16878. Cream band, 12px body-grey links with
+ * 16px chevrons; the last item is the current page and not a link.
+ * `items` are labels from the page JSON; hrefs are resolved from the label map
+ * in site.json nav so pages don't repeat URLs.
+ */
+import Icon from "./Icon.astro";
+import { getSite } from "../content/loaders";
+interface Props { items: readonly string[]; class?: string; }
+const { items, class: className = "" } = Astro.props;
+const site = await getSite();
+const hrefs: Record<string, string> = { Home: "/" };
+for (const n of site.nav) { if (n.href) hrefs[n.label] = n.href; for (const c of n.children ?? []) hrefs[c.label] = c.href; }
+hrefs["Funds"] = "/#funds"; hrefs["About"] = "/about/our-approach"; hrefs["Wholesale"] = "/wholesale";
+for (const l of site.footer.extra) hrefs[l.label] = l.href;
+---
+<nav aria-label="Breadcrumb" class:list={["bg-cream", className]}>
+  <ol class="mx-auto flex max-w-site flex-wrap items-center px-4 pt-4 text-small text-body md:px-12">
+    {items.map((label, i) => {
+      const last = i === items.length - 1;
+      return (
+        <li class="flex items-center">
+          {last ? <span aria-current="page">{label}</span> : <a href={hrefs[label] ?? "#"} class="underline underline-offset-2 hover:text-navy">{label}</a>}
+          {!last && <Icon name="chevron-right" size={16} class="mx-0.5" />}
+        </li>
+      );
+    })}
+  </ol>
+</nav>

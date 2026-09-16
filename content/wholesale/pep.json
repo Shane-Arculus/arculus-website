@@ -1,0 +1,171 @@
+{
+  "kind": "strategy",
+  "verified": false,
+  "slug": "pep",
+  "name": "Protected Equity Portfolio",
+  "shortName": "PEP",
+  "ladder": 3,
+  "gated": true,
+  "breadcrumb": [
+    "Home",
+    "Wholesale",
+    "Protected Equity Portfolio"
+  ],
+  "kicker": "WHOLESALE INVESTORS ONLY",
+  "card": {
+    "kicker": "PROTECTED EQUITY",
+    "title": "Protected Equity Portfolio",
+    "body": "A protected equity strategy built from ASX Top 50 positions, where every holding carries downside protection through a collar.",
+    "heroStat": [
+      "CAPITAL PROTECTION PER POSITION",
+      "~98%"
+    ],
+    "facts": [
+      [
+        "UNIVERSE",
+        "ASX Top 50"
+      ],
+      [
+        "COLLAR RESET",
+        "Quarterly"
+      ]
+    ],
+    "image": "[image register]"
+  },
+  "hero": {
+    "title": "Protected Equity Portfolio",
+    "subtitle": "Top 50 equity participation with every position capital-protected, enhanced by a measured 20% gearing overlay.",
+    "button": {
+      "label": "Request the strategy paper",
+      "href": "/contact?topic=pep",
+      "style": "primary"
+    },
+    "facts": [
+      [
+        "INVESTMENT UNIVERSE",
+        "ASX Top 50"
+      ],
+      [
+        "APPROACH",
+        "Protected collar"
+      ],
+      [
+        "GEARING",
+        "20% overlay"
+      ]
+    ]
+  },
+  "statement": {
+    "title": "Equity participation, with the downside contractually capped.",
+    "points": [
+      [
+        "Protected participation",
+        "Each Top 50 position is capital-protected close to 98% through a bought put, so large, sudden falls are sidestepped rather than ridden out."
+      ],
+      [
+        "A measured gearing overlay",
+        "A 20% overlay on an already-protected book lifts participation without exposing capital to the uncapped drawdowns of geared, unprotected equity."
+      ],
+      [
+        "Income near the Top 50 yield",
+        "Quarterly income near the Top 50 yield, plus franking credits and profits from closed collar trades."
+      ]
+    ],
+    "footnote": "Full strategy detail, including modelled results and assumptions, is in the strategy paper — available on request"
+  },
+  "strategyAtAGlance": [
+    [
+      "~98%",
+      "CAPITAL PROTECTION PER POSITION"
+    ],
+    [
+      "1.2×",
+      "EXPOSURE TO THE PROTECTED BOOK"
+    ],
+    [
+      "15–40",
+      "POSITIONS AT INDEX WEIGHTS"
+    ],
+    [
+      "Quarterly",
+      "COLLAR RESET"
+    ]
+  ],
+  "about": {
+    "title": "About the strategy",
+    "body": "Selected Top 50 stocks held near index weights, each capital-protected with a bought put part-funded by strategic call selling — an actively managed collar, reset quarterly, with a 20% gearing overlay applied to the protected book. Run by specialists in exchange-traded options, with the same oversight discipline as the Arculus public funds."
+  },
+  "atAGlance": {
+    "title": "At a glance",
+    "note": "Terms are indicative and confirmed in mandate documentation.",
+    "items": [
+      [
+        "Investment universe",
+        "ASX Top 50 stocks with listed options"
+      ],
+      [
+        "Positions",
+        "15–40, near index weights"
+      ],
+      [
+        "Capital protection",
+        "Close to 98% per position"
+      ],
+      [
+        "Collar reset",
+        "Quarterly"
+      ],
+      [
+        "Gearing overlay",
+        "20% (1.2× exposure)"
+      ],
+      [
+        "Eligible investors",
+        "Wholesale clients only (s708 / s761G)"
+      ]
+    ]
+  },
+  "processRiskControls": {
+    "title": "Process & risk controls",
+    "items": [
+      [
+        "Top 50, with listed options",
+        "The universe is filtered for liquid exchange-traded option markets, with OTC options used where ASX cover is unavailable."
+      ],
+      [
+        "Fundamental and quant ranking",
+        "Stocks are ranked on expected-return groups, up and down beta, volatility skew and dividend timing."
+      ],
+      [
+        "Strategy return analysis",
+        "Stock, protective put and sold call combinations are tested over one to three months against return hurdles."
+      ],
+      [
+        "One rule: every position protected",
+        "No stock enters the book unprotected. Every position is capital-protected close to 98%, with put cost offset by sold calls."
+      ]
+    ]
+  },
+  "keyRisks": {
+    "title": "Key risks",
+    "paragraphs": [
+      "Derivatives and gearing are leveraged: gains and losses are magnified, and investors may lose substantially more than their initial investment. The 20% overlay increases both potential return and risk, and outcomes depend on the borrowing-cost assumption used.",
+      "Protection is set per position at close to 98%, not at portfolio level, and sold calls cap the upside within each quarter. This is not a capital-guaranteed investment, and past performance — including modelled results — is not a reliable indicator of future performance."
+    ]
+  },
+  "cta": {
+    "title": "Discuss the Protected Equity Portfolio",
+    "body": "Wholesale enquiries go directly to the portfolio management team. The full strategy paper, including modelled results and their assumptions, is available on request.",
+    "button": {
+      "label": "Get in touch",
+      "href": "/contact?topic=pep",
+      "style": "primary"
+    }
+  },
+  "importantInformation": {
+    "riskSubject": "the Protected Equity Portfolio",
+    "asAt": "[Unverified] — no portfolio date on frame"
+  },
+  "portfolioDataAsAt": "[Unverified] — no portfolio date on frame",
+  "performanceFigures": "none — off-page, available on request"
+}

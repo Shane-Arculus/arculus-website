@@ -1,0 +1,218 @@
+{
+  "verified": false,
+  "_note": "Seeded from Figma 15 Sep 2026. Licensing line and Important Information are verbatim from the frames; compliance register items still open (DDH Graham ABN/AFSL, PIF ARSN, office address).",
+  "nav": [
+    {
+      "label": "About",
+      "children": [
+        {
+          "label": "Our approach",
+          "href": "/about/our-approach"
+        },
+        {
+          "label": "Team",
+          "href": "/about/team"
+        },
+        {
+          "label": "Governance & oversight",
+          "href": "/about/governance-and-oversight"
+        },
+        {
+          "label": "Environmental, Social & Governance",
+          "href": "/about/esg"
+        }
+      ]
+    },
+    {
+      "label": "Funds",
+      "children": [
+        {
+          "label": "Arculus Fixed Income Fund",
+          "href": "/funds/arculus-fixed-income-fund"
+        },
+        {
+          "label": "Arculus Preferred Income Fund",
+          "href": "/funds/arculus-preferred-income-fund"
+        },
+        {
+          "label": "Document library",
+          "href": "/documents"
+        }
+      ]
+    },
+    {
+      "label": "Wholesale",
+      "children": [
+        {
+          "label": "Overview",
+          "href": "/wholesale"
+        },
+        {
+          "label": "A− SMA",
+          "href": "/wholesale/a-minus-sma"
+        },
+        {
+          "label": "BBB SMA",
+          "href": "/wholesale/bbb-sma"
+        },
+        {
+          "label": "Protected Equity Portfolio",
+          "href": "/wholesale/protected-equity-portfolio"
+        },
+        {
+          "label": "Private mandates",
+          "href": "/wholesale#private-mandates"
+        }
+      ]
+    },
+    {
+      "label": "Investment Management",
+      "href": "/investment-management"
+    },
+    {
+      "label": "Insights",
+      "href": "/insights"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "headerButton": {
+    "label": "Link to SS&C Fund Registry",
+    "href": "[Unverified] SS&C registry URL",
+    "external": true
+  },
+  "footer": {
+    "columns": "nav",
+    "extra": [
+      {
+        "label": "Document library",
+        "href": "/documents"
+      }
+    ],
+    "externalButton": {
+      "label": "Arculus Capital",
+      "href": "[Unverified] Arculus Capital URL",
+      "external": true
+    },
+    "licensingLine": "This site has been created by Arculus Funds Management Pty Limited which operates under the GCI Australia AFSL as a CAR - GCI Australia Pty Ltd ABN 68 140 364 576 Australian Financial Services Licence No 346034. The Responsible Manager and Key Person for GCI Australia Pty Ltd is Renny Ellis.",
+    "legalLinks": [
+      {
+        "label": "Disclosure",
+        "href": "/disclosure"
+      },
+      {
+        "label": "Privacy",
+        "href": "/privacy"
+      },
+      {
+        "label": "Terms & Conditions",
+        "href": "/terms"
+      },
+      {
+        "label": "Cookie Policy",
+        "href": "/cookies"
+      }
+    ],
+    "copyright": "© 2026 Arculus Funds Management Pty Ltd."
+  },
+  "importantDisclosure": {
+    "title": "Important disclosure",
+    "body": "By accessing and using the website you agree to be bound legally by the ‘Terms & Conditions’ for accessing and use of the information presented. These can be found under “Links” at the top of the page.",
+    "linkLabel": "Read the full declaration",
+    "href": "/terms",
+    "_note": "[Unverified] 'under Links at the top of the page' describes the old site; confirm wording with Renny"
+  },
+  "importantInformation": {
+    "title": "Important information",
+    "generic": [
+      "Arculus Funds Management Pty Ltd (ABN 74 661 739 340) is an Authorised Representative (No. 1298896) and wholly owned subsidiary of GCI Australia Pty Ltd (ABN 68 140 364 576; AFSL No. 346034). Arculus Funds Management is authorised by GCI Australia to provide particular financial services to those who qualify as a ‘Wholesale Client’ in accordance with the Corporations Act.",
+      "This website has been prepared and issued by Arculus Funds Management to provide you with general information only. It is not intended to take the place of professional advice and you should not act on a recommendation or statement of opinion without first considering the appropriateness of the general advice to your personal circumstances or consulting your investment advisor to determine whether the recommendation or statement of opinion is appropriate for your investment objectives, financial situation or needs. Neither Arculus Funds Management, DDH Graham Limited nor any of their related parties, their employees or directors, provide any warranty of accuracy or reliability in relation to such information or accepts any liability to any person who relies on it. Past performance should not be taken as an indicator of future performance. You should obtain a copy of the relevant Product Disclosure Statement before making a decision about whether to invest in any product."
+    ],
+    "fund": {
+      "_note": "Template — {fundName}, {arsn}, {apir} filled from fund JSON. ABN/AFSL for DDH Graham and PIF ARSN are open compliance-register items; treat as [Unverified] until cleared.",
+      "template": "This information is issued by Arculus Funds Management Pty Ltd, a corporate authorised representative of GCI Australia Pty Ltd ABN 68 140 364 576, AFSL 346034. DDH Graham Limited (ABN 28 010 639 219 and AFSL 226319) is the Responsible Entity of the {fundName} (ARSN {arsn}, APIR {apir}). The information on this page is general in nature and does not take account of your objectives, financial situation or needs. Before making a decision about the Fund, read the Product Disclosure Statement and Target Market Determination, available from ddhgraham.au, and consider whether the Fund is appropriate for you. Fund administration and registry services are provided by SS&C and custody by Northern Trust. Past performance is not an indicator of future performance."
+    },
+    "wholesale": {
+      "_note": "Paragraph 1 is a template; {riskSubject} is 'the A− SMA', 'the BBB SMA', 'the Protected Equity Portfolio' or 'through Arculus Investment Management' per page. [Unverified] wording for the wholesale landing page — the frame reuses the A− SMA text; needs a generic sentence. {asAt} from the page's portfolio date. Paragraphs 2–3 are the generic block.",
+      "template": "This page is intended for wholesale clients only, as defined in sections 708 and 761G of the Corporations Act 2001 (Cth). It is not directed at retail clients and does not constitute a Product Disclosure Statement or Information Memorandum. The information on this page is general information only and does not take into account the objectives, financial situation or needs of any investor. It does not constitute financial product advice, and investors should obtain their own independent advice before making any investment decision. Portfolio figures are sourced from Arculus’s internal portfolio models and positioning reports as at {asAt} and have not been independently audited. Investment in {riskSubject} carries risk, including the possible loss of income and capital. Past performance is not a reliable indicator of future performance.",
+      "thenGeneric": true
+    }
+  },
+  "ratings": {
+    "headline": "Rated 'Investment Grade' by Lonsec.",
+    "disclosure": "Ratings are opinions of the relevant research house, are not recommendations, and may change without notice.",
+    "buttonLabel": "View the Fund Rating Report"
+  },
+  "attestation": {
+    "kicker": "WHOLESALE INVESTORS ONLY",
+    "title": "Confirm your investor status",
+    "body": "The strategies in this section are available only to wholesale clients as defined in sections 708 and 761G of the Corporations Act 2001 (Cth). The information is general in nature, is not an offer to retail investors, and does not constitute a Product Disclosure Statement or Information Memorandum.",
+    "checkbox": "I confirm that I am a wholesale client within the meaning of sections 708 and 761G of the Corporations Act 2001 (Cth).",
+    "validation": "Please confirm your investor status to continue.",
+    "continue": "Continue",
+    "decline": "Return to homepage",
+    "footnote": "Your confirmation is recorded for this session only. If you are unsure of your client classification, speak with your financial adviser or accountant before continuing.",
+    "storageKey": "arculus-wholesale-attested"
+  },
+  "forms": {
+    "formspreeEndpoint": "[TO SET]",
+    "mailchimp": {
+      "audienceId": "[TO SET]",
+      "formAction": "[TO SET]"
+    }
+  },
+  "externalUrls": {
+    "olivia123": "[TO SET — generic URL until dedicated URL supplied]",
+    "ssandcRegistry": "[TO SET]",
+    "arculusCapital": "[TO SET]"
+  },
+  "wholesaleKicker": "WHOLESALE INVESTORS ONLY",
+  "ui": {
+    "skipToContent": "Skip to content",
+    "logoAlt": "Arculus Funds Management",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "searchOpen": "Search",
+    "searchClose": "Close search",
+    "searchPlaceholder": "Search",
+    "searchSubmit": "Search",
+    "popularSearchesTitle": "Popular searches",
+    "popularSearches": [
+      {
+        "label": "Arculus Fixed Income Fund",
+        "href": "/funds/arculus-fixed-income-fund"
+      },
+      {
+        "label": "Arculus Preferred Income Fund",
+        "href": "/funds/arculus-preferred-income-fund"
+      },
+      {
+        "label": "Product Disclosure Statement",
+        "href": "/documents?filter=pds-tmd"
+      },
+      {
+        "label": "Unit prices",
+        "href": "ssandcRegistry"
+      },
+      {
+        "label": "Weekly market commentary",
+        "href": "/insights?filter=market-commentary"
+      },
+      {
+        "label": "Monthly fund reports",
+        "href": "/documents?filter=monthly-reports"
+      },
+      {
+        "label": "Wholesale strategies",
+        "href": "/wholesale"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "_note": "[Unverified] popular-search hrefs are my mapping of the frame's labels; the frame shows labels only"
+  }
+}

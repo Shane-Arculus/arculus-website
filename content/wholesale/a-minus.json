@@ -1,0 +1,171 @@
+{
+  "kind": "strategy",
+  "verified": false,
+  "slug": "a-minus",
+  "name": "A− SMA",
+  "shortName": "A− SMA",
+  "ladder": 1,
+  "gated": true,
+  "breadcrumb": [
+    "Home",
+    "Wholesale",
+    "A− SMA"
+  ],
+  "kicker": "WHOLESALE INVESTORS ONLY",
+  "card": {
+    "kicker": "FLOATING-RATE CREDIT",
+    "title": "A− SMA",
+    "body": "A high-quality, low-duration floating-rate credit strategy of senior and subordinated notes issued by major Australian and international banks.",
+    "heroStat": [
+      "PORTFOLIO MARGIN",
+      "BBSW +143bps"
+    ],
+    "facts": [
+      [
+        "MINIMUM RATING",
+        "A−"
+      ],
+      [
+        "LIQUIDITY",
+        "Daily"
+      ]
+    ],
+    "image": "[image register]"
+  },
+  "hero": {
+    "title": "A− SMA",
+    "subtitle": "A high-quality, low-duration floating-rate credit strategy of senior and subordinated bank notes.",
+    "button": {
+      "label": "Request the strategy paper",
+      "href": "/contact?topic=a-minus",
+      "style": "primary"
+    },
+    "facts": [
+      [
+        "PORTFOLIO MARGIN",
+        "BBSW +143bps"
+      ],
+      [
+        "LIQUIDITY",
+        "Daily"
+      ],
+      [
+        "MINIMUM INVESTMENT",
+        "$50m"
+      ]
+    ]
+  },
+  "statement": {
+    "title": "Bank-quality income, with next to no interest-rate risk.",
+    "points": [
+      [
+        "A higher rating floor",
+        "More than a third of the portfolio sits in the AA band, a materially higher average quality than a typical investment-grade floating-rate mandate."
+      ],
+      [
+        "Duration-free income",
+        "The book is entirely floating-rate, resetting quarterly to BBSW; cash-rate moves have negligible direct effect on price."
+      ],
+      [
+        "A mandate with history",
+        "The mandate has run continuously since 1994, through three decades of rate and credit cycles."
+      ]
+    ],
+    "footnote": "Portfolio data as at 31 July 2026"
+  },
+  "strategyAtAGlance": [
+    [
+      "$374.2m",
+      "PORTFOLIO VALUE"
+    ],
+    [
+      "6.25%",
+      "RUNNING YIELD"
+    ],
+    [
+      "0.09 yrs",
+      "MODIFIED DURATION"
+    ],
+    [
+      "A−",
+      "MINIMUM CREDIT RATING"
+    ]
+  ],
+  "about": {
+    "title": "About the strategy",
+    "body": "A separately managed account of senior and subordinated floating-rate notes issued by major Australian and international banks — ten lines across nine issuers, run with the same discipline as the Arculus public funds."
+  },
+  "atAGlance": {
+    "title": "At a glance",
+    "note": "Terms are indicative and confirmed in mandate documentation.",
+    "items": [
+      [
+        "Structure",
+        "Separately Managed Account (SMA)"
+      ],
+      [
+        "Eligible investors",
+        "Wholesale clients only (s708 / s761G)"
+      ],
+      [
+        "Minimum investment",
+        "$50m"
+      ],
+      [
+        "Investment management fee",
+        "0.25% p.a."
+      ],
+      [
+        "Liquidity / redemptions",
+        "Daily"
+      ],
+      [
+        "Mandate inception",
+        "1994"
+      ]
+    ]
+  },
+  "processRiskControls": {
+    "title": "Process & risk controls",
+    "items": [
+      [
+        "A rating-floor mandate",
+        "Only notes rated A− or higher are eligible, and the floor applies to every holding rather than the portfolio average."
+      ],
+      [
+        "Near-equal weighting",
+        "Ten lines held close to equal weight across nine issuers, with a strict 20% single-issuer and 10% single-line cap."
+      ],
+      [
+        "Duration discipline",
+        "The mandate holds floating-rate notes only. With no fixed-coupon exposure in the book, near-zero duration is built into construction rather than managed as a position."
+      ],
+      [
+        "Daily oversight",
+        "Positions, margins and cash are reconciled daily; discount margin and effective duration are monitored as the primary sources of mark-to-market risk."
+      ]
+    ]
+  },
+  "keyRisks": {
+    "title": "Key risks",
+    "paragraphs": [
+      "Credit spread risk is the mandate’s principal exposure — a broad widening in bank credit spreads is the main driver of mark-to-market value given the 2.70-year effective duration. The portfolio is also concentrated by sector: the bond sleeve is entirely banking exposure, with no insurance or non-bank finance diversification.",
+      "Around a third of the portfolio is subordinated debt, ranking behind senior creditors in a wind-up, and floating-rate income resets with BBSW — a sustained fall in the cash rate reduces running income. This is not a capital-guaranteed investment, and past performance is not indicative of future returns."
+    ]
+  },
+  "cta": {
+    "title": "Discuss the A− SMA",
+    "body": "Wholesale enquiries go directly to the portfolio management team. The full strategy paper, current holdings and performance data are available on request.",
+    "button": {
+      "label": "Get in touch",
+      "href": "/contact?topic=a-minus",
+      "style": "primary"
+    }
+  },
+  "importantInformation": {
+    "riskSubject": "the A− SMA",
+    "asAt": "31 July 2026"
+  },
+  "portfolioDataAsAt": "31 July 2026",
+  "performanceFigures": "none — off-page, available on request"
+}

@@ -1,0 +1,138 @@
+{
+  "verified": false,
+  "gated": true,
+  "breadcrumb": [
+    "Home",
+    "Investment Management"
+  ],
+  "kicker": "WHOLESALE INVESTORS ONLY",
+  "entityName": "[Unverified] — Arculus Investment Management; entity name pending",
+  "hero": {
+    "title": "Investment Management",
+    "subtitle": "Whole-of-portfolio management for HNW families, built on a yield-plus philosophy and a single transparent fee.",
+    "buttons": [
+      {
+        "label": "How it works",
+        "href": "#how-it-works",
+        "style": "secondary"
+      },
+      {
+        "label": "Talk to us",
+        "href": "/contact?topic=im",
+        "style": "primary"
+      }
+    ],
+    "facts": [
+      [
+        "SERVICE FEE",
+        "0.20% p.a."
+      ],
+      [
+        "PLATFORM FEES",
+        "Nil"
+      ],
+      [
+        "CLIENTS",
+        "Wholesale families"
+      ]
+    ]
+  },
+  "statement": {
+    "title": "Institutional-grade portfolio management for family capital.",
+    "points": [
+      [
+        "Yield plus focus",
+        "Portfolios are built from the ground up on income-producing securities, with growth assets added incrementally only where a higher return objective calls for it. With rates now higher, only a modest step up in credit risk is needed to reach long-term balanced-fund returns."
+      ],
+      [
+        "Whole of portfolio",
+        "One discretionary mandate across Australian and global equities, fixed income, property, alternatives and cash. Asset allocation is made largely through ETFs: we select markets and themes rather than layering in external managers and their fees."
+      ],
+      [
+        "One fee, no double charge",
+        "A single 0.20% p.a. service fee on the portfolio, capped at $200,000. Where capital sits in Arculus's own funds, the Arculus management fee inside the fund is waived."
+      ]
+    ],
+    "footnote": "Terms are indicative and confirmed in the Investment Management Agreement"
+  },
+  "about": {
+    "title": "About the service",
+    "paragraphs": [
+      "Arculus Investment Management provides discretionary, multi-asset management of a family's entire investment portfolio under a single Investment Management Agreement. Fixed income decisions sit with the same Investment Committee that runs the Arculus funds, so one philosophy applies across funds and family portfolios.",
+      "Assets are held with an independent custodian on a low-cost platform, with consolidated performance, holdings and tax reporting through a central portal. We work alongside your accountant. For structuring, endowment or estate advice, you keep your own advisers."
+    ]
+  },
+  "atAGlance": {
+    "title": "At a glance",
+    "note": "Terms are indicative and confirmed in the Investment Management Agreement.",
+    "items": [
+      [
+        "Structure",
+        "Discretionary mandate (Investment Management Agreement)"
+      ],
+      [
+        "Eligible clients",
+        "Wholesale clients only (s708 / s761G)"
+      ],
+      [
+        "Minimum portfolio",
+        "[Unverified] $20m indicated — TBC"
+      ],
+      [
+        "Service fee",
+        "0.20% p.a., capped at $200,000"
+      ],
+      [
+        "Platform and transaction fees",
+        "Nil platform fee; transactions at 0.10%, no rebates to Arculus"
+      ],
+      [
+        "Arculus fund fee",
+        "Waived on allocations to Arculus's own funds"
+      ]
+    ]
+  },
+  "howWeBuild": {
+    "title": "How we build portfolios",
+    "anchor": "how-it-works",
+    "items": [
+      [
+        "Incremental risk",
+        "Return targets are met by stepping up risk incrementally from an income core, not by overweighting growth assets."
+      ],
+      [
+        "Six return models",
+        "A choice of six expected-return models, from income-only to growth-tilted, agreed and documented in the IMA."
+      ],
+      [
+        "Derivatives with purpose",
+        "Used to manage risk, protect gains and optimise franking-credit capture, including protected equity positions."
+      ],
+      [
+        "Independent custody",
+        "Assets are held by an independent custodian and reconciled daily. Arculus never holds client money."
+      ]
+    ]
+  },
+  "keyRisks": {
+    "title": "Key risks",
+    "paragraphs": [
+      "Discretionary management carries market, credit and liquidity risk across every asset class held. Where derivatives or leverage are used, gains and losses are magnified. Capital is not guaranteed and past performance is not a reliable indicator of future performance.",
+      "Allocations to Arculus's own funds are a related-party arrangement. The fee waiver removes any incentive to over-allocate, and every allocation is documented, disclosed in the IMA and overseen by the Investment Committee."
+    ]
+  },
+  "cta": {
+    "title": "Talk to us about your family's portfolio",
+    "body": "Enquiries go directly to the portfolio management team. The first conversation is about your objectives, your structure and your accountant, not a product.",
+    "button": {
+      "label": "Get in touch",
+      "href": "/contact?topic=im",
+      "style": "primary"
+    }
+  },
+  "importantInformation": {
+    "riskSubject": "through Arculus Investment Management",
+    "asAt": null,
+    "_note": "IM variant omits the 'Portfolio figures...' sentence — confirm final wording"
+  }
+}

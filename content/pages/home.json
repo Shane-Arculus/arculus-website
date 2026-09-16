@@ -1,0 +1,101 @@
+{
+  "kind": "home",
+  "verified": false,
+  "hero": {
+    "title": "Income management that preserves capital",
+    "subtitle": "Australian fixed income for investors who want steady income without putting their capital in harm's way. Public funds, wholesale portfolios and private mandates, run with the same discipline for over three decades.",
+    "buttons": [
+      {
+        "label": "See how we invest",
+        "href": "/about/our-approach",
+        "style": "primary"
+      },
+      {
+        "label": "Explore the funds",
+        "href": "#funds",
+        "style": "secondary"
+      }
+    ]
+  },
+  "funds": {
+    "title": "Our funds",
+    "cards": [
+      {
+        "fund": "afi",
+        "title": "Fixed Income Fund",
+        "subtitle": "Australian sovereign and senior bank bonds, managed for income and capital stability.",
+        "rate": "BBSW +1.5% p.a.",
+        "rateNote": "before fees"
+      },
+      {
+        "fund": "pif",
+        "title": "Preferred Income Fund",
+        "subtitle": "Australian government and corporate credit, managed for higher income than cash and traditional fixed interest.",
+        "rate": "BBSW +3.5% p.a.",
+        "rateNote": "before fees"
+      }
+    ],
+    "cardButtons": [
+      {
+        "label": "Learn more",
+        "style": "secondary"
+      },
+      {
+        "label": "Apply via Olivia123",
+        "style": "external"
+      }
+    ],
+    "showRatings": true
+  },
+  "leftRight": [
+    {
+      "title": "How we invest",
+      "body": "Capital preservation comes first. We hold investment grade bonds issued under Australian law, in Australian dollars, and set duration by where we are in the rate cycle rather than by an index. Income comes from getting that read right, not from moving down the credit curve.",
+      "image": "[image register]"
+    },
+    {
+      "title": "Independent oversight",
+      "body": "Arculus makes the investment decisions but does not hold, value or administer the assets. Four parties are involved in every transaction. Three of them are independent of us.",
+      "image": "[image register]"
+    }
+  ],
+  "leftRightButton": {
+    "label": "About Arculus",
+    "href": "/about/our-approach"
+  },
+  "productCards": {
+    "title": "Wholesale & AIM",
+    "cards": [
+      {
+        "title": "Arculus Wholesale strategies",
+        "subtitle": "SMA mandates in senior bank and insurer credit, and a protected equity strategy. For wholesale clients within the meaning of ss 708 and 761G.",
+        "button": {
+          "label": "Explore wholesale",
+          "href": "/wholesale"
+        }
+      },
+      {
+        "title": "Arculus Investment Management",
+        "subtitle": "Australian government and corporate credit, managed for higher income than cash and traditional fixed interest.",
+        "_note": "[Unverified] subtitle is a copy of the PIF card subtitle in the frame — placeholder, needs IM copy",
+        "button": {
+          "label": "Learn more",
+          "href": "/investment-management"
+        }
+      }
+    ]
+  },
+  "insights": {
+    "title": "Latest insights",
+    "button": {
+      "label": "See all insights",
+      "href": "/insights"
+    },
+    "featured": "japan-at-the-turn",
+    "list": [
+      "taylor-rule-sensitivity",
+      "q2-2026-quarterly",
+      "hormuz-shock"
+    ]
+  }
+}

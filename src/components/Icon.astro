@@ -1,0 +1,18 @@
+---
+/**
+ * Lucide icons, inlined (ISC licence, lucide.dev). Only the glyphs the site
+ * uses are here; add a path when a module needs another Lucide icon.
+ */
+interface Props { name: "chevron-down" | "chevron-up" | "chevron-right" | "search" | "menu" | "x" | "arrow-up-right"; size?: number; class?: string; }
+const { name, size = 24, class: className = "" } = Astro.props;
+const paths: Record<Props["name"], string> = {
+  "chevron-down": "m6 9 6 6 6-6",
+  "chevron-up": "m18 15-6-6-6 6",
+  "chevron-right": "m9 18 6-6-6-6",
+  "search": "m21 21-4.34-4.34M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z",
+  "menu": "M4 5h16M4 12h16M4 19h16",
+  "x": "M18 6 6 18M6 6l12 12",
+  "arrow-up-right": "M7 7h10v10M7 17 17 7",
+};
+---
+<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class={className}><path d={paths[name]} /></svg>

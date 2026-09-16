@@ -1,0 +1,56 @@
+---
+/**
+ * Component gallery — preview environments only. Built only when
+ * PUBLIC_ALLOW_UNVERIFIED=1, so it never exists on production.
+ */
+import Base from "../../layouts/Base.astro";
+import KeyValueList from "../../components/KeyValueList.astro";
+import ChartImage from "../../components/ChartImage.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import { getStrategy } from "../../content/loaders";
+import Button from "../../components/Button.astro";
+import { getFund } from "../../content/loaders";
+
+export function getStaticPaths() {
+  return process.env.PUBLIC_ALLOW_UNVERIFIED === "1" ? [{ params: {} }] : [];
+}
+const afi = await getFund("afi");
+const a = await getStrategy("a-minus");
+---
+<Base title="Component gallery" description="Preview-only component gallery." noindex>
+  <Header slot="header" />
+  <Footer slot="footer" />
+  <Breadcrumb items={afi.breadcrumb} />
+  <section class="bg-cream">
+    <div class="mx-auto max-w-site px-4 py-12 md:px-12">
+      <h1 class="text-h2 font-medium text-navy">Component gallery</h1>
+      <p class="mt-2 text-body text-body">Preview builds only. T3: KeyValueList and ChartImage. T4: Header, Button, Icon. T5: Footer. T6: Breadcrumb, ImportantInformation, CtaBanner.</p>
+      <div class="mt-6 flex flex-wrap gap-4"><Button label="Primary" href="#" /><Button label="Secondary" href="#" style="secondary" /><Button label="External" href="#" style="external" /></div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-site px-4 py-12 md:px-12 grid gap-8 md:grid-cols-2">
+      <div class="bg-white p-6 md:p-9 md:pt-6">
+        <h2 class="text-lead font-medium text-navy mb-6">{afi.features.title}</h2>
+        <KeyValueList rows={afi.features.items} caption={afi.features.title} />
+      </div>
+      <div>
+        <ChartImage src={afi.performance.chartImage} alt={`${afi.performance.chartTitle}, ${afi.name}, to ${afi.performance.performanceAsAt}`} title={afi.performance.chartTitle} series={afi.performance.chartSeries} />
+        <KeyValueList class="mt-6" rows={afi.performance.periods} title={afi.performance.tableTitle} variant="table" />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream">
+    <div class="mx-auto max-w-site px-4 py-12 md:px-12 md:max-w-[664px]">
+      <KeyValueList rows={afi.portfolio.metrics} title={afi.portfolio.title} />
+    </div>
+  </section>
+  <CtaBanner title={a.cta.title} body={a.cta.body} button={a.cta.button} />
+  <ImportantInformation variant="fund" fundName={afi.name} arsn={afi.regulatory.arsn} apir={afi.regulatory.apir} />
+</Base>

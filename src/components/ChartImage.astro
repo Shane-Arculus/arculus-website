@@ -1,0 +1,31 @@
+---
+/**
+ * ChartImage — the static monthly performance chart slot.
+ *
+ * Figma: "Performance chart" 88:836 (664×413) on desktop fund pages; absent on
+ * mobile, where the period table carries the numbers. Exported monthly from
+ * Figma as /public/charts/<fund>-<yyyy-mm>.webp (docs/MONTHLY.md, task L3).
+ * Hidden below 768. The `alt` should state what the chart shows and its
+ * as-at date, since the numbers themselves live in the table beside it.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  title?: string;
+  /** Series names, rendered as a visually hidden list so the legend baked into the image is also available as text. */
+  series?: readonly string[];
+  width?: number;
+  height?: number;
+  class?: string;
+}
+const { src, alt, title, series = [], width = 664, height = 413, class: className = "" } = Astro.props;
+---
+<figure class:list={["hidden md:block", className]}>
+  {title && <figcaption class="text-subhead font-semibold text-navy-mid mb-4">{title}</figcaption>}
+  <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" class="block w-full h-auto max-w-full" />
+  {series.length > 0 && (
+    <ul class="sr-only">
+      {series.map((s) => <li>{s}</li>)}
+    </ul>
+  )}
+</figure>

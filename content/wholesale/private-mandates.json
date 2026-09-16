@@ -1,0 +1,47 @@
+{
+  "kind": "private-mandates",
+  "verified": false,
+  "anchor": "private-mandates",
+  "title": "Private mandates",
+  "body": "For investors with more than $50 million to place, we run bespoke mandates on the same discipline as the funds: Australian-dollar securities, absolute return, capital first. The investment universe and weightings are set to your risk, return and ESG requirements, and the mandate can be structured as a single managed account. Assets stay with your nominated custodian and administrator; trades settle through your bank or our dealer panel.",
+  "aside": "An alternative some investors prefer is to hold wholesale units in the two retail funds.",
+  "button": {
+    "label": "Talk to us about a mandate",
+    "href": "/contact?topic=private-mandate",
+    "style": "primary"
+  },
+  "facts": [
+    [
+      "Minimum size",
+      "AUD $50 million"
+    ],
+    [
+      "Investment universe",
+      "Bespoke to your risk, return and ESG criteria"
+    ],
+    [
+      "Currency",
+      "Australian dollars only"
+    ],
+    [
+      "Custody and administration",
+      "Your nominated agents"
+    ],
+    [
+      "Execution",
+      "Your bank or the Arculus dealer panel"
+    ],
+    [
+      "Reporting",
+      "Quarterly written report and an annual meeting"
+    ],
+    [
+      "Fee Structure",
+      "Negotiable"
+    ],
+    [
+      "Suits",
+      "High net worth investors, multi-family offices and charities with an ESG overlay"
+    ]
+  ]
+}

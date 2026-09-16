@@ -1,0 +1,172 @@
+{
+  "kind": "strategy",
+  "verified": false,
+  "slug": "bbb",
+  "name": "BBB SMA",
+  "shortName": "BBB SMA",
+  "ladder": 2,
+  "gated": true,
+  "breadcrumb": [
+    "Home",
+    "Wholesale",
+    "BBB SMA"
+  ],
+  "kicker": "WHOLESALE INVESTORS ONLY",
+  "card": {
+    "kicker": "INVESTMENT-GRADE CREDIT",
+    "title": "BBB SMA",
+    "body": "An actively managed, investment-grade credit strategy of senior and subordinated notes issued by banks and A-grade insurers.",
+    "heroStat": [
+      "PORTFOLIO MARGIN",
+      "BBSW +180bps"
+    ],
+    "facts": [
+      [
+        "MINIMUM RATING",
+        "BBB−"
+      ],
+      [
+        "LIQUIDITY",
+        "Daily"
+      ]
+    ],
+    "image": "[image register]"
+  },
+  "hero": {
+    "title": "BBB SMA",
+    "subtitle": "An actively managed, investment-grade credit strategy of bank and insurer notes.",
+    "button": {
+      "label": "Request the strategy paper",
+      "href": "/contact?topic=bbb",
+      "style": "primary"
+    },
+    "facts": [
+      [
+        "PORTFOLIO MARGIN",
+        "BBSW +180bps"
+      ],
+      [
+        "LIQUIDITY",
+        "Daily"
+      ],
+      [
+        "MINIMUM INVESTMENT",
+        "$50m"
+      ]
+    ]
+  },
+  "statement": {
+    "title": "How the portfolio earns its return.",
+    "points": [
+      [
+        "A floating-rate base",
+        "Every note pays a margin over BBSW and resets quarterly. Income moves with the cash rate rather than being locked in at purchase, and interest-rate risk stays negligible."
+      ],
+      [
+        "A margin for rated credit",
+        "The return above cash comes from issue margins on bank and insurer paper — senior notes for stability, subordinated notes for incremental yield, all within investment grade."
+      ],
+      [
+        "Active positioning",
+        "The team sets the book line by line rather than tracking an index, and holds cash when credit does not pay for its risk."
+      ]
+    ],
+    "footnote": "Portfolio data as at 31 July 2026"
+  },
+  "strategyAtAGlance": [
+    [
+      "$148.6m",
+      "PORTFOLIO VALUE"
+    ],
+    [
+      "6.17%",
+      "RUNNING YIELD"
+    ],
+    [
+      "1.86 yrs",
+      "WEIGHTED TERM TO CALL"
+    ],
+    [
+      "BBB−",
+      "MINIMUM CREDIT RATING"
+    ]
+  ],
+  "about": {
+    "title": "About the strategy",
+    "body": "An actively managed separately managed account of senior and subordinated floating-rate notes issued by major banks and A-grade insurers — twelve lines across nine issuers, run with the same discipline as the Arculus public funds."
+  },
+  "atAGlance": {
+    "title": "At a glance",
+    "note": "Terms are indicative and confirmed in mandate documentation.",
+    "items": [
+      [
+        "Structure",
+        "Separately Managed Account (SMA)"
+      ],
+      [
+        "Eligible investors",
+        "Wholesale clients only (s708 / s761G)"
+      ],
+      [
+        "Minimum investment",
+        "$50m"
+      ],
+      [
+        "Investment management fee",
+        "0.25% p.a."
+      ],
+      [
+        "Liquidity / redemptions",
+        "Daily"
+      ],
+      [
+        "Strategy inception",
+        "January 2019 (fund est. 2011)"
+      ]
+    ]
+  },
+  "processRiskControls": {
+    "title": "Process & risk controls",
+    "items": [
+      [
+        "Credit selection",
+        "Active, fundamentals-driven analysis of bank and insurer issuers, favouring names with strong capital positions and stable ratings trajectories."
+      ],
+      [
+        "Concentration limits",
+        "No single issuer exceeds 20% of the portfolio and no single line exceeds 11%, diversified across nine issuers."
+      ],
+      [
+        "Margin management",
+        "The floating-rate structure limits interest-rate duration; the team rotates between senior and subordinated tranches as relative value shifts."
+      ],
+      [
+        "Daily oversight",
+        "Positions, marks and cash are reconciled daily against trade, bond and cash-rate data feeds."
+      ]
+    ]
+  },
+  "keyRisks": {
+    "title": "Key risks",
+    "paragraphs": [
+      "Issuer default or downgrade can reduce income and capital value, and subordinated holdings rank behind senior creditors in a wind-up. Despite diversification limits, the portfolio holds a relatively small number of issuers, concentrated in banking and insurance.",
+      "Subordinated paper and smaller issuer lines may trade less liquidly in stressed markets, and credit spreads can still widen even where duration risk is limited. This is not a capital-guaranteed investment, and past performance is not indicative of future returns."
+    ]
+  },
+  "cta": {
+    "title": "Discuss the BBB SMA",
+    "body": "Wholesale enquiries go directly to the portfolio management team. The full strategy paper, current holdings and performance data are available on request.",
+    "button": {
+      "label": "Get in touch",
+      "href": "/contact?topic=bbb",
+      "style": "primary"
+    }
+  },
+  "importantInformation": {
+    "riskSubject": "the BBB SMA",
+    "asAt": "31 July 2026",
+    "_note": "[Unverified] frame text reads 'internal portfolio models and models' — typo, template wording used instead"
+  },
+  "portfolioDataAsAt": "31 July 2026",
+  "performanceFigures": "none — off-page, available on request"
+}

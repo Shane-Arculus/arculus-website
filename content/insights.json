@@ -1,0 +1,137 @@
+{
+  "verified": false,
+  "_note": "Articles are PDF links at launch. Reading times, dates and wholesaleOnly flags are from the frame — [Unverified] until PDFs are re-issued with compliant disclaimers (C4). 'pdf' paths to be filled from documents.json / uploaded files.",
+  "page": {
+    "breadcrumb": [
+      "Home",
+      "Insights"
+    ],
+    "hero": {
+      "title": "Insights",
+      "subtitle": "Weekly market commentary, monthly fund reports, seminars and articles from the portfolio management team.",
+      "button": {
+        "label": "Subscribe",
+        "action": "subscribe-modal",
+        "style": "primary"
+      }
+    },
+    "filters": [
+      "All",
+      "Market commentary",
+      "Research",
+      "Fund reports",
+      "Articles",
+      "Seminars & events"
+    ],
+    "latestTitle": "Latest",
+    "listTitle": "All insights",
+    "readLabel": "Read",
+    "cta": {
+      "title": "Get the weekly commentary",
+      "body": "The weekly market update and monthly fund reports, sent to advisers and investors by email.",
+      "button": {
+        "label": "Subscribe",
+        "action": "subscribe-modal",
+        "style": "primary"
+      }
+    }
+  },
+  "featured": "japan-at-the-turn",
+  "articles": [
+    {
+      "slug": "japan-at-the-turn",
+      "category": "Macro research",
+      "filter": "Research",
+      "date": "2026-07-22",
+      "title": "Japan at the Turn: the outlook for inflation, growth, unemployment and interest rates",
+      "summary": "Japan has not escaped its debt problem; it has changed the currency in which that problem is paid. The adjustment is running through the exchange rate and the price level, not the bond market. Executive summary; full paper available to clients.",
+      "homeSummary": "Japan has not escaped its debt problem; it has changed the currency in which that problem is paid. The adjustment is running through the exchange rate and the price level, not the bond market.",
+      "readingTime": null,
+      "wholesaleOnly": false,
+      "pdf": "[TO SET]",
+      "image": "[image register]"
+    },
+    {
+      "slug": "taylor-rule-sensitivity",
+      "category": "Research note",
+      "filter": "Research",
+      "date": "2026-07-13",
+      "title": "Taylor Rule sensitivity analysis: United States and Australia",
+      "summary": "Sensitivity matrices for the rule-implied policy rate under a range of neutral-rate and inflation assumptions. On current core PCE the rule sits 100–200bp above the funds rate; in Australia a positive output gap validates the cash rate at a modest trimmed-mean assumption.",
+      "homeSummary": "On current core PCE the rule sits 100–200bp above the funds rate; in Australia a positive output gap validates the cash rate at a modest trimmed-mean assumption.",
+      "readingTime": "8 min read",
+      "wholesaleOnly": true,
+      "pdf": "[TO SET]"
+    },
+    {
+      "slug": "q2-2026-quarterly",
+      "category": "Quarterly update",
+      "filter": "Fund reports",
+      "date": "2026-07-09",
+      "title": "Quarterly update: where the funds are positioned as the rate cycle turns",
+      "homeTitle": "Where the funds are positioned as the rate cycle turns",
+      "summary": "Rates, credit spreads and duration positioning across the Fixed Income and Preferred Income Funds, with the portfolio changes made over the quarter.",
+      "homeSummary": "Rates, credit spreads and duration positioning across both funds, with the portfolio changes made over the quarter.",
+      "readingTime": "6 min read",
+      "wholesaleOnly": false,
+      "pdf": "[TO SET — 20260709-Quarterly_Update]"
+    },
+    {
+      "slug": "kevin-warsh-background",
+      "category": "Background paper",
+      "filter": "Research",
+      "date": "2026-07-03",
+      "title": "Kevin Warsh: a background paper on his monetary theory and policy views",
+      "summary": "Career, intellectual influences and record of the 17th Chair of the Federal Reserve. Less a doctrinaire hawk than a market-oriented pragmatist: fewer signals, a higher bar for balance-sheet intervention, closer attention to asset prices.",
+      "readingTime": "25 min read",
+      "wholesaleOnly": true,
+      "pdf": "[TO SET]"
+    },
+    {
+      "slug": "hormuz-shock",
+      "category": "Research paper",
+      "filter": "Research",
+      "date": "2026-06-30",
+      "title": "The Hormuz shock: commodity price transmission, drivers and curve-implied outlook",
+      "homeTitle": "The Hormuz shock: commodity price transmission and curve-implied outlook",
+      "summary": "Oil and urea, priced on liquid forward curves, have round-tripped. Sulphur and helium, with no curve, kept rising after the strait reopened. Why market structure, not just physical exposure, sets how a commodity prices a geopolitical shock.",
+      "homeSummary": "Oil and urea have round-tripped. Sulphur and helium, with no forward curve, kept rising after the strait reopened.",
+      "readingTime": "15 min read",
+      "wholesaleOnly": true,
+      "pdf": "[TO SET]"
+    },
+    {
+      "slug": "getting-yield-seminar",
+      "category": "Seminar",
+      "filter": "Seminars & events",
+      "date": "2026-05-31",
+      "title": "Getting yield: the case for income before growth",
+      "summary": "Slides and notes from the adviser seminar on building income portfolios in a higher-rate environment.",
+      "readingTime": "Slides",
+      "wholesaleOnly": false,
+      "pdf": "[TO SET — Getting_Yield_31_May_2026]"
+    },
+    {
+      "slug": "weekly-2026-05-25",
+      "category": "Market commentary",
+      "filter": "Market commentary",
+      "date": "2026-05-25",
+      "title": "Weekly update: RBA holds, bank spreads tighten",
+      "summary": "What the week's moves in cash-rate expectations and major-bank paper mean for running yield.",
+      "readingTime": "4 min read",
+      "wholesaleOnly": false,
+      "pdf": "[TO SET — Weeklyupdate_May_25_2026]"
+    },
+    {
+      "slug": "afi-monthly-2026-04",
+      "category": "Fund report",
+      "filter": "Fund reports",
+      "date": "2026-04-30",
+      "title": "Arculus Fixed Income Fund — April 2026",
+      "summary": "Monthly performance, portfolio composition and commentary.",
+      "readingTime": "PDF",
+      "wholesaleOnly": false,
+      "pdf": "[TO SET — ArculusFixedIncomeFund_April2026_Final.pdf]"
+    }
+  ]
+}

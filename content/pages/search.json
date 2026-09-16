@@ -1,0 +1,24 @@
+{
+  "kind": "search",
+  "verified": false,
+  "breadcrumb": [
+    "Home",
+    "Search"
+  ],
+  "title": "Search",
+  "placeholder": "",
+  "button": "Search",
+  "resultsLabel": "{n} results for “{q}”",
+  "filters": [
+    "All",
+    "Pages",
+    "Documents",
+    "Insights"
+  ],
+  "kickers": {
+    "page": "PAGE",
+    "document": "DOCUMENT · PDF",
+    "insight": "INSIGHT · {category}"
+  },
+  "pagination": true
+}

@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  getSite, getFunds, getStrategies, getWholesaleLanding, getPrivateMandates, getIm,
+  getAbout, getInsights, getDocuments, getPage, getMarkdown, getArticle, getDoc, fill,
+} from "../content/loaders";
+
+// T2 smoke test: every loader runs once at build. Replaced by the real home page in T13.
+const site = await getSite();
+const funds = await getFunds();
+const strategies = await getStrategies();
+await getWholesaleLanding(); await getPrivateMandates(); await getIm();
+await getAbout("approach"); await getAbout("governance"); await getAbout("team");
+const insights = await getInsights(); const docs = await getDocuments();
+await getPage("home"); await getPage("contact"); await getPage("404"); await getPage("search"); await getPage("subscribe");
+for (const id of ["terms", "privacy", "cookies", "disclosure"]) await getMarkdown("legal", id);
+await getMarkdown("aboutMd", "esg");
+// cross-references
+const home = await getPage("home");
+for (const s of [home.insights.featured, ...home.insights.list]) await getArticle(s);
+for (const f of funds) { for (const k of f.keyDocuments.items) await getDoc(k.doc).catch(() => null); for (const d of f.documents.items) await getDoc(d); }
+const afi = funds.find((f) => f.slug === "afi")!;
+fill(site.importantInformation.fund.template, { fundName: afi.name, arsn: afi.regulatory.arsn, apir: afi.regulatory.apir });
+if (!funds.length || !strategies.length || !insights.articles.length || !docs.documents.length) throw new Error("content: a collection is empty");
+---
+<Base title="Arculus Funds Management" description="Australian fixed income manager." noindex>
+  <section class="bg-cream">
+    <div class="mx-auto max-w-site px-4 py-24 md:px-12">
+      <h1 class="text-h1 font-medium text-navy">Arculus Funds Management</h1>
+      <p class="mt-4 text-body text-body">Site under construction.</p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,173 @@
+---
+/**
+ * Header — Figma 123:31754 (desktop closed), 190:4800 (dropdown panels),
+ * 207:16549 (mobile closed), 199:11833 M0a–M0e (mobile menu and search states).
+ *
+ * Desktop ≥768: logo · nav (About ▾, Funds ▾, Wholesale ▾, Investment Management,
+ * Insights, Contact) · gold external button · search icon (→ /search).
+ * Dropdown: 280px panel flush with the trigger's left edge, opens on click,
+ * closes on Escape, outside click, or focus leaving the item.
+ * Mobile <768: logo · search icon · menu icon. Menu and search are full-height
+ * overlays below the 68px bar; nav groups are accordions.
+ *
+ * All copy from site.json (nav, headerButton, ui). No copy here.
+ */
+import Icon from "./Icon.astro";
+import Button from "./Button.astro";
+import { getSite } from "../content/loaders";
+
+const site = await getSite();
+const { nav, headerButton, ui, externalUrls } = site;
+const resolve = (href: string) => (href in externalUrls ? externalUrls[href as keyof typeof externalUrls] : href);
+const current = Astro.url.pathname;
+const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" : current.startsWith(href.split("#")[0]));
+---
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:bg-white focus:px-3 focus:py-2 focus:text-navy">{ui.skipToContent}</a>
+
+<header id="site-header" class="relative z-40 bg-white" data-header>
+  <div class="mx-auto flex h-[68px] items-center justify-between px-4 md:h-[104px] md:px-12">
+    <a href="/" class="flex shrink-0 items-center" aria-label={ui.logoAlt}>
+      <img src="/brand/logo-colour.svg" alt="" width="190" height="49" class="hidden h-[49px] w-[190px] md:block" />
+      <img src="/brand/logo-colour.svg" alt="" width="140" height="34" class="h-[34px] w-[140px] md:hidden" />
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Main">
+      <ul class="flex items-center gap-6">
+        {nav.map((item, i) => item.children ? (
+          <li class="relative" data-dd>
+            <button type="button" class:list={["flex h-[104px] items-center gap-1 text-body font-medium text-navy hover:text-rust focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-navy [&[aria-expanded=true]]:text-rust", isCurrent(item.children[0]?.href?.split("/").slice(0,2).join("/")) && "text-rust"]} aria-expanded="false" aria-controls={`dd-${i}`} data-dd-trigger>
+              <span>{item.label}</span>
+              <Icon name="chevron-down" size={16} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
+            </button>
+            <div id={`dd-${i}`} class="absolute left-0 top-full hidden w-[280px] border border-line bg-white py-3 shadow-sm" data-dd-panel>
+              <ul>
+                {item.children.map((child: { label: string; href: string }) => (
+                  <li><a href={resolve(child.href)} class:list={["block px-6 py-2.5 text-body font-medium text-navy hover:bg-cream hover:text-rust focus-visible:bg-cream focus-visible:text-rust focus-visible:outline-none", isCurrent(child.href) && "text-rust"]} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ) : (
+          <li><a href={item.href} class:list={["flex h-[104px] items-center text-body font-medium text-navy hover:text-rust", isCurrent(item.href) && "text-rust"]} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+      <Button label={headerButton.label} href={resolve(headerButton.href)} style="external" />
+      <a href="/search" class="flex h-6 w-6 items-center justify-center text-navy hover:text-rust" aria-label={ui.searchOpen}><Icon name="search" size={24} /></a>
+    </nav>
+
+    <!-- Mobile controls -->
+    <div class="flex items-center gap-4 md:hidden">
+      <button type="button" class="flex h-6 w-6 items-center justify-center text-navy" aria-label={ui.searchOpen} aria-expanded="false" aria-controls="m-search" data-m-toggle="search"><Icon name="search" size={24} /></button>
+      <button type="button" class="flex h-6 w-6 items-center justify-center text-navy" aria-label={ui.menuOpen} aria-expanded="false" aria-controls="m-menu" data-m-toggle="menu">
+        <Icon name="menu" size={24} class="[[aria-expanded=true]>&]:hidden" /><Icon name="x" size={24} class="hidden [[aria-expanded=true]>&]:block" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu overlay (M0a–M0d) -->
+  <div id="m-menu" class="absolute inset-x-0 top-full hidden h-[calc(100dvh-68px)] flex-col overflow-y-auto bg-white px-4 pb-9 pt-9 [&:not(.hidden)]:flex md:!hidden" data-m-panel="menu">
+    <nav aria-label="Main" class="flex flex-1 flex-col">
+      <ul class="flex flex-col">
+        {nav.map((item, i) => (
+          <li class="border-b border-line py-6 first:pt-0">
+            {item.children ? (
+              <div>
+                <button type="button" class="flex w-full items-center justify-between text-lead font-medium text-navy [&[aria-expanded=true]]:text-rust-hi" aria-expanded="false" aria-controls={`m-acc-${i}`} data-acc-trigger>
+                  <span>{item.label}</span>
+                  <Icon name="chevron-down" size={20} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
+                </button>
+                <ul id={`m-acc-${i}`} class="hidden flex-col gap-6 pl-6 pt-6" data-acc-panel>
+                  {item.children.map((child: { label: string; href: string }) => (
+                    <li><a href={resolve(child.href)} class="block text-lead text-navy" aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a href={item.href} class="block text-lead font-medium text-navy" aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="pt-6"><Button label={headerButton.label} href={resolve(headerButton.href)} style="external" full /></div>
+  </div>
+
+  <!-- Mobile search overlay (M0e) -->
+  <div id="m-search" class="absolute inset-x-0 top-full hidden h-[calc(100dvh-68px)] flex-col gap-12 overflow-y-auto bg-white px-4 pb-9 pt-9 [&:not(.hidden)]:flex md:!hidden" data-m-panel="search">
+    <form action="/search" method="get" role="search" class="flex items-center gap-3 border border-line-strong px-3">
+      <Icon name="search" size={20} class="shrink-0 text-navy" />
+      <label for="m-q" class="sr-only">{ui.searchPlaceholder}</label>
+      <input id="m-q" name="q" type="search" placeholder={ui.searchPlaceholder} class="h-[44px] w-full bg-transparent text-body text-navy placeholder:text-body focus:outline-none" data-m-search-input />
+      <button type="submit" class="sr-only">{ui.searchSubmit}</button>
+    </form>
+    <div class="flex flex-col gap-6">
+      <p class="text-body font-medium text-navy">{ui.popularSearchesTitle}</p>
+      <ul class="flex flex-col gap-6">
+        {ui.popularSearches.map((p) => <li><a href={resolve(p.href)} class="block text-lead text-navy">{p.label}</a></li>)}
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-header]");
+  if (header) {
+    const mq = window.matchMedia("(min-width: 768px)");
+
+    // ---- desktop dropdowns ----
+    const items = Array.from(header.querySelectorAll<HTMLElement>("[data-dd]"));
+    const closeAll = (except?: HTMLElement) => {
+      for (const it of items) {
+        if (it === except) continue;
+        it.querySelector<HTMLButtonElement>("[data-dd-trigger]")!.setAttribute("aria-expanded", "false");
+        it.querySelector<HTMLElement>("[data-dd-panel]")!.classList.add("hidden");
+      }
+    };
+    for (const it of items) {
+      const trigger = it.querySelector<HTMLButtonElement>("[data-dd-trigger]")!;
+      const panel = it.querySelector<HTMLElement>("[data-dd-panel]")!;
+      trigger.addEventListener("click", () => {
+        const open = trigger.getAttribute("aria-expanded") === "true";
+        closeAll(it);
+        trigger.setAttribute("aria-expanded", String(!open));
+        panel.classList.toggle("hidden", open);
+      });
+      it.addEventListener("focusout", (e) => {
+        if (!it.contains(e.relatedTarget as Node)) closeAll();
+      });
+    }
+    document.addEventListener("click", (e) => { if (!header.contains(e.target as Node)) closeAll(); });
+
+    // ---- mobile overlays ----
+    const toggles = Array.from(header.querySelectorAll<HTMLButtonElement>("[data-m-toggle]"));
+    const panels = Array.from(header.querySelectorAll<HTMLElement>("[data-m-panel]"));
+    const menuLabels = { open: toggles[1]?.getAttribute("aria-label") ?? "", close: header.dataset.menuClose ?? "" };
+    const setMobile = (which: "menu" | "search" | null) => {
+      for (const p of panels) p.classList.toggle("hidden", p.dataset.mPanel !== which);
+      for (const t of toggles) t.setAttribute("aria-expanded", String(t.dataset.mToggle === which));
+      document.documentElement.classList.toggle("overflow-hidden", which !== null);
+      if (which === "search") header.querySelector<HTMLInputElement>("[data-m-search-input]")?.focus();
+    };
+    for (const t of toggles) {
+      t.addEventListener("click", () => {
+        const which = t.dataset.mToggle as "menu" | "search";
+        setMobile(t.getAttribute("aria-expanded") === "true" ? null : which);
+      });
+    }
+    // accordions
+    for (const trig of header.querySelectorAll<HTMLButtonElement>("[data-acc-trigger]")) {
+      trig.addEventListener("click", () => {
+        const open = trig.getAttribute("aria-expanded") === "true";
+        const panel = document.getElementById(trig.getAttribute("aria-controls")!)!;
+        trig.setAttribute("aria-expanded", String(!open));
+        panel.classList.toggle("hidden", open);
+        panel.classList.toggle("flex", !open);
+      });
+    }
+
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeAll(); setMobile(null); } });
+    mq.addEventListener("change", () => { closeAll(); setMobile(null); });
+    void menuLabels;
+  }
+</script>

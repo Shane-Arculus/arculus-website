@@ -1,0 +1,38 @@
+{
+  "kind": "subscribe",
+  "verified": false,
+  "modal": {
+    "title": "Get the weekly commentary",
+    "body": "The weekly market update and monthly fund reports, by email. Unsubscribe any time.",
+    "fields": [
+      {
+        "name": "email",
+        "label": "Email",
+        "placeholder": "name@example.com",
+        "type": "email"
+      },
+      {
+        "name": "iAm",
+        "label": "I am a",
+        "options": [
+          "Financial adviser",
+          "Wholesale investor",
+          "Existing investor",
+          "Other"
+        ],
+        "type": "select"
+      },
+      {
+        "name": "consent",
+        "label": "I have read the Privacy Notice and consent to receiving email from Arculus.",
+        "type": "checkbox"
+      }
+    ],
+    "submit": "Subscribe"
+  },
+  "done": {
+    "title": "Check your inbox",
+    "body": "We've sent a confirmation to {email}. Click the link to start receiving the weekly commentary. If it hasn't arrived in a few minutes, check your junk folder.",
+    "close": "Close"
+  }
+}

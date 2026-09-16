@@ -1,0 +1,270 @@
+{
+  "verified": false,
+  "slug": "afi",
+  "name": "Arculus Fixed Income Fund",
+  "theme": "navy",
+  "breadcrumb": [
+    "Home",
+    "Funds",
+    "Arculus Fixed Income Fund"
+  ],
+  "hero": {
+    "title": "Arculus Fixed Income Fund",
+    "subtitle": "Australian sovereign and senior bank bonds, actively managed to preserve capital and earn income through the rate cycle.",
+    "buttons": [
+      {
+        "label": "Apply via Olivia123",
+        "href": "olivia123",
+        "style": "external"
+      },
+      {
+        "label": "Download the PDS",
+        "href": "pds",
+        "style": "secondary"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Target return:",
+        "value": "90-day BBSW +1.5% p.a.",
+        "note": "before fees"
+      },
+      {
+        "label": "Redemption requests:",
+        "value": "Any business day"
+      },
+      {
+        "label": "Distributions:",
+        "value": "Quarterly"
+      },
+      {
+        "label": "Inception:",
+        "value": "November 2017"
+      }
+    ]
+  },
+  "about": {
+    "title": "About the Fund",
+    "body": "Every holding in the Fund is Australian sovereign or senior bank paper — the most liquid, highest-quality end of the domestic bond market. The discipline is structural: no leverage, no structured credit, no foreign currency. Net asset value was $38.7 million as at 30 April 2026.",
+    "_note": "[Unverified] NAV date (30 April) predates performance date (30 June) — reconcile"
+  },
+  "ratings": {
+    "show": true,
+    "ratingReportUrl": "[TO SET — Lonsec report PDF for AFI]"
+  },
+  "performance": {
+    "title": "Performance",
+    "note": "Returns to 30 June 2026, annualised and net of all fees. Past performance is not an indicator of future performance.",
+    "performanceAsAt": "2026-06-30",
+    "chartTitle": "Performance Comparison",
+    "chartImage": "/charts/afi-2026-06.webp",
+    "chartSeries": [
+      "1-year total return",
+      "Running yield",
+      "Yield to maturity",
+      "90-day BBSW"
+    ],
+    "tableTitle": "Performance to 30 June 2026 (annualised)",
+    "periods": [
+      [
+        "3 months",
+        "1.22%"
+      ],
+      [
+        "6 months",
+        "1.94%"
+      ],
+      [
+        "1 year",
+        "4.11%"
+      ],
+      [
+        "2 years",
+        "4.74%"
+      ],
+      [
+        "3 years",
+        "5.24%"
+      ],
+      [
+        "5 years",
+        "2.75%"
+      ],
+      [
+        "Since inception (Nov 2017)",
+        "2.33%"
+      ]
+    ]
+  },
+  "whoItMaySuit": {
+    "title": "Who it may suit",
+    "body": "Investors seeking a defensive, income-focused allocation with low to medium risk over a one to three-year horizon — the stable core of a client portfolio, SMSF income without equity-style drawdowns, or organisational reserves that must stay liquid."
+  },
+  "howManaged": {
+    "title": "How the Fund is managed",
+    "body": [
+      "Income is earned by reading the rate cycle, not by reaching for yield. Positioning across sovereign and senior bank paper follows conviction about where rates and credit margins are heading — never an index weight.",
+      "The Fund’s universe is eligible collateral for RBA repurchase operations, a liquidity backstop most private-sector instruments can’t offer. Every decision passes four-eyes governance before it settles, with operational oversight independent of the investment desk."
+    ],
+    "button": {
+      "label": "Talk to us about the Fund",
+      "href": "/contact?topic=afi"
+    }
+  },
+  "features": {
+    "title": "Fund features",
+    "items": [
+      [
+        "Objective",
+        "BBSW +1.5% p.a. before fees"
+      ],
+      [
+        "Approach",
+        "Active, benchmark unaware"
+      ],
+      [
+        "Liquidity",
+        "Daily redemption requests"
+      ],
+      [
+        "Distributions",
+        "Quarterly"
+      ],
+      [
+        "Management fee",
+        "0.40% p.a. incl. GST"
+      ],
+      [
+        "Buy–sell spread",
+        "+0.10% / −0.10%"
+      ],
+      [
+        "Performance fee",
+        "Nil"
+      ],
+      [
+        "Minimum investment",
+        "$2,000"
+      ]
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "asAt": "[Unverified] — align to performanceAsAt",
+    "metrics": [
+      [
+        "Running yield",
+        "5.58%"
+      ],
+      [
+        "Yield to maturity",
+        "5.35%"
+      ],
+      [
+        "Average margin",
+        "0.90%"
+      ],
+      [
+        "Average years to maturity",
+        "1.94"
+      ],
+      [
+        "Number of securities held",
+        "44"
+      ],
+      [
+        "Modified duration",
+        "0.10"
+      ],
+      [
+        "Credit duration",
+        "1.78"
+      ]
+    ],
+    "allocation": {
+      "columns": [
+        "Portfolio sector",
+        "Allocation"
+      ],
+      "rows": [
+        [
+          "Floating rate notes",
+          "96.4%"
+        ],
+        [
+          "Fixed rate bonds",
+          "2.4%"
+        ],
+        [
+          "Cash",
+          "1.2%"
+        ]
+      ]
+    }
+  },
+  "howToInvest": {
+    "title": "How to invest",
+    "columns": [
+      {
+        "title": "Online",
+        "body": "Apply and complete identity verification in one step through Olivia123. Applications are processed by the Fund's registry, operated by SS&C.",
+        "button": {
+          "label": "Apply via Olivia123",
+          "href": "olivia123",
+          "style": "external"
+        }
+      },
+      {
+        "title": "Through your adviser or platform",
+        "body": "The Fund is available on BT Panorama, Allan Gray, HUB24 and Netwealth. Your adviser can apply on your behalf.",
+        "button": {
+          "label": "Talk to us about the Fund",
+          "href": "/contact?topic=afi",
+          "style": "primary"
+        }
+      }
+    ]
+  },
+  "keyDocuments": {
+    "title": "Key documents",
+    "items": [
+      {
+        "title": "Product Disclosure Statement",
+        "meta": "PDS · DDH Graham · 1 July 2026 · PDF 1.2 MB",
+        "doc": "afi-pds"
+      },
+      {
+        "title": "Latest monthly report",
+        "meta": "July 2026 · PDF 0.8 MB",
+        "doc": "afi-monthly-latest"
+      },
+      {
+        "title": "Annual report",
+        "meta": "FY2025 · DDH Graham · PDF 2.4 MB",
+        "doc": "afi-annual-fy2025"
+      }
+    ],
+    "_note": "[Unverified] meta strings (dates, sizes) are placeholders from the frame; derive from documents.json at build"
+  },
+  "documents": {
+    "title": "Documents & statements",
+    "intro": "Statements for your own holding — distribution and annual tax statements — are available through the registry portal.",
+    "items": [
+      "afi-pds",
+      "afi-tmd",
+      "afi-monthly-2026-06",
+      "afi-annual-fy2025"
+    ],
+    "button": {
+      "label": "View all documents",
+      "href": "/documents?fund=afi"
+    }
+  },
+  "regulatory": {
+    "re": "DDH Graham Limited",
+    "arsn": "622 419 578",
+    "apir": "DDH8305AU",
+    "administrator": "SS&C",
+    "custodian": "Northern Trust"
+  }
+}

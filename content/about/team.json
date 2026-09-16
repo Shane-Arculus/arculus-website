@@ -1,0 +1,98 @@
+{
+  "kind": "team",
+  "verified": false,
+  "breadcrumb": [
+    "Home",
+    "About",
+    "Team"
+  ],
+  "hero": {
+    "title": "Our team",
+    "subtitle": "A small team, a long record. Every member of the Investment Committee has managed money through multiple rate cycles.",
+    "button": {
+      "label": "Governance & oversight",
+      "href": "/about/governance-and-oversight",
+      "style": "secondary"
+    }
+  },
+  "groups": [
+    {
+      "title": "Investment Committee",
+      "intro": "The people who make the portfolio decisions.",
+      "people": [
+        {
+          "name": "Renny Ellis",
+          "title": "Director & Head of Portfolio Management",
+          "bio": "Renny founded the business in 2013 and has managed capital on an absolute return basis across fixed income and credit for more than 30 years, for insurers, corporations, wealth managers, individuals and public unit trusts. His background spans economics, derivatives, quantitative and corporate finance, applied to one consistent view: preserve capital first, then earn the return. Renny is the Responsible Manager and Key Person on the group's AFSLs.",
+          "photo": "[image register — headshot]"
+        },
+        {
+          "name": "Michael Saba",
+          "title": "Investment Committee",
+          "bio": "Michael has worked in fixed income, ASX exchange-traded options and OTC markets for more than 30 years, as an analyst and broker at ANZ McCaughan and Goldman Sachs JBWere, and from 2009 to 2019 leading the fixed income and equity derivatives team at Evans and Partners, where he ran the debt and hybrid dealing desk and managed a number of private and public fixed interest portfolios. He was a board member of Evans and Partners from 2015 to 2017 and has sat on investment committees in professional and volunteer roles for the past decade. Michael holds a PhD in science from Monash University and a Master of Applied Finance from the University of Melbourne.",
+          "photo": "[image register — headshot]"
+        },
+        {
+          "name": "Andrew McQueen",
+          "title": "Investment Committee",
+          "bio": "Andrew has 30 years' financial services and superannuation investment experience with Equipsuper, Deutsche Bank and Merrill Lynch, including institutional equities broking across Australian, Asian and global markets, and capital commitment and underwriting for a global investment bank. At Equipsuper he was responsible for $7 billion of superannuation investments across equities, fixed interest, cash and unlisted assets, including the fund's currency hedging programme.",
+          "photo": "[image register — headshot]"
+        }
+      ]
+    },
+    {
+      "title": "Leadership",
+      "people": [
+        {
+          "name": "Sunetha Parag",
+          "title": "Chief Executive Officer",
+          "bio": "Sunetha founded Arculus Funds Management with capital preservation as its core focus. As CEO she oversees finance and compliance across the business, with a particular focus on the management of conflicts of interest. Her background is in business administration.",
+          "photo": "[image register — headshot]"
+        },
+        {
+          "name": "Gary Tapp",
+          "title": "Senior Manager, Risk, Business Support & Operations",
+          "bio": "Gary has more than 40 years in financial services, including 15 years as Key Account Manager to high-net-worth and ultra-high-net-worth individuals, families, family offices and advisers. Either side of that he has specialised in operational roles: project management, operational risk, business support, and database and process management for international wealth management firms.",
+          "photo": "[image register — headshot]"
+        }
+      ],
+      "_note": "Two people; the desktop frame uses an opacity-0 spacer card to keep the 3-column rhythm"
+    },
+    {
+      "title": "Analysts & portfolio support",
+      "people": [
+        {
+          "name": "Michael Strachan",
+          "title": "Analyst & External Consultant",
+          "bio": "Michael's investment experience spans traditional and alternative assets across investment management and pension funds. He was most recently CIO of Equipsuper, responsible for defined benefit, defined contribution and allocated pension plans, managing internal equity, fixed income and infrastructure portfolios, asset allocation and external manager selection. He serves on the Investment Committee of the Gardiner Foundation and holds a BSc (Hons), PhD and MBA from the University of Melbourne and a Graduate Diploma from the Australian Institute of Company Directors.",
+          "photo": "[image register — headshot]"
+        },
+        {
+          "name": "Andrew Fong",
+          "title": "Analyst & Portfolio Manager",
+          "bio": "Andrew has 25 years' investment experience with investment managers and a superannuation fund. At County Investment and Invesco he managed equities, fixed income, equity and fixed income derivative and multi-asset portfolios, and was a senior portfolio manager at Equipsuper, where he advised the Investment Committee on new opportunities, portfolio management, asset allocation and currency hedging. He has served on advisory committees of large Australian diversified property funds and has corporate finance experience advising on cost of capital, capital budgeting and portfolio design. Andrew holds a BSc (Hons) and MBA from the University of Melbourne and sits on the Investment Committee of a charitable organisation.",
+          "photo": "[image register — headshot]"
+        },
+        {
+          "name": "Cameron Ekert",
+          "title": "Analyst",
+          "bio": "Cameron has more than 20 years' business and consulting experience, with seven years in global roles across telecommunications, logistics, automotive, banking and healthcare. He supports the analytical side of the business, with skills across financial and credit analysis, information technology, supply chain and HR.",
+          "photo": "[image register — headshot]"
+        }
+      ]
+    }
+  ],
+  "distribution": {
+    "title": "Distribution",
+    "body": "Arculus works with a network of independent representatives who manage relationships with IFAs, dealer groups, platforms, fund managers and sub-institutional clients. Each has long experience with financial intermediaries and helps them source investments suited to their clients across asset classes and risk profiles."
+  },
+  "cta": {
+    "title": "Talk to the team",
+    "body": "Enquiries go directly to the portfolio management team.",
+    "button": {
+      "label": "Get in touch",
+      "href": "/contact",
+      "style": "primary"
+    }
+  }
+}

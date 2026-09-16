@@ -1,0 +1,295 @@
+{
+  "verified": false,
+  "_note": "Seeded from the Document library frame. Sizes ('1.2 MB') on the frame are placeholders — set from real files. 'Showing 7 of 24' on the frame implies a longer monthly-report archive: confirm how far back to publish.",
+  "page": {
+    "breadcrumb": [
+      "Home",
+      "Document library"
+    ],
+    "hero": {
+      "title": "Document library",
+      "subtitle": "Every document issued for the funds: disclosure statements, monthly and quarterly reports, annual reports and policies.",
+      "button": {
+        "label": "Statements for your holding",
+        "href": "ssandcRegistry",
+        "style": "external"
+      }
+    },
+    "filters": [
+      "All",
+      "PDS & TMD",
+      "Monthly reports",
+      "Quarterly updates",
+      "Annual reports",
+      "Policies & notices"
+    ],
+    "searchPlaceholder": "Search documents",
+    "seeMoreLabel": "See all documents",
+    "showingLabel": "Showing {n} of {total}",
+    "sections": [
+      {
+        "key": "afi",
+        "title": "Arculus Fixed Income Fund",
+        "intro": "Disclosure documents, reports and ratings for the Fund. Statements for your own holding are issued by the registry."
+      },
+      {
+        "key": "pif",
+        "title": "Arculus Preferred Income Fund",
+        "intro": "Disclosure documents, reports and ratings for the Fund."
+      },
+      {
+        "key": "wholesale",
+        "title": "Wholesale strategies",
+        "intro": "Strategy papers, current holdings and performance data for the A− SMA, BBB SMA and Protected Equity Portfolio are provided to wholesale clients on request.",
+        "button": {
+          "label": "Contact the team",
+          "href": "/contact?topic=wholesale"
+        },
+        "row": {
+          "title": "Request a strategy paper",
+          "meta": "Wholesale clients only · Contact the team"
+        }
+      },
+      {
+        "key": "policies",
+        "title": "Policies & notices",
+        "intro": "Firm-level policies and the notices that govern use of this site."
+      }
+    ]
+  },
+  "documents": [
+    {
+      "id": "afi-pds",
+      "fund": "afi",
+      "category": "PDS & TMD",
+      "title": "Product Disclosure Statement",
+      "meta": "PDS · DDH Graham · 1 July 2026",
+      "date": "2026-07-01",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-tmd",
+      "fund": "afi",
+      "category": "PDS & TMD",
+      "title": "Target Market Determination",
+      "meta": "TMD · 1 July 2026",
+      "date": "2026-07-01",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2026-07",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — July 2026",
+      "meta": "Report · 31 July 2026",
+      "date": "2026-07-31",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2026-06",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — June 2026",
+      "meta": "Report · 30 June 2026",
+      "date": "2026-06-30",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2026-04",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — April 2026",
+      "meta": "Report · 30 April 2026",
+      "date": "2026-04-30",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-quarterly-2026-07",
+      "fund": "afi",
+      "category": "Quarterly updates",
+      "title": "Quarterly update — July 2026",
+      "meta": "Update · 9 July 2026",
+      "date": "2026-07-09",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-annual-fy2025",
+      "fund": "afi",
+      "category": "Annual reports",
+      "title": "Annual report — FY2025",
+      "meta": "Annual report · DDH Graham",
+      "date": "2025-06-30",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-lonsec-2026",
+      "fund": "afi",
+      "category": "Ratings",
+      "title": "Lonsec research report",
+      "meta": "Rating · June 2026",
+      "date": "2026-06-01",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false,
+      "_note": "ratingReportUrl target for AFI"
+    },
+    {
+      "id": "pif-pds",
+      "fund": "pif",
+      "category": "PDS & TMD",
+      "title": "Product Disclosure Statement",
+      "meta": "PDS · DDH Graham · 1 July 2026",
+      "date": "2026-07-01",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-tmd",
+      "fund": "pif",
+      "category": "PDS & TMD",
+      "title": "Target Market Determination",
+      "meta": "TMD · 1 July 2026",
+      "date": "2026-07-01",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2026-07",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — July 2026",
+      "meta": "Report · 31 July 2026",
+      "date": "2026-07-31",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2026-06",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — June 2026",
+      "meta": "Report · 30 June 2026",
+      "date": "2026-06-30",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-quarterly-2026-07",
+      "fund": "pif",
+      "category": "Quarterly updates",
+      "title": "Quarterly update — July 2026",
+      "meta": "Update · 9 July 2026",
+      "date": "2026-07-09",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-annual-fy2025",
+      "fund": "pif",
+      "category": "Annual reports",
+      "title": "Annual report — FY2025",
+      "meta": "Annual report · DDH Graham",
+      "date": "2025-06-30",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-lonsec-2026",
+      "fund": "pif",
+      "category": "Ratings",
+      "title": "Lonsec research report",
+      "meta": "Rating · June 2026",
+      "date": "2026-06-01",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false,
+      "_note": "ratingReportUrl target for PIF"
+    },
+    {
+      "id": "esg-policy",
+      "fund": "policies",
+      "category": "Policies & notices",
+      "title": "ESG Policy",
+      "meta": "Policy · PDF",
+      "date": null,
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "privacy-notice",
+      "fund": "policies",
+      "category": "Policies & notices",
+      "title": "Privacy Notice",
+      "meta": "Notice",
+      "date": null,
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "privacy-policy",
+      "fund": "policies",
+      "category": "Policies & notices",
+      "title": "Privacy Policy",
+      "meta": "Policy · Available on request",
+      "date": null,
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "terms",
+      "fund": "policies",
+      "category": "Policies & notices",
+      "title": "Terms & Conditions",
+      "meta": "Notice",
+      "date": null,
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "cookie-policy",
+      "fund": "policies",
+      "category": "Policies & notices",
+      "title": "Cookie Policy",
+      "meta": "Notice",
+      "date": null,
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "disclosure",
+      "fund": "policies",
+      "category": "Policies & notices",
+      "title": "Disclosure",
+      "meta": "Notice",
+      "date": null,
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false
+    }
+  ]
+}

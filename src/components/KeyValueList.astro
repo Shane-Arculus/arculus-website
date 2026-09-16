@@ -1,0 +1,39 @@
+---
+/**
+ * KeyValueList — the "content slice" rows used for fund features, performance
+ * periods, portfolio metrics, strategy at-a-glance, private-mandate facts.
+ *
+ * Figma: fund page content-fees-facts 88:935 → 207:16882 (rows), performance
+ * table inside 88:828. Rows are a 2-column table at every width; below 768
+ * the columns split evenly and wrap (Figma mobile), above 768 the label takes
+ * the space and the value hugs right ("facts") or sits in a fixed column ("table").
+ *
+ * Rendered as a real <table> so screen readers get header/cell pairs.
+ */
+interface Props {
+  rows: readonly (readonly [string, string])[];
+  /** Optional heading above the rows (SemiBold 16 navy-mid). */
+  title?: string;
+  /** facts: value right-aligned. table: value in a fixed left-aligned column (performance periods). */
+  variant?: "facts" | "table";
+  /** Visually hidden caption for assistive tech when there is no visible title. */
+  caption?: string;
+  class?: string;
+}
+const { rows, title, variant = "facts", caption, class: className = "" } = Astro.props;
+const valueClass = variant === "table" ? "md:w-[88px] md:text-left" : "md:text-right";
+---
+<div class:list={["w-full", className]}>
+  {title && <h3 class="text-subhead font-semibold text-navy-mid mb-2">{title}</h3>}
+  <table class="w-full border-collapse text-body text-body">
+    {caption && !title && <caption class="sr-only">{caption}</caption>}
+    <tbody>
+      {rows.map(([label, value]) => (
+        <tr class="border-b border-line">
+          <th scope="row" class="w-1/2 md:w-auto py-4 pr-4 md:pr-6 text-left align-top font-normal">{label}</th>
+          <td class:list={["w-1/2 md:w-auto py-4 align-top font-medium text-right whitespace-normal", valueClass]}>{value}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
