@@ -1,0 +1,35 @@
+---
+/**
+ * FundFeesFacts — Figma 88:935 → 207:16882 ("Who it may suit", "How the Fund
+ * is managed", primary button; white card with "Fund features" KeyValueList).
+ * White band; mobile stacks with the card after the copy.
+ */
+import Section from "./Section.astro";
+import Button from "./Button.astro";
+import KeyValueList from "./KeyValueList.astro";
+interface Props {
+  suit: { title: string; body: string };
+  managed: { title: string; body: readonly string[]; button: { label: string; href?: string } };
+  features: { title: string; items: readonly (readonly [string, string])[] };
+}
+const { suit, managed, features } = Astro.props;
+---
+<Section bg="white" class="md:[&>div]:py-[50px]">
+  <div class="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-4">
+    <div class="flex flex-col gap-8 md:gap-[50px] md:pr-12">
+      <div class="flex flex-col gap-4 md:gap-6">
+        <h2 class="text-h5 font-medium text-navy md:text-h3">{suit.title}</h2>
+        <p>{suit.body}</p>
+      </div>
+      <div class="flex flex-col gap-4 md:gap-6">
+        <h2 class="text-h5 font-medium text-navy md:text-h3">{managed.title}</h2>
+        <div class="flex flex-col gap-4">{managed.body.map((p) => <p>{p}</p>)}</div>
+      </div>
+      <div><Button label={managed.button.label} href={managed.button.href} /></div>
+    </div>
+    <div class="flex flex-col gap-6 rounded-lg bg-white px-6 pb-6 pt-4 md:gap-9 md:px-9 md:pb-9 md:pt-6 md:shadow-[0_0_0_1px_var(--color-card-line)]">
+      <h3 class="text-lead font-medium text-navy">{features.title}</h3>
+      <KeyValueList rows={features.items} caption={features.title} />
+    </div>
+  </div>
+</Section>

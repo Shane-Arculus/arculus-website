@@ -1,0 +1,43 @@
+---
+/**
+ * FundPortfolio — Figma 88:957 → 207:16884. Cream band, two white cards:
+ * left "Portfolio" metrics (KeyValueList); right an allocation donut with a
+ * legend table (sector / allocation, colour swatches). The donut is drawn as
+ * inline SVG from the allocation rows so it tracks the JSON each month — three
+ * numbers, no chart library. Slice colours navy-mid, orange, outline-warm as on
+ * the frame. Mobile stacks.
+ */
+import Section from "./Section.astro";
+import KeyValueList from "./KeyValueList.astro";
+interface Props { title: string; metrics: readonly (readonly [string, string])[]; allocation: { columns: readonly [string, string]; rows: readonly (readonly [string, string])[] }; }
+const { title, metrics, allocation } = Astro.props;
+const colours = ["var(--color-navy-mid)", "var(--color-orange)", "var(--color-outline-warm)", "var(--color-line-secondary)"];
+const values = allocation.rows.map(([, v]) => parseFloat(v.replace(/[^\d.]/g, "")) || 0);
+const total = values.reduce((a, b) => a + b, 0) || 1;
+const r = 40, c = 2 * Math.PI * r;
+let offset = 0;
+const segs = values.map((v, i) => { const len = (v / total) * c; const s = { len, offset, colour: colours[i % colours.length] }; offset += len; return s; });
+---
+<Section bg="cream" class="md:[&>div]:py-[50px]">
+  <div class="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-4">
+    <div class="flex flex-col gap-6 rounded-lg bg-white px-6 py-6 md:gap-8 md:p-12">
+      <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
+      <KeyValueList rows={metrics} caption={title} />
+    </div>
+    <div class="flex flex-col gap-6 rounded-lg bg-white px-6 py-6 md:gap-9 md:p-12">
+      <figure class="mx-auto w-[220px] md:w-[259px]">
+        <svg viewBox="0 0 100 100" class="block h-auto w-full -rotate-90" role="img" aria-label={`${title}: ${allocation.rows.map(([k, v]) => `${k} ${v}`).join(", ")}`}>
+          {segs.map((s) => <circle cx="50" cy="50" r={r} fill="none" stroke={s.colour} stroke-width="18" stroke-dasharray={`${s.len} ${c - s.len}`} stroke-dashoffset={-s.offset} />)}
+        </svg>
+      </figure>
+      <table class="w-full border-collapse text-base">
+        <thead><tr class="border-b border-line text-left text-navy"><th scope="col" class="py-3 font-medium">{allocation.columns[0]}</th><th scope="col" class="py-3 text-right font-medium">{allocation.columns[1]}</th></tr></thead>
+        <tbody>
+          {allocation.rows.map(([k, v], i) => (
+            <tr class="border-b border-line"><th scope="row" class="flex items-center gap-2.5 py-4 text-left font-normal text-body"><span class="h-3 w-3 shrink-0 rounded-[2px]" style={`background:${colours[i % colours.length]}`}></span>{k}</th><td class="py-4 text-right font-medium text-body">{v}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Section>

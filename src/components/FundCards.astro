@@ -1,0 +1,46 @@
+---
+/**
+ * FundCards — Figma 123:31757 → 207:16552 (home "Our funds").
+ * Cream band; H1 title left (323), two cards right: 324×405 photo, rust-hi H3
+ * fund name, body, 42px rate + "before fees", secondary "Learn more" and gold
+ * "Apply via Olivia123". Card background is a warm mesh (CSS approximation).
+ * Ratings block below (RatingsRow without a button). Mobile: title, stacked
+ * cards with a 150px image band, ratings card.
+ */
+import Button from "./Button.astro";
+import RatingsRow from "./RatingsRow.astro";
+interface Props {
+  title: string; id?: string;
+  cards: readonly { fund: "afi" | "pif"; title: string; subtitle: string; rate: string; rateNote: string; href: string; investHref: string; image: { src: string; alt: string } }[];
+  buttons: readonly { label: string; style?: "primary" | "secondary" | "external" }[];
+  showRatings?: boolean;
+}
+const { title, id, cards, buttons, showRatings = true } = Astro.props;
+---
+<section id={id} class="bg-cream">
+  <div class="mx-auto flex max-w-site flex-col gap-12 px-4 py-10 md:gap-20 md:px-12 md:pb-10 md:pt-12">
+    <div class="flex flex-col gap-9 md:flex-row md:gap-4">
+      <h2 class="text-h3 font-medium text-navy md:w-[323px] md:shrink-0 md:text-h1">{title}</h2>
+      <div class="flex flex-col gap-6 md:gap-9">
+        {cards.map((c) => (
+          <article class="flex flex-col overflow-hidden rounded-2xl border border-sand md:flex-row md:gap-6" style="background: var(--gradient-fund-card);">
+            <img src={c.image.src} alt={c.image.alt} width="324" height="405" loading="lazy" class="h-[150px] w-full object-cover md:h-[405px] md:w-[324px] md:shrink-0" />
+            <div class="flex flex-col gap-6 px-6 pb-10 pt-6 md:justify-center md:gap-9 md:px-[60px] md:py-0">
+              <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 md:pr-[120px]">
+                  <h3 class="text-h5 font-medium text-rust-hi md:text-h3">{c.title}</h3>
+                  <p class="text-body text-body">{c.subtitle}</p>
+                </div>
+                <div><p class="text-h4 font-medium text-body md:text-h1">{c.rate}</p><p class="text-body text-body">{c.rateNote}</p></div>
+              </div>
+              <div class="flex flex-col gap-3 md:flex-row md:gap-4">
+                {buttons.map((b) => <Button label={b.label} href={b.style === "external" ? c.investHref : c.href} style={b.style} full class="md:w-auto" />)}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+    {showRatings && <RatingsRow />}
+  </div>
+</section>

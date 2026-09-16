@@ -102,7 +102,7 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
       <button type="submit" class="sr-only">{ui.searchSubmit}</button>
     </form>
     <div class="flex flex-col gap-6">
-      <p class="text-body font-medium text-navy">{ui.popularSearchesTitle}</p>
+      <p class="text-base font-medium text-navy">{ui.popularSearchesTitle}</p>
       <ul class="flex flex-col gap-6">
         {ui.popularSearches.map((p) => <li><a href={resolve(p.href)} class="block text-lead text-navy">{p.label}</a></li>)}
       </ul>

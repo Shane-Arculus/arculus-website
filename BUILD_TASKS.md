@@ -37,8 +37,8 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 ## 4 · Pages
 
-- [ ] T13 Home (warm hero and fund cards, navy below)
-- [ ] T14 Fund page template → AFI (navy), PIF (warm/orange); fund-specific important information; three-destination CTA (Invest via Olivia123 [gold], Enquire via pre-filled contact form [rust], Read PDF)
+- [x] T13 Home (`src/pages/index.astro`) + home-only modules `FundCards` (warm mesh cards, CSS approximation `[Unverified]`) and `ImportantDisclosure`; `LeftRight` now takes `blocks[]` for the home's two stacked text blocks; `RatingsRow` button optional — 16 Sep. Fixed a T1 token collision: `text-body` was colour only, so body copy had been 16px; size is now `text-base` (15px) on `body`.
+- [x] T14 Fund page template `src/pages/funds/[slug].astro` → AFI and PIF; `FundFeesFacts`, `FundPortfolio` (allocation donut drawn as inline SVG from the JSON rows — no chart library); first real performance charts exported from the frames to `public/charts/<fund>-2026-06.webp` (the export carries its own title, so the slot renders no caption) — 16 Sep
 - [ ] T15 Wholesale landing (gate at entry; strategy cards click through once attested) + Private mandates module + strategy template → A−, BBB, PEP (gated as deep-link safety net; PEP performance figures entirely off-page)
 - [ ] T16 Investment Management (gated; entity name pending)
 - [ ] T17 About: Our approach, Governance & oversight (RE = DDH Graham), Team (CEO = Sunetha Parag); ESG (needs an inbound link — see register)
@@ -72,7 +72,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)
 - [ ] L2 DNS cutover; SSL; test forms, attestation and Olivia123 links on production domain
-- [ ] L3 Handover doc (`docs/MONTHLY.md`): edit fund JSON, add PDF + `documents.json` line, export chart from Figma, commit — with a worked example
+- [ ] L3 Handover doc (`docs/MONTHLY.md`): edit fund JSON (performance periods, `performanceAsAt`, `chartImage`, portfolio metrics, allocation rows), add PDF + `documents.json` line, export the chart frame from Figma at 2× as WebP to `public/charts/<fund>-<yyyy-mm>.webp`, commit — with a worked example
 - [ ] L4 Post-launch: test gold external-link colour against rust actions; may revert header button label / external colour
 
 ## Parked (do not resolve in code)

@@ -1,33 +1,40 @@
 ---
+/**
+ * Home — Figma 01A · Homepage Alt 123:31753 → 207:16548.
+ * Order: header · hero-level-1 · fund-cards · important-disclosure · left-right
+ * · product-cards · insights-row · important-information (generic) · footer.
+ */
 import Base from "../layouts/Base.astro";
-import {
-  getSite, getFunds, getStrategies, getWholesaleLanding, getPrivateMandates, getIm,
-  getAbout, getInsights, getDocuments, getPage, getMarkdown, getArticle, getDoc, fill,
-} from "../content/loaders";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import HeroLevel1 from "../components/HeroLevel1.astro";
+import FundCards from "../components/FundCards.astro";
+import ImportantDisclosure from "../components/ImportantDisclosure.astro";
+import LeftRight from "../components/LeftRight.astro";
+import ProductCards from "../components/ProductCards.astro";
+import InsightsRow from "../components/InsightsRow.astro";
+import ImportantInformation from "../components/ImportantInformation.astro";
+import { getPage, getSite, getFund, getArticle } from "../content/loaders";
 
-// T2 smoke test: every loader runs once at build. Replaced by the real home page in T13.
-const site = await getSite();
-const funds = await getFunds();
-const strategies = await getStrategies();
-await getWholesaleLanding(); await getPrivateMandates(); await getIm();
-await getAbout("approach"); await getAbout("governance"); await getAbout("team");
-const insights = await getInsights(); const docs = await getDocuments();
-await getPage("home"); await getPage("contact"); await getPage("404"); await getPage("search"); await getPage("subscribe");
-for (const id of ["terms", "privacy", "cookies", "disclosure"]) await getMarkdown("legal", id);
-await getMarkdown("aboutMd", "esg");
-// cross-references
 const home = await getPage("home");
-for (const s of [home.insights.featured, ...home.insights.list]) await getArticle(s);
-for (const f of funds) { for (const k of f.keyDocuments.items) await getDoc(k.doc).catch(() => null); for (const d of f.documents.items) await getDoc(d); }
-const afi = funds.find((f) => f.slug === "afi")!;
-fill(site.importantInformation.fund.template, { fundName: afi.name, arsn: afi.regulatory.arsn, apir: afi.regulatory.apir });
-if (!funds.length || !strategies.length || !insights.articles.length || !docs.documents.length) throw new Error("content: a collection is empty");
+const site = await getSite();
+const fundHref = { afi: "/funds/arculus-fixed-income-fund", pif: "/funds/arculus-preferred-income-fund" } as const;
+const cards = await Promise.all(home.funds.cards.map(async (c) => ({
+  ...c, href: fundHref[c.fund], investHref: site.externalUrls.olivia123,
+  image: { src: `/images/hero-${c.fund}.webp`, alt: `[image register ${c.fund === "afi" ? "IMG-02" : "IMG-03"}]` },
+})));
+const featured = await getArticle(home.insights.featured);
+const list = await Promise.all(home.insights.list.map(getArticle));
+const aboutHref = home.leftRightButton.href;
 ---
-<Base title="Arculus Funds Management" description="Australian fixed income manager." noindex>
-  <section class="bg-cream">
-    <div class="mx-auto max-w-site px-4 py-24 md:px-12">
-      <h1 class="text-h1 font-medium text-navy">Arculus Funds Management</h1>
-      <p class="mt-4 text-body text-body">Site under construction.</p>
-    </div>
-  </section>
+<Base title="Arculus Funds Management — Income management that preserves capital" description={home.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={home.hero.buttons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />
+  <FundCards id="funds" title={home.funds.title} cards={cards} buttons={home.funds.cardButtons} showRatings={home.funds.showRatings} />
+  <ImportantDisclosure />
+  <LeftRight blocks={home.leftRight.map((lr) => ({ title: lr.title, paragraphs: [lr.body] }))} image={{ src: "/images/left-right-city.webp", alt: "[image register IMG-04]" }} button={{ label: home.leftRightButton.label, href: aboutHref, style: "secondary" }} />
+  <ProductCards title={home.productCards.title} cards={home.productCards.cards} />
+  <InsightsRow title={home.insights.title} button={home.insights.button} featured={featured} list={list} />
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
 </Base>

@@ -1,0 +1,59 @@
+---
+/**
+ * Fund page template — Figma AFI 88:823 → 207:16875, PIF 97:1078 → 207:17279.
+ * Produces /funds/arculus-fixed-income-fund and /funds/arculus-preferred-income-fund.
+ * Order: header · hero-level-2 (light, full, rust title, target-return facts)
+ * · breadcrumb · fund-overview-performance · content-fees-facts · portfolio ·
+ * three-columns-contact-banner (how to invest) · key-documents · documents ·
+ * important-information (fund) · footer.
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import FundOverviewPerformance from "../../components/FundOverviewPerformance.astro";
+import FundFeesFacts from "../../components/FundFeesFacts.astro";
+import FundPortfolio from "../../components/FundPortfolio.astro";
+import ThreeColumnsContactBanner from "../../components/ThreeColumnsContactBanner.astro";
+import KeyDocuments from "../../components/KeyDocuments.astro";
+import Documents from "../../components/Documents.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import { getFunds, getSite, getDoc } from "../../content/loaders";
+
+export const routes = { afi: "arculus-fixed-income-fund", pif: "arculus-preferred-income-fund" } as const;
+export async function getStaticPaths() {
+  const funds = await getFunds();
+  return funds.map((f) => ({ params: { slug: routes[f.slug] }, props: { fund: f } }));
+}
+const { fund: f } = Astro.props;
+const site = await getSite();
+const pds = await getDoc(`${f.slug}-pds`);
+const resolveHref = (h?: string) => (h === "olivia123" ? site.externalUrls.olivia123 : h === "pds" ? pds.path : h);
+const heroButtons = f.hero.buttons.map((b) => ({ ...b, href: resolveHref(b.href) }));
+const invest = f.howToInvest.columns.map((c) => ({ ...c, button: { ...c.button, href: resolveHref(c.button.href) } }));
+const keyDocs = await Promise.all(f.keyDocuments.items.map(async (k) => ({ title: k.title, meta: k.meta, href: (await getDoc(k.doc).catch(() => null))?.path ?? "#" })));
+const docs = await Promise.all(f.documents.items.map(async (id) => { const d = await getDoc(id); return { title: d.title, href: d.path }; }));
+const image = { src: `/images/hero-${f.slug}.webp`, alt: f.hero.image ?? "" };
+const [target, ...facts] = f.hero.facts;
+---
+<Base title={`${f.name} — Arculus Funds Management`} description={f.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={f.hero.title} description={f.hero.subtitle} theme="light" layout="full" bg={f.slug} titleColor="rust" buttons={heroButtons} image={image}>
+    <div class="flex flex-col gap-6 text-navy md:pt-2">
+      <div><p>{target.label}</p><p class="text-h5 font-medium md:text-h3">{target.value}</p>{target.note && <p>{target.note}</p>}</div>
+      <dl class="flex flex-col gap-2 md:flex-row md:gap-4">
+        {facts.map((x) => <div class="flex gap-1.5 border-l border-line-secondary pl-4 md:flex-col md:gap-0"><dt>{x.label}</dt><dd class="font-medium">{x.value}</dd></div>)}
+      </dl>
+    </div>
+  </HeroLevel2>
+  <Breadcrumb items={f.breadcrumb} />
+  <FundOverviewPerformance about={f.about} ratingReportUrl={f.ratings.show ? f.ratings.ratingReportUrl : undefined} performance={f.performance} fundName={f.name} />
+  <FundFeesFacts suit={f.whoItMaySuit} managed={f.howManaged} features={f.features} />
+  <FundPortfolio title={f.portfolio.title} metrics={f.portfolio.metrics} allocation={f.portfolio.allocation} />
+  <ThreeColumnsContactBanner title={f.howToInvest.title} columns={invest} />
+  <KeyDocuments title={f.keyDocuments.title} items={keyDocs} />
+  <Documents title={f.documents.title} intro={f.documents.intro} items={docs} viewAll={{ label: f.documents.button.label, href: f.documents.button.href ?? "/documents" }} />
+  <ImportantInformation variant="fund" fundName={f.name} arsn={f.regulatory.arsn} apir={f.regulatory.apir} />
+  <Footer slot="footer" />
+</Base>

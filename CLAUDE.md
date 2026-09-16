@@ -77,9 +77,9 @@ Type ramp (Fira Sans; size/line-height as used on the frames):
 | H4 | Medium 28/115% |
 | H5 | Medium 24/135% |
 | H6 | Medium 20/130% |
-| Body-lg | Regular 22/150% — fund page About paragraph |
+| Body-lg | Regular 22/150% — fund page About paragraph (`text-base-lg`) |
 | Lead | Regular 18/145% |
-| Body | Regular 15/145% |
+| Body | Regular 15/145% — size utility is `text-base` (set on `body`); `text-body` is the COLOUR utility |
 | Body strong | Medium 15/145% |
 | Small | Regular 12/140% |
 | Kicker / label | SemiBold 11/auto |
@@ -109,7 +109,7 @@ All in `content/`, loaded as Astro content collections by `src/content.config.ts
 - `legal/terms.md`, `legal/privacy.md`, `legal/cookies.md`, `legal/disclosure.md` (disclosure copy pending).
 - `pages/home.json`, `pages/contact.json`, `pages/404.json`.
 
-Monthly update is a `data.json`-style edit: change fund JSON, add PDF and a `documents.json` line, drop in the chart export, commit. Document this in `docs/MONTHLY.md` (task L3).
+Monthly update: the two performance charts are Figma exports (`Performance chart` nodes `88:836` AFI, `97:1119` PIF, at 2×, WebP), never generated in code; the portfolio allocation donut is inline SVG from the three allocation rows. The edit is: change fund JSON, add PDF and a `documents.json` line, drop in the chart export, commit. Document this in `docs/MONTHLY.md` (task L3).
 
 ## 5. Rules
 
@@ -228,7 +228,7 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 | `StrategyAtAGlance` | `items: [value, label][]`, `ladder: 1 \| 2 \| 3` | `104:13320`→`207:18170`; BBB `118:12579`; PEP `120:1030` |
 | `ContentColumns` | `title`, `items: [heading, body][]`, `icons?`, `columns?`, `bg?` | `103:1341`→`207:17865` |
 | `TwoColumnsContent` | `title`, `paragraphs: string[]`, `bg?` | `103:1340`→`207:17864` |
-| `LeftRight` | `title`, `paragraphs`, `image {src, alt}`, `button?`, `flip?`, `bg?` | `157:11910`→`208:12143`; home `123:31759` |
+| `LeftRight` | `title`+`paragraphs` or `blocks {title, paragraphs}[]`, `image {src, alt}`, `button?`, `flip?`, `bg?` | `157:11910`→`208:12143`; home `123:31759` |
 | `FundOverviewPerformance` | `about {title, body}`, `ratingReportUrl?`, `performance {...}`, `fundName` | `88:828`→`207:17684`; PIF `97:1110`→`207:17732` |
 | `RatingsRow` | `reportUrl` (copy from `site.json` ratings) | `244:9689`→`228:9407`; Approach `244:9709` |
 | `Documents` | `title`, `intro?`, `items {title, href, meta?}[]`, `viewAll?`, `collapseAfter?`, `bg?`, `id?` | `95:1133`→`249:20747`; library `186:3637…` |
@@ -246,6 +246,10 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 | `ContactForm` / `FormField` | none — reads pages/contact.json + site.json | `181:12164`→`210:12398`; errors `189:4027`; sent `189:4288` |
 | `SubscribeModal` | none — opened by any `[data-open-subscribe]` | `189:4552`→`236:9567`; done `189:4713` |
 | `AttestationModal` | none — include on gated pages; opens when session key absent | `189:4010`→`236:9091`; scrim `130:13793` |
+| `FundCards` | `title`, `cards {fund, title, subtitle, rate, rateNote, href, investHref, image}[]`, `buttons`, `showRatings?`, `id?` | `123:31757`→`207:16552` |
+| `ImportantDisclosure` | none — reads `site.json` | `123:31758`→`207:16553` |
+| `FundFeesFacts` | `suit {title, body}`, `managed {title, body[], button}`, `features {title, items}` | `88:935`→`207:16882` |
+| `FundPortfolio` | `title`, `metrics`, `allocation {columns, rows}` — donut is inline SVG from rows | `88:957`→`207:16884` |
 | `Breadcrumb` | `items: string[]` (labels; hrefs from nav) | `88:826`→`207:16878` |
 | `ImportantInformation` | `variant: generic` \| `fund` + `fundName, arsn, apir` \| `wholesale` + `riskSubject, asAt` | `123:31763`, `88:994`, `103:1344` |
 | `CtaBanner` | `title`, `body`, `button` | `113:830`→`207:17867` |

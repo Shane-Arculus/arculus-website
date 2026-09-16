@@ -1,0 +1,15 @@
+---
+/**
+ * ImportantDisclosure — Figma 123:31758 → 207:16553 (home only). Cream strip:
+ * 15px Medium label left (323), body copy with a rust "Read the full
+ * declaration" link right. Copy from site.json importantDisclosure (Q18 open).
+ */
+import { getSite } from "../content/loaders";
+const { importantDisclosure: d } = await getSite();
+---
+<section class="bg-cream">
+  <div class="mx-auto flex max-w-site flex-col gap-3 px-4 py-8 md:flex-row md:gap-4 md:px-12 md:py-9">
+    <p class="text-body font-medium text-body md:w-[323px] md:shrink-0">{d.title}</p>
+    <p class="text-body text-body">{d.body} <a href={d.href} class="font-medium text-rust underline underline-offset-2 hover:text-rust-hi">{d.linkLabel}</a></p>
+  </div>
+</section>
