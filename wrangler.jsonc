@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers config — static assets only, no Worker code, no adapter.
+  // Presence of this file stops Wrangler's build-time "auto-config" from
+  // rewriting the project (it was installing @astrojs/cloudflare on every build).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "arculus-website",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

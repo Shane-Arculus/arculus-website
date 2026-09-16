@@ -6,16 +6,24 @@ import { join, relative } from "node:path";
 
 /**
  * verifiedGate — fails the build if any file in content/ still has
- * `verified: false`, unless PUBLIC_ALLOW_UNVERIFIED=1 (preview environments
- * only). Runs on every build, independent of Astro's content cache.
+ * `verified: false`. Runs on every build, independent of Astro's content cache.
+ *
+ * Unverified content is allowed on preview builds only. A build is a preview when
+ * either PUBLIC_ALLOW_UNVERIFIED=1 is set, or the CI branch (Cloudflare sets
+ * WORKERS_CI_BRANCH for Workers Builds, CF_PAGES_BRANCH for Pages) is anything
+ * other than `main`. So: push to `main` = production = gate on; push to any
+ * other branch = preview = gate off. Nothing to configure in the dashboard.
  */
 function verifiedGate() {
   return {
     name: "arculus:verified-gate",
     hooks: {
       "astro:build:start": () => {
-        if (process.env.PUBLIC_ALLOW_UNVERIFIED === "1") {
-          console.warn("[verified-gate] PUBLIC_ALLOW_UNVERIFIED=1 — building with unverified content. Preview only.");
+        const branch = process.env.WORKERS_CI_BRANCH || process.env.CF_PAGES_BRANCH || "";
+        const isPreview = process.env.PUBLIC_ALLOW_UNVERIFIED === "1" || (branch !== "" && branch !== "main");
+        if (isPreview) {
+          console.warn(`[verified-gate] preview build${branch ? ` (branch ${branch})` : ""} — unverified content allowed. Never merge to main until the register clears.`);
+          process.env.PUBLIC_ALLOW_UNVERIFIED = "1"; // so preview-only routes (/dev/components) build too
           return;
         }
         const root = join(process.cwd(), "content");
