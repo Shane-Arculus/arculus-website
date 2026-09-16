@@ -1,0 +1,26 @@
+---
+/**
+ * ContentColumns — Figma 103:1341 → 207:17865. Cream band, H3 section title,
+ * up to four columns of Lead-size Medium title + body copy. Optional Lucide
+ * icon per column (Icon component). Mobile stacks.
+ */
+import Section from "./Section.astro";
+import Icon from "./Icon.astro";
+type IconName = Parameters<typeof Icon>[0]["name"];
+interface Props { title: string; items: readonly (readonly [string, string])[]; icons?: IconName[]; bg?: "cream" | "white"; columns?: 3 | 4; }
+const { title, items, icons = [], bg = "cream", columns = items.length >= 4 ? 4 : 3 } = Astro.props;
+---
+<Section bg={bg}>
+  <div class="flex flex-col gap-6 md:gap-12">
+    <h2 class="text-h3 font-medium text-navy">{title}</h2>
+    <div class:list={["flex flex-col gap-6 md:grid md:gap-9", columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3"]}>
+      {items.map(([heading, body], i) => (
+        <div class="flex flex-col gap-3 md:gap-6">
+          {icons[i] && <Icon name={icons[i]} size={24} class="text-rust-hi" />}
+          <h3 class="text-lead font-medium text-navy">{heading}</h3>
+          <p class="text-body text-body">{body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</Section>

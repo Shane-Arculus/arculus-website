@@ -1,0 +1,73 @@
+---
+/**
+ * HeroLevel2 — every inner-page hero.
+ * Figma: fund full 88:13040→207:17790 (light, rust-hi title, stats block via slot);
+ * compact 159:3161→208:12337 (light, navy title, 460 band, 444 image);
+ * wholesale strategy 104:1684→207:19179 (navy gradient, orange kicker, white
+ * copy, stat row); IM 170:3271 likewise.
+ *
+ * theme light: mesh background image (`bg` = afi | pif | compact), navy or
+ *   rust-hi title (`titleColor`), body-grey description, warm ellipse outline.
+ * theme navy: --gradient-navy-radial, white copy, decor outline.
+ * layout full: 650 band, 581 photo. compact: 460 band, 444 photo.
+ * Optional kicker (wholesale), buttons, stats [label, value][], and a default
+ * slot rendered under the buttons (fund target-return block, T14).
+ * Mobile: no photo (per frames), full-width buttons, stats stack.
+ */
+import Button from "./Button.astro";
+import HeroImage from "./HeroImage.astro";
+interface Props {
+  title: string; description?: string; kicker?: string;
+  theme?: "light" | "navy"; layout?: "full" | "compact";
+  bg?: "afi" | "pif" | "compact";
+  titleColor?: "navy" | "rust";
+  buttons?: { label: string; href?: string; style?: "primary" | "secondary" | "external" }[];
+  stats?: readonly (readonly [string, string])[];
+  image?: { src: string; alt: string };
+}
+const { title, description, kicker, theme = "light", layout = "full", bg = "compact", titleColor = "navy", buttons = [], stats = [], image } = Astro.props;
+const light = theme === "light";
+const titleCls = light ? (titleColor === "rust" ? "text-rust-hi" : "text-navy") : "text-white";
+const bodyCls = light ? "text-body" : "text-white";
+const kickerCls = light ? "text-rust-hi" : "text-orange";
+const bandH = layout === "compact" ? "md:min-h-[460px]" : "md:min-h-[650px]";
+const imgSize = layout === "compact" ? 444 : 581;
+---
+<section class:list={["relative overflow-hidden", light ? "bg-cream" : "text-white"]} style={light ? undefined : "background: var(--gradient-navy-radial);"}>
+  {light && (
+    <picture class="absolute inset-0">
+      <source media="(min-width: 768px)" srcset={`/heroes/hero-${bg === "compact" ? "compact-navy" : bg}-1440.webp`} />
+      <img src={`/heroes/hero-${bg === "compact" ? "compact-navy" : bg}-390.webp`} alt="" class="h-full w-full object-cover" aria-hidden="true" />
+    </picture>
+  )}
+  <div class:list={["relative mx-auto flex max-w-site flex-col px-4 py-10 md:flex-row md:items-center md:gap-4 md:px-12 md:py-0", bandH]}>
+    <div class:list={["flex flex-col gap-4 md:w-[664px] md:gap-6 md:pr-12", layout === "compact" ? "md:py-16" : "md:py-20"]}>
+      <div class="flex flex-col gap-3 md:gap-4">
+        {kicker && <p class:list={["text-kicker font-semibold uppercase tracking-kicker md:text-[14px]", kickerCls]}>{kicker}</p>}
+        <h1 class:list={["text-display-sm font-medium md:text-display", titleCls]}>{title}</h1>
+        {description && <p class:list={["text-lead", bodyCls]}>{description}</p>}
+      </div>
+      {buttons.length > 0 && (
+        <div class="flex flex-col gap-3 md:flex-row md:gap-4">
+          {buttons.map((b) => <Button label={b.label} href={b.href} style={b.style} full class="md:w-auto" />)}
+        </div>
+      )}
+      {stats.length > 0 && (
+        <dl class="flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-12 md:pt-2">
+          {stats.map(([label, value]) => (
+            <div class="flex flex-col gap-1.5">
+              <dt class:list={["text-kicker font-semibold uppercase tracking-kicker", kickerCls]}>{label}</dt>
+              <dd class:list={["text-h6 font-medium", light ? "text-navy" : "text-white"]}>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+      <slot />
+    </div>
+    {image && (
+      <div class="hidden md:flex md:w-[664px] md:justify-center">
+        <HeroImage src={image.src} alt={image.alt} size={imgSize} outline={light ? "border-outline-warm" : "border-outline-decor"} />
+      </div>
+    )}
+  </div>
+</section>

@@ -11,6 +11,16 @@ import Footer from "../../components/Footer.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import ImportantInformation from "../../components/ImportantInformation.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import HeroLevel1 from "../../components/HeroLevel1.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import HeroWholesale from "../../components/HeroWholesale.astro";
+import Statement from "../../components/Statement.astro";
+import StrategyAtAGlance from "../../components/StrategyAtAGlance.astro";
+import ContentColumns from "../../components/ContentColumns.astro";
+import TwoColumnsContent from "../../components/TwoColumnsContent.astro";
+import LeftRight from "../../components/LeftRight.astro";
+import FundOverviewPerformance from "../../components/FundOverviewPerformance.astro";
+import { getPage, getAbout, getWholesaleLanding } from "../../content/loaders";
 import { getStrategy } from "../../content/loaders";
 import Button from "../../components/Button.astro";
 import { getFund } from "../../content/loaders";
@@ -20,15 +30,34 @@ export function getStaticPaths() {
 }
 const afi = await getFund("afi");
 const a = await getStrategy("a-minus");
+const home = await getPage("home");
+const approach = await getAbout("approach");
+const wl = await getWholesaleLanding();
 ---
 <Base title="Component gallery" description="Preview-only component gallery." noindex>
   <Header slot="header" />
   <Footer slot="footer" />
+  <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={home.hero.buttons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />
+  <HeroLevel2 title={afi.hero.title} description={afi.hero.subtitle} theme="light" layout="full" bg="afi" titleColor="rust" buttons={afi.hero.buttons.map((b) => ({ ...b, href: b.href === "olivia123" ? "#" : "#" }))} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }}>
+    <div class="flex flex-col gap-6 text-navy md:pt-2">
+      <div><p class="text-body">{afi.hero.facts[0].label}</p><p class="text-h5 font-medium md:text-h3">{afi.hero.facts[0].value}</p><p class="text-body">{afi.hero.facts[0].note}</p></div>
+      <dl class="flex flex-col gap-2 md:flex-row md:gap-4">{afi.hero.facts.slice(1).map((f) => <div class="flex gap-1.5 border-l border-line-secondary pl-4 md:flex-col md:gap-0"><dt class="text-body">{f.label}</dt><dd class="text-body font-medium">{f.value}</dd></div>)}</dl>
+    </div>
+  </HeroLevel2>
+  <HeroLevel2 title={approach.hero.title} description={approach.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[approach.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <HeroLevel2 title={a.hero.title} description={a.hero.subtitle} kicker={a.kicker} theme="navy" layout="full" buttons={[a.hero.button]} stats={a.hero.facts} image={{ src: "/images/hero-a-minus.webp", alt: "[image register IMG-09]" }} />
+  <HeroWholesale kicker={wl.hero.kicker} title={wl.hero.title} subtitle={wl.hero.subtitle} />
   <Breadcrumb items={afi.breadcrumb} />
+  <FundOverviewPerformance about={afi.about} ratingReportUrl={afi.ratings.ratingReportUrl} performance={afi.performance} fundName={afi.name} />
+  <Statement title={a.statement.title} points={a.statement.points} footnote={a.statement.footnote} />
+  <StrategyAtAGlance items={a.strategyAtAGlance} ladder={1} />
+  <ContentColumns title={a.processRiskControls.title} items={a.processRiskControls.items} />
+  <TwoColumnsContent title={a.keyRisks.title} paragraphs={a.keyRisks.paragraphs} />
+  <LeftRight title={approach.whoWeAre.title} paragraphs={approach.whoWeAre.paragraphs} image={{ src: "/images/left-right-city.webp", alt: "[image register IMG-04]" }} />
   <section class="bg-cream">
     <div class="mx-auto max-w-site px-4 py-12 md:px-12">
       <h1 class="text-h2 font-medium text-navy">Component gallery</h1>
-      <p class="mt-2 text-body text-body">Preview builds only. T3: KeyValueList and ChartImage. T4: Header, Button, Icon. T5: Footer. T6: Breadcrumb, ImportantInformation, CtaBanner.</p>
+      <p class="mt-2 text-body text-body">Preview builds only. T3: KeyValueList and ChartImage. T4: Header, Button, Icon. T5: Footer. T6: Breadcrumb, ImportantInformation, CtaBanner. T7: HeroLevel1, HeroLevel2, HeroWholesale, HeroImage. T8: Statement, StrategyAtAGlance, ContentColumns, TwoColumnsContent, LeftRight, Section. T9: FundOverviewPerformance, RatingsRow.</p>
       <div class="mt-6 flex flex-wrap gap-4"><Button label="Primary" href="#" /><Button label="Secondary" href="#" style="secondary" /><Button label="External" href="#" style="external" /></div>
     </div>
   </section>

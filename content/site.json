@@ -143,7 +143,10 @@
   "ratings": {
     "headline": "Rated 'Investment Grade' by Lonsec.",
     "disclosure": "Ratings are opinions of the relevant research house, are not recommendations, and may change without notice.",
-    "buttonLabel": "View the Fund Rating Report"
+    "buttonLabel": "View the Fund Rating Report",
+    "mobileTitle": "Ratings",
+    "lonsecAlt": "Lonsec",
+    "badgeAlt": "Lonsec Investment Grade rating"
   },
   "attestation": {
     "kicker": "WHOLESALE INVESTORS ONLY",

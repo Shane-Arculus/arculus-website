@@ -1,0 +1,21 @@
+---
+/**
+ * TwoColumnsContent — Figma 103:1340 → 207:17864. White band, H3 title in the
+ * left column, body copy split across two 664px columns (paragraphs given as a
+ * list; first half left, second half right). Mobile: one column.
+ */
+import Section from "./Section.astro";
+interface Props { title: string; paragraphs: readonly string[]; bg?: "white" | "cream"; }
+const { title, paragraphs, bg = "white" } = Astro.props;
+const mid = Math.ceil(paragraphs.length / 2);
+const left = paragraphs.slice(0, mid), right = paragraphs.slice(mid);
+---
+<Section bg={bg}>
+  <div class="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-4">
+    <div class="flex flex-col gap-4 md:gap-9 md:pr-12">
+      <h2 class="text-h3 font-medium text-navy">{title}</h2>
+      <div class="flex flex-col gap-4 text-body text-body">{left.map((p) => <p>{p}</p>)}</div>
+    </div>
+    <div class="flex flex-col gap-4 text-body text-body md:pt-[74px]">{right.map((p) => <p>{p}</p>)}</div>
+  </div>
+</Section>

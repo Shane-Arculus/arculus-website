@@ -1,0 +1,24 @@
+---
+/**
+ * LeftRight — Figma 157:11910 → 208:12143 (and home 123:31759, governance).
+ * White band, 664×689 image with 16px radius on one side, H1-size title and
+ * Lead body on the other, optional button. `flip` puts the image right.
+ * Mobile: image then copy, full width.
+ */
+import Section from "./Section.astro";
+import Button from "./Button.astro";
+interface Props { title: string; paragraphs: readonly string[]; image: { src: string; alt: string }; button?: { label: string; href?: string; style?: "primary" | "secondary" | "external" }; flip?: boolean; bg?: "white" | "cream"; }
+const { title, paragraphs, image, button, flip = false, bg = "white" } = Astro.props;
+---
+<Section bg={bg}>
+  <div class:list={["flex flex-col gap-6 md:flex-row md:items-center md:gap-[130px]", flip && "md:flex-row-reverse"]}>
+    <img src={image.src} alt={image.alt} width="664" height="689" loading="lazy" decoding="async" class="aspect-[664/689] w-full rounded-2xl object-cover md:w-[664px] md:shrink-0" />
+    <div class="flex flex-col gap-6 md:gap-9 md:pr-12">
+      <div class="flex flex-col gap-3 md:gap-4">
+        <h2 class="text-h3 font-medium text-navy md:text-h1">{title}</h2>
+        <div class="flex flex-col gap-4 text-lead text-body">{paragraphs.map((p) => <p>{p}</p>)}</div>
+      </div>
+      {button && <div><Button label={button.label} href={button.href} style={button.style ?? "secondary"} /></div>}
+    </div>
+  </div>
+</Section>

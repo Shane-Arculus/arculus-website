@@ -1,0 +1,38 @@
+---
+/**
+ * RatingsRow — the Lonsec ratings bar. Figma desktop 244:9689 (three columns:
+ * headline + disclosure · Lonsec wordmark + Investment Grade badge · Secondary
+ * button); mobile 228:9407 (white card: "Ratings" title, disclosure, badge row,
+ * full-width button). Lonsec only. Copy from site.json ratings; the report URL
+ * is per fund (ratingReportUrl). Also used on Our approach (244:9709).
+ */
+import Button from "./Button.astro";
+import { getSite } from "../content/loaders";
+interface Props { reportUrl: string; class?: string; }
+const { reportUrl, class: className = "" } = Astro.props;
+const { ratings } = await getSite();
+---
+<div class:list={["rounded-2xl border border-card-line bg-white", className]}>
+  <!-- Desktop -->
+  <div class="hidden items-center justify-between gap-14 p-12 md:flex">
+    <div class="flex w-[388px] flex-col gap-1">
+      <p class="text-h5 font-medium text-navy">{ratings.headline}</p>
+      <p class="text-small text-navy">{ratings.disclosure}</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <img src="/ratings/lonsec-wordmark.png" alt={ratings.lonsecAlt} width="138" height="88" class="h-[88px] w-auto" />
+      <img src="/ratings/lonsec-investment-grade.png" alt={ratings.badgeAlt} width="92" height="92" class="h-[92px] w-[92px]" />
+    </div>
+    <Button label={ratings.buttonLabel} href={reportUrl} style="secondary" />
+  </div>
+  <!-- Mobile -->
+  <div class="flex flex-col gap-6 px-6 pb-6 pt-4 md:hidden">
+    <p class="text-lead font-medium text-navy">{ratings.mobileTitle}</p>
+    <p class="text-body text-body">{ratings.disclosure}</p>
+    <div class="flex items-center gap-3.5">
+      <img src="/ratings/lonsec-investment-grade.png" alt={ratings.badgeAlt} width="56" height="56" class="h-14 w-14 shrink-0" />
+      <p class="text-body font-medium text-navy">{ratings.headline}</p>
+    </div>
+    <Button label={ratings.buttonLabel} href={reportUrl} style="secondary" full />
+  </div>
+</div>

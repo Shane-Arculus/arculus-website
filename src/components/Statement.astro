@@ -1,0 +1,24 @@
+---
+/**
+ * Statement — Figma 107:841 → 207:19154. Cream band, H3 title, three
+ * "pillar" columns (H6 SemiBold title + body), 12px SemiBold caption.
+ * Mobile stacks the pillars. Used on wholesale strategy pages and IM.
+ */
+import Section from "./Section.astro";
+interface Props { title: string; points: readonly (readonly [string, string])[]; footnote?: string; bg?: "cream" | "white"; }
+const { title, points, footnote, bg = "cream" } = Astro.props;
+---
+<Section bg={bg}>
+  <div class="flex flex-col gap-4 md:gap-9">
+    <h2 class="text-h3 font-medium text-navy">{title}</h2>
+    <div class="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-14">
+      {points.map(([heading, body]) => (
+        <div class="flex flex-col gap-2 md:gap-3">
+          <h3 class="text-h6 font-medium text-navy md:font-semibold">{heading}</h3>
+          <p class="text-body text-body">{body}</p>
+        </div>
+      ))}
+    </div>
+    {footnote && <p class="text-small font-semibold text-navy">{footnote}</p>}
+  </div>
+</Section>

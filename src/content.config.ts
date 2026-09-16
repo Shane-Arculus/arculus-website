@@ -57,7 +57,7 @@ const site = defineCollection({
       fund: z.object({ template: z.string(), _note: note }),
       wholesale: z.object({ template: z.string(), thenGeneric: z.boolean(), _note: note }),
     }),
-    ratings: z.object({ headline: z.string(), disclosure: z.string(), buttonLabel: z.string() }),
+    ratings: z.object({ headline: z.string(), disclosure: z.string(), buttonLabel: z.string(), mobileTitle: z.string(), lonsecAlt: z.string(), badgeAlt: z.string() }),
     attestation: z.object({
       kicker: z.string(), title: z.string(), body: z.string(), checkbox: z.string(), validation: z.string(),
       continue: z.string(), decline: z.string(), footnote: z.string(), storageKey: z.string(),
@@ -86,7 +86,7 @@ const funds = defineCollection({
     theme: z.enum(["navy", "warm"]),
     breadcrumb,
     hero: z.object({
-      title: z.string(), subtitle: z.string(), buttons: z.array(button),
+      title: z.string(), subtitle: z.string(), buttons: z.array(button), image: z.string().optional(),
       facts: z.array(z.object({ label: z.string(), value: z.string(), note: z.string().optional() })),
     }),
     about: z.object({ title: z.string(), body: z.string(), _note: note }),
@@ -242,7 +242,7 @@ const pages = defineCollection({
   schema: z.discriminatedUnion("kind", [
     z.object({
       kind: z.literal("home"), ...base,
-      hero: z.object({ title: z.string(), subtitle: z.string(), buttons: z.array(button) }),
+      hero: z.object({ title: z.string(), subtitle: z.string(), buttons: z.array(button), image: z.string().optional() }),
       funds: z.object({
         title: z.string(),
         cards: z.array(z.object({ fund: z.enum(["afi", "pif"]), title: z.string(), subtitle: z.string(), rate: z.string(), rateNote: z.string() })),

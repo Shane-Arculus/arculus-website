@@ -1,0 +1,38 @@
+---
+/**
+ * FundOverviewPerformance — Figma 88:828 → 207:17684 (AFI), 97:1110 → 207:17732 (PIF).
+ * Cream band. About the Fund (H3 + 22px body), RatingsRow, then Performance:
+ * H3 + note, and a white card holding the chart image (desktop only) beside the
+ * period table. Mobile: About, ratings card, Performance, table card.
+ * Also serves the wholesale strategy pages' "About the strategy" + At a glance
+ * block when passed `ratings={false}` (107:859).
+ */
+import Section from "./Section.astro";
+import RatingsRow from "./RatingsRow.astro";
+import ChartImage from "./ChartImage.astro";
+import KeyValueList from "./KeyValueList.astro";
+interface Props {
+  about: { title: string; body: string };
+  ratingReportUrl?: string;
+  performance: { title: string; note: string; chartTitle: string; chartImage: string; chartSeries: readonly string[]; tableTitle: string; periods: readonly (readonly [string, string])[]; performanceAsAt: string };
+  fundName: string;
+}
+const { about, ratingReportUrl, performance, fundName } = Astro.props;
+---
+<Section bg="cream" pad="none" class="pb-10 md:pb-0">
+  <div class="flex flex-col gap-9 px-4 pt-10 md:gap-[50px] md:px-12 md:pt-0">
+    <div class="flex flex-col gap-6 md:gap-5 md:pr-12">
+      <h2 class="text-h5 font-medium text-navy md:text-h3">{about.title}</h2>
+      <p class="text-body text-body md:text-body-lg">{about.body}</p>
+    </div>
+    {ratingReportUrl && <RatingsRow reportUrl={ratingReportUrl} />}
+    <div class="flex flex-col gap-6 md:gap-5">
+      <h2 class="text-h5 font-medium text-navy md:text-h3">{performance.title}</h2>
+      <p class="text-body text-body">{performance.note}</p>
+      <div class="flex flex-col gap-6 rounded-2xl border border-card-line bg-white px-6 pb-6 pt-4 md:flex-row md:gap-6 md:p-6">
+        <ChartImage src={performance.chartImage} alt={`${performance.chartTitle}, ${fundName}, to ${performance.performanceAsAt}`} title={performance.chartTitle} series={performance.chartSeries} class="md:w-[664px] md:shrink-0" />
+        <KeyValueList rows={performance.periods} title={performance.tableTitle} variant="table" />
+      </div>
+    </div>
+  </div>
+</Section>

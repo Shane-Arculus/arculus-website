@@ -8,14 +8,15 @@
       {
         "label": "See how we invest",
         "href": "/about/our-approach",
-        "style": "primary"
+        "style": "secondary"
       },
       {
         "label": "Explore the funds",
         "href": "#funds",
-        "style": "secondary"
+        "style": "primary"
       }
-    ]
+    ],
+    "image": "[image register IMG-01]"
   },
   "funds": {
     "title": "Our funds",

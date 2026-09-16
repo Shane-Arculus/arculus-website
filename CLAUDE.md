@@ -45,6 +45,10 @@ Colours are the library variables actually bound on the canonical frames. They a
 | `footer-copy` | `#D2D5D9` | footer link copy |
 | `line` | `#D2D5D9` | row dividers in key-value lists (same value, own name) |
 | `outline-decor` | `#445277` | decorative outline strokes on navy gradient bands |
+| `outline-warm` | `#DFC6AD` | ellipse outline on light heroes |
+| `orange` | `#EC7826` | wholesale kicker and stat labels (`[Unverified]` raw hex; logo gradient uses #EE7624) |
+| `card-line` | `#EBE5DE` | white card borders on cream bands |
+| `line-secondary` | `#A8ADB3` | secondary button stroke (`[Unverified]` raw hex) |
 | `line-strong` | `#7E868F` | footer outline button, search field border (`[Unverified]` raw hex on frames) |
 | `gold` | `#B08A3C` | external links only (Olivia123, SS&C registry) — "Antique gold" |
 | `error` | `#B82823` | form validation |
@@ -54,7 +58,7 @@ Link colour rule: **gold** for links that leave the site; **rust** for actions t
 
 Colour temperature rule: warm (cream/sand/rust) backgrounds on retail fund pages only; navy everywhere else (About, Insights, Wholesale, IM). Home mixes deliberately: warm hero and fund cards, navy below. Both fund pages share one structure; they differ by hero mesh — AFI rust-red, PIF orange — while the module bands below are the same cream/white/navy sequence. Wholesale stat bands step through a ladder A− (deepest) → BBB → PEP (lightest).
 
-Gradients: hero mesh fills (Figma SHADER) ship as WebP in `public/heroes/`; the radial and linear navy gradients (wholesale heroes, IM hero, CTA banners, strategy card bands) ship as CSS — see `public/README.md`.
+Gradients: hero mesh fills (Figma SHADER) ship as WebP in `public/heroes/`; the radial and linear navy gradients (wholesale heroes, IM hero, CTA banners, strategy card bands) and the three strategy-at-a-glance ladder gradients (`--gradient-ladder-1..3`) ship as CSS — see `public/README.md` and `global.css`.
 
 Type ramp (Fira Sans; size/line-height as used on the frames):
 
@@ -67,6 +71,7 @@ Type ramp (Fira Sans; size/line-height as used on the frames):
 | H4 | Medium 28/115% |
 | H5 | Medium 24/135% |
 | H6 | Medium 20/130% |
+| Body-lg | Regular 22/150% — fund page About paragraph |
 | Lead | Regular 18/145% |
 | Body | Regular 15/145% |
 | Body strong | Medium 15/145% |
@@ -74,7 +79,10 @@ Type ramp (Fira Sans; size/line-height as used on the frames):
 | Kicker / label | SemiBold 11/auto |
 | Caption | Regular 11/auto |
 | Display-sm | Medium 48/115% — CTA banner title on mobile |
+| Stat | Medium 46/120% — strategy-at-a-glance figures (`text-stat`); labels SemiBold 13 (`text-stat-label`) |
 | Subhead | SemiBold 16/120% — table and chart titles on fund pages, colour `navy-mid` (`text-subhead`) |
+
+Hero photos: the photo is clipped to an ellipse rotated 45° and paired with a thin outline ellipse; `HeroImage` carries the exact path from the frames. Photos at 2× the display size (581 → 1162px) in `public/images/`.
 
 Layout: desktop content max-width 1340 inside 1440 (48px side padding on module bars); mobile 390 with 16px gutters (358 content). Breakpoints: `<768` mobile layout, `≥768` desktop layout. Key-value lists render as tables ≥768 and stacks <768. Chart images hidden <768; the period table carries the numbers.
 
@@ -205,6 +213,18 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 | `ChartImage` | `src`, `alt`, `title?`, `series?` | Performance chart `88:836`; none on mobile |
 | `Header` | none — reads `site.json` (nav, headerButton, ui, externalUrls); use `<Header slot="header" />` in `Base` | `123:31754`, panels `190:4800`, mobile `207:16549`, states `199:11833` |
 | `Footer` | none — reads `site.json`; `<Footer slot="footer" />` | `123:31764`→`207:16559` |
+| `HeroLevel1` | `title`, `subtitle`, `buttons`, `image {src, alt}` | `123:31755`→`226:9398` |
+| `HeroLevel2` | `title`, `description?`, `kicker?`, `theme: light \| navy`, `layout: full \| compact`, `bg: afi \| pif \| compact`, `titleColor: navy \| rust`, `buttons?`, `stats?`, `image?`; default slot under buttons | fund `88:13040`→`207:17790`; compact `159:3161`→`208:12337`; strategy `104:1684`→`207:19179` |
+| `HeroWholesale` | `kicker`, `title`, `subtitle` | `130:2051`→`209:19003` |
+| `HeroImage` | `src`, `alt`, `size` (581 / 444 / 390), `outline` class | image + ellipse-shape in every hero |
+| `Section` | `bg: white \| cream \| sand \| navy-deep`, `pad: default \| tight \| none`, `id?` | the standard band; every content module uses it |
+| `Statement` | `title`, `points: [heading, body][]`, `footnote?`, `bg?` | `107:841`→`207:19154` |
+| `StrategyAtAGlance` | `items: [value, label][]`, `ladder: 1 \| 2 \| 3` | `104:13320`→`207:18170`; BBB `118:12579`; PEP `120:1030` |
+| `ContentColumns` | `title`, `items: [heading, body][]`, `icons?`, `columns?`, `bg?` | `103:1341`→`207:17865` |
+| `TwoColumnsContent` | `title`, `paragraphs: string[]`, `bg?` | `103:1340`→`207:17864` |
+| `LeftRight` | `title`, `paragraphs`, `image {src, alt}`, `button?`, `flip?`, `bg?` | `157:11910`→`208:12143`; home `123:31759` |
+| `FundOverviewPerformance` | `about {title, body}`, `ratingReportUrl?`, `performance {...}`, `fundName` | `88:828`→`207:17684`; PIF `97:1110`→`207:17732` |
+| `RatingsRow` | `reportUrl` (copy from `site.json` ratings) | `244:9689`→`228:9407`; Approach `244:9709` |
 | `Breadcrumb` | `items: string[]` (labels; hrefs from nav) | `88:826`→`207:16878` |
 | `ImportantInformation` | `variant: generic` \| `fund` + `fundName, arsn, apir` \| `wholesale` + `riskSubject, asAt` | `123:31763`, `88:994`, `103:1344` |
 | `CtaBanner` | `title`, `body`, `button` | `113:830`→`207:17867` |

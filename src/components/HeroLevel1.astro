@@ -1,0 +1,38 @@
+---
+/**
+ * HeroLevel1 — the home hero. Figma 123:31755 → 226:9398.
+ * Warm mesh background (public/heroes/hero-home-*.webp), title Display navy,
+ * subtitle 24 navy-deep, two buttons (secondary then primary), ellipse photo
+ * right. Mobile stacks: copy, full-width buttons, then a 260px band showing the
+ * top of the photo.
+ */
+import Button from "./Button.astro";
+import HeroImage from "./HeroImage.astro";
+interface Props {
+  title: string; subtitle: string;
+  buttons: { label: string; href?: string; style?: "primary" | "secondary" | "external" }[];
+  image: { src: string; alt: string };
+}
+const { title, subtitle, buttons, image } = Astro.props;
+---
+<section class="relative overflow-hidden bg-cream">
+  <picture class="absolute inset-0 -z-0">
+    <source media="(min-width: 768px)" srcset="/heroes/hero-home-1440.webp" />
+    <img src="/heroes/hero-home-390.webp" alt="" class="h-full w-full object-cover object-bottom" aria-hidden="true" />
+  </picture>
+  <div class="relative mx-auto flex max-w-site flex-col md:min-h-[650px] md:flex-row md:items-center md:gap-4 md:px-12 md:py-12">
+    <div class="flex flex-col gap-8 px-4 pt-10 md:w-[664px] md:gap-6 md:px-0 md:pt-0">
+      <div class="flex flex-col gap-3 md:gap-4">
+        <h1 class="text-display-sm font-medium text-navy md:text-display">{title}</h1>
+        <p class="text-h6 text-navy-deep md:text-h5">{subtitle}</p>
+      </div>
+      <div class="flex flex-col gap-3 md:flex-row md:gap-4">
+        {buttons.map((b) => <Button label={b.label} href={b.href} style={b.style} full class="md:w-auto" />)}
+      </div>
+    </div>
+    <div class="mt-7 h-[260px] w-full overflow-hidden md:mt-0 md:flex md:h-auto md:w-[664px] md:justify-center md:overflow-visible">
+      <HeroImage src={image.src} alt={image.alt} size={581} class="hidden md:block" />
+      <HeroImage src={image.src} alt={image.alt} size={390} class="md:hidden" />
+    </div>
+  </div>
+</section>

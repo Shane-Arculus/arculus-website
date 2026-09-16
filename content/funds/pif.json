@@ -20,7 +20,7 @@
       {
         "label": "Download the PDS",
         "href": "pds",
-        "style": "secondary"
+        "style": "primary"
       }
     ],
     "facts": [
@@ -41,7 +41,8 @@
         "label": "Inception:",
         "value": "October 2004"
       }
-    ]
+    ],
+    "image": "[image register IMG-03]"
   },
   "about": {
     "title": "About the Fund",
