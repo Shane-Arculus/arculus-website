@@ -6,7 +6,8 @@
  * Desktop ≥768: logo · nav (About ▾, Funds ▾, Wholesale ▾, Investment Management,
  * Insights, Contact) · gold external button · search icon (→ /search).
  * Dropdown: 280px panel flush with the trigger's left edge, 12px below the
- * label (QA 16 Sep: hanging from the header bottom sat too far away), opens on click,
+ * label (QA 16 Sep: hanging from the header bottom sat too far away), opens on
+ * hover for mouse users (Jim, 17 Sep) and on click/Enter for touch and keyboard,
  * closes on Escape, outside click, or focus leaving the item.
  * Mobile <768: logo · search icon · menu icon. Menu and search are full-height
  * overlays below the 68px bar; nav groups are accordions.
@@ -125,15 +126,19 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
         it.querySelector<HTMLElement>("[data-dd-panel]")!.classList.add("hidden");
       }
     };
+    const hoverable = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     for (const it of items) {
       const trigger = it.querySelector<HTMLButtonElement>("[data-dd-trigger]")!;
       const panel = it.querySelector<HTMLElement>("[data-dd-panel]")!;
-      trigger.addEventListener("click", () => {
-        const open = trigger.getAttribute("aria-expanded") === "true";
-        closeAll(it);
-        trigger.setAttribute("aria-expanded", String(!open));
-        panel.classList.toggle("hidden", open);
-      });
+      const open = () => { closeAll(it); trigger.setAttribute("aria-expanded", "true"); panel.classList.remove("hidden"); };
+      const close = () => { trigger.setAttribute("aria-expanded", "false"); panel.classList.add("hidden"); };
+      trigger.addEventListener("click", () => (trigger.getAttribute("aria-expanded") === "true" ? close() : open()));
+      // Desktop with a mouse: open on hover, close 150ms after the pointer leaves (covers the gap and the panel).
+      if (hoverable) {
+        let t: number | undefined;
+        it.addEventListener("mouseenter", () => { window.clearTimeout(t); open(); });
+        it.addEventListener("mouseleave", () => { t = window.setTimeout(close, 150); });
+      }
       it.addEventListener("focusout", (e) => {
         if (!it.contains(e.relatedTarget as Node)) closeAll();
       });

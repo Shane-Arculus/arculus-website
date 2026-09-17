@@ -160,7 +160,7 @@
     "storageKey": "arculus-wholesale-attested"
   },
   "forms": {
-    "formspreeEndpoint": "[TO SET]",
+    "formspreeEndpoint": "https://formspree.io/f/xwlpklba",
     "mailchimp": {
       "audienceId": "[TO SET]",
       "formAction": "[TO SET]",

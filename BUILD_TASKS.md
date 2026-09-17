@@ -48,7 +48,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 ## 5 · Integration
 
-- [ ] T21 Wire Formspree to info@ and test; confirm Mailchimp double opt-in email copy — BLOCKED on Jim: Formspree form endpoint (`https://formspree.io/f/…`), Mailchimp embedded-form action URL (`…list-manage.com/subscribe/post?u=…&id=…`) and the merge-field tag for 'I am a' (e.g. `MMERGE3`). Code is ready; values go in `content/site.json` → `forms`.
+- [~] T21 Formspree wired (`https://formspree.io/f/xwlpklba`, Formshield on, CAPTCHA off; notification address to confirm under Workflow) — 17 Sep. **Subscribe/email list PARKED**: Jim to find out how Arculus sends the weekly update today. Outcomes: (a) existing tool → point `SubscribeModal` at its signup endpoint; (b) nothing → Mailchimp free tier, action URL + 'I am a' merge tag into `site.json` → `forms.mailchimp`; (c) no subscribe function → remove the modal and Subscribe buttons, Insights CTA becomes 'Contact the team'. Until decided the modal shows its error line on submit.
 - [x] T22 `public/_redirects` mapping all 141 old WordPress URLs (pages → their new routes; ~110 monthly posts → document library filter; articles → insights; feed and wp-sitemap), `@astrojs/sitemap` (14 public pages; gated, search, dev and 404 excluded), `robots.txt`, canonical + Open Graph + Twitter meta in `Base` with a default card `public/og/default.png`, SVG/PNG favicons — 17 Sep. [Unverified] destinations for the old ratings and news-category pages.
 - [x] T23 axe WCAG 2.1 AA on 12 pages at 1440 and 390: zero violations after darkening `gold` to `#8A6A2A` (white-on-gold 5.0:1), replacing `muted` text with `body`, and rust-hi for the strategy-card labels on white (orange fails at 2.9:1); keyboard: skip link first, dropdowns open with Enter and close on Escape; dialogs are native `<dialog>` (focus trapped); tables are semantic — 17 Sep
 - [x] T24 Performance: whole build 2.5 MB incl. the Pagefind index; a page is ~50 KB HTML + 36 KB CSS + one ~20 KB hero mesh + three ~17 KB font files, no JS framework; hero backgrounds and photos get `fetchpriority=high`, everything below the fold lazy-loads. The weight to watch is the licensed photography: keep exports at 2× display size, WebP q80 (~100 KB each) — 17 Sep
@@ -73,7 +73,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)
 - [ ] L2 DNS cutover; SSL; test forms, attestation and Olivia123 links on production domain
-- [ ] L3 Handover doc (`docs/MONTHLY.md`): edit fund JSON (performance periods, `performanceAsAt`, `chartImage`, portfolio metrics, allocation rows), add PDF + `documents.json` line, export the chart frame from Figma at 2× as WebP to `public/charts/<fund>-<yyyy-mm>.webp`, commit — with a worked example
+- [x] L3 `docs/MONTHLY.md` — the monthly runbook: export the two charts from Figma at 2× → WebP, edit the two fund JSON files (as-at date, chart filename, table, note, portfolio metrics, allocation rows, latest-document ids), add the two PDFs and their `documents.json` blocks, commit via GitHub's uploader; with a worked example and what to do when a build fails — 17 Sep
 - [ ] L4 Post-launch: test gold external-link colour against rust actions; may revert header button label / external colour
 
 ## Parked (do not resolve in code)
