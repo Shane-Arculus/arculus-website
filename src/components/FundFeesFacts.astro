@@ -27,7 +27,7 @@ const { suit, managed, features } = Astro.props;
       </div>
       <div><Button label={managed.button.label} href={managed.button.href} /></div>
     </div>
-    <div class="flex flex-col gap-6 rounded-lg bg-white px-6 pb-6 pt-4 md:gap-9 md:px-9 md:pb-9 md:pt-6 md:shadow-[0_0_0_1px_var(--color-card-line)]">
+    <div class="flex flex-col gap-6 rounded-lg bg-white px-6 pb-6 pt-4 md:gap-9 md:px-9 md:pb-9 md:pt-6">
       <h3 class="text-lead font-medium text-navy">{features.title}</h3>
       <KeyValueList rows={features.items} caption={features.title} />
     </div>

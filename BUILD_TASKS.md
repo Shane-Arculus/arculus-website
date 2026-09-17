@@ -66,6 +66,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 ## 6a · QA notes from previews (fix in T23)
 
+- [x] QA pass 1 (16 Sep, Jim's home-page review): page-by-page frame comparisons at 1440 for Home, AFI, A− SMA, Wholesale landing, Approach, Team. Fixed: container width (Tailwind `max-w` includes padding, so every band had 1244px of content, not 1340 — `--container-site` is now 1436); hero photo lean (the Tuesday mirror was wrong; reverted); home hero exact 650; fund cards use per-fund mesh exports (`public/heroes/fund-card-afi.webp` rust, `-pif.webp` orange) and full-height images; product cards have their two distinct gradients and the frame's outline placement and two-line titles; generic Important Information shows its label as a left column on desktop; footer external button sits in the sixth column; LeftRight text column no longer over-padded; fund hero titles honour the frame's line breaks; performance chart sits bare on cream with only the table in a card; Fund features card has no border; How-to-invest columns carry their Lucide icons; wholesale hero 634 tall; navy hero description 24px; content-column dividers; compact hero 501; About breadcrumbs on white; Approach philosophy on white with the link inside the last column.
 - [ ] Header dropdown panels open too far below the label (they hang from the 104px header bottom); bring them up to sit just under the trigger (Jim, 16 Sep)
 
 ## 7 · Launch

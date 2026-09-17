@@ -9,7 +9,7 @@
     "Arculus Preferred Income Fund"
   ],
   "hero": {
-    "title": "Arculus Preferred Income Fund",
+    "title": "Arculus Preferred\nIncome Fund",
     "subtitle": "Australian government and corporate bonds across the capital structure, actively managed to earn higher income through the rate cycle.",
     "buttons": [
       {
@@ -217,7 +217,8 @@
           "label": "Apply via Olivia123",
           "href": "olivia123",
           "style": "external"
-        }
+        },
+        "icon": "file-check"
       },
       {
         "title": "Through your adviser or platform",
@@ -226,7 +227,8 @@
           "label": "Talk to us about the Fund",
           "href": "/contact?topic=pif",
           "style": "primary"
-        }
+        },
+        "icon": "layout-grid"
       }
     ]
   },

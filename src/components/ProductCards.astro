@@ -13,12 +13,13 @@ const { title, cards } = Astro.props;
   <div class="flex flex-col gap-6 md:gap-12">
     <h2 class="text-h3 font-medium text-navy md:text-h1">{title}</h2>
     <div class="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-4">
-      {cards.map((c) => (
-        <div class="relative flex min-h-[420px] flex-col justify-end overflow-hidden rounded-xl p-6 text-white md:min-h-[510px] md:p-12" style="background: var(--gradient-navy-radial);">
-          <img src="/decor/cta-outline.svg" alt="" aria-hidden="true" width="522" height="502" class="pointer-events-none absolute right-[-120px] top-[-80px] w-[520px] max-w-none select-none opacity-70" />
+      {cards.map((c, i) => (
+        <div class="relative flex min-h-[420px] flex-col justify-end overflow-hidden rounded-xl p-6 text-white md:min-h-[510px] md:p-12" style={`background: var(--gradient-product-${(i % 2) + 1});`}>
+          <img src="/decor/cta-outline.svg" alt="" aria-hidden="true" width="731" height="719" class="pointer-events-none absolute left-[335px] top-[-335px] w-[731px] max-w-none select-none opacity-60" />
+          <img src="/decor/cta-outline.svg" alt="" aria-hidden="true" width="316" height="427" class="pointer-events-none absolute left-[218px] top-[455px] w-[316px] max-w-none select-none opacity-60" />
           <div class="relative flex flex-col gap-4 md:gap-9 md:pr-12">
             <div class="flex flex-col gap-3 md:gap-4">
-              <h3 class="text-h5 font-medium md:text-h3">{c.title}</h3>
+              <h3 class="whitespace-pre-line text-h5 font-medium md:text-h3">{c.title}</h3>
               <p class="text-base">{c.subtitle}</p>
             </div>
             <div><Button label={c.button.label} href={c.button.href} style={c.button.style ?? "primary"} /></div>

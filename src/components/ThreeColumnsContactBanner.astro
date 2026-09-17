@@ -6,7 +6,9 @@
  * Lead Medium title, banner-copy body, button. Mobile stacks.
  */
 import Button from "./Button.astro";
-interface Props { title: string; columns: readonly { title: string; body: string; button: { label: string; href?: string; style?: "primary" | "secondary" | "external" } }[]; }
+import Icon from "./Icon.astro";
+type IconName = Parameters<typeof Icon>[0]["name"];
+interface Props { title: string; columns: readonly { title: string; body: string; icon?: string; button: { label: string; href?: string; style?: "primary" | "secondary" | "external" } }[]; }
 const { title, columns } = Astro.props;
 ---
 <section class="bg-navy-mid text-white">
@@ -17,6 +19,7 @@ const { title, columns } = Astro.props;
         {columns.map((c) => (
           <div class="flex flex-col gap-6 md:border-l md:border-line-warm/40 md:pl-9 md:first:border-l-0 md:first:pl-0">
             <div class="flex flex-col gap-3 md:gap-6">
+              {c.icon && <Icon name={c.icon as IconName} size={24} class="text-rust-hi" />}
               <h3 class="text-lead font-medium">{c.title}</h3>
               <p class="text-base text-banner-copy">{c.body}</p>
             </div>

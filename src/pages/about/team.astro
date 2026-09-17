@@ -17,7 +17,7 @@ const photo = (p: string, name: string) => (p.startsWith("[") ? "/images/team-pl
 <Base title={`${t.hero.title} — Arculus Funds Management`} description={t.hero.subtitle} noindex>
   <Header slot="header" />
   <HeroLevel2 title={t.hero.title} description={t.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[t.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
-  <Breadcrumb items={t.breadcrumb} />
+  <Breadcrumb bg="white" items={t.breadcrumb} />
   {t.groups.map((g) => <ProfileModule title={g.title} intro={g.intro} people={g.people.map((p) => ({ ...p, photo: photo(p.photo, p.name) }))} />)}
   <TwoColumnsContent title={t.distribution.title} paragraphs={[t.distribution.body]} />
   <CtaBanner title={t.cta.title} body={t.cta.body} button={t.cta.button} />

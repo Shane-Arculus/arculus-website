@@ -92,7 +92,7 @@ Type ramp (Fira Sans; size/line-height as used on the frames):
 
 Hero photos: the photo is clipped to an ellipse rotated 45° and paired with a thin outline ellipse; `HeroImage` carries the exact path from the frames. Photos at 2× the display size (581 → 1162px) in `public/images/`.
 
-Layout: desktop content max-width 1340 inside 1440 (48px side padding on module bars); mobile 390 with 16px gutters (358 content). Breakpoints: `<768` mobile layout, `≥768` desktop layout. Key-value lists render as tables ≥768 and stacks <768. Chart images hidden <768; the period table carries the numbers.
+Layout: desktop content 1340 inside 1440 (48px side padding on module bars) — the container token is `--container-site: 1436px` because Tailwind's `max-w` includes padding; `max-w-site px-12` therefore yields 1340 of content; mobile 390 with 16px gutters (358 content). Breakpoints: `<768` mobile layout, `≥768` desktop layout. Key-value lists render as tables ≥768 and stacks <768. Chart images hidden <768; the period table carries the numbers.
 
 Buttons (Figma component set `74:295`): Primary (rust fill, white copy), Secondary (white fill, ink copy, rust arrow, outline), each with Default/Hover/Pressed/Disabled and a `background=white|colours` variant. Footer buttons use `footer-copy`.
 
@@ -267,7 +267,7 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 ## 7. Working conventions
 
 - One T-task per session. Start by reading `BUILD_TASKS.md`, do the task, tick it, commit with the task ID in the message (`T7: HeroLevel1 and HeroLevel2`).
-- Build the component, wire it to content, render it on its page, check the Pages preview against both Figma frames, then stop. Do not start the next task.
+- Build the component, wire it to content, render it on its page, check the preview against both Figma frames, then stop. For a page task, the check is a full-page comparison against the frame screenshot at 1440 (see `/tmp/cmp.py` pattern: frame beside render in 1500px strips), not just the modules in isolation — module-level checks missed a global container-width error and a mirrored hero photo. Do not start the next task.
 - Screenshots of Figma frames come from the MCP `get_screenshot` with `maxDimension: 1600`; asset exports via `download_assets` (returns a URL — fetch with curl).
 - Keep PR descriptions to: task ID, what was built, what is `[Unverified]`, what was parked.
 - Never commit secrets. Formspree and Mailchimp IDs are public embed IDs and may live in `site.json`; anything else goes in Cloudflare environment variables.

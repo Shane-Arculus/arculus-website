@@ -9,7 +9,7 @@
     "Arculus Fixed Income Fund"
   ],
   "hero": {
-    "title": "Arculus Fixed Income Fund",
+    "title": "Arculus Fixed\nIncome Fund",
     "subtitle": "Australian sovereign and senior bank bonds, actively managed to preserve capital and earn income through the rate cycle.",
     "buttons": [
       {
@@ -213,7 +213,8 @@
           "label": "Apply via Olivia123",
           "href": "olivia123",
           "style": "external"
-        }
+        },
+        "icon": "file-check"
       },
       {
         "title": "Through your adviser or platform",
@@ -222,7 +223,8 @@
           "label": "Talk to us about the Fund",
           "href": "/contact?topic=afi",
           "style": "primary"
-        }
+        },
+        "icon": "layout-grid"
       }
     ]
   },

@@ -71,7 +71,7 @@
   --breakpoint-*: initial;
   --breakpoint-md: 768px;
 
-  --container-site: 1340px;
+  --container-site: 1436px; /* 1340 content + 48px side padding each side (box-sizing includes padding) */
 }
 
 :root {
@@ -82,8 +82,9 @@
   --gradient-ladder-1: linear-gradient(90deg, #0E202E 0%, #1E355E 100%);
   --gradient-ladder-2: linear-gradient(90deg, #1E355E 0%, #394D71 100%);
   --gradient-ladder-3: linear-gradient(90deg, #1E4E78 0%, #466E96 100%);
-  /* Home fund card mesh (Figma fund-cards SHADER) — CSS approximation, [Unverified] tune at QA */
-  --gradient-fund-card: radial-gradient(ellipse 60% 70% at 100% 100%, #F2C9B2 0%, #FAF5F1 45%, #FFFFFF 75%);
+  /* Home product cards (Figma 123:31760): two different radials */
+  --gradient-product-1: radial-gradient(ellipse 86% 43% at 88% 24%, #0E202E 0%, #1E355E 100%);
+  --gradient-product-2: radial-gradient(ellipse 86% 43% at 88% 24%, #304E80 0%, #1E355E 55%, #0E202E 100%);
 }
 
 @layer base {

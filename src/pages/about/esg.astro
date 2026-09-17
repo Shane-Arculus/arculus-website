@@ -11,7 +11,7 @@ const esg = await getMarkdown("aboutMd", "esg");
 ---
 <Base title={`${esg.title} — Arculus Funds Management`} description={esg.lead ?? esg.title} noindex>
   <Header slot="header" />
-  <Breadcrumb items={["Home", "About", esg.title]} />
+  <Breadcrumb bg="white" items={["Home", "About", esg.title]} />
   <ProseArticle title={esg.title} lead={esg.lead} Content={esg.Content} />
   <ImportantInformation variant="generic" />
   <Footer slot="footer" />

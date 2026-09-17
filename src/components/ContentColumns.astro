@@ -14,9 +14,9 @@ const { title, items, icons = [], bg = "cream", columns = items.length >= 4 ? 4 
 <Section bg={bg}>
   <div class="flex flex-col gap-6 md:gap-12">
     <h2 class:list={["font-medium text-navy", titleSize === "h1" ? "text-h3 md:text-h1" : "text-h3"]}>{title}</h2>
-    <div class:list={["flex flex-col gap-6 md:grid md:gap-9", columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3"]}>
+    <div class:list={["flex flex-col gap-6 md:grid md:gap-0", columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3"]}>
       {items.map(([heading, body, l], i) => (
-        <div class="flex flex-col gap-3 md:gap-6">
+        <div class="flex flex-col gap-3 md:gap-6 md:border-l md:border-line-warm md:pl-9 md:pr-9 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
           {icons[i] && <Icon name={icons[i]} size={24} class="text-rust-hi" />}
           <h3 class="text-lead font-medium text-navy">{heading}</h3>
           <p>{body}</p>

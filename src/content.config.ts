@@ -104,7 +104,7 @@ const funds = defineCollection({
       title: z.string(), asAt: z.string(), metrics: pairs,
       allocation: z.object({ columns: z.tuple([z.string(), z.string()]), rows: pairs }),
     }),
-    howToInvest: z.object({ title: z.string(), columns: z.array(z.object({ title: z.string(), body: z.string(), button })) }),
+    howToInvest: z.object({ title: z.string(), columns: z.array(z.object({ title: z.string(), body: z.string(), button, icon: z.string().optional() })) }),
     keyDocuments: z.object({ title: z.string(), items: z.array(z.object({ title: z.string(), meta: z.string(), doc: z.string() })), _note: note }),
     documents: z.object({ title: z.string(), intro: z.string(), items: z.array(z.string()), button }),
     regulatory: z.object({ re: z.string(), arsn: z.string(), apir: z.string(), administrator: z.string(), custodian: z.string(), _note: note }),

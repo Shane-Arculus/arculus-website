@@ -5,7 +5,8 @@
  * wholesale strategies 104:1684). Geometry from Figma: the photo is clipped to
  * an ellipse rotated 45° (long axis top-left → bottom-right) that fits a square
  * of `size`; the outline is a second ellipse, half as wide as it is tall,
- * sharing the same centre. Sizes: full 581 (outline 372×742), compact 444
+ * sharing the same centre. Verified 16 Sep against the frames: every hero in
+ * the file leans top-left → bottom-right. Sizes: full 581 (outline 372×742), compact 444
  * (284×567), mobile 390 (180×360, offset up-right and cropped by the band).
  */
 interface Props {
@@ -25,10 +26,10 @@ const id = `hero-clip-${Math.random().toString(36).slice(2, 8)}`;
   <svg width="0" height="0" class="absolute" aria-hidden="true">
     <defs>
       <clipPath id={id} clipPathUnits="objectBoundingBox">
-        <path d="M0.1921 0.1920 C-0.0255 0.4095 -0.0640 0.7238 0.1061 0.8939 C0.2762 1.0640 0.5905 1.0255 0.8080 0.8079 C1.0255 0.5905 1.0640 0.2762 0.8939 0.1061 C0.7238 -0.0640 0.4095 -0.0255 0.1921 0.1920 Z" />
+        <path d="M0.8079 0.1920 C1.0255 0.4095 1.0640 0.7238 0.8939 0.8939 C0.7238 1.0640 0.4095 1.0255 0.1920 0.8079 C-0.0255 0.5905 -0.0640 0.2762 0.1061 0.1061 C0.2762 -0.0640 0.5905 -0.0255 0.8079 0.1920 Z" />
       </clipPath>
     </defs>
   </svg>
-  <div class:list={["pointer-events-none absolute left-1/2 top-1/2 rounded-full border", outline]} style={`width:${ow}px;height:${oh}px;transform:translate(-50%,-50%) rotate(45deg)`} aria-hidden="true"></div>
+  <div class:list={["pointer-events-none absolute left-1/2 top-1/2 rounded-full border", outline]} style={`width:${ow}px;height:${oh}px;transform:translate(-50%,-50%) rotate(-45deg)`} aria-hidden="true"></div>
   <img src={src} alt={alt} width={size} height={size} loading="eager" decoding="async" class="block h-full w-full object-cover" style={`clip-path:url(#${id})`} />
 </div>

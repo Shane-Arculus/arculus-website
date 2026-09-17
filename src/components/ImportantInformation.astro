@@ -29,8 +29,8 @@ else {
 }
 ---
 <section class="bg-cream" aria-labelledby="important-information-title">
-  <div class="mx-auto max-w-site px-4 py-10 md:px-[84px] md:py-20">
-    <h2 id="important-information-title" class="mb-6 text-body font-medium text-navy md:sr-only">{ii.title}</h2>
+  <div class:list={["mx-auto max-w-site px-4 py-10 md:py-20", props.variant === "generic" ? "md:flex md:gap-4 md:px-12" : "md:px-[84px]"]}>
+    <h2 id="important-information-title" class:list={["mb-6 text-base font-medium text-navy", props.variant === "generic" ? "md:mb-0 md:w-[323px] md:shrink-0 md:text-small" : "md:sr-only"]}>{ii.title}</h2>
     <div class="flex flex-col gap-4 text-small text-body">
       {paragraphs.map((p) => <p>{p}</p>)}
     </div>

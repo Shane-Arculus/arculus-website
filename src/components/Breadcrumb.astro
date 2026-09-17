@@ -7,15 +7,15 @@
  */
 import Icon from "./Icon.astro";
 import { getSite } from "../content/loaders";
-interface Props { items: readonly string[]; class?: string; }
-const { items, class: className = "" } = Astro.props;
+interface Props { items: readonly string[]; class?: string; bg?: "cream" | "white"; }
+const { items, class: className = "", bg = "cream" } = Astro.props;
 const site = await getSite();
 const hrefs: Record<string, string> = { Home: "/" };
 for (const n of site.nav) { if (n.href) hrefs[n.label] = n.href; for (const c of n.children ?? []) hrefs[c.label] = c.href; }
 hrefs["Funds"] = "/#funds"; hrefs["About"] = "/about/our-approach"; hrefs["Wholesale"] = "/wholesale";
 for (const l of site.footer.extra) hrefs[l.label] = l.href;
 ---
-<nav aria-label="Breadcrumb" class:list={["bg-cream", className]}>
+<nav aria-label="Breadcrumb" class:list={[bg === "white" ? "bg-white" : "bg-cream", className]}>
   <ol class="mx-auto flex max-w-site flex-wrap items-center px-4 pt-4 text-small text-body md:px-12">
     {items.map((label, i) => {
       const last = i === items.length - 1;
