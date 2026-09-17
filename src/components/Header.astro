@@ -5,7 +5,8 @@
  *
  * Desktop ≥768: logo · nav (About ▾, Funds ▾, Wholesale ▾, Investment Management,
  * Insights, Contact) · gold external button · search icon (→ /search).
- * Dropdown: 280px panel flush with the trigger's left edge, opens on click,
+ * Dropdown: 280px panel flush with the trigger's left edge, 12px below the
+ * label (QA 16 Sep: hanging from the header bottom sat too far away), opens on click,
  * closes on Escape, outside click, or focus leaving the item.
  * Mobile <768: logo · search icon · menu icon. Menu and search are full-height
  * overlays below the 68px bar; nav groups are accordions.
@@ -36,11 +37,11 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
       <ul class="flex items-center gap-6">
         {nav.map((item, i) => item.children ? (
           <li class="relative" data-dd>
-            <button type="button" class:list={["flex h-[104px] items-center gap-1 text-body font-medium text-navy hover:text-rust focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-navy [&[aria-expanded=true]]:text-rust", isCurrent(item.children[0]?.href?.split("/").slice(0,2).join("/")) && "text-rust"]} aria-expanded="false" aria-controls={`dd-${i}`} data-dd-trigger>
+            <button type="button" class:list={["flex items-center gap-1 py-2 text-body font-medium text-navy hover:text-rust focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-navy [&[aria-expanded=true]]:text-rust", isCurrent(item.children[0]?.href?.split("/").slice(0,2).join("/")) && "text-rust"]} aria-expanded="false" aria-controls={`dd-${i}`} data-dd-trigger>
               <span>{item.label}</span>
               <Icon name="chevron-down" size={16} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
             </button>
-            <div id={`dd-${i}`} class="absolute left-0 top-full hidden w-[280px] border border-line bg-white py-3 shadow-sm" data-dd-panel>
+            <div id={`dd-${i}`} class="absolute left-0 top-[calc(100%+12px)] hidden w-[280px] border border-line bg-white py-3 shadow-sm before:absolute before:inset-x-0 before:top-[-12px] before:h-3" data-dd-panel>
               <ul>
                 {item.children.map((child: { label: string; href: string }) => (
                   <li><a href={resolve(child.href)} class:list={["block px-6 py-2.5 text-body font-medium text-navy hover:bg-cream hover:text-rust focus-visible:bg-cream focus-visible:text-rust focus-visible:outline-none", isCurrent(child.href) && "text-rust"]} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
@@ -49,7 +50,7 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
             </div>
           </li>
         ) : (
-          <li><a href={item.href} class:list={["flex h-[104px] items-center text-body font-medium text-navy hover:text-rust", isCurrent(item.href) && "text-rust"]} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a></li>
+          <li><a href={item.href} class:list={["flex items-center py-2 text-body font-medium text-navy hover:text-rust", isCurrent(item.href) && "text-rust"]} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a></li>
         ))}
       </ul>
       <Button label={headerButton.label} href={resolve(headerButton.href)} style="external" />

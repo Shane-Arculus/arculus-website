@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import sitemap from "@astrojs/sitemap";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
@@ -56,7 +57,14 @@ function verifiedGate() {
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://arculus.com.au",
   output: "static",
-  integrations: [verifiedGate()],
+  integrations: [
+    verifiedGate(),
+    sitemap({
+      // Gated, utility and preview-only routes stay out of the sitemap.
+      filter: (page) => !/\/(wholesale|investment-management|search|dev)\/|\/404/.test(page),
+    }),
+  ],
   vite: { plugins: [tailwindcss()] },
 });

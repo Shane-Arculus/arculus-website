@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dev/
+Disallow: /search
+
+Sitemap: https://arculus.com.au/sitemap-index.xml

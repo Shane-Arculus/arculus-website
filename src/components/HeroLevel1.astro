@@ -18,7 +18,7 @@ const { title, subtitle, buttons, image } = Astro.props;
 <section class="relative overflow-hidden bg-cream">
   <picture class="absolute inset-0 -z-0">
     <source media="(min-width: 768px)" srcset="/heroes/hero-home-1440.webp" />
-    <img src="/heroes/hero-home-390.webp" alt="" class="h-full w-full object-cover object-bottom" aria-hidden="true" />
+    <img src="/heroes/hero-home-390.webp" alt="" class="h-full w-full object-cover object-bottom" aria-hidden="true" fetchpriority="high" />
   </picture>
   <div class="relative mx-auto flex max-w-site flex-col md:h-[650px] md:flex-row md:items-center md:gap-4 md:px-12 md:py-0">
     <div class="flex flex-col gap-8 px-4 pt-10 md:w-[664px] md:gap-6 md:px-0 md:pt-0">

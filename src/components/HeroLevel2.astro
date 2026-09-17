@@ -21,7 +21,7 @@ interface Props {
   theme?: "light" | "navy"; layout?: "full" | "compact";
   bg?: "afi" | "pif" | "compact";
   titleColor?: "navy" | "rust";
-  buttons?: { label: string; href?: string; style?: "primary" | "secondary" | "external" }[];
+  buttons?: { label: string; href?: string; action?: string; style?: "primary" | "secondary" | "external" }[];
   stats?: readonly (readonly [string, string])[];
   image?: { src: string; alt: string };
 }
@@ -37,7 +37,7 @@ const imgSize = layout === "compact" ? 444 : 581;
   {light && (
     <picture class="absolute inset-0">
       <source media="(min-width: 768px)" srcset={`/heroes/hero-${bg === "compact" ? "compact-navy" : bg}-1440.webp`} />
-      <img src={`/heroes/hero-${bg === "compact" ? "compact-navy" : bg}-390.webp`} alt="" class="h-full w-full object-cover" aria-hidden="true" />
+      <img src={`/heroes/hero-${bg === "compact" ? "compact-navy" : bg}-390.webp`} alt="" class="h-full w-full object-cover" aria-hidden="true" fetchpriority="high" />
     </picture>
   )}
   <div class:list={["relative mx-auto flex max-w-site flex-col px-4 py-10 md:flex-row md:items-center md:gap-4 md:px-12 md:py-0", bandH]}>
@@ -49,7 +49,7 @@ const imgSize = layout === "compact" ? 444 : 581;
       </div>
       {buttons.length > 0 && (
         <div class="flex flex-col gap-3 md:flex-row md:gap-4">
-          {buttons.map((b) => <Button label={b.label} href={b.href} style={b.style} full class="md:w-auto" />)}
+          {buttons.map((b) => <Button label={b.label} href={b.href} style={b.style} full class="md:w-auto" data-open-subscribe={b.action === "subscribe-modal" ? "" : undefined} />)}
         </div>
       )}
       {stats.length > 0 && (

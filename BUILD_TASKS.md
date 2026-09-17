@@ -48,10 +48,10 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 ## 5 · Integration
 
-- [ ] T21 Wire Formspree to info@ and test; confirm Mailchimp double opt-in email copy
-- [ ] T22 Redirect map from old site URLs; sitemap.xml; robots; OG images
-- [ ] T23 Accessibility pass (WCAG AA: contrast on gold/amber, focus states, modal focus trap, table semantics)
-- [ ] T24 Performance pass (export hero mesh gradients and monthly charts at 1440/390 as WebP)
+- [ ] T21 Wire Formspree to info@ and test; confirm Mailchimp double opt-in email copy — BLOCKED on Jim: Formspree form endpoint (`https://formspree.io/f/…`), Mailchimp embedded-form action URL (`…list-manage.com/subscribe/post?u=…&id=…`) and the merge-field tag for 'I am a' (e.g. `MMERGE3`). Code is ready; values go in `content/site.json` → `forms`.
+- [x] T22 `public/_redirects` mapping all 141 old WordPress URLs (pages → their new routes; ~110 monthly posts → document library filter; articles → insights; feed and wp-sitemap), `@astrojs/sitemap` (14 public pages; gated, search, dev and 404 excluded), `robots.txt`, canonical + Open Graph + Twitter meta in `Base` with a default card `public/og/default.png`, SVG/PNG favicons — 17 Sep. [Unverified] destinations for the old ratings and news-category pages.
+- [x] T23 axe WCAG 2.1 AA on 12 pages at 1440 and 390: zero violations after darkening `gold` to `#8A6A2A` (white-on-gold 5.0:1), replacing `muted` text with `body`, and rust-hi for the strategy-card labels on white (orange fails at 2.9:1); keyboard: skip link first, dropdowns open with Enter and close on Escape; dialogs are native `<dialog>` (focus trapped); tables are semantic — 17 Sep
+- [x] T24 Performance: whole build 2.5 MB incl. the Pagefind index; a page is ~50 KB HTML + 36 KB CSS + one ~20 KB hero mesh + three ~17 KB font files, no JS framework; hero backgrounds and photos get `fetchpriority=high`, everything below the fold lazy-loads. The weight to watch is the licensed photography: keep exports at 2× display size, WebP q80 (~100 KB each) — 17 Sep
 
 ## 6 · Content and compliance (Jim + Renny)
 
@@ -67,7 +67,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 ## 6a · QA notes from previews (fix in T23)
 
 - [x] QA pass 1 (16 Sep, Jim's home-page review): page-by-page frame comparisons at 1440 for Home, AFI, A− SMA, Wholesale landing, Approach, Team. Fixed: container width (Tailwind `max-w` includes padding, so every band had 1244px of content, not 1340 — `--container-site` is now 1436); hero photo lean (the Tuesday mirror was wrong; reverted); home hero exact 650; fund cards use per-fund mesh exports (`public/heroes/fund-card-afi.webp` rust, `-pif.webp` orange) and full-height images; product cards have their two distinct gradients and the frame's outline placement and two-line titles; generic Important Information shows its label as a left column on desktop; footer external button sits in the sixth column; LeftRight text column no longer over-padded; fund hero titles honour the frame's line breaks; performance chart sits bare on cream with only the table in a card; Fund features card has no border; How-to-invest columns carry their Lucide icons; wholesale hero 634 tall; navy hero description 24px; content-column dividers; compact hero 501; About breadcrumbs on white; Approach philosophy on white with the link inside the last column.
-- [ ] Header dropdown panels open too far below the label (they hang from the 104px header bottom); bring them up to sit just under the trigger (Jim, 16 Sep)
+- [x] Header dropdown panels now sit 12px under the label (Jim, 16 Sep; fixed T23)
 
 ## 7 · Launch
 

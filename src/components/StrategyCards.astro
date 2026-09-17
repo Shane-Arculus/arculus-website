@@ -4,7 +4,8 @@
  * Cream band, H3 title + intro, three cards: gradient band (ladder colour)
  * with orange kicker, H4 white title and a round photo with circle outline
  * overflowing top-right; white body with description, hero stat (36px navy),
- * two facts on a rule, primary "View strategy". Mobile stacks; the intro is
+ * two facts on a rule, primary "View strategy". Card-body labels are rust-hi,
+ * not the frame's orange: orange on white is 2.9:1 (T23, WCAG AA). Mobile stacks; the intro is
  * omitted because the mobile frame carries it in a separate Statement.
  */
 import Button from "./Button.astro";
@@ -33,11 +34,11 @@ const { title, intro, strategies, buttonLabel, hrefs, images } = Astro.props;
             <div class="flex flex-col gap-[22px]">
               <p>{s.card.body}</p>
               <div class="flex flex-col gap-1.5">
-                <p class="text-kicker font-semibold uppercase tracking-kicker text-orange">{s.card.heroStat[0]}</p>
+                <p class="text-kicker font-semibold uppercase tracking-kicker text-rust-hi">{s.card.heroStat[0]}</p>
                 <p class="text-h2 font-medium text-navy">{s.card.heroStat[1]}</p>
               </div>
               <dl class="flex gap-6 border-t border-card-line-2 pt-[18px]">
-                {s.card.facts.map(([k, v]) => <div class="flex flex-1 flex-col gap-1"><dt class="text-kicker font-semibold uppercase tracking-kicker text-orange">{k}</dt><dd class="text-h6 font-medium text-navy">{v}</dd></div>)}
+                {s.card.facts.map(([k, v]) => <div class="flex flex-1 flex-col gap-1"><dt class="text-kicker font-semibold uppercase tracking-kicker text-rust-hi">{k}</dt><dd class="text-h6 font-medium text-navy">{v}</dd></div>)}
               </dl>
             </div>
             <div><Button label={buttonLabel} href={hrefs[s.slug]} /></div>

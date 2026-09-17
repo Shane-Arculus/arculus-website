@@ -51,14 +51,14 @@ Colours are the library variables actually bound on the canonical frames. They a
 | `card-line` | `#EBE5DE` | white card borders on cream bands |
 | `card-line-2` | `#E5E0D8` | strategy card border and facts rule |
 | `outline-card` | `#8D93AC` | circle outline on strategy card bands |
-| `muted` | `#99A1A8` | search result source line, placeholders |
+| `muted` | `#99A1A8` | input placeholders only (2.6:1 — never for text) |
 | `error-tint` | `#FCF0ED` | error banner background |
 | `disabled` / `disabled-copy` | `#CCD1D9` / `#737A85` | disabled button |
 | `banner-copy` | `#D6D1C6` | body copy on the navy-mid contact banner |
 | `line-warm` | `#EAD9C8` | column separators on white bands (profile module) |
 | `line-secondary` | `#A8ADB3` | secondary button stroke (`[Unverified]` raw hex) |
 | `line-strong` | `#7E868F` | footer outline button, search field border (`[Unverified]` raw hex on frames) |
-| `gold` | `#B08A3C` | external links only (Olivia123, SS&C registry) — "Antique gold" |
+| `gold` | `#8A6A2A` | external links only (Olivia123, SS&C registry). Figma's "Antique gold" `#B08A3C` fails AA (3.2:1); darkened at T23, `[Unverified]` with Jim |
 | `error` | `#B82823` | form validation |
 | `navy-mid` | `#0B2545` | three-columns-contact-banner on fund pages (`[Unverified]` — raw hex on the frame, not a library variable) |
 

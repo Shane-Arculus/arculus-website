@@ -31,5 +31,5 @@ const id = `hero-clip-${Math.random().toString(36).slice(2, 8)}`;
     </defs>
   </svg>
   <div class:list={["pointer-events-none absolute left-1/2 top-1/2 rounded-full border", outline]} style={`width:${ow}px;height:${oh}px;transform:translate(-50%,-50%) rotate(-45deg)`} aria-hidden="true"></div>
-  <img src={src} alt={alt} width={size} height={size} loading="eager" decoding="async" class="block h-full w-full object-cover" style={`clip-path:url(#${id})`} />
+  <img src={src} alt={alt} width={size} height={size} loading="eager" fetchpriority="high" decoding="async" class="block h-full w-full object-cover" style={`clip-path:url(#${id})`} />
 </div>
