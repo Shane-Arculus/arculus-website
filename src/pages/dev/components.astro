@@ -57,7 +57,7 @@ const afiDocs = await Promise.all(afi.documents.items.map((id) => getDoc(id)));
 const lib = await getDocuments();
 const allAfi = lib.documents.filter((d) => d.fund === "afi");
 ---
-<Base title="Component gallery" description="Preview-only component gallery." noindex>
+<Base title="Component gallery" description="Preview-only component gallery." noindex nosearch>
   <Header slot="header" />
   <Footer slot="footer" />
   <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={home.hero.buttons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />

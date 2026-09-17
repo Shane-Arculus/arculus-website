@@ -21,7 +21,7 @@ import AttestationModal from "../../components/AttestationModal.astro";
 import { getIm } from "../../content/loaders";
 const im = await getIm();
 ---
-<Base title={`${im.hero.title} — Arculus Funds Management`} description={im.hero.subtitle} noindex>
+<Base title={`${im.hero.title} — Arculus Funds Management`} description={im.hero.subtitle} noindex nosearch>
   <Header slot="header" />
   <HeroLevel2 title={im.hero.title} description={im.hero.subtitle} kicker={im.kicker} theme="navy" layout="full" buttons={im.hero.buttons} stats={im.hero.facts} image={{ src: "/images/hero-a-minus.webp", alt: "[image register IMG-09 — IM needs its own]" }} />
   <Breadcrumb items={im.breadcrumb} />

@@ -219,7 +219,7 @@ const documents = defineCollection({
     ...base,
     page: z.object({
       breadcrumb, hero: z.object({ title: z.string(), subtitle: z.string(), button }),
-      filters: z.array(z.string()), searchPlaceholder: z.string(), seeMoreLabel: z.string(), showingLabel: z.string(),
+      filters: z.array(z.string()), searchPlaceholder: z.string(), seeMoreLabel: z.string(), showingLabel: z.string(), collapseAfter: z.number().int().optional(), sizeUnknown: z.string().optional(),
       sections: z.array(z.object({
         key: z.string(), title: z.string(), intro: z.string(),
         button: button.optional(), row: z.object({ title: z.string(), meta: z.string() }).optional(),
@@ -259,13 +259,14 @@ const pages = defineCollection({
       form: z.object({ title: z.string(), intro: z.string(), fields: z.array(formField), submit: z.string() }),
       sent: z.object({ title: z.string(), body: z.string(), referenceLabel: z.string(), _note: note, links: z.array(link) }),
       details: z.array(z.object({ title: z.string(), lines: z.array(z.string()), link: link.optional(), _note: note })),
-      whoToContact: z.object({ title: z.string(), columns: z.array(z.object({ title: z.string(), body: z.string(), button })) }),
+      whoToContact: z.object({ title: z.string(), columns: z.array(z.object({ title: z.string(), body: z.string(), icon: z.string().optional(), button })) }),
     }),
     z.object({ kind: z.literal("404"), ...base, kicker: z.string(), title: z.string(), body: z.string(), links: z.array(link) }),
     z.object({
       kind: z.literal("search"), ...base, breadcrumb, title: z.string(), placeholder: z.string(), button: z.string(),
       resultsLabel: z.string(), filters: z.array(z.string()),
       kickers: z.object({ page: z.string(), document: z.string(), insight: z.string() }), pagination: z.boolean(),
+      emptyLabel: z.string(), promptLabel: z.string(), loadingLabel: z.string(), loadMore: z.string(),
     }),
     z.object({
       kind: z.literal("subscribe"), ...base,

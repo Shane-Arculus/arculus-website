@@ -42,9 +42,9 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [x] T15 Wholesale landing `src/pages/wholesale/index.astro` (gate, `StrategyCards`, `PrivateMandates`, wholesale Important Information) and strategy template `[slug].astro` → A− SMA, BBB SMA, PEP (gated, `StrategyAbout`, no PEP performance figures) — 16 Sep
 - [x] T16 Investment Management `src/pages/investment-management/index.astro` (gated; IM Important Information drops the 'Portfolio figures' sentence when no as-at date) — 16 Sep. Entity name and minimum portfolio still [Unverified] (Q12).
 - [x] T17 About: Our approach, Governance & oversight, Team, ESG (`src/pages/about/*.astro`); `ProseArticle` for markdown pages; `ContentColumns` gains per-item links, a module link and an H1 title size; `TwoColumnsContent` gains titled columns with bullet lists — 16 Sep
-- [ ] T18 Insights hub (PDF links at launch), Contact, Document library
-- [ ] T19 Legal: T&Cs, Privacy Notice, Cookie Policy (short — cookieless analytics; add footer link), Disclosure (copy pending)
-- [ ] T20 Search (Pagefind incl. PDF text), 404
+- [x] T18 Insights hub, Contact, Document library (`src/pages/insights|contact|documents/index.astro`); `ContactColumnsCard` (the contact frame's 'Who to contact' is a cream card with icons and links, not the navy banner); `DownloadSlice` size line; `Documents` 'Showing n of total'; `FilterTabs` search box and text filtering; buttons can open the subscribe modal via `action: subscribe-modal`; key device on the wholesale hero and CTA banners enlarged, offset and muted at Jim's request — 17 Sep. All three pages compared against their frames at 1440.
+- [x] T19 Legal: `/terms`, `/privacy`, `/cookies`, `/disclosure` from `src/pages/[legal].astro` via `ProseArticle` (Disclosure renders its '[Copy pending]' placeholder until Q15 lands) — 17 Sep
+- [x] T20 Search (`/search?q=`) on Pagefind — index built by `npm run build` (`astro build && pagefind --site dist`), gated pages, the gallery, 404 and search itself excluded via `nosearch` on `Base`; client-side result list with All/Pages/Documents/Insights tabs by URL; 404 page (`src/pages/404.astro`, served by Cloudflare via `not_found_handling`) — 17 Sep. Pagefind indexes HTML only: PDF text is not searchable; document titles are, via the library page.
 
 ## 5 · Integration
 

@@ -1,0 +1,25 @@
+---
+/** 404 — Figma 189:5033 → 210:15137. Served by Cloudflare for unknown paths (wrangler.jsonc not_found_handling). */
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+import ImportantInformation from "../components/ImportantInformation.astro";
+import { getPage } from "../content/loaders";
+const nf = await getPage("404");
+---
+<Base title={`${nf.title} — Arculus Funds Management`} description={nf.body} noindex nosearch>
+  <Header slot="header" />
+  <section class="bg-white">
+    <div class="mx-auto flex max-w-site flex-col gap-4 px-4 py-20 md:max-w-[936px] md:gap-6 md:py-[140px]">
+      <p class="text-kicker font-semibold uppercase tracking-kicker text-rust">{nf.kicker}</p>
+      <h1 class="text-h3 font-medium text-navy md:text-h1">{nf.title}</h1>
+      <p class="text-lead">{nf.body}</p>
+      <div class="flex flex-wrap gap-6 pt-2">
+        {nf.links.map((l) => <a href={l.href} class="inline-flex items-center gap-1 font-medium text-rust hover:underline">{l.label}<Icon name="chevron-right" size={14} /></a>)}
+      </div>
+    </div>
+  </section>
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

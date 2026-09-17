@@ -21,7 +21,7 @@ Priority is a fast launch. Build what is in the frames; do not add features.
 - Contact form: Formspree (endpoint in `content/site.json`). Subscribe: Mailchimp embedded form, double opt-in.
 - Wholesale attestation: `AttestationModal` (native `<dialog>`), state in `sessionStorage` key `arculus-wholesale-attested`; Escape does not dismiss it.
 - Forms: `ContactForm` posts to Formspree with `fetch` + `Accept: application/json`; `SubscribeModal` calls Mailchimp's `post-json` JSONP endpoint so double opt-in fires and the done state shows in-page. Both validate client-side; `novalidate` on the form, `aria-invalid` on fields.
-- Search: Pagefind, indexing pages and PDF text.
+- Search: Pagefind (`pagefind --site dist` runs after `astro build`); indexes `<main data-pagefind-body>` on every page except those rendered with `nosearch` (wholesale, IM, search, 404, gallery). HTML only — PDF contents are not indexed.
 - Fonts: Fira Sans self-hosted (Regular, Medium, SemiBold), `font-display: swap`.
 - Icons: Lucide only, inlined as paths in `src/components/Icon.astro` (no icon dependency); add a path when a module needs a new glyph.
 - Images: static exports in `public/` (WebP). Hero mesh gradients are exported (done — `public/heroes/`); monthly performance charts are exported from Figma each month. Re-exports come from the `_EXPORTS` holder frame on page `74:3` (stripped hero clones, logos, rating marks).
@@ -256,11 +256,12 @@ Reference frames: local components page `198:4969`; UI tints `123:32106`; palett
 | `PrivateMandates` | `anchor`, `title`, `body`, `aside`, `button`, `facts` | `256:9531`→`256:9566` |
 | `StrategyAbout` | `about {title, paragraphs}`, `glance {title, note, items}` | `107:859`→`207:17863` |
 | `ProseArticle` | `title`, `lead?`, `Content` (from `getMarkdown`) | ESG `150:13941`; legal `150:13536` etc. |
+| `ContactColumnsCard` | `title`, `columns {title, body, icon?, link}[]` | `181:12119`→`210:12353` |
 | `Breadcrumb` | `items: string[]` (labels; hrefs from nav) | `88:826`→`207:16878` |
 | `ImportantInformation` | `variant: generic` \| `fund` + `fundName, arsn, apir` \| `wholesale` + `riskSubject, asAt` | `123:31763`, `88:994`, `103:1344` |
 | `CtaBanner` | `title`, `body`, `button` | `113:830`→`207:17867` |
 | `Button` | `label`, `href?`, `style: primary \| secondary \| external`, `full?`, `type?` | set `74:295` |
-| `Icon` | `name` (chevron-down/up/right, search, menu, x, arrow-up-right, download, file-text), `size?` | Lucide, inlined paths |
+| `Icon` | `name` (chevron-down/up/right, search, menu, x, arrow-up-right, download, file-text, file-check, layout-grid, mail, wallet, file), `size?` | Lucide, inlined paths |
 
 `/dev/components` is a gallery page built only when `PUBLIC_ALLOW_UNVERIFIED=1`. Add every new component to it; it is the review surface until pages exist.
 

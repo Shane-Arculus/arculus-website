@@ -16,6 +16,6 @@ const { title, placeholder = "", buttonLabel, query = "", resultsLine } = Astro.
       <input id="q" name="q" type="search" value={query} placeholder={placeholder} class="h-full w-full bg-transparent text-lead text-navy placeholder:text-body focus:outline-none" />
       <button type="submit" class="inline-flex shrink-0 items-center gap-1 text-body font-medium text-rust hover:underline">{buttonLabel}<Icon name="chevron-right" size={14} /></button>
     </form>
-    {resultsLine && <p class="text-body text-body" aria-live="polite">{resultsLine}</p>}
+    <p class="text-body" aria-live="polite">{resultsLine}</p>
   </div>
 </section>

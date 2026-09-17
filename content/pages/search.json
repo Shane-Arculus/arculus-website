@@ -6,7 +6,7 @@
     "Search"
   ],
   "title": "Search",
-  "placeholder": "",
+  "placeholder": "Search the site",
   "button": "Search",
   "resultsLabel": "{n} results for “{q}”",
   "filters": [
@@ -20,5 +20,9 @@
     "document": "DOCUMENT · PDF",
     "insight": "INSIGHT · {category}"
   },
-  "pagination": true
+  "pagination": true,
+  "emptyLabel": "No results for “{q}”.",
+  "promptLabel": "Enter a search term above.",
+  "loadingLabel": "Searching…",
+  "loadMore": "Show more results"
 }

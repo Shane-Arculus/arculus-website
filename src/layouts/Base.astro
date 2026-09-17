@@ -8,8 +8,10 @@ interface Props {
   description: string;
   /** Set true on staging and gated/unverified pages. */
   noindex?: boolean;
+  /** Exclude from the site search index (gated pages, 404, search itself). */
+  nosearch?: boolean;
 }
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, nosearch = false } = Astro.props;
 const analyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN as string | undefined;
 import "../styles/global.css";
 ---
@@ -25,11 +27,11 @@ import "../styles/global.css";
     <link rel="preload" href="/fonts/FiraSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body class="min-h-dvh flex flex-col">
-    <slot name="header" />
-    <main id="main" class="flex-1">
+    <div data-pagefind-ignore><slot name="header" /></div>
+    <main id="main" class="flex-1" data-pagefind-body={nosearch ? undefined : ""} data-pagefind-ignore={nosearch ? "" : undefined}>
       <slot />
     </main>
-    <slot name="footer" />
+    <div data-pagefind-ignore><slot name="footer" /></div>
     {analyticsToken && (
       <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${analyticsToken}"}`}></script>
     )}

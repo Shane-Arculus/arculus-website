@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 const { s } = Astro.props;
 const images: Record<string, string> = { "a-minus": "/images/hero-a-minus.webp", bbb: "/images/hero-afi.webp", pep: "/images/insight-placeholder.webp" };
 ---
-<Base title={`${s.name} — Arculus Funds Management`} description={s.hero.subtitle} noindex>
+<Base title={`${s.name} — Arculus Funds Management`} description={s.hero.subtitle} noindex nosearch>
   <Header slot="header" />
   <HeroLevel2 title={s.hero.title} description={s.hero.subtitle} kicker={s.kicker} theme="navy" layout="full" buttons={[s.hero.button]} stats={s.hero.facts} image={{ src: images[s.slug], alt: s.card.image }} />
   <Breadcrumb items={s.breadcrumb} />

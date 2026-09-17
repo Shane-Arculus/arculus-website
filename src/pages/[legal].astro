@@ -1,0 +1,26 @@
+---
+/**
+ * Legal pages — Figma Terms 150:13477, Privacy 150:13612, Cookies 150:13747 (→ 209:19310…).
+ * No hero: breadcrumb on white, ProseArticle, generic Important Information.
+ * Routes: /terms /privacy /cookies /disclosure (Disclosure has no copy yet, Q15).
+ */
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import ProseArticle from "../components/ProseArticle.astro";
+import ImportantInformation from "../components/ImportantInformation.astro";
+import { getMarkdown } from "../content/loaders";
+export function getStaticPaths() {
+  return ["terms", "privacy", "cookies", "disclosure"].map((legal) => ({ params: { legal } }));
+}
+const { legal } = Astro.params;
+const doc = await getMarkdown("legal", legal!);
+---
+<Base title={`${doc.title} — Arculus Funds Management`} description={doc.lead ?? doc.title} noindex>
+  <Header slot="header" />
+  <Breadcrumb bg="white" items={["Home", doc.title]} />
+  <ProseArticle title={doc.title} lead={doc.lead} Content={doc.Content} />
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

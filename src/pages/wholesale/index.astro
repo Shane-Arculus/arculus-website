@@ -19,7 +19,7 @@ const strategies = (await getStrategies()).filter((s) => wl.strategies.cards.inc
 const pm = await getPrivateMandates();
 const images = { "a-minus": "/images/hero-a-minus.webp", bbb: "/images/hero-afi.webp", pep: "/images/insight-placeholder.webp" };
 ---
-<Base title="Wholesale strategies — Arculus Funds Management" description={wl.hero.subtitle} noindex>
+<Base title="Wholesale strategies — Arculus Funds Management" description={wl.hero.subtitle} noindex nosearch>
   <Header slot="header" />
   <HeroWholesale kicker={wl.hero.kicker} title={wl.hero.title} subtitle={wl.hero.subtitle} />
   <section class="bg-cream md:hidden"><div class="mx-auto flex max-w-site flex-col gap-3 px-4 pt-12 text-center"><h2 class="text-h3 font-medium text-navy">{wl.strategies.title}</h2><p>{wl.strategies.intro}</p></div></section>
