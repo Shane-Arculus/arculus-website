@@ -9,7 +9,9 @@
  * theme light: mesh background image (`bg` = afi | pif | compact), navy or
  *   rust-hi title (`titleColor`), body-grey description, warm ellipse outline.
  * theme navy: --gradient-navy-radial, white copy, decor outline.
- * layout full: 650 band, 581 photo. compact: 460 band, 444 photo.
+ * layout full and compact both render a 650 band with a 581 photo (22 Sep: the
+ * frames' 501/444 compact size read as too thin on the built pages); `layout`
+ * is kept so the frames' compact/full distinction stays in the page code.
  * Optional kicker (wholesale), buttons, stats [label, value][], and a default
  * slot rendered under the buttons (fund target-return block, T14).
  * Mobile: no photo (per frames), full-width buttons, stats stack.
@@ -30,8 +32,8 @@ const light = theme === "light";
 const titleCls = light ? (titleColor === "rust" ? "text-rust-hi" : "text-navy") : "text-white";
 const bodyCls = light ? "text-body" : "text-white";
 const kickerCls = light ? "text-rust-hi" : "text-orange";
-const bandH = layout === "compact" ? "md:min-h-[501px]" : "md:min-h-[650px]";
-const imgSize = layout === "compact" ? 444 : 581;
+const bandH = "md:min-h-[650px]"; // compact was 501 in the frames; Jim (22 Sep) wants every inner-page hero the same height
+const imgSize = 581;
 ---
 <section class:list={["relative overflow-hidden", light ? "bg-cream" : "text-white"]} style={light ? undefined : "background: var(--gradient-navy-radial);"}>
   {light && (
@@ -41,7 +43,7 @@ const imgSize = layout === "compact" ? 444 : 581;
     </picture>
   )}
   <div class:list={["relative mx-auto flex max-w-site flex-col px-4 py-10 md:flex-row md:items-center md:gap-4 md:px-12 md:py-0", bandH]}>
-    <div class:list={["flex flex-col gap-4 md:w-[664px] md:gap-6 md:pr-[50px]", layout === "compact" ? "md:py-16" : "md:py-20"]}>
+    <div class="flex flex-col gap-4 md:w-[664px] md:gap-6 md:py-20 md:pr-[50px]">
       <div class="flex flex-col gap-3 md:gap-4">
         {kicker && <p class:list={["text-kicker font-semibold uppercase tracking-kicker md:text-[14px]", kickerCls]}>{kicker}</p>}
         <h1 class:list={["whitespace-pre-line text-display-sm font-medium md:text-display", titleCls]}>{title}</h1>
