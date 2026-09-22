@@ -18,7 +18,35 @@ Everything else on the site stays as it is. `<fund>` is `afi` or `pif`.
 
 ## Step 1 — Get the numbers
 
-Have the two monthly reports (PDF) from Arculus for the month just ended. Everything you type comes from those PDFs. Do not calculate or round anything yourself; copy the figures as printed.
+Renny sends four workbooks each month. Two matter for the site table:
+
+| File | Sheet | Fund | Site file |
+|---|---|---|---|
+| `GACS_Performance_<ddmmyyyy>.xlsx` | `GACS` (headed "Arculus Fixed Interest Fund", the old name) | Arculus Fixed Income Fund | `content/funds/afi.json` |
+| `PIF_Perf_<yyyy_mm_dd>.xlsx` | `PIF` | Arculus Preferred Income Fund | `content/funds/pif.json` |
+
+The two `*_Turnover_*.xlsx` files are the month's transaction lists and are not used on the site.
+
+Both sheets have one row per month-end in column A; a new row is added at the bottom each month. Read the **last dated row** (the summary blocks below the data move down every month, so never rely on a fixed row number). The columns, from the row 3 headers:
+
+| Columns | Series | Periods left to right |
+|---|---|---|
+| Z–AH | Total return, annualised | 1M · 3M · 6M · 1Y · 2Y · 3Y · 5Y · 10Y · since inception |
+| AU–BB | Distribution return | 1M · 3M · 6M · 1Y · 2Y · 3Y · 5Y · since inception |
+| AK–AR | Growth return | same |
+| Q–X | AusBond Bank Bill index | same |
+| BE–BL (PIF only) | Total return **including franking credits** | same |
+| BO–BV (PIF only) | Distribution return including franking credits | same |
+
+The site table's seven cells are AA, AB, AC, AD, AE, AF and AH (3M, 6M, 1Y, 2Y, 3Y, 5Y, since inception) of the total-return block; the note sentence uses AX (1-year distribution) and BB (since-inception distribution). Renny's instruction (Sep 2026): for PIF, take the franking-inclusive figures as well as the unfranked ones. [Unverified] which of the two the published table should show — the June 2026 monthly report shows the unfranked total return, so the site does too until Renny says otherwise; the franked figures are printed alongside for him.
+
+The script does the reading for you and prints paste-ready JSON:
+
+    python3 scripts/perf-from-xlsx.py GACS_Performance_31082026.xlsx PIF_Perf_2026_08_31.xlsx
+
+Checked 22 Sep 2026: run with `--asat 2026-06-30` it reproduces every figure in both June 2026 monthly reports (two cells differ by 0.01 from rounding, which the reports themselves caveat).
+
+The portfolio characteristics (running yield, yield to maturity, average margin, securities held, fixed/FRN/cash split, durations) are **not** in these workbooks — take them from the monthly report PDF. The performance chart's running-yield, yield-to-maturity and BBSW lines likewise come from Renny's chart, not from these files (Step 2).
 
 ## Step 2 — Export the two charts from Figma
 
