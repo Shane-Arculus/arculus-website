@@ -33,10 +33,6 @@
         {
           "label": "Arculus Preferred Income Fund",
           "href": "/funds/arculus-preferred-income-fund"
-        },
-        {
-          "label": "Document library",
-          "href": "/documents"
         }
       ]
     },
@@ -61,7 +57,8 @@
         },
         {
           "label": "Private mandates",
-          "href": "/wholesale#private-mandates"
+          "href": "/wholesale#private-mandates",
+          "footerOnly": true
         }
       ]
     },

@@ -34,7 +34,7 @@ const base = { verified, _note: note };
 
 // ---------- site.json ----------
 const navItem: z.ZodType<any> = z.lazy(() =>
-  z.object({ label: z.string(), href: z.string().optional(), children: z.array(navItem).optional() })
+  z.object({ label: z.string(), href: z.string().optional(), footerOnly: z.boolean().optional(), children: z.array(navItem).optional() })
 );
 const site = defineCollection({
   loader: load("site.json"),
