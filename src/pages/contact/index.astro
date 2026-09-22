@@ -1,0 +1,28 @@
+---
+/**
+ * Contact — Figma 181:11833 → 210:11897 (errors 189:4027, sent 189:4288).
+ * Order: header · hero-level-2 (no button) · breadcrumb · contact-form-section
+ * (form + details aside) · "Who to contact" cream card (ContactColumnsCard —
+ * the frame's card is cream on white, not the fund pages' navy banner) ·
+ * important-information (generic) · footer. `?topic=` pre-fills the form.
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import ContactColumnsCard from "../../components/ContactColumnsCard.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import { getPage } from "../../content/loaders";
+const c = await getPage("contact");
+---
+<Base title={`${c.hero.title} — Arculus Funds Management`} description={c.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={c.hero.title} description={c.hero.subtitle} theme="light" layout="compact" bg="compact" image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <Breadcrumb bg="white" items={c.breadcrumb} />
+  <ContactForm />
+  <ContactColumnsCard title={c.whoToContact.title} columns={c.whoToContact.columns} />
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

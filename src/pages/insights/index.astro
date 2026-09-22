@@ -1,0 +1,39 @@
+---
+/**
+ * Insights hub — Figma 175:11833 → 210:13847.
+ * Order: header · hero-level-2 (subscribe button) · breadcrumb · filter-bar ·
+ * insights-row "Latest" (featured article only, secondary Subscribe button) ·
+ * insights-list "All insights" (every article but the featured one, newest first, filterable) · CTA-banner
+ * (subscribe) · important-information (generic) · footer. Articles link to
+ * PDFs at launch (C4); the per-insight page is a later task.
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import FilterTabs from "../../components/FilterTabs.astro";
+import InsightsRow from "../../components/InsightsRow.astro";
+import InsightsList from "../../components/InsightsList.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import SubscribeModal from "../../components/SubscribeModal.astro";
+import { getInsights, getSite } from "../../content/loaders";
+const ins = await getInsights();
+const { ui } = await getSite();
+const p = ins.page;
+const articles = [...ins.articles].sort((a, b) => b.date.localeCompare(a.date));
+const featured = articles.find((a) => a.slug === ins.featured)!;
+---
+<Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={p.hero.title} description={p.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[p.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <Breadcrumb bg="white" items={p.breadcrumb} />
+  <FilterTabs tabs={p.filters} target="all-insights" />
+  <InsightsRow title={p.latestTitle} button={{ label: p.hero.button.label, href: p.hero.button.href, action: p.hero.button.action }} featured={featured} list={[]} />
+  <InsightsList id="all-insights" title={p.listTitle} articles={articles.filter((a) => a.slug !== ins.featured)} readLabel={p.readLabel} emptyLabel={ui.noResults} />
+  <CtaBanner title={p.cta.title} body={p.cta.body} button={p.cta.button} />
+  <ImportantInformation variant="generic" />
+  <SubscribeModal />
+  <Footer slot="footer" />
+</Base>

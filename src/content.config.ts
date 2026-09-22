@@ -71,7 +71,7 @@ const site = defineCollection({
     ui: z.object({
       skipToContent: z.string(), logoAlt: z.string(), menuOpen: z.string(), menuClose: z.string(),
       searchOpen: z.string(), searchClose: z.string(), searchPlaceholder: z.string(), searchSubmit: z.string(),
-      popularSearchesTitle: z.string(), popularSearches: z.array(link), download: z.string(), viewAllDocuments: z.string(), seeMore: z.string(), wholesaleOnlyTag: z.string(), readingTimeSeparator: z.string(), formErrorBanner: z.string(), formSendFailed: z.string(), requiredField: z.string(), consentRequired: z.string(), closeDialog: z.string(), _formNote: note, _note: note,
+      popularSearchesTitle: z.string(), popularSearches: z.array(link), download: z.string(), viewAllDocuments: z.string(), seeMore: z.string(), wholesaleOnlyTag: z.string(), readingTimeSeparator: z.string(), formErrorBanner: z.string(), formSendFailed: z.string(), requiredField: z.string(), consentRequired: z.string(), closeDialog: z.string(), noResults: z.string(), _formNote: note, _note: note,
     }),
   }),
 });
@@ -219,7 +219,7 @@ const documents = defineCollection({
     ...base,
     page: z.object({
       breadcrumb, hero: z.object({ title: z.string(), subtitle: z.string(), button }),
-      filters: z.array(z.string()), searchPlaceholder: z.string(), seeMoreLabel: z.string(), showingLabel: z.string(), collapseAfter: z.number().int().optional(), sizeUnknown: z.string().optional(),
+      filters: z.array(z.string()), searchPlaceholder: z.string(), seeMoreLabel: z.string(), showingLabel: z.string(), collapseAfter: z.number().int().optional(), sizeUnknown: z.string().optional(), fileLabel: z.string().optional(), _showingNote: note,
       sections: z.array(z.object({
         key: z.string(), title: z.string(), intro: z.string(),
         button: button.optional(), row: z.object({ title: z.string(), meta: z.string() }).optional(),

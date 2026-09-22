@@ -2,23 +2,25 @@
 /**
  * InsightsRow — Figma 123:31761 → 207:16556 (home) and 175:11902 → 210:14548
  * (hub "Latest"). White band, H1 title with a secondary button right, one
- * featured article, then three cards. Mobile stacks everything.
+ * featured article, then three cards (the hub passes no list: featured only). Mobile stacks everything.
  */
 import Button from "./Button.astro";
 import ArticleCard from "./ArticleCard.astro";
 import type { Article } from "../content/loaders";
-interface Props { title: string; button?: { label: string; href?: string }; featured: Article; list: Article[]; }
+interface Props { title: string; button?: { label: string; href?: string; action?: string }; featured: Article; list: Article[]; }
 const { title, button, featured, list } = Astro.props;
 ---
 <section class="bg-white">
   <div class="mx-auto flex max-w-site flex-col gap-8 px-4 py-10 md:gap-12 md:px-12">
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-[60px]">
       <h2 class="text-h3 font-medium text-navy md:text-h1">{title}</h2>
-      {button && <Button label={button.label} href={button.href} style="secondary" />}
+      {button && <Button label={button.label} href={button.href} action={button.action} style="secondary" />}
     </div>
     <ArticleCard article={featured} featured />
-    <div class="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-4">
-      {list.slice(0, 3).map((a) => <ArticleCard article={a} />)}
-    </div>
+    {list.length > 0 && (
+      <div class="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-4">
+        {list.slice(0, 3).map((a) => <ArticleCard article={a} />)}
+      </div>
+    )}
   </div>
 </section>

@@ -228,6 +228,7 @@
     "requiredField": "This field is required.",
     "consentRequired": "Please tick the consent box to continue.",
     "closeDialog": "Close",
+    "noResults": "Nothing matches that filter.",
     "_formNote": "[Unverified] error-banner and failure wording — the frame shows the banner but its text was not captured"
   }
 }

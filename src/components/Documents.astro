@@ -4,41 +4,58 @@
  * and the four sections of the Document library 186:3637… → 210:13018….
  * White band, title + intro left (664), rows right (664) with a rust "View all"
  * link, or a see-more expander when `collapseAfter` is set and the list is
- * longer (client-side, no framework). Mobile stacks.
+ * longer (client-side, no framework); the library adds a "Showing n of total"
+ * line right of the expander (`showingLabel`, "{n}"/"{total}" placeholders),
+ * an optional button under the intro and per-row `filter` slugs so the
+ * page's FilterTabs can hide rows and empty sections. Mobile stacks.
  */
 import Section from "./Section.astro";
 import DownloadSlice from "./DownloadSlice.astro";
+import Button from "./Button.astro";
 import Icon from "./Icon.astro";
 import { getSite } from "../content/loaders";
 interface Props {
   title: string; intro?: string;
-  items: readonly { title: string; href: string; meta?: string }[];
+  items: readonly { title: string; href: string; meta?: string; size?: string | null; filter?: string; download?: boolean }[];
   viewAll?: { label: string; href: string };
   collapseAfter?: number;
+  seeMoreLabel?: string;
+  showingLabel?: string;
+  sizeLabel?: string;
+  button?: { label: string; href?: string; style?: "primary" | "secondary" | "external" };
   bg?: "white" | "cream";
   id?: string;
+  /** Set when the section's rows carry `filter` and the section should hide when every row is hidden. */
+  filterable?: boolean;
 }
-const { title, intro, items, viewAll, collapseAfter, bg = "white", id } = Astro.props;
+const { title, intro, items, viewAll, collapseAfter, seeMoreLabel, showingLabel, sizeLabel, button, bg = "white", id, filterable = false } = Astro.props;
 const { ui } = await getSite();
 const collapsed = collapseAfter !== undefined && items.length > collapseAfter;
 const uid = id ?? `docs-${Math.random().toString(36).slice(2, 7)}`;
+const showing = (n: number) => (showingLabel ?? "").replace("{n}", String(n)).replace("{total}", String(items.length));
 ---
-<Section bg={bg} id={id}>
+<Section bg={bg} id={id} data-filter-section={filterable ? "" : undefined}>
   <div class="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-4">
     <div class="flex flex-col gap-4 md:gap-9 md:pr-12">
       <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
       {intro && <p class="text-lead text-body">{intro}</p>}
+      {button && <div><Button label={button.label} href={button.href} style={button.style ?? "primary"} /></div>}
     </div>
-    <div class="flex flex-col" data-docs={uid}>
+    <div class="flex flex-col" data-docs={uid} data-docs-total={items.length}>
       {items.map((d, i) => (
-        <div class:list={[collapsed && i >= collapseAfter! && "hidden"]} data-docs-extra={collapsed && i >= collapseAfter! ? "" : undefined}>
-          <DownloadSlice title={d.title} href={d.href} meta={d.meta} />
+        <div class:list={[collapsed && i >= collapseAfter! && "hidden"]} data-docs-extra={collapsed && i >= collapseAfter! ? "" : undefined} data-filter-item={d.filter} data-filter-text={sizeLabel !== undefined ? `${d.title} ${d.meta ?? ""}`.toLowerCase() : undefined}>
+          <DownloadSlice title={d.title} href={d.href} meta={d.meta} size={d.size} sizeLabel={sizeLabel} download={d.download} />
         </div>
       ))}
-      {collapsed && (
-        <button type="button" class="mt-5 inline-flex items-center gap-2 self-start text-body font-medium text-rust hover:underline" data-docs-more aria-expanded="false" aria-controls={uid}>
-          <span>{ui.seeMore}</span><Icon name="chevron-down" size={16} />
-        </button>
+      {(collapsed || showingLabel) && (
+        <div class="mt-5 flex items-center justify-between gap-4">
+          {collapsed ? (
+            <button type="button" class="inline-flex items-center gap-2 text-body font-medium text-rust hover:underline" data-docs-more aria-expanded="false" aria-controls={uid}>
+              <span>{seeMoreLabel ?? ui.seeMore}</span><Icon name="chevron-down" size={16} />
+            </button>
+          ) : <span />}
+          {showingLabel && <span class="text-small text-body" data-docs-showing data-label={showingLabel}>{showing(collapsed ? collapseAfter! : items.length)}</span>}
+        </div>
       )}
       {viewAll && !collapsed && (
         <a href={viewAll.href} class="mt-5 inline-flex items-center gap-2 self-start text-body font-medium text-rust hover:underline">{viewAll.label}<Icon name="chevron-right" size={16} /></a>
@@ -49,9 +66,12 @@ const uid = id ?? `docs-${Math.random().toString(36).slice(2, 7)}`;
 <script>
   for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-docs-more]")) {
     btn.addEventListener("click", () => {
-      const list = btn.closest("[data-docs]")!;
-      for (const el of list.querySelectorAll("[data-docs-extra]")) el.classList.remove("hidden");
-      btn.setAttribute("aria-expanded", "true"); btn.remove();
+      const list = btn.closest<HTMLElement>("[data-docs]")!;
+      for (const el of list.querySelectorAll("[data-docs-extra]")) { el.classList.remove("hidden"); el.removeAttribute("data-docs-extra"); }
+      btn.setAttribute("aria-expanded", "true");
+      const showing = list.querySelector<HTMLElement>("[data-docs-showing]");
+      if (showing) { const total = list.dataset.docsTotal!; showing.textContent = showing.dataset.label!.replace("{n}", total).replace("{total}", total); }
+      btn.parentElement?.classList.contains("flex") && btn.replaceWith(document.createElement("span"));
     });
   }
 </script>

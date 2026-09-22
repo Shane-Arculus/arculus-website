@@ -1,4 +1,4 @@
-# Arculus website — build task list v3 (14 Sep 2026)
+# Arculus website — build task list v4 (22 Sep 2026)
 
 Consolidated from the design chats. Stack is path C: Astro + TypeScript + Tailwind, fully static, content as files in the repo, Cloudflare Pages. Each T-task is one Claude Code session; desktop and mobile built together; tick when the Cloudflare Pages preview matches the Figma frame. Figma node map lives in CLAUDE.md.
 
@@ -7,9 +7,9 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 ## 0 · Setup (Jim, before any code)
 
 - [x] Email AfterDark re registrar / DNS access for arculus.com.au (sent 11 Sep) — awaiting reply
-- [ ] GitHub organisation; repo `arculus-website`; commit `CLAUDE.md`, `BUILD_TASKS.md`, `docs/compliance-register.md`, `docs/image-register.xlsx`
-- [ ] Cloudflare account: Pages project linked to repo; Web Analytics enabled; DNS to move here once registrar access lands
-- [ ] Formspree form (contact → info@) and Mailchimp audience with double opt-in (subscribe); record endpoint/IDs in `content/site.json`
+- [x] GitHub repo `sbduggan1304/arculus-website` (Jim's own account, not an org); `CLAUDE.md`, `BUILD_TASKS.md`, registers committed (14 Sep)
+- [x] Cloudflare Workers (not Pages — the dashboard offered no Pages option) Git-connected to the repo; `preview` branch alias serves the latest build (16 Sep). Web Analytics token still `[TO SET]`; DNS: see L2
+- [~] Formspree done (see T21); Mailchimp parked (see T21)
 - [x] Fira Sans self-hosted (OFL) — `public/fonts/`, latin woff2 400/500/600
 - [ ] Olivia123: ask for a dedicated Arculus onboarding URL (generic URL in the meantime)
 
@@ -33,7 +33,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [x] T10 `Documents` (title/intro + rows; `viewAll` link or `collapseAfter` see-more expander, vanilla JS), `DownloadSlice`, `KeyDocuments` (cream tiles), `ProfileModule` (3-col cards, warm separators), `ProductCards` (navy radial cards with mark outline) — 16 Sep
 - [x] T11 `InsightsRow` + `ArticleCard` + `Tag`, `InsightsList` (rows with `data-filter-item`; `thumbs` prop for the parked thumbnail question), `FilterTabs` (client-side, reads `?filter=`), `SearchInput`, `SearchResultRow`; `src/lib/format.ts` (dates, slugs) — 16 Sep
 - [x] T12 `ThreeColumnsContactBanner`, `ContactForm` + `FormField` (Formspree via fetch, client validation with per-field errors and banner, success panel, `?topic=` pre-fill), `SubscribeModal` (native dialog, Mailchimp JSONP double opt-in, 'Check your inbox' state), `AttestationModal` (native dialog, cannot be dismissed, sessionStorage key, decline → home; include on every gated page) — 16 Sep. [Unverified] error-banner wording; Formspree endpoint, Mailchimp action URL and merge field are `[TO SET]` in site.json
-- [ ] T12a `PrivateMandates` module (tint band, copy left + one button "Talk to us about a mandate", key-value facts right) for the wholesale landing page
+- [x] T12a `PrivateMandates` module — shipped with T15 (16 Sep)
 
 ## 4 · Pages
 
@@ -42,7 +42,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [x] T15 Wholesale landing `src/pages/wholesale/index.astro` (gate, `StrategyCards`, `PrivateMandates`, wholesale Important Information) and strategy template `[slug].astro` → A− SMA, BBB SMA, PEP (gated, `StrategyAbout`, no PEP performance figures) — 16 Sep
 - [x] T16 Investment Management `src/pages/investment-management/index.astro` (gated; IM Important Information drops the 'Portfolio figures' sentence when no as-at date) — 16 Sep. Entity name and minimum portfolio still [Unverified] (Q12).
 - [x] T17 About: Our approach, Governance & oversight, Team, ESG (`src/pages/about/*.astro`); `ProseArticle` for markdown pages; `ContentColumns` gains per-item links, a module link and an H1 title size; `TwoColumnsContent` gains titled columns with bullet lists — 16 Sep
-- [x] T18 Insights hub, Contact, Document library (`src/pages/insights|contact|documents/index.astro`); `ContactColumnsCard` (the contact frame's 'Who to contact' is a cream card with icons and links, not the navy banner); `DownloadSlice` size line; `Documents` 'Showing n of total'; `FilterTabs` search box and text filtering; buttons can open the subscribe modal via `action: subscribe-modal`; key device on the wholesale hero and CTA banners enlarged, offset and muted at Jim's request — 17 Sep. All three pages compared against their frames at 1440.
+- [x] T18 Insights hub, Contact, Document library — **re-landed 22 Sep as `delta-T18b.zip`: the 17 Sep `delta-T18.zip` never reached the repo (the three pages 404ed on the preview; `ContactColumnsCard` and the T18 component changes were absent). Rebuilt against the frames; `FilterTabs` now also hides sections with no matching rows and keeps the see-more fold until a filter or search applies; `documents.json` gains `collapseAfter` (7) and `fileLabel`; `site.json` gains `ui.noResults`.** Original scope: Insights hub, Contact, Document library (`src/pages/insights|contact|documents/index.astro`); `ContactColumnsCard` (the contact frame's 'Who to contact' is a cream card with icons and links, not the navy banner); `DownloadSlice` size line; `Documents` 'Showing n of total'; `FilterTabs` search box and text filtering; buttons can open the subscribe modal via `action: subscribe-modal`; key device on the wholesale hero and CTA banners enlarged, offset and muted at Jim's request — 17 Sep. All three pages compared against their frames at 1440.
 - [x] T19 Legal: `/terms`, `/privacy`, `/cookies`, `/disclosure` from `src/pages/[legal].astro` via `ProseArticle` (Disclosure renders its '[Copy pending]' placeholder until Q15 lands) — 17 Sep
 - [x] T20 Search (`/search?q=`) on Pagefind — index built by `npm run build` (`astro build && pagefind --site dist`), gated pages, the gallery, 404 and search itself excluded via `nosearch` on `Base`; client-side result list with All/Pages/Documents/Insights tabs by URL; 404 page (`src/pages/404.astro`, served by Cloudflare via `not_found_handling`) — 17 Sep. Pagefind indexes HTML only: PDF text is not searchable; document titles are, via the library page.
 
@@ -72,6 +72,13 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [x] Inner-page heroes on About, Insights, Documents and Contact were 501px (the frames' compact size) against 650 elsewhere; now all 650 with the 581 photo, frames and background export updated to match (Jim, 22 Sep)
 
 - [x] T25 Security review (22 Sep): static site, no server code/DB/auth/cookies; deps audit clean; third-party scripts limited to Cloudflare beacon and Mailchimp JSONP; Formspree Formshield + honeypot; wholesale gate is client-side by design (disclosure, not access control). Gap found: no security headers on the preview — added `public/_headers` (CSP allowing self, Cloudflare Insights, Formspree, Mailchimp, `wasm-unsafe-eval` for Pagefind; HSTS; nosniff; frame-ancestors none; Referrer-Policy; Permissions-Policy) and verified every interactive feature under it. Account hygiene is Jim's: 2FA on GitHub and Cloudflare, no shared passwords.
+
+## 6b · Pre-launch build tasks from Jim's 22 Sep list
+
+- [ ] T26 Insight page template `src/pages/insights/[slug].astro` — one page per article with the PDF embedded in a viewer (V1); `InsightsList`/`ArticleCard` link to the page instead of the PDF; long-term plan is an in-page version of each report plus a full-report PDF download template (parked until V1 ships)
+- [ ] T27 Team headshot fallback: navy initials monogram (SVG, generated from the name) in `ProfileModule` when `photo` is a placeholder — agreed 22 Sep instead of grey silhouettes; real headshots still preferred (C5)
+- [ ] T28 Fund tables: map the Arculus spreadsheets Jim has been sent to the two fund JSON files and extend `docs/MONTHLY.md` with the spreadsheet → JSON → Figma chart re-export routine (needs the spreadsheets)
+- [ ] C9 Back-fill the Insights hub and Document library with the last 12 months of reports (Jim gathering the PDFs; `insights.json` `pdf` paths and `documents.json` `path`/`size` are `[TO SET]` until then)
 
 ## 7 · Launch
 

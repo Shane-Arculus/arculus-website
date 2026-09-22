@@ -1,0 +1,59 @@
+---
+/**
+ * Document library — Figma 186:3532 → 210:12446.
+ * Order: header · hero-level-2 (external "Statements for your holding") ·
+ * breadcrumb · filter-bar with search · documents ×4 (AFI, PIF, Wholesale
+ * strategies, Policies & notices) · important-information (generic) · footer.
+ * The AFI and PIF sections collapse after `page.collapseAfter` rows with a
+ * "See all documents" expander and a "Showing n of total" line; the tabs
+ * filter rows by category across every section (a section with no visible
+ * rows hides), the search field narrows by title and meta. The wholesale
+ * section has no files: one row leads to the contact page (Q: strategy papers
+ * are provided on request). Sizes are null until the real PDFs are uploaded (C3).
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import HeroLevel2 from "../../components/HeroLevel2.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import FilterTabs from "../../components/FilterTabs.astro";
+import Documents from "../../components/Documents.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import { getDocuments, getSite } from "../../content/loaders";
+import { slugify } from "../../lib/format";
+const lib = await getDocuments();
+const { externalUrls, ui } = await getSite();
+const p = lib.page;
+const resolve = (href = "") => (href in externalUrls ? externalUrls[href as keyof typeof externalUrls] : href);
+const hero = { ...p.hero.button, href: resolve(p.hero.button.href) };
+const byFund = (key: string) =>
+  lib.documents
+    .filter((d) => d.fund === key && !d.wholesaleOnly) // file order: documents.json is kept in the frame's order (PDS, TMD, then reports newest first) — see docs/MONTHLY.md
+    .map((d) => ({ title: d.title, href: d.path, meta: d.meta, size: d.size, filter: slugify(d.category) }));
+const wholesale = p.sections.find((s) => s.key === "wholesale");
+---
+<Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle} noindex>
+  <Header slot="header" />
+  <HeroLevel2 title={p.hero.title} description={p.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[hero]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <Breadcrumb bg="white" items={p.breadcrumb} />
+  <FilterTabs tabs={p.filters} target="document-library" search={{ placeholder: p.searchPlaceholder }} />
+  <div id="document-library">
+    {p.sections.map((s) => {
+      if (s.key === "wholesale") {
+        return (
+          <Documents id="wholesale-strategies" title={s.title} intro={s.intro} button={s.button} filterable
+            items={[{ title: s.row!.title, href: s.button?.href ?? "/contact", meta: s.row!.meta, size: null, download: false, filter: "wholesale" }]} sizeLabel={p.fileLabel ?? "PDF"} />
+        );
+      }
+      const items = byFund(s.key);
+      const fund = s.key === "afi" || s.key === "pif";
+      return (
+        <Documents id={`documents-${s.key}`} title={s.title} intro={s.intro} items={items} filterable
+          collapseAfter={fund ? p.collapseAfter : undefined} seeMoreLabel={p.seeMoreLabel} showingLabel={fund ? p.showingLabel : undefined} sizeLabel={p.fileLabel ?? "PDF"} />
+      );
+    })}
+    <div class="hidden bg-white" data-filter-empty><div class="mx-auto max-w-site px-4 py-16 text-body text-body md:px-12">{ui.noResults}</div></div>
+  </div>
+  <ImportantInformation variant="generic" />
+  <Footer slot="footer" />
+</Base>

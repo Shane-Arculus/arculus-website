@@ -1,17 +1,32 @@
 ---
 /**
- * DownloadSlice — one document row. Figma Download_slice inside 95:1133.
- * 64px row, 1px line top/bottom, Lead-size navy name, rust download icon.
+ * DownloadSlice — one document row. Figma Download_slice inside 95:1133 (fund
+ * page: 64px row, Lead-size navy name, optional meta, rust download icon) and
+ * the Document library rows inside 186:3637 (title, meta line, then a rust
+ * file icon with "PDF · size" in small navy SemiBold — the `size` line).
  * Opens the PDF in a new tab (a PDF served from this site is not an external
- * link, so no gold).
+ * link, so no gold). `download={false}` renders a chevron instead of the
+ * download icon for a row that leads somewhere rather than to a file (the
+ * library's "Request a strategy paper" row).
  */
 import Icon from "./Icon.astro";
 import { getSite } from "../content/loaders";
-interface Props { title: string; href: string; meta?: string; }
-const { title, href, meta } = Astro.props;
+interface Props { title: string; href: string; meta?: string; size?: string | null; sizeLabel?: string; download?: boolean; }
+const { title, href, meta, size, sizeLabel, download = true } = Astro.props;
 const { ui } = await getSite();
+const sizeLine = sizeLabel !== undefined; // library variant: always show the file line, size may be unknown
 ---
-<a href={href} target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 border-b border-line py-[18px] first:border-t hover:bg-cream">
-  <span class="flex flex-col"><span class="text-lead text-navy group-hover:text-rust">{title}</span>{meta && <span class="text-small text-body">{meta}</span>}</span>
-  <span class="sr-only">{ui.download}</span><Icon name="download" size={20} class="shrink-0 text-rust" />
+<a href={href} target={download ? "_blank" : undefined} rel={download ? "noopener" : undefined} class:list={["group flex items-start justify-between gap-4 border-b border-line first:border-t hover:bg-cream", sizeLine ? "py-6" : "items-center py-[18px]"]}>
+  <span class:list={["flex flex-col", sizeLine ? "gap-3" : ""]}>
+    <span class="text-lead text-navy group-hover:text-rust">{title}</span>
+    {meta && <span class="text-small text-body">{meta}</span>}
+    {sizeLine && (
+      <span class="inline-flex items-center gap-2 text-caption font-semibold text-navy"><Icon name="file-text" size={20} class="text-rust" />{download && sizeLabel}{download && size && <span>{size}</span>}</span>
+    )}
+  </span>
+  {download ? (
+    <><span class="sr-only">{ui.download}</span><Icon name="download" size={20} class="shrink-0 text-rust" /></>
+  ) : (
+    <Icon name="chevron-right" size={20} class="shrink-0 text-rust" />
+  )}
 </a>

@@ -1,0 +1,40 @@
+---
+/**
+ * ContactColumnsCard — Figma 181:12119 → 210:12353, the contact page's
+ * "Who to contact". Unlike the fund pages' navy ThreeColumnsContactBanner,
+ * this is a cream rounded card on white: H3 navy title, three columns with
+ * warm separators, a rust Lucide icon, Lead Medium title, body, and a text
+ * link (rust underline for Arculus actions, gold with arrow for links that
+ * leave the site). Mobile stacks the columns.
+ */
+import Icon from "./Icon.astro";
+import { getSite } from "../content/loaders";
+type IconName = Parameters<typeof Icon>[0]["name"];
+interface Props { title: string; columns: readonly { title: string; body: string; icon?: string; button: { label: string; href?: string; style?: "primary" | "secondary" | "external" } }[]; }
+const { title, columns } = Astro.props;
+const { externalUrls } = await getSite();
+const resolve = (href = "") => (href in externalUrls ? externalUrls[href as keyof typeof externalUrls] : href);
+const icons: IconName[] = ["briefcase", "wallet", "handshake"];
+---
+<section class="bg-white">
+  <div class="mx-auto max-w-site px-4 pb-16 md:px-12 md:pb-24">
+    <div class="flex flex-col gap-8 rounded-lg bg-cream px-6 py-8 md:gap-[60px] md:px-12 md:py-12">
+      <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
+      <div class="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-9">
+        {columns.map((c, i) => {
+          const external = c.button.style === "external";
+          return (
+            <div class="flex flex-col gap-6 md:border-l md:border-line-warm md:pl-9 md:first:border-l-0 md:first:pl-0">
+              <div class="flex flex-col gap-4 md:gap-6">
+                <Icon name={(c.icon as IconName) ?? icons[i] ?? "mail"} size={36} class="text-rust-hi" />
+                <h3 class="text-lead font-medium text-navy">{c.title}</h3>
+                <p class="text-base text-body">{c.body}</p>
+              </div>
+              <a href={resolve(c.button.href)} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} class:list={["inline-flex items-center gap-1 self-start text-body font-medium underline underline-offset-4", external ? "text-gold" : "text-rust"]}>{c.button.label}{external && <Icon name="arrow-up-right" size={14} />}</a>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>

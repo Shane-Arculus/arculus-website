@@ -26,6 +26,9 @@
     "searchPlaceholder": "Search documents",
     "seeMoreLabel": "See all documents",
     "showingLabel": "Showing {n} of {total}",
+  "collapseAfter": 7,
+  "fileLabel": "PDF",
+  "_showingNote": "collapseAfter = rows shown before 'See all documents' (the frame shows 7). fileLabel prefixes the size line; a document with size null shows the label alone.",
     "sections": [
       {
         "key": "afi",

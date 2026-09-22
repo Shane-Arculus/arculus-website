@@ -15,8 +15,12 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
   full?: boolean;
   class?: string;
   id?: string;
+  /** "subscribe-modal" opens SubscribeModal (data-open-subscribe); the button then renders as <button>, never a link. */
+  action?: string;
 }
-const { label, href, style = "primary", type = "button", full = false, class: className = "", id, disabled = false, ...rest } = Astro.props as Props & { href?: string; type?: "button" | "submit" };
+const { label, href: rawHref, action, style = "primary", type = "button", full = false, class: className = "", id, disabled = false, ...rest } = Astro.props as Props & { href?: string; type?: "button" | "submit" };
+const href = action ? undefined : rawHref;
+if (action === "subscribe-modal") (rest as Record<string, unknown>)["data-open-subscribe"] = "";
 const base = "inline-flex items-center justify-center gap-3 rounded-[4px] px-5 py-2 min-h-[50px] text-body font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy disabled:bg-disabled disabled:text-disabled-copy disabled:cursor-not-allowed [&:disabled_svg]:text-disabled-copy";
 const styles = {
   primary: "bg-rust text-white hover:bg-rust-hi",

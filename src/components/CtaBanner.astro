@@ -3,22 +3,23 @@
  * CtaBanner — Figma 113:830 → 207:17867 (and 172:3191 etc. on About/Insights).
  * Navy radial gradient band, centred title (Display 60 / 48 on mobile), lead
  * body in white, primary button. Decorative outline of the Arculus mark sits
- * behind the copy (public/decor/cta-outline.svg), positioned off-canvas as on
- * the frame. Every CTA banner in the file is navy; no warm variant exists.
+ * behind the copy (public/decor/cta-outline.svg). The frame has it at 522px
+ * full-strength; Jim (17 Sep) found that too heavy on the built page, so it is
+ * 700px, higher and at 60% (the wholesale hero likewise: 980px, 45%). Every CTA banner in the file is navy; no warm variant exists.
  */
 import Button from "./Button.astro";
-interface Props { title: string; body: string; button: { label: string; href?: string; style?: "primary" | "secondary" | "external" }; class?: string; }
+interface Props { title: string; body: string; button: { label: string; href?: string; action?: string; style?: "primary" | "secondary" | "external" }; class?: string; }
 const { title, body, button, class: className = "" } = Astro.props;
 ---
 <section class:list={["relative overflow-hidden text-white", className]} style="background: var(--gradient-navy-radial);">
-  <img src="/decor/cta-outline.svg" alt="" aria-hidden="true" width="522" height="502" class="pointer-events-none absolute left-1/2 top-[-40px] hidden w-[522px] max-w-none -translate-x-1/2 select-none md:block" />
+  <img src="/decor/cta-outline.svg" alt="" aria-hidden="true" width="700" height="673" class="pointer-events-none absolute left-1/2 top-[-120px] hidden w-[700px] max-w-none -translate-x-1/2 select-none opacity-60 md:block" />
   <div class="relative mx-auto flex max-w-site flex-col items-center justify-center px-4 py-10 text-center md:min-h-[424px] md:px-12 md:py-12">
     <div class="flex w-full max-w-[662px] flex-col items-center gap-6">
       <div class="flex flex-col gap-4">
         <h2 class="text-display-sm font-medium md:text-display">{title}</h2>
         <p class="text-lead">{body}</p>
       </div>
-      <div class="w-full md:w-auto"><Button label={button.label} href={button.href} style={button.style ?? "primary"} full class="md:w-auto" /></div>
+      <div class="w-full md:w-auto"><Button label={button.label} href={button.href} action={button.action} style={button.style ?? "primary"} full class="md:w-auto" /></div>
     </div>
   </div>
 </section>
