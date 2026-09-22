@@ -10,11 +10,11 @@
 import Section from "./Section.astro";
 import RatingsRow from "./RatingsRow.astro";
 import ChartImage from "./ChartImage.astro";
-import KeyValueList from "./KeyValueList.astro";
+import PerformanceTable from "./PerformanceTable.astro";
 interface Props {
   about: { title: string; body: string };
   ratingReportUrl?: string;
-  performance: { title: string; note: string; chartTitle: string; chartImage: string; chartSeries: readonly string[]; tableTitle: string; periods: readonly (readonly [string, string])[]; performanceAsAt: string };
+  performance: { title: string; note: string; chartTitle: string; chartImage: string; chartSeries: readonly string[]; tableTitle: string; table: { columns: readonly string[]; rows: readonly (readonly string[])[] }; tableNote?: string; performanceAsAt: string };
   fundName: string;
 }
 const { about, ratingReportUrl, performance, fundName } = Astro.props;
@@ -31,7 +31,7 @@ const { about, ratingReportUrl, performance, fundName } = Astro.props;
       <p class="text-body text-body">{performance.note}</p>
       <div class="flex flex-col gap-6 md:flex-row md:items-start md:gap-6">
         <ChartImage src={performance.chartImage} alt={`${performance.chartTitle}, ${fundName}, to ${performance.performanceAsAt}`} series={performance.chartSeries} class="md:w-[664px] md:shrink-0" />
-        <div class="flex-1 rounded-2xl border border-card-line bg-white px-6 pb-6 pt-4 md:px-9 md:pb-9 md:pt-6"><KeyValueList rows={performance.periods} title={performance.tableTitle} variant="table" /></div>
+        <div class="flex-1 rounded-2xl border border-card-line bg-white p-6 md:px-9 md:py-7"><PerformanceTable title={performance.tableTitle} columns={performance.table.columns} rows={performance.table.rows} note={performance.tableNote} /></div>
       </div>
     </div>
   </div>

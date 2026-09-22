@@ -95,7 +95,7 @@ const funds = defineCollection({
       title: z.string(), note: z.string(),
       performanceAsAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
       chartTitle: z.string(), chartImage: z.string(), chartSeries: z.array(z.string()),
-      tableTitle: z.string(), periods: pairs,
+      tableTitle: z.string(), table: z.object({ columns: z.array(z.string()), rows: z.array(z.array(z.string())) }), tableNote: z.string().optional(), _tableNote: note,
     }),
     whoItMaySuit: z.object({ title: z.string(), body: z.string() }),
     howManaged: z.object({ title: z.string(), body: z.array(z.string()), button }),

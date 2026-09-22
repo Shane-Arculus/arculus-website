@@ -1,6 +1,6 @@
 {
   "verified": false,
-  "_note": "Seeded from the Document library frame. Sizes ('1.2 MB') on the frame are placeholders — set from real files. 'Showing 7 of 24' on the frame implies a longer monthly-report archive: confirm how far back to publish.",
+  "_note": "Seeded from the Document library frame. Sizes ('1.2 MB') on the frame are placeholders — set from real files. 'Showing 7 of 24' on the frame implies a longer monthly-report archive: confirm how far back to publish. 22 Sep: monthly rows realigned to the site's 30 June data (June, May, April placeholders) — replace with the real 12-month set under C9.",
   "page": {
     "breadcrumb": [
       "Home",
@@ -26,9 +26,9 @@
     "searchPlaceholder": "Search documents",
     "seeMoreLabel": "See all documents",
     "showingLabel": "Showing {n} of {total}",
-  "collapseAfter": 7,
-  "fileLabel": "PDF",
-  "_showingNote": "collapseAfter = rows shown before 'See all documents' (the frame shows 7). fileLabel prefixes the size line; a document with size null shows the label alone.",
+    "collapseAfter": 7,
+    "fileLabel": "PDF",
+    "_showingNote": "collapseAfter = rows shown before 'See all documents' (the frame shows 7). fileLabel prefixes the size line; a document with size null shows the label alone.",
     "sections": [
       {
         "key": "afi",
@@ -84,17 +84,6 @@
       "wholesaleOnly": false
     },
     {
-      "id": "afi-monthly-2026-07",
-      "fund": "afi",
-      "category": "Monthly reports",
-      "title": "Monthly report — July 2026",
-      "meta": "Report · 31 July 2026",
-      "date": "2026-07-31",
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
-    },
-    {
       "id": "afi-monthly-2026-06",
       "fund": "afi",
       "category": "Monthly reports",
@@ -104,6 +93,18 @@
       "path": "[TO SET]",
       "size": null,
       "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2026-05",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — May 2026",
+      "meta": "Report · 31 May 2026",
+      "date": "2026-05-31",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false,
+      "_note": "Placeholder row until C9 back-fills the real monthly PDFs; the library shows the latest three months."
     },
     {
       "id": "afi-monthly-2026-04",
@@ -173,17 +174,6 @@
       "wholesaleOnly": false
     },
     {
-      "id": "pif-monthly-2026-07",
-      "fund": "pif",
-      "category": "Monthly reports",
-      "title": "Monthly report — July 2026",
-      "meta": "Report · 31 July 2026",
-      "date": "2026-07-31",
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
-    },
-    {
       "id": "pif-monthly-2026-06",
       "fund": "pif",
       "category": "Monthly reports",
@@ -193,6 +183,18 @@
       "path": "[TO SET]",
       "size": null,
       "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2026-05",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — May 2026",
+      "meta": "Report · 31 May 2026",
+      "date": "2026-05-31",
+      "path": "[TO SET]",
+      "size": null,
+      "wholesaleOnly": false,
+      "_note": "Placeholder row until C9 back-fills the real monthly PDFs; the library shows the latest three months."
     },
     {
       "id": "pif-quarterly-2026-07",

@@ -1,0 +1,33 @@
+---
+/**
+ * PerformanceTable — the fund page's performance card. Originally a
+ * KeyValueList of one figure per period (the frame); Jim (22 Sep 2026) wants
+ * the monthly report's three rows, so it is now a real table: period rows,
+ * Total return / Cash distribution / Growth columns. SemiBold title above,
+ * 1px rules between rows, tabular figures right-aligned. Below 768 the same
+ * table at Small size.
+ */
+interface Props { title: string; columns: readonly string[]; rows: readonly (readonly string[])[]; note?: string; }
+const { title, columns, rows, note } = Astro.props;
+const neg = (v: string) => v.trim().startsWith("-") || v.trim().startsWith("−");
+---
+<div class="flex flex-col gap-4">
+  <p class="text-base font-semibold text-navy-mid">{title}</p>
+  <table class="w-full border-collapse text-small md:text-body">
+    <thead>
+      <tr class="border-b border-line">
+        <th scope="col" class="sr-only">Period</th>
+        {columns.map((c) => <th scope="col" class="pb-3 pl-3 text-right font-semibold text-navy md:pl-6">{c}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(([label, ...vals]) => (
+        <tr class="border-b border-line">
+          <th scope="row" class="py-3 pr-3 text-left font-normal text-body md:py-4">{label}</th>
+          {vals.map((v, i) => <td class:list={["py-3 pl-3 text-right tabular-nums md:py-4 md:pl-6", i === 0 ? "font-semibold text-navy" : "text-body", neg(v) && "text-rust-hi"]}>{v}</td>)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {note && <p class="text-small text-body">{note}</p>}
+</div>

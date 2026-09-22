@@ -113,7 +113,7 @@ const allAfi = lib.documents.filter((d) => d.fund === "afi");
       </div>
       <div>
         <ChartImage src={afi.performance.chartImage} alt={`${afi.performance.chartTitle}, ${afi.name}, to ${afi.performance.performanceAsAt}`} title={afi.performance.chartTitle} series={afi.performance.chartSeries} />
-        <KeyValueList class="mt-6" rows={afi.performance.periods} title={afi.performance.tableTitle} variant="table" />
+        <KeyValueList class="mt-6" rows={afi.portfolio.metrics} title={afi.performance.tableTitle} variant="table" />
       </div>
     </div>
   </section>

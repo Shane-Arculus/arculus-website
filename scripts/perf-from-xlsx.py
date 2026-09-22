@@ -62,5 +62,9 @@ for f in a.files:
         print(f"{name:22}" + "".join(f"{pct(v) if v is not None else '—':>10}" for v in vals))
     print(f'\n  "performanceAsAt": "{date.isoformat()}",')
     print(f'  "tableTitle": "Performance to {date.strftime("%-d %B %Y")} (annualised)",')
-    print('  "periods": [' + ", ".join(f'["{(si if p == "Since inception" else p)}", "{pct(v)}"]' for p, v in zip(PERIODS, blocks["total"])) + "]")
+    lab = lambda p: si if p == "Since inception" else p
+    print('  "table": { "columns": ["Total return", "Cash distribution", "Growth"], "rows": [')
+    for i, p in enumerate(PERIODS):
+        print(f'    ["{lab(p)}", "{pct(blocks["total"][i])}", "{pct(blocks["distribution"][i])}", "{pct(blocks["growth"][i])}"]' + ("," if i < 6 else ""))
+    print("  ] }")
     print(f'  distributions for the note: 1 year {pct(blocks["distribution"][2])}, since inception {pct(blocks["distribution"][6])}')
