@@ -11,7 +11,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [x] Cloudflare Workers (not Pages — the dashboard offered no Pages option) Git-connected to the repo; `preview` branch alias serves the latest build (16 Sep). Web Analytics token still `[TO SET]`; DNS: see L2
 - [~] Formspree done (see T21); Mailchimp parked (see T21)
 - [x] Fira Sans self-hosted (OFL) — `public/fonts/`, latin woff2 400/500/600
-- [ ] Olivia123: ask for a dedicated Arculus onboarding URL (generic URL in the meantime)
+- [~] Olivia123: `https://www.olivia123.com/features/investors.php` set in `site.json` (22 Sep); a dedicated Arculus onboarding URL still to ask for (C8)
 
 ## 1 · Foundation
 
