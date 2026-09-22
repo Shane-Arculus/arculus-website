@@ -71,6 +71,8 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [x] Inner-page heroes on About, Insights, Documents and Contact were 501px (the frames' compact size) against 650 elsewhere; now all 650 with the 581 photo, frames and background export updated to match (Jim, 22 Sep)
 
+- [x] T25 Security review (22 Sep): static site, no server code/DB/auth/cookies; deps audit clean; third-party scripts limited to Cloudflare beacon and Mailchimp JSONP; Formspree Formshield + honeypot; wholesale gate is client-side by design (disclosure, not access control). Gap found: no security headers on the preview — added `public/_headers` (CSP allowing self, Cloudflare Insights, Formspree, Mailchimp, `wasm-unsafe-eval` for Pagefind; HSTS; nosniff; frame-ancestors none; Referrer-Policy; Permissions-Policy) and verified every interactive feature under it. Account hygiene is Jim's: 2FA on GitHub and Cloudflare, no shared passwords.
+
 ## 7 · Launch
 
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)

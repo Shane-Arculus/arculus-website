@@ -1,0 +1,12 @@
+# Security headers for every response (Cloudflare Workers static assets honour this file).
+# CSP: the site, Cloudflare's analytics beacon, Formspree (contact form POST), Mailchimp (subscribe JSONP).
+# 'wasm-unsafe-eval' lets Pagefind's search index (WebAssembly) run; it does not permit eval() of JavaScript.
+# 'unsafe-inline' for scripts is required because Astro inlines the small page scripts; there is no user-generated HTML anywhere on the site.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://static.cloudflareinsights.com https://*.list-manage.com; connect-src 'self' https://formspree.io https://cloudflareinsights.com; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; form-action 'self' https://formspree.io https://*.list-manage.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
