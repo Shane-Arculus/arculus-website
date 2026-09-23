@@ -15,7 +15,7 @@ const items: readonly Block[] = blocks ?? [{ title: title ?? "", paragraphs }];
 ---
 <Section bg={bg}>
   <div class:list={["flex flex-col gap-6 md:flex-row md:items-center md:gap-[130px]", flip && "md:flex-row-reverse"]}>
-    <img src={image.src} alt={image.alt} width="664" height="689" loading="lazy" decoding="async" class="aspect-[664/689] w-full rounded-2xl object-cover md:w-[664px] md:shrink-0" />
+    <img src={image.src} alt={image.alt} width="664" height="689" loading="lazy" decoding="async" class="aspect-[664/689] w-full rounded-lg object-cover md:w-[664px] md:shrink-0" />
     <div class="flex flex-col gap-6 md:gap-9">
       {items.map((b) => (
         <div class="flex flex-col gap-3 md:gap-4">

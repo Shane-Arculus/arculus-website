@@ -21,13 +21,13 @@ const segs = values.map((v, i) => { const len = (v / total) * c; const s = { len
 ---
 <Section bg="cream" class="md:[&>div]:py-[50px]">
   <div class="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-4">
-    <div class="flex flex-col gap-6 rounded-lg bg-white px-6 py-6 md:gap-8 md:p-12">
+    <div class="flex flex-col gap-6 rounded-lg border border-card-line bg-white px-6 py-6 md:gap-8 md:p-12">
       <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
       <div class="mt-auto">
       <KeyValueList rows={metrics} caption={title} />
     </div>
     </div>
-    <div class="flex flex-col gap-6 rounded-lg bg-white px-6 py-6 md:gap-8 md:p-12">
+    <div class="flex flex-col gap-6 rounded-lg border border-card-line bg-white px-6 py-6 md:gap-8 md:p-12">
       <h2 class="text-h5 font-medium text-navy md:text-h3">{allocationTitle}</h2>
       <figure class="mx-auto w-[220px] md:w-[259px]">
         <svg viewBox="0 0 100 100" class="block h-auto w-full -rotate-90" role="img" aria-label={`${title}: ${allocation.rows.map(([k, v]) => `${k} ${v}`).join(", ")}`}>

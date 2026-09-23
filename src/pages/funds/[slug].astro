@@ -39,7 +39,8 @@ const [target, ...facts] = f.hero.facts;
 ---
 <Base title={`${f.name} — Arculus Funds Management`} description={f.hero.subtitle} noindex>
   <Header slot="header" />
-  <HeroLevel2 title={f.hero.title} description={f.hero.subtitle} theme="light" layout="full" bg={f.slug} titleColor="rust" buttons={heroButtons} image={image}>
+  {/* fund hero title is navy like the homepage (QA, Jim 23 Sep): the frame's rust title read as a visited link */}
+  <HeroLevel2 title={f.hero.title} description={f.hero.subtitle} theme="light" layout="full" bg={f.slug} buttons={heroButtons} image={image}>
     <div class="flex flex-col gap-6 text-navy md:pt-2">
       <div><p>{target.label}</p><p class="text-h5 font-medium md:text-h3">{target.value}</p>{target.note && <p>{target.note}</p>}</div>
       <dl class="flex flex-col gap-2 md:flex-row md:gap-4">

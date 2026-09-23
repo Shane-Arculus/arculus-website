@@ -49,7 +49,6 @@ Colours are the library variables actually bound on the canonical frames. They a
 | `outline-warm` | `#DFC6AD` | ellipse outline on light heroes |
 | `orange` | `#EC7826` | wholesale kicker and stat labels (`[Unverified]` raw hex; logo gradient uses #EE7624) |
 | `card-line` | `#EBE5DE` | white card borders on cream bands |
-| `card-line-2` | `#E5E0D8` | strategy card border and facts rule |
 | `outline-card` | `#8D93AC` | circle outline on strategy card bands |
 | `muted` | `#99A1A8` | input placeholders only (2.6:1 — never for text) |
 | `error-tint` | `#FCF0ED` | error banner background |
@@ -89,6 +88,8 @@ Type ramp (Fira Sans; size/line-height as used on the frames):
 | Display-sm | Medium 48/115% — CTA banner title on mobile |
 | Stat | Medium 46/120% — strategy-at-a-glance figures (`text-stat`); labels SemiBold 13 (`text-stat-label`) |
 | Subhead | SemiBold 16/120% — table and chart titles on fund pages, colour `navy-mid` (`text-subhead`) |
+
+Card rule (QA, Jim 23 Sep): every white card on a cream band is `rounded-lg border border-card-line bg-white` — one radius (8px), one border (#EBE5DE). No `rounded-2xl`, no second card-line token.
 
 Type rule (QA, Jim 23 Sep): three tiers only. Page title = `text-display-sm md:text-display` in heroes (or `text-h3 md:text-h1` on hero-less pages: article, search, 404). **Every module/section H2 = `text-h5 md:text-h3`**, home included (the frames had home modules at H1; that was the "random" feel). Card and item titles = `text-lead font-medium` or `text-h5`; featured article title `text-h5 md:text-h2`. Kickers, subheads and body as tokened.
 

@@ -12,7 +12,7 @@ interface Props { reportUrl?: string; class?: string; }
 const { reportUrl, class: className = "" } = Astro.props;
 const { ratings } = await getSite();
 ---
-<div class:list={["rounded-2xl border border-card-line bg-white", className]}>
+<div class:list={["rounded-lg border border-card-line bg-white", className]}>
   <!-- Desktop -->
   <div class:list={["hidden items-center p-12 md:flex", reportUrl ? "justify-between gap-14" : "justify-start gap-[128px]"]}>
     <div class="flex w-[388px] flex-col gap-1">

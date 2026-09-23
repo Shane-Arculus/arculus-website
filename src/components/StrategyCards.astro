@@ -14,14 +14,14 @@ interface Props { title: string; intro: string; strategies: Strategy[]; buttonLa
 const { title, intro, strategies, buttonLabel, hrefs, images } = Astro.props;
 ---
 <section class="bg-cream">
-  <div class="mx-auto flex max-w-site flex-col gap-6 px-4 pb-6 pt-2 md:gap-9 md:px-12 md:pb-[100px] md:pt-[90px]">
+  <div class="mx-auto flex max-w-site flex-col gap-6 px-4 pb-6 pt-2 md:gap-9 md:px-12 md:pb-[50px] md:pt-[90px]">
     <div class="hidden flex-col gap-3 md:flex">
       <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
       <p>{intro}</p>
     </div>
     <div class="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-8">
       {strategies.map((s) => (
-        <article class="flex flex-col overflow-hidden rounded-lg border border-card-line-2 bg-white">
+        <article class="flex flex-col overflow-hidden rounded-lg border border-card-line bg-white">
           <div class="relative overflow-hidden px-7 py-[46px] text-white" style={`background: var(--gradient-ladder-${s.ladder});`}>
             <div class="pointer-events-none absolute right-[-32px] top-[-108px] h-[331px] w-[331px] rounded-full border border-outline-card" aria-hidden="true"></div>
             <img src={images[s.slug]} alt="" width="244" height="244" loading="lazy" class="pointer-events-none absolute right-[12px] top-[-64px] h-[244px] w-[244px] rounded-full object-cover" />
@@ -37,7 +37,7 @@ const { title, intro, strategies, buttonLabel, hrefs, images } = Astro.props;
                 <p class="text-kicker font-semibold uppercase tracking-kicker text-rust-hi">{s.card.heroStat[0]}</p>
                 <p class="text-h2 font-medium text-navy">{s.card.heroStat[1]}</p>
               </div>
-              <dl class="flex gap-6 border-t border-card-line-2 pt-[18px]">
+              <dl class="flex gap-6 border-t border-card-line pt-[18px]">
                 {s.card.facts.map(([k, v]) => <div class="flex flex-1 flex-col gap-1"><dt class="text-kicker font-semibold uppercase tracking-kicker text-rust-hi">{k}</dt><dd class="text-h6 font-medium text-navy">{v}</dd></div>)}
               </dl>
             </div>
