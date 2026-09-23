@@ -21,7 +21,7 @@ const site = await getSite();
 const fundHref = { afi: "/funds/arculus-fixed-income-fund", pif: "/funds/arculus-preferred-income-fund" } as const;
 const cards = await Promise.all(home.funds.cards.map(async (c) => ({
   ...c, href: fundHref[c.fund], investHref: site.externalUrls.olivia123,
-  image: { src: `/images/hero-${c.fund}.webp`, alt: `[image register ${c.fund === "afi" ? "IMG-02" : "IMG-03"}]` },
+  image: { src: `/images/card-${c.fund}.webp`, alt: `[image register ${c.fund === "afi" ? "IMG-02" : "IMG-03"}]` },
 })));
 const featured = await getArticle(home.insights.featured);
 const list = await Promise.all(home.insights.list.map(getArticle));

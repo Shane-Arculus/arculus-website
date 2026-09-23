@@ -7,8 +7,8 @@ Export routine: clone the slot's `image` node into the export holder, export 4×
 | # | Slot (page · module) | File in `public/images/` | Figma option | Figma hash (first 10) | Source | Licence | Status |
 |---|---|---|---|---|---|---|---|
 | V2-01 | Home · hero | `hero-home.webp` | SET2 · Home | fec3d4a12e | **Stock screenshot** (Figma layer "Screenshot 2026-09-21 at 4.03.23 pm") — not Unsplash | [Unverified] paid stock | **Licence required before launch** (screenshot is watermarked/low-res; buy and re-export) |
-| V2-02 | Fixed Income Fund · hero | `hero-afi.webp` | R2 · 5c (Jim's swap, 344:23509) | b4e3d4bdf7 | [Unverified] Unsplash — confirm from the Image Options page | Unsplash | Confirm photographer, record URL |
-| V2-03 | Preferred Income Fund · hero | `hero-pif.webp` | R2 · 2c (Jim's swap, 344:23489) | c7d89759dd | [Unverified] Unsplash — confirm | Unsplash | Confirm photographer, record URL |
+| V2-02 | Fixed Income Fund · hero; home fund card (`card-afi.webp`, 4:5 rectangular crop of the same source) | `hero-afi.webp` | R2 · 5c (Jim's swap, 344:23509) | b4e3d4bdf7 | [Unverified] Unsplash — confirm from the Image Options page | Unsplash | Confirm photographer, record URL |
+| V2-03 | Preferred Income Fund · hero; home fund card (`card-pif.webp`, 4:5 rectangular crop of the same source) | `hero-pif.webp` | R2 · 2c (Jim's swap, 344:23489) | c7d89759dd | [Unverified] Unsplash — confirm | Unsplash | Confirm photographer, record URL |
 | V2-04 | A− SMA · hero, wholesale card | `hero-a-minus.webp` | R2 · 4a | 672d76e221 | [Unverified] Unsplash — confirm | Unsplash | Confirm |
 | V2-05 | BBB SMA · hero, wholesale card | `hero-bbb.webp` | R2 · 5a | d98bee4c26 | [Unverified] Unsplash — confirm | Unsplash | Confirm |
 | V2-06 | Protected Equity Portfolio · hero, wholesale card | `hero-pep.webp` | R2 · 6b | 4f1034654b | [Unverified] Unsplash — confirm | Unsplash | Confirm |
@@ -26,3 +26,24 @@ Still placeholders (kept on purpose, Jim 23 Sep): Home "Who we are" left-right a
 Unsplash pool on the Image Options page (the 17 top-level images), for matching the unconfirmed rows: saxon-white-beG7NQA07QE, sum-d-5G8rScIjUdQ, sandro-katalina-sRaRlaFQolw, winston-tjia-GufrD5HUeOo, kieran-i_-fZqpTA-E, matias-santana-2ykXqiKHNfk, sonder-quest-SOlxRzavsy8, dorien-beernink-0BFbMv3Y3dY, mitchell-luo-euiFnmjBhJM, keisha-4yAtS8TgQas, 0xk-WM7vzlC5Cr4, meric-dagli-fQZ9R5T21MI, peter-ivey-hansen-5xOSA-UgsKQ, vlad-kutepov-m2IE8xU8fGo, katie-yang-9jGcSzMkxAQ, plus two stock screenshots (4.01.48 pm, 4.03.23 pm) that need buying.
 
 Licensing note: [Unverified] the Unsplash licence permits commercial use without payment or attribution; the two screenshot sources are from a paid library and must be purchased at master resolution (2000×2000 minimum for heroes). Hashes that don't match a pool image were placed by Jim from files not on the page — confirm their origin before launch.
+
+## Home hero — replacement shortlist (browser agent, 23 Sep; Jim: "options, none loved")
+
+Non-architecture candidates for V2-01, all free commercial licences (Unsplash / Pexels), no people in frame, resolution as original (centre-square crop in brackets). Not yet placed in Figma.
+
+| # | Subject | Link | Photographer / library | Res (square) | Agent's crop flag |
+|---|---|---|---|---|---|
+| 1 | Hemp mooring rope on a bollard | https://unsplash.com/photos/closeup-photo-of-brown-rope--yz22gsqAH0 | Robert Zunikoff / Unsplash | 6000×4000 (4000²) | agent's top pick |
+| 2 | Dry stone wall, close | https://www.pexels.com/photo/backdrop-of-dry-stone-wall-with-uneven-surface-7140243/ | Julia Filirovska / Pexels | 5616×3744 (3744²) | all-over texture, palette between cream and orange |
+| 3 | Sandstone ashlar blocks | https://unsplash.com/photos/a-close-up-of-a-wall-made-of-stone-blocks-lIfTHqLv8XM | Ted Balmer / Unsplash | 4032×3024 (3024²) | quietest; near the 3000 minimum |
+| 4 | Braided rope, macro | https://unsplash.com/photos/brown-rope-in-close-up-photography-LlYxugZRVf8 | Shubhendu Mohanty / Unsplash | 6336×9504 (6336²) | crop anywhere |
+| 5 | Eroded sandstone cliff face | https://unsplash.com/photos/eroded-sandstone-cliff-face-with-intricate-natural-patterns-1ZDLzaYSlA4 | Garvit Nama / Unsplash | 7952×5304 (5304²) | no sky |
+| 6 | Inside an old wooden boat | https://unsplash.com/photos/interior-view-of-an-old-weathered-wooden-boat-mKLEkihmskE | An Shved / Unsplash | 4415×2943 (2943²) | needs warm grade; crop off-centre left |
+| 7 | Misty water at sunrise, reeds | https://unsplash.com/photos/misty-morning-over-calm-water-with-reeds-0i30eIv19ds | Wolfgang Hasselmann / Unsplash | 5464×3642 (3642²) | best colour match; almost no subject, may go muddy on mobile |
+| 8 | Suspension bridge cable, looking up | https://unsplash.com/photos/thick-steel-cables-extending-upwards-against-sky-ZDB9WJBp-C4 | Leo_Visions / Unsplash | 5632×3666 (3666²) | diagonal fights or flatters the 45° ellipse; test mirrored |
+| 9 | Golden rice terraces from above | https://www.pexels.com/photo/a-beautiful-paddy-field-14025934/ | Quang Nguyen Vinh / Pexels | 7750×4024 (4024²) | green margins need tempering |
+| 10 | Raking light across timber slats | https://unsplash.com/photos/sunlight-and-shadows-on-wooden-planks-jxiT7qwKMms | chen chen / Unsplash | 6240×4160 (4160²) | strongest tone match, weakest weight |
+| 11 | Weathered bollard on a pier | https://www.pexels.com/photo/vintage-bollard-by-the-waterfront-harbor-37833041/ | Brendan Rühli / Pexels | 6000×4000 (4000²) | singular subject; crop off-centre |
+| 12 | Ships' bows in a harbour, golden hour | https://unsplash.com/photos/ships-docked-at-harbor-during-a-golden-sunset-UIkdxYNxkM4 | isawJupiter / Unsplash | 6000×4000 (4000²) | strong horizontals; sun flare near centre |
+
+Rejected by the agent: vault doors (staged, CGI or bank marketing) and balance scales (gavels, coins, studio black). Held back: Pexels 31262593 (Turkish harbour, possible small figures) and Pexels 33121970 (Dutch breakwater, cold sky). Unsplash+ (subscription) has stronger rope/bollard frames by Karolina Grabowska if the free pool fails. Agent's caveat, worth adopting: keep a dated screenshot of each licence page with the master file.

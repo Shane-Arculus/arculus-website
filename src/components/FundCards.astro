@@ -25,7 +25,7 @@ const { title, id, cards, buttons, showRatings = true } = Astro.props;
       <div class="flex flex-col gap-6 md:gap-9">
         {cards.map((c) => (
           <article class="flex flex-col overflow-hidden rounded-lg border border-card-line bg-white bg-cover bg-right-bottom md:flex-row md:gap-6" style={`background-image: url(/heroes/fund-card-${c.fund}.webp);`}>
-            <img src={c.image.src} alt={c.image.alt} width="324" height="405" loading="lazy" class="h-[150px] w-full object-cover md:h-auto md:min-h-[405px] md:w-[324px] md:shrink-0 md:self-stretch" />
+            <img src={c.image.src} alt={c.image.alt} width="324" height="405" loading="lazy" class="h-[150px] w-full rounded-lg object-cover md:h-auto md:min-h-[405px] md:w-[324px] md:shrink-0 md:self-stretch" />
             <div class="flex flex-col gap-6 px-6 pb-10 pt-6 md:justify-center md:gap-9 md:px-[60px] md:py-0">
               <div class="flex flex-col gap-4">
                 <div class="flex flex-col gap-4 md:pr-[120px]">
