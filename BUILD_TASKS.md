@@ -80,7 +80,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [ ] T26 Insight page template `src/pages/insights/[slug].astro` — one page per article with the PDF embedded in a viewer (V1); `InsightsList`/`ArticleCard` link to the page instead of the PDF; long-term plan is an in-page version of each report plus a full-report PDF download template (parked until V1 ships)
 - [ ] T27 Team headshot fallback: navy initials monogram (SVG, generated from the name) in `ProfileModule` when `photo` is a placeholder — agreed 22 Sep instead of grey silhouettes; real headshots still preferred (C5)
-- [~] T28 Fund tables: workbook → JSON mapping done and verified against the June reports (22 Sep); `scripts/perf-from-xlsx.py` prints the paste-ready `periods` block from the last dated row, `docs/MONTHLY.md` Step 1 documents the columns. Open: whether the PIF table shows franked or unfranked totals (Renny); the chart lines (RY, YTM, BBSW) still come from Renny's chart, not the workbooks
+- [x] T28 Fund tables: `scripts/monthly.py` (audit sheet, chart series, `--apply` to the fund JSON) and `docs/MONTHLY.md` rewritten as the four-stage runbook, 23 Sep. Earlier: workbook → JSON mapping done and verified against the June reports (22 Sep); superseded by `scripts/monthly.py`. Open: whether the PIF table shows franked or unfranked totals (Renny); the chart lines (RY, YTM, BBSW) still come from Renny's chart, not the workbooks
 - [ ] C9 Back-fill the Insights hub and Document library with the last 12 months of reports (Jim gathering the PDFs; `insights.json` `pdf` paths and `documents.json` `path`/`size` are `[TO SET]` until then)
 
 ## 7 · Launch
