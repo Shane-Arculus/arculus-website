@@ -27,7 +27,7 @@ const featured = articles.find((a) => a.slug === ins.featured)!;
 ---
 <Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle} noindex>
   <Header slot="header" />
-  <HeroLevel2 title={p.hero.title} description={p.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[p.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <HeroLevel2 title={p.hero.title} description={p.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[p.hero.button]} image={{ src: "/images/hero-insights.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={p.breadcrumb} />
   <FilterTabs tabs={p.filters} target="all-insights" />
   <InsightsRow title={p.latestTitle} button={{ label: p.hero.button.label, href: p.hero.button.href, action: p.hero.button.action }} featured={featured} list={[]} />

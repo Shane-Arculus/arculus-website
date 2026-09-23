@@ -96,6 +96,12 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [x] Q12 allocation donut titled "Portfolio allocation" (`allocation.title` optional) · Q13 Fund features title level with Who it may suit · Q14 portfolio tables bottom-aligned
 - [x] Q15 type: module titles normalised to `text-h5 md:text-h3` everywhere (see CLAUDE.md type rule)
 
+## 6d · Images (23 Sep)
+
+- [x] R2 · proposed set v2 applied: 13 hero images and the Governance left-right exported at 4× from Figma, WebP, wired per page (each page now has its own file; BBB/PEP/IM no longer borrow AFI/A−/placeholder). Register: `docs/image-register-v2.md`
+- [ ] C10 Licence inventory: home hero is a stock screenshot (buy at master res); confirm photographer/URL for the nine [Unverified] Unsplash rows; decide on Team reusing the Governance image
+- [ ] C11 Remaining placeholders: home and Our approach left-right, Governance investment-committee left-right, insight thumbnails/featured, headshots
+
 ## 7 · Launch
 
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)

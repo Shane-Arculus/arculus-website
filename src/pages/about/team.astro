@@ -15,7 +15,7 @@ const photo = (p: string) => (p.startsWith("[") ? "" : p); // QA 23 Sep: no plac
 ---
 <Base title={`${t.hero.title} — Arculus Funds Management`} description={t.hero.subtitle} noindex>
   <Header slot="header" />
-  <HeroLevel2 title={t.hero.title} description={t.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[t.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
+  <HeroLevel2 title={t.hero.title} description={t.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[t.hero.button]} image={{ src: "/images/hero-team.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={t.breadcrumb} />
   {t.groups.map((g) => <ProfileModule title={g.title} intro={g.intro} people={g.people.map((p) => ({ ...p, photo: photo(p.photo) }))} />)}
   <TwoColumnsContent title={t.distribution.title} paragraphs={[t.distribution.body]} />

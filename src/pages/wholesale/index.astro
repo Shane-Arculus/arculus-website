@@ -17,7 +17,7 @@ export const strategyRoutes: Record<string, string> = { "a-minus": "/wholesale/a
 const wl = await getWholesaleLanding();
 const strategies = (await getStrategies()).filter((s) => wl.strategies.cards.includes(s.slug));
 const pm = await getPrivateMandates();
-const images = { "a-minus": "/images/hero-a-minus.webp", bbb: "/images/hero-afi.webp", pep: "/images/insight-placeholder.webp" };
+const images = { "a-minus": "/images/hero-a-minus.webp", bbb: "/images/hero-bbb.webp", pep: "/images/hero-pep.webp" };
 ---
 <Base title="Wholesale strategies — Arculus Funds Management" description={wl.hero.subtitle} noindex nosearch>
   <Header slot="header" />
