@@ -42,7 +42,7 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
               <span>{item.label}</span>
               <Icon name="chevron-down" size={16} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
             </button>
-            <div id={`dd-${i}`} class="absolute left-0 top-[calc(100%+12px)] hidden w-[280px] border border-line bg-white py-3 shadow-sm before:absolute before:inset-x-0 before:top-[-12px] before:h-3" data-dd-panel>
+            <div id={`dd-${i}`} class="absolute left-0 top-[calc(100%+12px)] hidden w-[280px] rounded-[6px] border border-line bg-white py-3 shadow-sm before:absolute before:inset-x-0 before:top-[-12px] before:h-3" data-dd-panel>
               <ul>
                 {item.children.filter((child: { footerOnly?: boolean }) => !child.footerOnly).map((child: { label: string; href: string }) => (
                   <li><a href={resolve(child.href)} class:list={["block px-6 py-2.5 text-body font-medium text-navy hover:bg-cream hover:text-rust focus-visible:bg-cream focus-visible:text-rust focus-visible:outline-none", isCurrent(child.href) && "text-rust"]} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
