@@ -50,12 +50,9 @@ The portfolio characteristics (running yield, yield to maturity, average margin,
 
 ## Step 2 — Export the two charts from Figma
 
-1. Open the AFM Site IA & Wireframes file, page **04 · V1 Layouts**.
-2. Update the chart data in the two `Performance chart` frames (AFI `88:836`, PIF `97:1119`) — the designer does this part. The frame must keep its title text ("Performance Comparison") and legend; both are part of the image.
-3. Select the AFI chart frame → Export panel (bottom right) → set **2x**, **PNG** → Export.
-4. Convert to WebP and rename: `afi-2026-08.webp` for the August 2026 report (year-month of the report, not of the day you export). Any image tool that saves WebP works; quality 85. Squoosh (squoosh.app) is free and runs in the browser.
-5. Repeat for PIF → `pif-2026-08.webp`.
-6. Put both files in `public/charts/`. Leave the previous months' files there.
+The charts are the `Performance chart v2` frames on page **04 · V1 Layouts** (AFI `349:9521`, PIF `346:9503`, to the right of all page frames). Each is 664 wide and built from data: 43 monthly bars (1-year total return, right axis, from the workbook column AC) and three yield lines (running yield, yield to maturity, 90-day BBSW, left axis). To roll a month forward: drop the oldest month, add the new one (bar from the workbook; the three line values from Renny's series, see below), re-space, and shift the six-monthly x labels if needed. Then export the frame at 2× PNG with the `_note` layer hidden, trim everything below the legend (360px @1x = 720px @2x), convert to WebP (quality 90) and save as `public/charts/<fund>-<yyyy-mm>.webp`; update `chartImage` in the fund JSON.
+
+The line values for Jun 2026 were [Unverified] traced from the June report charts; when Renny supplies the monthly series behind his chart, rebuild the three vectors from the numbers (the `_note` layer on each frame records this). `scripts/figma-chart-build.js` is the use_figma script that built the frames: replace its `D` series and axis constants and run it through the Figma MCP to regenerate a chart from data rather than editing by hand.
 
 ## Step 3 — Edit the fund files
 

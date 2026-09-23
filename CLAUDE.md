@@ -111,7 +111,7 @@ All in `content/`, loaded as Astro content collections by `src/content.config.ts
 - `legal/terms.md`, `legal/privacy.md`, `legal/cookies.md`, `legal/disclosure.md` (disclosure copy pending).
 - `pages/home.json`, `pages/contact.json`, `pages/404.json`.
 
-Monthly update: the two performance charts are Figma exports (`Performance chart` nodes `88:836` AFI, `97:1119` PIF, at 2×, WebP), never generated in code; the portfolio allocation donut is inline SVG from the three allocation rows. The edit is: change fund JSON, add PDF and a `documents.json` line, drop in the chart export, commit. Document this in `docs/MONTHLY.md` (task L3).
+Monthly update: the two performance charts are Figma exports (`Performance chart v2` nodes `349:9521` AFI, `346:9503` PIF — rebuilt 23 Sep 2026 at Renny's fidelity: dual axes, all 43 monthly bars; export at 2×, trim below the legend to 664×360 @1x, WebP), never generated in code; the portfolio allocation donut is inline SVG from the three allocation rows. The edit is: change fund JSON, add PDF and a `documents.json` line, drop in the chart export, commit. Document this in `docs/MONTHLY.md` (task L3).
 
 ## 5. Rules
 

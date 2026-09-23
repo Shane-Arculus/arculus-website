@@ -18,7 +18,7 @@ interface Props {
   height?: number;
   class?: string;
 }
-const { src, alt, title, series = [], width = 664, height = 413, class: className = "" } = Astro.props;
+const { src, alt, title, series = [], width = 664, height = 360, class: className = "" } = Astro.props;
 ---
 <figure class:list={["hidden md:block", className]}>
   {title && <figcaption class="text-subhead font-semibold text-navy-mid mb-4">{title}</figcaption>}
