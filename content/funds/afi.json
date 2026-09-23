@@ -51,7 +51,7 @@
   },
   "ratings": {
     "show": true,
-    "ratingReportUrl": "[TO SET — Lonsec report PDF for AFI]"
+    "ratingReportUrl": "/contact/?topic=lonsec-afi"
   },
   "performance": {
     "title": "Performance",

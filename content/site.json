@@ -140,7 +140,8 @@
   "ratings": {
     "headline": "Rated 'Investment Grade' by Lonsec.",
     "disclosure": "Ratings are opinions of the relevant research house, are not recommendations, and may change without notice.",
-    "buttonLabel": "View the Fund Rating Report",
+    "buttonLabel": "Request the Fund Rating Report",
+    "_buttonNote": "Jim 23 Sep: the 15-page Lonsec report is not hosted (DDH Graham do not host it either) — the button goes to the contact form with ?topic=lonsec-<fund>; compliance register Q8.",
     "mobileTitle": "Ratings",
     "lonsecAlt": "Lonsec",
     "badgeAlt": "Lonsec Investment Grade rating"

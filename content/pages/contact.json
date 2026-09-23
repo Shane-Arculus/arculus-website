@@ -55,7 +55,7 @@
       {
         "name": "topic",
         "type": "hidden",
-        "_note": "pre-filled from ?topic= (afi, pif, a-minus, bbb, pep, im, private-mandate, wholesale)"
+        "_note": "pre-filled from ?topic= (afi, pif, a-minus, bbb, pep, im, private-mandate, wholesale, lonsec-afi, lonsec-pif)"
       },
       {
         "name": "message",

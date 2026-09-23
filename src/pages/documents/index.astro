@@ -29,7 +29,7 @@ const hero = { ...p.hero.button, href: resolve(p.hero.button.href) };
 const byFund = (key: string) =>
   lib.documents
     .filter((d) => d.fund === key && !d.wholesaleOnly) // file order: documents.json is kept in the frame's order (PDS, TMD, then reports newest first) — see docs/MONTHLY.md
-    .map((d) => ({ title: d.title, href: d.path, meta: d.meta, size: d.size, filter: slugify(d.category) }));
+    .map((d) => ({ title: d.title, href: d.path, meta: d.meta, size: d.size, filter: slugify(d.category), download: d.download }));
 const wholesale = p.sections.find((s) => s.key === "wholesale");
 ---
 <Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle} noindex>

@@ -143,13 +143,14 @@
       "id": "afi-lonsec-2026",
       "fund": "afi",
       "category": "Ratings",
-      "title": "Lonsec research report",
-      "meta": "Rating · June 2026",
+      "title": "Lonsec Fund Rating Report",
+      "meta": "Rating · June 2026 · Available on request",
       "date": "2026-06-01",
-      "path": "[TO SET]",
+      "path": "/contact/?topic=lonsec-afi",
       "size": null,
       "wholesaleOnly": false,
-      "_note": "ratingReportUrl target for AFI"
+      "_note": "Request row, not a download (Jim 23 Sep): the full Lonsec report is not hosted; the link opens the contact form pre-filled with the topic.",
+      "download": false
     },
     {
       "id": "pif-pds",
@@ -222,13 +223,14 @@
       "id": "pif-lonsec-2026",
       "fund": "pif",
       "category": "Ratings",
-      "title": "Lonsec research report",
-      "meta": "Rating · June 2026",
+      "title": "Lonsec Fund Rating Report",
+      "meta": "Rating · June 2026 · Available on request",
       "date": "2026-06-01",
-      "path": "[TO SET]",
+      "path": "/contact/?topic=lonsec-pif",
       "size": null,
       "wholesaleOnly": false,
-      "_note": "ratingReportUrl target for PIF"
+      "_note": "Request row, not a download (Jim 23 Sep): the full Lonsec report is not hosted; the link opens the contact form pre-filled with the topic.",
+      "download": false
     },
     {
       "id": "esg-policy",

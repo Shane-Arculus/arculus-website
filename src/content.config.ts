@@ -57,7 +57,7 @@ const site = defineCollection({
       fund: z.object({ template: z.string(), _note: note }),
       wholesale: z.object({ template: z.string(), thenGeneric: z.boolean(), _note: note }),
     }),
-    ratings: z.object({ headline: z.string(), disclosure: z.string(), buttonLabel: z.string(), mobileTitle: z.string(), lonsecAlt: z.string(), badgeAlt: z.string() }),
+    ratings: z.object({ headline: z.string(), disclosure: z.string(), buttonLabel: z.string(), mobileTitle: z.string(), lonsecAlt: z.string(), badgeAlt: z.string(), _buttonNote: note }),
     attestation: z.object({
       kicker: z.string(), title: z.string(), body: z.string(), checkbox: z.string(), validation: z.string(),
       continue: z.string(), decline: z.string(), footnote: z.string(), storageKey: z.string(),
@@ -227,7 +227,7 @@ const documents = defineCollection({
     }),
     documents: z.array(z.object({
       id: z.string(), fund: z.string(), category: z.string(), title: z.string(), meta: z.string(),
-      date: z.string().nullable(), path: z.string(), size: z.string().nullable(), wholesaleOnly: z.boolean(), _note: note,
+      date: z.string().nullable(), path: z.string(), size: z.string().nullable(), wholesaleOnly: z.boolean(), download: z.boolean().optional(), _note: note,
     })),
   }),
 });

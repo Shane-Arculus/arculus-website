@@ -15,7 +15,7 @@ Rule for the build: nothing in `content/` marked `[Unverified]` or `[TO SET]` sh
 | Q5 | PIF ARSN | 108 161 575 as drawn (APIR DDH0001AU). AFI ARSN 622 419 578 (APIR DDH8305AU). | OPEN — confirm PIF number |
 | Q6 | Correspondence / registered address | Privacy Notice: Hobart for both. Old Cookie Policy: Bondi Beach correspondence, Hobart registered. Contact page: "[Office address — TBC]". | OPEN |
 | Q7 | CEO surname | Sunetha Parag throughout. | CLOSED |
-| Q8 | Ratings currency and Lonsec citation rules | Lonsec only (SQM and FundMonitors dropped). "Rated 'Investment Grade' by Lonsec." + disclosure sentence + report link per fund. Lonsec's required citation wording, date and disclaimer still to be confirmed. | OPEN — citation rules; note to Renny that v1 item 6 listed three houses |
+| Q8 | Ratings currency and Lonsec citation rules | Lonsec only (SQM and FundMonitors dropped). "Rated 'Investment Grade' by Lonsec." + disclosure sentence + report link per fund. Lonsec's required citation wording, date and disclaimer still to be confirmed. | OPEN — citation rules; note to Renny that v1 item 6 listed three houses. 23 Sep: report not hosted (DDH Graham do not host it); "Request the Fund Rating Report" → contact form |
 | Q9 | Complaints and AFCA | Contact page carries a draft complaints paragraph plus "[IDR process and AFCA membership details — TBC with compliance]". | OPEN |
 
 ## B. Questions from content extraction (new)

@@ -60,7 +60,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [ ] C3 Documents uploaded: PDS, TMD, last 3 monthlies, quarterly, annual, Lonsec report, policies
 - [ ] C4 Insights PDFs re-issued with compliant disclaimers (separate workstream); `wholesaleOnly` flags set
 - [ ] C5 Eleven images licensed or replaced per `docs/image-register.xlsx` (Opera House already gone); headshots supplied (eight); split the images doing double duty (IMG-02 on seven pages, IMG-07 as both article art and PEP hero)
-- [ ] C6 Lonsec citation rules applied to ratings row
+- [ ] C6 Lonsec citation rules applied to ratings row. Ruling 23 Sep (Jim): the full report is not hosted — button and library rows now read "Request the Fund Rating Report" and open the contact form with `?topic=lonsec-afi|pif` (Q8 still open on citation wording)
 - [ ] C7 Note to Renny: ratings now Lonsec only (his item 6 still lists three houses)
 - [ ] C8 Olivia123 dedicated URL swapped in when supplied
 
