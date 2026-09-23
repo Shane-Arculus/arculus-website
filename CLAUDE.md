@@ -90,6 +90,8 @@ Type ramp (Fira Sans; size/line-height as used on the frames):
 | Stat | Medium 46/120% — strategy-at-a-glance figures (`text-stat`); labels SemiBold 13 (`text-stat-label`) |
 | Subhead | SemiBold 16/120% — table and chart titles on fund pages, colour `navy-mid` (`text-subhead`) |
 
+Type rule (QA, Jim 23 Sep): three tiers only. Page title = `text-display-sm md:text-display` in heroes (or `text-h3 md:text-h1` on hero-less pages: article, search, 404). **Every module/section H2 = `text-h5 md:text-h3`**, home included (the frames had home modules at H1; that was the "random" feel). Card and item titles = `text-lead font-medium` or `text-h5`; featured article title `text-h5 md:text-h2`. Kickers, subheads and body as tokened.
+
 Hero photos: the photo is clipped to an ellipse rotated 45° and paired with a thin outline ellipse; `HeroImage` carries the exact path from the frames. Photos at 2× the display size (581 → 1162px) in `public/images/`.
 
 Layout: desktop content 1340 inside 1440 (48px side padding on module bars) — the container token is `--container-site: 1436px` because Tailwind's `max-w` includes padding; `max-w-site px-12` therefore yields 1340 of content; mobile 390 with 16px gutters (358 content). Breakpoints: `<768` mobile layout, `≥768` desktop layout. Key-value lists render as tables ≥768 and stacks <768. Chart images hidden <768; the period table carries the numbers.

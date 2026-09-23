@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 /**
  * TwoColumnsContent — Figma 103:1340 → 207:17864. White band, H3 title in the
  * left column, body copy split across two 664px columns (paragraphs given as a
@@ -17,9 +18,9 @@ const cols: readonly [Column, Column] = columns ?? [{ title, paragraphs: paragra
   <div class="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-4">
     {cols.map((c, i) => (
       <div class:list={["flex flex-col gap-4 md:gap-9", i === 0 && "md:pr-12", i === 1 && !c.title && "md:pt-[74px]"]}>
-        {c.title && <h2 class="text-h3 font-medium text-navy">{c.title}</h2>}
+        {c.title && <h2 class="text-h5 font-medium text-navy md:text-h3">{c.title}</h2>}
         {c.paragraphs && <div class="flex flex-col gap-4">{c.paragraphs.map((p) => <p>{p}</p>)}</div>}
-        {c.items && <ul class="flex list-disc flex-col gap-2 pl-5">{c.items.map((it) => <li>{typeof it === "string" ? it : <>{it.text} <a href={it.link.href} class="font-medium text-rust hover:underline">{it.link.label}</a></>}</li>)}</ul>}
+        {c.items && <ul class="flex list-disc flex-col gap-2 pl-5">{c.items.map((it) => <li>{typeof it === "string" ? it : <>{it.text}<a href={it.link.href} class="mt-1 flex items-center gap-1 font-medium text-rust hover:underline">{it.link.label}<Icon name="chevron-right" size={14} /></a></>}</li>)}</ul>}
       </div>
     ))}
   </div>

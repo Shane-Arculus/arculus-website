@@ -19,7 +19,7 @@ const items: readonly Block[] = blocks ?? [{ title: title ?? "", paragraphs }];
     <div class="flex flex-col gap-6 md:gap-9">
       {items.map((b) => (
         <div class="flex flex-col gap-3 md:gap-4">
-          <h2 class="text-h3 font-medium text-navy md:text-h1">{b.title}</h2>
+          <h2 class="text-h5 font-medium text-navy md:text-h3">{b.title}</h2>
           <div class="flex flex-col gap-4 text-lead text-body">{b.paragraphs.map((p) => <p>{p}</p>)}</div>
         </div>
       ))}

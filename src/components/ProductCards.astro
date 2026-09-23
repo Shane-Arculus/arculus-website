@@ -11,7 +11,7 @@ const { title, cards } = Astro.props;
 ---
 <Section bg="white" pad="tight" class="md:[&>div]:py-16">
   <div class="flex flex-col gap-6 md:gap-12">
-    <h2 class="text-h3 font-medium text-navy md:text-h1">{title}</h2>
+    <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
     <div class="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-4">
       {cards.map((c, i) => (
         <div class="relative flex min-h-[420px] flex-col justify-end overflow-hidden rounded-xl p-6 text-white md:min-h-[510px] md:p-12" style={`background: var(--gradient-product-${(i % 2) + 1});`}>

@@ -102,7 +102,7 @@ const funds = defineCollection({
     features: z.object({ title: z.string(), items: pairs }),
     portfolio: z.object({
       title: z.string(), asAt: z.string(), metrics: pairs,
-      allocation: z.object({ columns: z.tuple([z.string(), z.string()]), rows: pairs }),
+      allocation: z.object({ title: z.string().optional(), columns: z.tuple([z.string(), z.string()]), rows: pairs }),
     }),
     howToInvest: z.object({ title: z.string(), columns: z.array(z.object({ title: z.string(), body: z.string(), button, icon: z.string().optional() })) }),
     keyDocuments: z.object({ title: z.string(), items: z.array(z.object({ title: z.string(), meta: z.string(), doc: z.string() })), _note: note }),
@@ -174,7 +174,7 @@ const about = defineCollection({
       whoWeAre: z.object({ title: z.string(), paragraphs: z.array(z.string()), image: z.string(), _note: note }),
       showRatings: z.boolean(),
       philosophy: z.object({ title: z.string(), items: pairs, link }),
-      whatWeDo: z.object({ title: z.string(), items: z.array(z.union([z.string(), z.object({ text: z.string(), link })])) }),
+      whatWeDo: z.object({ title: z.string(), items: z.array(z.union([z.string(), z.object({ text: z.string(), link })])), _note: note }),
       forOurClients: z.object({ title: z.string(), items: z.array(z.string()) }),
       cta,
     }),
@@ -256,7 +256,7 @@ const pages = defineCollection({
     z.object({
       kind: z.literal("contact"), ...base, breadcrumb,
       hero: z.object({ title: z.string(), subtitle: z.string() }),
-      form: z.object({ title: z.string(), intro: z.string(), fields: z.array(formField), submit: z.string(), subjects: z.object({ default: z.string(), byTopic: z.record(z.string()), _note: note }).optional() }),
+      form: z.object({ title: z.string(), intro: z.string(), fields: z.array(formField), submit: z.string(), subjects: z.object({ default: z.string(), byTopic: z.record(z.string(), z.string()), _note: note }).optional() }),
       sent: z.object({ title: z.string(), body: z.string(), referenceLabel: z.string(), _note: note, links: z.array(link) }),
       details: z.array(z.object({ title: z.string(), lines: z.array(z.string()), link: link.optional(), _note: note })),
       whoToContact: z.object({ title: z.string(), columns: z.array(z.object({ title: z.string(), body: z.string(), icon: z.string().optional(), button })) }),

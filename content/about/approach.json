@@ -49,18 +49,19 @@
   "whatWeDo": {
     "title": "What we do",
     "items": [
-      "We invest only in investment grade bonds (S&P, Fitch or Moody's rated) issued under Australian law, in AUD",
+      "Investment-grade bonds only (S&P, Fitch or Moody's), under Australian law, in AUD",
       "Offer daily pricing and daily redemption on both public funds",
-      "Charge a flat management fee. No performance fee, so there is no incentive to take on risk",
+      "A flat management fee, no performance fee, no incentive to take on risk",
       {
-        "text": "We have a strong and simple ESG approach that will deliver an ESG outcome that is easily explained",
+        "text": "A simple ESG approach with an outcome that is easily explained",
         "link": {
           "label": "More on ESG",
           "href": "/about/esg"
         }
       },
-      "Support advisers with weekly market commentary, monthly fund reports and client seminars"
-    ]
+      "Weekly commentary, monthly fund reports and client seminars for advisers"
+    ],
+    "_note": "Items 1, 3, 4 and 5 shortened to one line at QA (Jim approved the drafts, 23 Sep) so the two columns balance; item 2 unchanged."
   },
   "forOurClients": {
     "title": "For our clients",

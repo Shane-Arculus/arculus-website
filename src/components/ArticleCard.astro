@@ -16,7 +16,7 @@ const img = a.image && !a.image.startsWith("[") ? a.image : "/images/insight-pla
     <div class="flex flex-col gap-4 md:pl-4">
       <div class="flex items-center gap-2"><Tag label={a.category} /><span class="text-small text-body">{fmtDate(a.date)}</span></div>
       <div class="flex flex-col gap-4 md:gap-6">
-        <h3 class="text-h5 font-medium text-navy group-hover:text-rust md:text-h1">{a.homeTitle ?? a.title}</h3>
+        <h3 class="text-h5 font-medium text-navy group-hover:text-rust md:text-h2">{a.homeTitle ?? a.title}</h3>
         <p class="text-body text-body">{a.homeSummary ?? a.summary}</p>
       </div>
     </div>

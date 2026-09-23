@@ -83,6 +83,19 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [x] T28 Fund tables: `scripts/monthly.py` (audit sheet, chart series, `--apply` to the fund JSON) and `docs/MONTHLY.md` rewritten as the four-stage runbook, 23 Sep. Earlier: workbook → JSON mapping done and verified against the June reports (22 Sep); superseded by `scripts/monthly.py`. Open: whether the PIF table shows franked or unfranked totals (Renny); the chart lines (RY, YTM, BBSW) still come from Renny's chart, not the workbooks
 - [ ] C9 Back-fill the Insights hub and Document library with the last 12 months of reports (Jim gathering the PDFs; `insights.json` `pdf` paths and `documents.json` `path`/`size` are `[TO SET]` until then)
 
+## 6c · QA round 1 (Jim, 23 Sep)
+
+- [x] Q1 S&C registry URL set (`site.json` externalUrls.ssandcRegistry) · [ ] **T31 Registry portal (arculus.unitregistry.com.au) redesign to the new look — holding task, needs Sunny and Renny to confirm S&C will allow it**
+- [x] Q2 hero ellipse pulled in (581 → 540 on desktop, both hero templates)
+- [x] Q3–5 team: titles SemiBold navy, photo placeholders hidden until headshots land, wider column padding
+- [x] Q6 footer rust chevrons removed
+- [x] Q7 "More on ESG" on its own line with a chevron (TwoColumnsContent list links)
+- [x] Q8 What we do items shortened to one line (Jim approved the drafts 23 Sep) so the two columns balance
+- [x] Q9 Investment Management is gated in a fresh session (shares the wholesale session key by design, so it does not re-ask after Wholesale); change to a separate key if Jim wants it to ask again
+- [x] Q10 wholesale cards: image and ring left, buttons bottom-aligned · Q11 private mandates in a white box
+- [x] Q12 allocation donut titled "Portfolio allocation" (`allocation.title` optional) · Q13 Fund features title level with Who it may suit · Q14 portfolio tables bottom-aligned
+- [x] Q15 type: module titles normalised to `text-h5 md:text-h3` everywhere (see CLAUDE.md type rule)
+
 ## 7 · Launch
 
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)

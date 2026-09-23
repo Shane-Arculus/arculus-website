@@ -10,15 +10,14 @@ import TwoColumnsContent from "../../components/TwoColumnsContent.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import ImportantInformation from "../../components/ImportantInformation.astro";
 import { getAbout } from "../../content/loaders";
-import { slugify } from "../../lib/format";
 const t = await getAbout("team");
-const photo = (p: string, name: string) => (p.startsWith("[") ? "/images/team-placeholder.webp" : p) || `/images/team/${slugify(name)}.webp`;
+const photo = (p: string) => (p.startsWith("[") ? "" : p); // QA 23 Sep: no placeholder headshots — an empty photo renders no image until the real file is set in team.json
 ---
 <Base title={`${t.hero.title} — Arculus Funds Management`} description={t.hero.subtitle} noindex>
   <Header slot="header" />
   <HeroLevel2 title={t.hero.title} description={t.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[t.hero.button]} image={{ src: "/images/hero-afi.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={t.breadcrumb} />
-  {t.groups.map((g) => <ProfileModule title={g.title} intro={g.intro} people={g.people.map((p) => ({ ...p, photo: photo(p.photo, p.name) }))} />)}
+  {t.groups.map((g) => <ProfileModule title={g.title} intro={g.intro} people={g.people.map((p) => ({ ...p, photo: photo(p.photo) }))} />)}
   <TwoColumnsContent title={t.distribution.title} paragraphs={[t.distribution.body]} />
   <CtaBanner title={t.cta.title} body={t.cta.body} button={t.cta.button} />
   <ImportantInformation variant="generic" />

@@ -33,7 +33,7 @@ const titleCls = light ? (titleColor === "rust" ? "text-rust-hi" : "text-navy") 
 const bodyCls = light ? "text-body" : "text-white";
 const kickerCls = light ? "text-rust-hi" : "text-orange";
 const bandH = "md:min-h-[650px]"; // compact was 501 in the frames; Jim (22 Sep) wants every inner-page hero the same height
-const imgSize = 581;
+const imgSize = 540; // frame 581; pulled in at QA (Jim 23 Sep) so the ellipse clears the band edges
 ---
 <section class:list={["relative overflow-hidden", light ? "bg-cream" : "text-white"]} style={light ? undefined : "background: var(--gradient-navy-radial);"}>
   {light && (

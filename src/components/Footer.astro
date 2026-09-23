@@ -5,7 +5,7 @@
  * outline "Arculus Capital" external button, then licensing line and legal links.
  * Columns: About, Funds, Wholesale, Investment Management, then Insights /
  * Contact / Document library stacked as direct links. Direct links (no children)
- * are Medium with a chevron; group headings are Regular.
+ * are Medium (the frame's rust chevrons were removed at QA, Jim 23 Sep); group headings are Regular.
  * The frame has the licensing line overflowing across the legal links; here it
  * is its own paragraph above the links row.
  */
@@ -39,11 +39,11 @@ const year = new Date().getFullYear();
         </div>
       ))}
       {im && (
-        <div><a href={im.href} class="inline-flex items-start gap-3 text-base font-medium hover:underline">{im.label}<Icon name="chevron-right" size={12} class="mt-1 shrink-0 text-rust-hi" /></a></div>
+        <div><a href={im.href} class="inline-flex items-start gap-3 text-base font-medium hover:underline">{im.label}</a></div>
       )}
       <div class="flex flex-col gap-3 md:gap-4">
         {directs.map((d) => (
-          <a href={resolve(d.href)} class="inline-flex items-center gap-3 text-base font-medium hover:underline">{d.label}<Icon name="chevron-right" size={12} class="text-rust-hi" /></a>
+          <a href={resolve(d.href)} class="inline-flex items-center gap-3 text-base font-medium hover:underline">{d.label}</a>
         ))}
       </div>
       <div class="col-span-2 md:col-span-1">
