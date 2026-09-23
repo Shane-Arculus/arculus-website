@@ -5,7 +5,9 @@
  * consent, primary submit. Right (456px): details blocks. Posts to Formspree via
  * fetch; on success swaps the form for the cream success panel. Client
  * validation marks fields aria-invalid, shows per-field errors and the error
- * banner. `?topic=` on the page pre-fills the hidden topic field.
+ * banner. `?topic=` on the page pre-fills the hidden topic field and, via
+ * contact.json `form.subjects`, the hidden `_subject` Formspree uses as the
+ * notification email subject ("New investor: Preferred Income Fund (Financial adviser)").
  * All copy from pages/contact.json and site.json.
  */
 import FormField from "./FormField.astro";
@@ -35,6 +37,7 @@ const privacyLinked = (label: string) => label.replace("Privacy Notice", `<a hre
         {c.form.fields.filter((f) => !["firstName", "lastName", "email", "phone"].includes(f.name)).map((f) => (
           <FormField name={f.name} label={f.type === "checkbox" ? privacyLinked(f.label ?? "") : f.label} type={f.type} placeholder={f.placeholder} required={f.required} options={f.options} error={f.error ?? (f.type === "checkbox" ? ui.consentRequired : ui.requiredField)} />
         ))}
+        <input type="hidden" name="_subject" value={c.form.subjects?.default ?? "Website enquiry"} data-subjects={JSON.stringify(c.form.subjects?.byTopic ?? {})} data-subject-default={c.form.subjects?.default ?? "Website enquiry"} />
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
         <div><Button label={c.form.submit} type="submit" /></div>
       </form>
@@ -63,6 +66,16 @@ const privacyLinked = (label: string) => label.replace("Privacy Notice", `<a hre
   if (form) {
     const topic = new URLSearchParams(location.search).get("topic");
     const topicField = form.querySelector('input[name="topic"]'); if (topic && topicField) topicField.value = topic;
+    // Notification subject (Formspree reads _subject): topic label, then the "I am a" answer in brackets.
+    const subjectField = form.querySelector('input[name="_subject"]');
+    const setSubject = () => {
+      if (!subjectField) return;
+      const map = JSON.parse(subjectField.dataset.subjects || "{}");
+      const role = form.querySelector('select[name="iAm"]')?.value;
+      subjectField.value = (topic && map[topic]) || subjectField.dataset.subjectDefault || "Website enquiry";
+      if (role) subjectField.value += ` (${role})`;
+    };
+    setSubject(); form.querySelector('select[name="iAm"]')?.addEventListener("change", setSubject);
     const banner = form.querySelector("[data-form-banner]");
     const setError = (field, on) => {
       const wrap = field.closest("[data-field]"); if (!wrap) return;

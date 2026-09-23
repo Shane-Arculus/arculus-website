@@ -256,7 +256,7 @@ const pages = defineCollection({
     z.object({
       kind: z.literal("contact"), ...base, breadcrumb,
       hero: z.object({ title: z.string(), subtitle: z.string() }),
-      form: z.object({ title: z.string(), intro: z.string(), fields: z.array(formField), submit: z.string() }),
+      form: z.object({ title: z.string(), intro: z.string(), fields: z.array(formField), submit: z.string(), subjects: z.object({ default: z.string(), byTopic: z.record(z.string()), _note: note }).optional() }),
       sent: z.object({ title: z.string(), body: z.string(), referenceLabel: z.string(), _note: note, links: z.array(link) }),
       details: z.array(z.object({ title: z.string(), lines: z.array(z.string()), link: link.optional(), _note: note })),
       whoToContact: z.object({ title: z.string(), columns: z.array(z.object({ title: z.string(), body: z.string(), icon: z.string().optional(), button })) }),

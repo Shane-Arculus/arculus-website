@@ -71,7 +71,23 @@
         "required": true
       }
     ],
-    "submit": "Send message"
+    "submit": "Send message",
+    "subjects": {
+      "default": "Website enquiry",
+      "byTopic": {
+        "afi": "New investor: Fixed Income Fund",
+        "pif": "New investor: Preferred Income Fund",
+        "a-minus": "Wholesale enquiry: A− SMA",
+        "bbb": "Wholesale enquiry: BBB SMA",
+        "pep": "Wholesale enquiry: Protected Equity Portfolio",
+        "im": "Investment management enquiry",
+        "private-mandate": "Private mandate enquiry",
+        "wholesale": "Wholesale enquiry: strategy paper",
+        "lonsec-afi": "Rating report request: Fixed Income Fund",
+        "lonsec-pif": "Rating report request: Preferred Income Fund"
+      },
+      "_note": "Formspree sets the notification email's subject from the hidden _subject field. The subject is the topic's label (from ?topic=) or the default, followed by the 'I am a' answer in brackets when one is chosen, e.g. 'New investor: Preferred Income Fund (Financial adviser)'. Edit labels here; topics are the ?topic= values used on the site's buttons."
+    }
   },
   "sent": {
     "title": "Thanks. We've received your message.",
