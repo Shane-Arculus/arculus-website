@@ -89,7 +89,7 @@ Type ramp (Fira Sans; size/line-height as used on the frames):
 | Stat | Medium 46/120% — strategy-at-a-glance figures (`text-stat`); labels SemiBold 13 (`text-stat-label`) |
 | Subhead | SemiBold 16/120% — table and chart titles on fund pages, colour `navy-mid` (`text-subhead`) |
 
-Card rule (QA, Jim 23 Sep): every white card on a cream band is `rounded-lg border border-card-line bg-white` — one radius (8px), one border (#EBE5DE). No `rounded-2xl`, no second card-line token.
+Card rule (QA, Jim 23 Sep): every white card on a cream band is `rounded-lg border border-card-line bg-white` — one radius (8px), one border (#EBE5DE), no second card-line token. One documented exception: the home fund cards (`FundCards`) are the frame's 16px (`rounded-2xl`) with a 60px top-right radius on the image, as feature cards.
 
 Type rule (QA, Jim 23 Sep): three tiers only. Page title = `text-display-sm md:text-display` in heroes (or `text-h3 md:text-h1` on hero-less pages: article, search, 404). **Every module/section H2 = `text-h5 md:text-h3`**, home included (the frames had home modules at H1; that was the "random" feel). Card and item titles = `text-lead font-medium` or `text-h5`; featured article title `text-h5 md:text-h2`. Kickers, subheads and body as tokened.
 
