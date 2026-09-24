@@ -77,7 +77,7 @@
   ],
   "headerButton": {
     "label": "Link to SS&C Fund Registry",
-    "href": "[Unverified] SS&C registry URL",
+    "href": "ssandcRegistry",
     "external": true
   },
   "footer": {
@@ -90,7 +90,7 @@
     ],
     "externalButton": {
       "label": "Arculus Capital",
-      "href": "[Unverified] Arculus Capital URL",
+      "href": "arculusCapital",
       "external": true
     },
     "licensingLine": "This site has been created by Arculus Funds Management Pty Limited which operates under the GCI Australia AFSL as a CAR - GCI Australia Pty Ltd ABN 68 140 364 576 Australian Financial Services Licence No 346034. The Responsible Manager and Key Person for GCI Australia Pty Ltd is Renny Ellis.",

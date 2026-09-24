@@ -17,7 +17,7 @@ export function getStaticPaths() {
 const { legal } = Astro.params;
 const doc = await getMarkdown("legal", legal!);
 ---
-<Base title={`${doc.title} — Arculus Funds Management`} description={doc.lead ?? doc.title} noindex>
+<Base title={`${doc.title} — Arculus Funds Management`} description={doc.lead ?? doc.title}>
   <Header slot="header" />
   <Breadcrumb bg="white" items={["Home", doc.title]} />
   <ProseArticle title={doc.title} lead={doc.lead} Content={doc.Content} />

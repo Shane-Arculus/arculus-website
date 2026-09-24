@@ -102,6 +102,19 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [ ] C10 Licence inventory: home hero is a stock screenshot — Jim will replace it before launch with a non-architecture image (brief written 23 Sep; 12-image shortlist in `docs/image-register-v2.md`, none yet preferred); confirm photographer/URL for the nine [Unverified] Unsplash rows; decide on Team reusing the Governance image
 - [ ] C11 Remaining placeholders: home and Our approach left-right, Governance investment-committee left-right, insight thumbnails/featured, headshots
 
+## 6e · Security review (23 Sep)
+
+- [x] S1 Header "Link to SS&C Fund Registry" and footer "Arculus Capital" buttons were rendering their placeholder strings as hrefs on every page — now resolve through `externalUrls` (Arculus Capital still `[TO SET]`)
+- [x] S2 `noindex` is now automatic on preview builds (`PUBLIC_ALLOW_UNVERIFIED=1`) and removed from the public pages, so `main` cannot ship noindexed; search, dev, 404, wholesale and IM keep their own flag
+- [ ] S3 GitHub repo `sbduggan1304/arculus-website` is **public** — make it private (Cloudflare's Git integration works with private repos); move to an Arculus-owned org before launch, 2FA on both accounts, branch protection on `main`
+- [ ] S4 Preview URL is open to anyone — put Cloudflare Access (free tier) in front of the preview hostname while unverified copy is on it
+- [ ] S5 Formspree: enable domain restriction and spam protection in the form settings; set a retention period; contact-form data residency (US) to be reflected in the Privacy Notice
+- [ ] S6 CSP still allows `'unsafe-inline'` scripts/styles and `*.list-manage.com` — tighten to hashes once the page scripts are stable, drop list-manage until Mailchimp is wired
+- [ ] S7 Exclude `/dev/components` from the production build (currently noindex + robots-disallowed but reachable)
+- [ ] S8 Superseded by T32 (24 Sep): DNS stays with AfterDark; hosting moves to Netlify under Arculus accounts — see `docs/CUTOVER.md`
+
+- [ ] T32 Hosting move to Netlify (path 2, Jim 24 Sep): Arculus GitHub org + Netlify team on the arculus.com.au login, connect repo, branch deploys (`preview` with `PUBLIC_ALLOW_UNVERIFIED=1`, password-protected; `main` strict), verify `_headers`/`_redirects`, add custom domains, then the AfterDark ticket in `docs/CUTOVER.md`
+
 ## 7 · Launch
 
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)

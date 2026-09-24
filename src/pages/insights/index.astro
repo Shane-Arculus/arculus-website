@@ -25,7 +25,7 @@ const p = ins.page;
 const articles = [...ins.articles].sort((a, b) => b.date.localeCompare(a.date));
 const featured = articles.find((a) => a.slug === ins.featured)!;
 ---
-<Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle} noindex>
+<Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel2 title={p.hero.title} description={p.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[p.hero.button]} image={{ src: "/images/hero-insights.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={p.breadcrumb} />

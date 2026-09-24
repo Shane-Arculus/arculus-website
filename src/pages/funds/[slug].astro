@@ -37,7 +37,7 @@ const docs = await Promise.all(f.documents.items.map(async (id) => { const d = a
 const image = { src: `/images/hero-${f.slug}.webp`, alt: f.hero.image ?? "" };
 const [target, ...facts] = f.hero.facts;
 ---
-<Base title={`${f.name} — Arculus Funds Management`} description={f.hero.subtitle} noindex>
+<Base title={`${f.name} — Arculus Funds Management`} description={f.hero.subtitle}>
   <Header slot="header" />
   {/* fund hero title is navy like the homepage (QA, Jim 23 Sep): the frame's rust title read as a visited link */}
   <HeroLevel2 title={f.hero.title} description={f.hero.subtitle} theme="light" layout="full" bg={f.slug} buttons={heroButtons} image={image}>

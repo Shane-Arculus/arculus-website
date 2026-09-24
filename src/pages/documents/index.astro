@@ -32,7 +32,7 @@ const byFund = (key: string) =>
     .map((d) => ({ title: d.title, href: d.path, meta: d.meta, size: d.size, filter: slugify(d.category), download: d.download }));
 const wholesale = p.sections.find((s) => s.key === "wholesale");
 ---
-<Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle} noindex>
+<Base title={`${p.hero.title} — Arculus Funds Management`} description={p.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel2 title={p.hero.title} description={p.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[hero]} image={{ src: "/images/hero-documents.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={p.breadcrumb} />

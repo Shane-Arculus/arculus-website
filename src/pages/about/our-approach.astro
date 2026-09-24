@@ -14,7 +14,7 @@ import ImportantInformation from "../../components/ImportantInformation.astro";
 import { getAbout } from "../../content/loaders";
 const a = await getAbout("approach");
 ---
-<Base title={`${a.hero.title} — Arculus Funds Management`} description={a.hero.subtitle} noindex>
+<Base title={`${a.hero.title} — Arculus Funds Management`} description={a.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel2 title={a.hero.title} description={a.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[a.hero.button]} image={{ src: "/images/hero-approach.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb items={a.breadcrumb} bg="white" />

@@ -13,7 +13,7 @@ import { getAbout } from "../../content/loaders";
 const g = await getAbout("governance");
 const roles = g.fourRoles.items.map((r) => [r.title, r.body, r.link] as const);
 ---
-<Base title={`${g.hero.title} — Arculus Funds Management`} description={g.hero.subtitle} noindex>
+<Base title={`${g.hero.title} — Arculus Funds Management`} description={g.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel2 title={g.hero.title} description={g.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[g.hero.button]} image={{ src: "/images/hero-governance.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={g.breadcrumb} />

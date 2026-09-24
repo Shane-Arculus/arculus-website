@@ -27,7 +27,7 @@ const featured = await getArticle(home.insights.featured);
 const list = await Promise.all(home.insights.list.map(getArticle));
 const aboutHref = home.leftRightButton.href;
 ---
-<Base title="Arculus Funds Management — Income management that preserves capital" description={home.hero.subtitle} noindex>
+<Base title="Arculus Funds Management — Income management that preserves capital" description={home.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={home.hero.buttons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />
   <FundCards id="funds" title={home.funds.title} cards={cards} buttons={home.funds.cardButtons} showRatings={home.funds.showRatings} />

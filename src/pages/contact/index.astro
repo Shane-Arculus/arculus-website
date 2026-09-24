@@ -17,7 +17,7 @@ import ImportantInformation from "../../components/ImportantInformation.astro";
 import { getPage } from "../../content/loaders";
 const c = await getPage("contact");
 ---
-<Base title={`${c.hero.title} — Arculus Funds Management`} description={c.hero.subtitle} noindex>
+<Base title={`${c.hero.title} — Arculus Funds Management`} description={c.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel2 title={c.hero.title} description={c.hero.subtitle} theme="light" layout="compact" bg="compact" image={{ src: "/images/hero-contact.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={c.breadcrumb} />

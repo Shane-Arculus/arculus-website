@@ -9,7 +9,7 @@ import ImportantInformation from "../../components/ImportantInformation.astro";
 import { getMarkdown } from "../../content/loaders";
 const esg = await getMarkdown("aboutMd", "esg");
 ---
-<Base title={`${esg.title} — Arculus Funds Management`} description={esg.lead ?? esg.title} noindex>
+<Base title={`${esg.title} — Arculus Funds Management`} description={esg.lead ?? esg.title}>
   <Header slot="header" />
   <Breadcrumb bg="white" items={["Home", "About", esg.title]} />
   <ProseArticle title={esg.title} lead={esg.lead} Content={esg.Content} />

@@ -13,7 +13,7 @@ import { getAbout } from "../../content/loaders";
 const t = await getAbout("team");
 const photo = (p: string) => (p.startsWith("[") ? "" : p); // QA 23 Sep: no placeholder headshots — an empty photo renders no image until the real file is set in team.json
 ---
-<Base title={`${t.hero.title} — Arculus Funds Management`} description={t.hero.subtitle} noindex>
+<Base title={`${t.hero.title} — Arculus Funds Management`} description={t.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel2 title={t.hero.title} description={t.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[t.hero.button]} image={{ src: "/images/hero-team.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb bg="white" items={t.breadcrumb} />
