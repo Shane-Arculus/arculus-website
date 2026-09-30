@@ -90,3 +90,24 @@
   html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   body { @apply text-base text-body bg-white; }
 }
+
+/* Wholesale hero radials — exact from Figma (30 Sep): A− 104:1684 and IM
+   170:3271 (1), BBB 118:12537 (2), PEP 120:988 (3). Figma's gradient centre
+   sits on the band's bottom-right corner; its ellipse is rotated -57.5° with
+   semi-axes 1566 × 707 at 1440 wide (sized in vw so it scales with the band).
+   The band's own background is the outer stop; the layer paints the ellipse.
+   Markup: <section class="hero-radial hero-radial-N"><div class="hero-radial-layer"/>… */
+@layer components {
+  .hero-radial { position: relative; overflow: hidden; }
+  .hero-radial-layer {
+    position: absolute; left: 100%; top: 100%; pointer-events: none;
+    width: 217.5vw; height: 98.2vw;
+    transform: translate(-50%, -50%) rotate(-57.5deg);
+  }
+  .hero-radial-1 { background-color: #0E202E; }
+  .hero-radial-1 .hero-radial-layer { background: radial-gradient(closest-side, #304E80 0%, #1E355E 45%, #0E202E 100%); }
+  .hero-radial-2 { background-color: #304E80; }
+  .hero-radial-2 .hero-radial-layer { background: radial-gradient(closest-side, #0E202E 0%, #1E355E 55%, #304E80 100%); }
+  .hero-radial-3 { background-color: #466E96; }
+  .hero-radial-3 .hero-radial-layer { background: radial-gradient(closest-side, #1E4E78 0%, #325E87 55%, #466E96 100%); }
+}

@@ -32,7 +32,7 @@ const images: Record<string, string> = { "a-minus": "/images/hero-a-minus.webp",
 ---
 <Base title={`${s.name} — Arculus Funds Management`} description={s.hero.subtitle} noindex nosearch>
   <Header slot="header" />
-  <HeroLevel2 title={s.hero.title} description={s.hero.subtitle} kicker={s.kicker} theme="navy" layout="full" buttons={[s.hero.button]} stats={s.hero.facts} image={{ src: images[s.slug], alt: s.card.image }} />
+  <HeroLevel2 title={s.hero.title} description={s.hero.subtitle} kicker={s.kicker} theme="navy" radial={s.ladder as 1 | 2 | 3} layout="full" buttons={[s.hero.button]} stats={s.hero.facts} image={{ src: images[s.slug], alt: s.card.image }} />
   <Breadcrumb items={s.breadcrumb} />
   <Statement title={s.statement.title} points={s.statement.points} footnote={s.statement.footnote} />
   <StrategyAtAGlance items={s.strategyAtAGlance} ladder={s.ladder as 1 | 2 | 3} />

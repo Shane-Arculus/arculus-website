@@ -1,25 +1,36 @@
 ---
 /**
- * HeroImage — the ellipse-clipped photo with a thin rotated outline, as on
- * every hero in the file (home 123:31755, funds 88:13040, About 159:3161,
- * wholesale strategies 104:1684). Geometry from Figma: the photo is clipped to
- * an ellipse rotated 45° (long axis top-left → bottom-right) that fits a square
- * of `size`; the outline is a second ellipse, half as wide as it is tall,
- * sharing the same centre. Verified 16 Sep against the frames: every hero in
- * the file leans top-left → bottom-right. Sizes: full 581 (outline 372×742), compact 444
- * (284×567), mobile 390 (180×360, offset up-right and cropped by the band).
+ * HeroImage — the ellipse-clipped photo with its thin outline ring, as on
+ * every hero in the file (home 123:31755, funds 88:13064, wholesale 105:30977,
+ * IM 170:3292, mobile 74:18518). Geometry is Figma's, not an approximation:
+ * the photo is clipped to the file's lens path (a 45°-leaning ellipse in a
+ * square of `size`); the ring is the SAME lens path drawn in a 0.64 × 1.277
+ * box (372 × 742 at 581) and rotated 45°, so it is long and thin and crosses
+ * the photo, poking out top-left and bottom-right. Coordinates below are the
+ * frames' own, in a 581 viewBox with the photo at 0,0 — the ring's position
+ * relative to the photo is identical on every desktop and mobile hero frame.
+ * 30 Sep (Jim): the earlier CSS ellipse (rounded div) read as an oval and was
+ * wrong; the ring sits behind the photo. Stroke 2 at 581, scaling with `size`.
+ * Colours: warm #DFC6AD on light heroes, #8D93AC on navy heroes (Figma).
  */
 interface Props {
   src: string;
   alt: string;
   /** square size of the clipped photo, px */
   size?: number;
-  /** outline colour token class, e.g. border-outline-warm | border-outline-decor */
+  /** ring colour token, e.g. border-outline-warm (light) | border-outline-card (navy) */
   outline?: string;
   class?: string;
 }
 const { src, alt, size = 581, outline = "border-outline-warm", class: className = "" } = Astro.props;
-const ow = Math.round(size * 0.64), oh = Math.round(size * 1.277);
+// accepts the old border-* token names so callers need not change; literal
+// class names so Tailwind generates them
+const ringColours: Record<string, string> = {
+  "border-outline-warm": "text-outline-warm",
+  "border-outline-card": "text-outline-card",
+  "border-outline-decor": "text-outline-decor",
+};
+const ringColour = ringColours[outline] ?? "text-outline-warm";
 const id = `hero-clip-${Math.random().toString(36).slice(2, 8)}`;
 ---
 <div class:list={["relative", className]} style={`width:${size}px;height:${size}px`}>
@@ -30,6 +41,8 @@ const id = `hero-clip-${Math.random().toString(36).slice(2, 8)}`;
       </clipPath>
     </defs>
   </svg>
-  <div class:list={["pointer-events-none absolute left-1/2 top-1/2 rounded-full border", outline]} style={`width:${ow}px;height:${oh}px;transform:translate(-50%,-50%) rotate(-45deg)`} aria-hidden="true"></div>
-  <img src={src} alt={alt} width={size} height={size} loading="eager" fetchpriority="high" decoding="async" class="block h-full w-full object-cover" style={`clip-path:url(#${id})`} />
+  <svg viewBox="0 0 581 581" class:list={["pointer-events-none absolute inset-0 h-full w-full overflow-visible", ringColour]} aria-hidden="true" focusable="false">
+    <path transform="matrix(0.70711 -0.70711 0.70711 0.70711 -108.332 164.066)" fill="none" stroke="currentColor" stroke-width="2" d="M300.439 142.483C381.324 303.886 395.624 537.039 332.377 663.244C269.131 789.449 152.289 760.916 71.404 599.512C-9.482 438.109 -23.781 204.956 39.465 78.751C102.712 -47.454 219.553 -18.921 300.439 142.483Z" />
+  </svg>
+  <img src={src} alt={alt} width={size} height={size} loading="eager" fetchpriority="high" decoding="async" class="relative block h-full w-full object-cover" style={`clip-path:url(#${id})`} />
 </div>

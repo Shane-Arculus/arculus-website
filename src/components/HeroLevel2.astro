@@ -7,8 +7,9 @@
  * copy, stat row); IM 170:3271 likewise.
  *
  * theme light: mesh background image (`bg` = afi | pif | compact), navy or
- *   rust-hi title (`titleColor`), body-grey description, warm ellipse outline.
- * theme navy: --gradient-navy-radial, white copy, decor outline.
+ *   rust-hi title (`titleColor`), body-grey description, warm ellipse ring.
+ * theme navy: per-strategy Figma radial (`radial` 1 A−/IM, 2 BBB, 3 PEP;
+ *   global.css .hero-radial-N, 30 Sep), white copy, #8D93AC ring (outline-card, per 105:30977).
  * layout full and compact both render a 650 band with a 581 photo (22 Sep: the
  * frames' 501/444 compact size read as too thin on the built pages); `layout`
  * is kept so the frames' compact/full distinction stays in the page code.
@@ -26,8 +27,10 @@ interface Props {
   buttons?: { label: string; href?: string; action?: string; style?: "primary" | "secondary" | "external" }[];
   stats?: readonly (readonly [string, string])[];
   image?: { src: string; alt: string };
+  /** navy theme only: which Figma radial — 1 A−/IM (default), 2 BBB, 3 PEP */
+  radial?: 1 | 2 | 3;
 }
-const { title, description, kicker, theme = "light", layout = "full", bg = "compact", titleColor = "navy", buttons = [], stats = [], image } = Astro.props;
+const { title, description, kicker, theme = "light", layout = "full", bg = "compact", titleColor = "navy", buttons = [], stats = [], image, radial = 1 } = Astro.props;
 const light = theme === "light";
 const titleCls = light ? (titleColor === "rust" ? "text-rust-hi" : "text-navy") : "text-white";
 const bodyCls = light ? "text-body" : "text-white";
@@ -35,7 +38,8 @@ const kickerCls = light ? "text-rust-hi" : "text-orange";
 const bandH = "md:min-h-[650px]"; // compact was 501 in the frames; Jim (22 Sep) wants every inner-page hero the same height
 const imgSize = 540; // frame 581; pulled in at QA (Jim 23 Sep) so the ellipse clears the band edges
 ---
-<section class:list={["relative overflow-hidden", light ? "bg-cream" : "text-white"]} style={light ? undefined : "background: var(--gradient-navy-radial);"}>
+<section class:list={["relative overflow-hidden", light ? "bg-cream" : ["text-white hero-radial", `hero-radial-${radial}`]]}>
+  {!light && <div class="hero-radial-layer" aria-hidden="true"></div>}
   {light && (
     <picture class="absolute inset-0">
       <source media="(min-width: 768px)" srcset={`/heroes/hero-${bg === "compact" ? "compact-navy" : bg}-1440.webp`} />
@@ -68,7 +72,7 @@ const imgSize = 540; // frame 581; pulled in at QA (Jim 23 Sep) so the ellipse c
     </div>
     {image && (
       <div class="hidden md:flex md:w-[664px] md:justify-center">
-        <HeroImage src={image.src} alt={image.alt} size={imgSize} outline={light ? "border-outline-warm" : "border-outline-decor"} />
+        <HeroImage src={image.src} alt={image.alt} size={imgSize} outline={light ? "border-outline-warm" : "border-outline-card"} />
       </div>
     )}
   </div>
