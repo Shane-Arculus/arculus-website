@@ -18,7 +18,7 @@
     "body": "An actively managed, investment-grade credit strategy of senior and subordinated notes issued by banks and A-grade insurers.",
     "heroStat": [
       "PORTFOLIO MARGIN",
-      "BBSW +180bps"
+      "BBSW +163bps"
     ],
     "facts": [
       [
@@ -43,7 +43,7 @@
     "facts": [
       [
         "PORTFOLIO MARGIN",
-        "BBSW +180bps"
+        "BBSW +163bps"
       ],
       [
         "LIQUIDITY",
@@ -71,11 +71,11 @@
         "The team sets the book line by line rather than tracking an index, and holds cash when credit does not pay for its risk."
       ]
     ],
-    "footnote": "Portfolio data as at 31 July 2026"
+    "footnote": "Portfolio data as at 30 September 2026"
   },
   "strategyAtAGlance": [
     [
-      "$148.6m",
+      "$149.6m",
       "PORTFOLIO VALUE"
     ],
     [
@@ -83,7 +83,7 @@
       "RUNNING YIELD"
     ],
     [
-      "1.86 yrs",
+      "1.69 yrs",
       "WEIGHTED TERM TO CALL"
     ],
     [
@@ -93,7 +93,7 @@
   ],
   "about": {
     "title": "About the strategy",
-    "body": "An actively managed separately managed account of senior and subordinated floating-rate notes issued by major banks and A-grade insurers — twelve lines across nine issuers, run with the same discipline as the Arculus public funds."
+    "body": "An actively managed separately managed account of senior and subordinated floating-rate notes issued by major banks and A-grade insurers — eleven lines across nine issuers, run with the same discipline as the Arculus public funds."
   },
   "atAGlance": {
     "title": "At a glance",
@@ -164,9 +164,9 @@
   },
   "importantInformation": {
     "riskSubject": "the BBB SMA",
-    "asAt": "31 July 2026",
+    "asAt": "30 September 2026",
     "_note": "[Unverified] frame text reads 'internal portfolio models and models' — typo, template wording used instead"
   },
-  "portfolioDataAsAt": "31 July 2026",
+  "portfolioDataAsAt": "30 September 2026",
   "performanceFigures": "none — off-page, available on request"
 }

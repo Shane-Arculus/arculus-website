@@ -18,7 +18,7 @@
     "body": "A high-quality, low-duration floating-rate credit strategy of senior and subordinated notes issued by major Australian and international banks.",
     "heroStat": [
       "PORTFOLIO MARGIN",
-      "BBSW +143bps"
+      "BBSW +132bps"
     ],
     "facts": [
       [
@@ -43,7 +43,7 @@
     "facts": [
       [
         "PORTFOLIO MARGIN",
-        "BBSW +143bps"
+        "BBSW +132bps"
       ],
       [
         "LIQUIDITY",
@@ -71,19 +71,19 @@
         "The mandate has run continuously since 1994, through three decades of rate and credit cycles."
       ]
     ],
-    "footnote": "Portfolio data as at 31 July 2026"
+    "footnote": "Portfolio data as at 30 September 2026"
   },
   "strategyAtAGlance": [
     [
-      "$374.2m",
+      "$376.9m",
       "PORTFOLIO VALUE"
     ],
     [
-      "6.25%",
+      "6.00%",
       "RUNNING YIELD"
     ],
     [
-      "0.09 yrs",
+      "0.13 yrs",
       "MODIFIED DURATION"
     ],
     [
@@ -93,7 +93,7 @@
   ],
   "about": {
     "title": "About the strategy",
-    "body": "A separately managed account of senior and subordinated floating-rate notes issued by major Australian and international banks — ten lines across nine issuers, run with the same discipline as the Arculus public funds."
+    "body": "A separately managed account of senior and subordinated floating-rate notes issued by major Australian and international banks — nine lines across eight issuers, run with the same discipline as the Arculus public funds."
   },
   "atAGlance": {
     "title": "At a glance",
@@ -134,7 +134,7 @@
       ],
       [
         "Near-equal weighting",
-        "Ten lines held close to equal weight across nine issuers, with a strict 20% single-issuer and 10% single-line cap."
+        "Nine lines held close to equal weight across eight issuers, with a strict 20% single-issuer and 10% single-line cap."
       ],
       [
         "Duration discipline",
@@ -149,8 +149,8 @@
   "keyRisks": {
     "title": "Key risks",
     "paragraphs": [
-      "Credit spread risk is the mandate’s principal exposure — a broad widening in bank credit spreads is the main driver of mark-to-market value given the 2.70-year effective duration. The portfolio is also concentrated by sector: the bond sleeve is entirely banking exposure, with no insurance or non-bank finance diversification.",
-      "Around a third of the portfolio is subordinated debt, ranking behind senior creditors in a wind-up, and floating-rate income resets with BBSW — a sustained fall in the cash rate reduces running income. This is not a capital-guaranteed investment, and past performance is not indicative of future returns."
+      "Credit spread risk is the mandate’s principal exposure — a broad widening in bank credit spreads is the main driver of mark-to-market value given the 2.54-year effective duration. The portfolio is also concentrated by sector: the bond sleeve is entirely banking exposure, with no insurance or non-bank finance diversification.",
+      "Around a fifth of the portfolio is subordinated debt, ranking behind senior creditors in a wind-up, and floating-rate income resets with BBSW — a sustained fall in the cash rate reduces running income. This is not a capital-guaranteed investment, and past performance is not indicative of future returns."
     ]
   },
   "cta": {
@@ -164,8 +164,8 @@
   },
   "importantInformation": {
     "riskSubject": "the A− SMA",
-    "asAt": "31 July 2026"
+    "asAt": "30 September 2026"
   },
-  "portfolioDataAsAt": "31 July 2026",
+  "portfolioDataAsAt": "30 September 2026",
   "performanceFigures": "none — off-page, available on request"
 }
