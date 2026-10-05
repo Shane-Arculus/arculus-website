@@ -5,7 +5,7 @@
  * insights-row "Latest" (featured article only, secondary Subscribe button) ·
  * insights-list "All insights" (every article but the featured one, newest first, filterable) · CTA-banner
  * (subscribe) · important-information (generic) · footer. Articles link to
- * PDFs at launch (C4); the per-insight page is a later task.
+ * their own page /insights/<slug>/ (T26) where the PDF is embedded; the list folds after page.collapseAfter.
  */
 import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
@@ -31,7 +31,7 @@ const featured = articles.find((a) => a.slug === ins.featured)!;
   <Breadcrumb bg="white" items={p.breadcrumb} />
   <FilterTabs tabs={p.filters} target="all-insights" />
   <InsightsRow title={p.latestTitle} button={{ label: p.hero.button.label, href: p.hero.button.href, action: p.hero.button.action }} featured={featured} list={[]} />
-  <InsightsList id="all-insights" title={p.listTitle} articles={articles.filter((a) => a.slug !== ins.featured)} readLabel={p.readLabel} emptyLabel={ui.noResults} />
+  <InsightsList id="all-insights" title={p.listTitle} articles={articles.filter((a) => a.slug !== ins.featured)} readLabel={p.readLabel} emptyLabel={ui.noResults} collapseAfter={p.collapseAfter} seeMoreLabel={p.seeMoreLabel} />
   <CtaBanner title={p.cta.title} body={p.cta.body} button={p.cta.button} />
   <ImportantInformation variant="generic" />
   <SubscribeModal />

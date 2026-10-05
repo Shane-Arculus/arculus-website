@@ -1,0 +1,60 @@
+---
+/**
+ * Insight page — T26. One page per article at /insights/<slug>/: compact hero
+ * (category kicker, title, date and reading time, download button), the
+ * summary, and the PDF embedded in an iframe (same-origin, allowed by the CSP's
+ * default-src 'self') with a download link beside it for phones that won't
+ * render PDFs inline. Wholesale-only papers show the tag; the PDF path itself is
+ * "[TO SET …]" until the file is uploaded (C4/C9), in which case the embed is
+ * replaced by a note. Shareable and indexable where the hub's PDF links were not.
+ */
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import Button from "../../components/Button.astro";
+import Icon from "../../components/Icon.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import ImportantInformation from "../../components/ImportantInformation.astro";
+import SubscribeModal from "../../components/SubscribeModal.astro";
+import { getInsights, getSite } from "../../content/loaders";
+import { fmtDate } from "../../lib/format";
+export async function getStaticPaths() {
+  const ins = await getInsights();
+  return ins.articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+const { a } = Astro.props;
+const ins = await getInsights();
+const { ui } = await getSite();
+const hasPdf = a.pdf && !a.pdf.startsWith("[");
+const crumbs = [...ins.page.breadcrumb, a.title];
+---
+<Base title={`${a.title} — Arculus Funds Management`} description={a.summary} ogImage={a.image}>
+  <Header slot="header" />
+  <section class="bg-cream">
+    <div class="mx-auto flex max-w-site flex-col gap-5 px-4 pb-10 pt-10 md:px-12 md:pb-14 md:pt-16">
+      <p class="text-small font-semibold uppercase tracking-kicker text-rust">{a.category}</p>
+      <h1 class="max-w-[900px] text-h3 font-medium text-navy md:text-h1">{a.title}</h1>
+      <p class="text-base text-body">{fmtDate(a.date)}{a.readingTime && ` ${ui.readingTimeSeparator} ${a.readingTime}`}{a.wholesaleOnly && ` ${ui.readingTimeSeparator} ${ui.wholesaleOnlyTag}`}</p>
+      {hasPdf && <div><Button label={ui.download} href={a.pdf} style="secondary" /></div>}
+    </div>
+  </section>
+  <Breadcrumb bg="white" items={crumbs} />
+  <section class="bg-white">
+    <div class="mx-auto flex max-w-site flex-col gap-8 px-4 pb-16 pt-6 md:px-12 md:pb-24 md:pt-8">
+      <p class="max-w-[900px] text-lead text-body">{a.summary}</p>
+      {hasPdf ? (
+        <div class="flex flex-col gap-3">
+          <iframe src={`${a.pdf}#view=FitH`} title={a.title} class="h-[80vh] w-full rounded-lg border border-card-line bg-cream" loading="lazy"></iframe>
+          <a href={a.pdf} class="inline-flex items-center gap-2 self-start text-body font-medium text-rust hover:underline" download>{ui.download}<Icon name="download" size={16} /></a>
+        </div>
+      ) : (
+        <p class="text-body text-body">[TO SET] The PDF for this insight has not been uploaded yet.</p>
+      )}
+    </div>
+  </section>
+  <CtaBanner title={ins.page.cta.title} body={ins.page.cta.body} button={ins.page.cta.button} />
+  <ImportantInformation variant="generic" />
+  <SubscribeModal />
+  <Footer slot="footer" />
+</Base>

@@ -11,7 +11,7 @@ const { article: a, featured = false } = Astro.props;
 const img = a.image && !a.image.startsWith("[") ? a.image : "/images/insight-placeholder.webp";
 ---
 {featured ? (
-  <a href={a.pdf} target="_blank" rel="noopener" class="group flex flex-col gap-4 md:flex-row md:gap-4">
+  <a href={`/insights/${a.slug}/`} class="group flex flex-col gap-4 md:flex-row md:gap-4">
     <img src={img} alt="" width="775" height="436" loading="lazy" class="aspect-[775/436] w-full rounded-lg object-cover md:w-[775px] md:shrink-0" />
     <div class="flex flex-col gap-4 md:pl-4">
       <div class="flex items-center gap-2"><Tag label={a.category} /><span class="text-small text-body">{fmtDate(a.date)}</span></div>
@@ -22,7 +22,7 @@ const img = a.image && !a.image.startsWith("[") ? a.image : "/images/insight-pla
     </div>
   </a>
 ) : (
-  <a href={a.pdf} target="_blank" rel="noopener" class="group flex flex-col gap-[18px]">
+  <a href={`/insights/${a.slug}/`} class="group flex flex-col gap-[18px]">
     <img src={img} alt="" width="437" height="246" loading="lazy" class="aspect-[437/246] w-full rounded-lg object-cover" />
     <div class="flex flex-col gap-3">
       <div class="flex flex-wrap items-center gap-2 text-small text-body"><Tag label={a.category} /><span>{fmtDate(a.date)}</span>{a.readingTime && <><span aria-hidden="true" class="h-[11px] w-px bg-body"></span><span>{a.readingTime}</span></>}</div>

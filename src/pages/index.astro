@@ -14,7 +14,7 @@ import LeftRight from "../components/LeftRight.astro";
 import ProductCards from "../components/ProductCards.astro";
 import InsightsRow from "../components/InsightsRow.astro";
 import ImportantInformation from "../components/ImportantInformation.astro";
-import { getPage, getSite, getFund, getArticle } from "../content/loaders";
+import { getPage, getSite, getFund, getArticle, getInsights } from "../content/loaders";
 
 const home = await getPage("home");
 const site = await getSite();
@@ -24,7 +24,11 @@ const cards = await Promise.all(home.funds.cards.map(async (c) => ({
   image: { src: `/images/card-${c.fund}.webp`, alt: `[image register ${c.fund === "afi" ? "IMG-02" : "IMG-03"}]` },
 })));
 const featured = await getArticle(home.insights.featured);
-const list = await Promise.all(home.insights.list.map(getArticle));
+// Home row rule (Jim, 4 Oct): the featured paper, then the latest weekly update and the two most recent non-weekly items — so the weekly cadence never buries the research. home.insights.list is no longer used.
+const ins = await getInsights();
+const sorted = [...ins.articles].filter((a) => a.slug !== home.insights.featured).sort((a, b) => b.date.localeCompare(a.date));
+const latestWeekly = sorted.find((a) => a.category === "Weekly update");
+const list = [latestWeekly, ...sorted.filter((a) => a.category !== "Weekly update").slice(0, 2)].filter(Boolean) as typeof sorted;
 const aboutHref = home.leftRightButton.href;
 ---
 <Base title="Arculus Funds Management — Income management that preserves capital" description={home.hero.subtitle}>

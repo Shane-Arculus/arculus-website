@@ -201,7 +201,7 @@ const insights = defineCollection({
     ...base,
     page: z.object({
       breadcrumb, hero: z.object({ title: z.string(), subtitle: z.string(), button }),
-      filters: z.array(z.string()), latestTitle: z.string(), listTitle: z.string(), readLabel: z.string(), cta,
+      filters: z.array(z.string()), latestTitle: z.string(), listTitle: z.string(), readLabel: z.string(), cta, collapseAfter: z.number().int().optional(), seeMoreLabel: z.string().optional(), _weeklyNote: note,
     }),
     featured: z.string(),
     articles: z.array(z.object({

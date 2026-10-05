@@ -10,8 +10,10 @@ import Icon from "./Icon.astro";
 import { fmtDate, slugify } from "../lib/format";
 import { getSite } from "../content/loaders";
 import type { Article } from "../content/loaders";
-interface Props { title: string; articles: Article[]; readLabel: string; id: string; thumbs?: boolean; emptyLabel?: string; }
-const { title, articles, readLabel, id, thumbs = true, emptyLabel } = Astro.props;
+interface Props { title: string; articles: Article[]; readLabel: string; id: string; thumbs?: boolean; emptyLabel?: string; collapseAfter?: number; seeMoreLabel?: string; }
+const { title, articles, readLabel, id, thumbs = true, emptyLabel, collapseAfter, seeMoreLabel } = Astro.props;
+const href = (a: Article) => `/insights/${a.slug}/`; // rows open the insight page (T26); the PDF is embedded and downloadable there
+const folded = (i: number) => collapseAfter !== undefined && i >= collapseAfter;
 const { ui } = await getSite();
 const img = (a: Article) => (a.image && !a.image.startsWith("[") ? a.image : "/images/insight-placeholder.webp");
 ---
@@ -19,8 +21,8 @@ const img = (a: Article) => (a.image && !a.image.startsWith("[") ? a.image : "/i
   <div class="mx-auto max-w-site px-4 pb-16 pt-10 md:px-12 md:pb-24 md:pt-12">
     <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
     <ul id={id} class="mt-6 border-t border-line md:mt-8">
-      {articles.map((a) => (
-        <li class="flex flex-col gap-4 border-b border-line py-6 md:flex-row md:gap-12 md:py-8" data-filter-item={slugify(a.filter)} data-pagefind-meta={`category:${a.category}`}>
+      {articles.map((a, i) => (
+        <li class:list={["flex flex-col gap-4 border-b border-line py-6 md:flex-row md:gap-12 md:py-8", folded(i) && "hidden"]} data-filter-item={slugify(a.filter)} data-docs-extra={folded(i) ? "" : undefined} data-pagefind-meta={`category:${a.category}`}>
           {thumbs && <img src={img(a)} alt="" width="200" height="134" loading="lazy" class="aspect-[200/134] w-full rounded object-cover md:w-[200px] md:shrink-0" />}
           <div class="flex flex-col gap-1.5 md:w-[220px] md:shrink-0">
             <p class="text-small font-semibold uppercase tracking-kicker text-rust">{a.category}</p>
@@ -28,13 +30,25 @@ const img = (a: Article) => (a.image && !a.image.startsWith("[") ? a.image : "/i
             {a.wholesaleOnly && <p class="text-small text-navy">{ui.wholesaleOnlyTag}</p>}
           </div>
           <div class="flex flex-1 flex-col gap-2">
-            <h3 class="text-h5 font-medium text-navy"><a href={a.pdf} target="_blank" rel="noopener" class="hover:text-rust">{a.title}</a></h3>
+            <h3 class="text-h5 font-medium text-navy"><a href={href(a)} class="hover:text-rust">{a.title}</a></h3>
             <p class="text-body text-body">{a.summary}</p>
           </div>
-          <a href={a.pdf} target="_blank" rel="noopener" class="inline-flex shrink-0 items-center gap-1 self-start text-body font-medium text-rust hover:underline">{readLabel}<Icon name="chevron-right" size={14} /></a>
+          <a href={href(a)} class="inline-flex shrink-0 items-center gap-1 self-start text-body font-medium text-rust hover:underline">{readLabel}<Icon name="chevron-right" size={14} /></a>
         </li>
       ))}
       {emptyLabel && <li class="hidden py-8 text-body text-body" data-filter-empty>{emptyLabel}</li>}
     </ul>
+    {collapseAfter !== undefined && articles.length > collapseAfter && (
+      <button type="button" class="mt-6 inline-flex items-center gap-2 text-body font-medium text-rust hover:underline" data-list-more aria-controls={id} aria-expanded="false"><span>{seeMoreLabel ?? ui.seeMore}</span><Icon name="chevron-down" size={16} /></button>
+    )}
   </div>
 </section>
+<script>
+  for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-list-more]")) {
+    btn.addEventListener("click", () => {
+      const list = document.getElementById(btn.getAttribute("aria-controls")!)!;
+      for (const el of list.querySelectorAll("[data-docs-extra]")) { el.classList.remove("hidden"); el.removeAttribute("data-docs-extra"); }
+      btn.remove();
+    });
+  }
+</script>

@@ -17,7 +17,7 @@
     },
     "filters": [
       "All",
-      "Market commentary",
+      "Weekly update",
       "Research",
       "Fund reports",
       "Articles",
@@ -34,10 +34,24 @@
         "action": "subscribe-modal",
         "style": "primary"
       }
-    }
+    },
+    "collapseAfter": 10,
+    "seeMoreLabel": "See more insights",
+    "_weeklyNote": "Weekly updates are added with scripts/weekly.py (one PDF + one row). The hub lists newest first and folds after collapseAfter; the home row shows the featured paper, the latest weekly, and the two most recent non-weekly items (Jim, 4 Oct)."
   },
   "featured": "japan-at-the-turn",
   "articles": [
+    {
+      "slug": "weekly-2026-10-05",
+      "category": "Weekly update",
+      "filter": "Weekly update",
+      "date": "2026-10-05",
+      "title": "The long end has stopped listening to the data",
+      "summary": "US payrolls missed badly and the 10-year Treasury still closed higher. Benchmark yields are at the highs of the year in every major market while credit spreads have hardly moved. That is not a contradiction. The forces lifting long yields are not credit forces.",
+      "readingTime": "6 min read",
+      "wholesaleOnly": false,
+      "pdf": "/documents/weekly-update-2026-10-05.pdf"
+    },
     {
       "slug": "japan-at-the-turn",
       "category": "Macro research",
@@ -113,8 +127,8 @@
     },
     {
       "slug": "weekly-2026-05-25",
-      "category": "Market commentary",
-      "filter": "Market commentary",
+      "category": "Weekly update",
+      "filter": "Weekly update",
       "date": "2026-05-25",
       "title": "Weekly update: RBA holds, bank spreads tighten",
       "summary": "What the week's moves in cash-rate expectations and major-bank paper mean for running yield.",
