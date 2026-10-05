@@ -57,7 +57,7 @@ const site = defineCollection({
       fund: z.object({ template: z.string(), _note: note }),
       wholesale: z.object({ template: z.string(), thenGeneric: z.boolean(), _note: note }),
     }),
-    ratings: z.object({ headline: z.string(), headlineFunds: z.string().optional(), scope: z.string().optional(), _headlineNote: note, disclosure: z.string(), buttonLabel: z.string(), mobileTitle: z.string(), lonsecAlt: z.string(), badgeAlt: z.string(), _buttonNote: note }),
+    ratings: z.object({ headline: z.string(), headlineFunds: z.string().optional(), _headlineNote: note, disclosure: z.string(), buttonLabel: z.string(), mobileTitle: z.string(), lonsecAlt: z.string(), badgeAlt: z.string(), _buttonNote: note }),
     attestation: z.object({
       kicker: z.string(), title: z.string(), body: z.string(), checkbox: z.string(), validation: z.string(),
       continue: z.string(), decline: z.string(), footnote: z.string(), storageKey: z.string(),

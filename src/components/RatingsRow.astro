@@ -1,6 +1,6 @@
 ---
 /**
- * QA 5 Oct (Jim): off the fund pages the bar names the two rated funds and states the rating's scope; copy column is flex-1 so the bar balances with or without the button.
+ * QA 5 Oct (Jim): off the fund pages the bar names the two rated funds; copy column is flex-1 so the bar balances with or without the button.
  * RatingsRow — the Lonsec ratings bar. Figma desktop 244:9689 (three columns:
  * headline + disclosure · Lonsec wordmark + Investment Grade badge · Secondary
  * button); mobile 228:9407 (white card: "Ratings" title, disclosure, badge row,
@@ -18,7 +18,6 @@ const { ratings } = await getSite();
   <div class="hidden items-center justify-between gap-12 p-10 md:flex md:px-12">
     <div class="flex max-w-[640px] flex-1 flex-col gap-2">
       <p class="text-lead font-medium text-navy">{reportUrl ? ratings.headline : (ratings.headlineFunds ?? ratings.headline)}</p>
-      {!reportUrl && ratings.scope && <p class="text-small text-navy">{ratings.scope}</p>}
       <p class="text-small text-body">{ratings.disclosure}</p>
     </div>
     <div class="flex shrink-0 items-center gap-8">
@@ -35,7 +34,6 @@ const { ratings } = await getSite();
       <img src="/ratings/lonsec-investment-grade.png" alt={ratings.badgeAlt} width="56" height="56" class="h-14 w-14 shrink-0" />
       <p class="text-body font-medium text-navy">{reportUrl ? ratings.headline : (ratings.headlineFunds ?? ratings.headline)}</p>
     </div>
-    {!reportUrl && ratings.scope && <p class="text-small text-navy">{ratings.scope}</p>}
     <p class="text-small text-body">{ratings.disclosure}</p>
     {reportUrl && <Button label={ratings.buttonLabel} href={reportUrl} style="secondary" full />}
   </div>
