@@ -3,7 +3,8 @@
  * HeroLevel1 — the home hero. Figma 123:31755 → 226:9398.
  * Warm mesh background (public/heroes/hero-home-*.webp), title Display navy,
  * subtitle 24 navy-deep, two buttons (secondary then primary), ellipse photo
- * right. Mobile stacks: copy, full-width buttons, then a 260px band showing the
+ * right. Mobile stacks: copy, full-width buttons, then the whole ellipse at 280px
+ * (QA 5 Oct, Jim: the frame's 260px band cut the image at the bottom; the full shape is shown instead). Was: a 260px band showing the
  * top of the photo.
  */
 import Button from "./Button.astro";
@@ -30,9 +31,9 @@ const { title, subtitle, buttons, image } = Astro.props;
         {buttons.map((b) => <Button label={b.label} href={b.href} style={b.style} full class="md:w-auto" />)}
       </div>
     </div>
-    <div class="mt-7 h-[260px] w-full overflow-hidden md:mt-0 md:flex md:h-auto md:w-[664px] md:justify-center md:overflow-visible">
+    <div class="mt-4 flex w-full justify-center px-4 pb-10 pt-6 md:mt-0 md:w-[664px] md:px-0 md:py-0">
       <HeroImage src={image.src} alt={image.alt} size={540} class="hidden md:block" />
-      <HeroImage src={image.src} alt={image.alt} size={390} class="md:hidden" />
+      <HeroImage src={image.src} alt={image.alt} size={280} class="md:hidden" />
     </div>
   </div>
 </section>

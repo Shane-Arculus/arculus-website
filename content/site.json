@@ -139,6 +139,9 @@
   },
   "ratings": {
     "headline": "Rated 'Investment Grade' by Lonsec.",
+    "headlineFunds": "The Arculus Fixed Income Fund and the Arculus Preferred Income Fund are each rated 'Investment Grade' by Lonsec.",
+    "scope": "The ratings apply to these two funds only, not to Arculus Funds Management or to its wholesale strategies.",
+    "_headlineNote": "[Unverified] wording (QA 5 Oct, Jim: make clear the rating is the two funds', not Arculus's); headlineFunds and scope are used where the bar is not on a fund page. Lonsec citation rules still open under Q8.",
     "disclosure": "Ratings are opinions of the relevant research house, are not recommendations, and may change without notice.",
     "buttonLabel": "Request the Fund Rating Report",
     "_buttonNote": "Jim 23 Sep: the 15-page Lonsec report is not hosted (DDH Graham do not host it either) — the button goes to the contact form with ?topic=lonsec-<fund>; compliance register Q8.",

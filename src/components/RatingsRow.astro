@@ -1,5 +1,6 @@
 ---
 /**
+ * QA 5 Oct (Jim): off the fund pages the bar names the two rated funds and states the rating's scope; copy column is flex-1 so the bar balances with or without the button.
  * RatingsRow — the Lonsec ratings bar. Figma desktop 244:9689 (three columns:
  * headline + disclosure · Lonsec wordmark + Investment Grade badge · Secondary
  * button); mobile 228:9407 (white card: "Ratings" title, disclosure, badge row,
@@ -13,26 +14,29 @@ const { reportUrl, class: className = "" } = Astro.props;
 const { ratings } = await getSite();
 ---
 <div class:list={["rounded-lg border border-card-line bg-white", className]}>
-  <!-- Desktop -->
-  <div class:list={["hidden items-center p-12 md:flex", reportUrl ? "justify-between gap-14" : "justify-start gap-[128px]"]}>
-    <div class="flex w-[388px] flex-col gap-1">
-      <p class="text-h5 font-medium text-navy">{ratings.headline}</p>
-      <p class="text-small text-navy">{ratings.disclosure}</p>
+  <!-- Desktop: copy left (flex-1), Lonsec marks right, report button after them on fund pages -->
+  <div class="hidden items-center justify-between gap-12 p-10 md:flex md:px-12">
+    <div class="flex max-w-[640px] flex-1 flex-col gap-2">
+      <p class="text-lead font-medium text-navy">{reportUrl ? ratings.headline : (ratings.headlineFunds ?? ratings.headline)}</p>
+      {!reportUrl && ratings.scope && <p class="text-small text-navy">{ratings.scope}</p>}
+      <p class="text-small text-body">{ratings.disclosure}</p>
     </div>
-    <div class="flex items-center gap-6">
-      <img src="/ratings/lonsec-wordmark.png" alt={ratings.lonsecAlt} width="138" height="88" class="h-[88px] w-auto" />
-      <img src="/ratings/lonsec-investment-grade.png" alt={ratings.badgeAlt} width="92" height="92" class="h-[92px] w-[92px]" />
+    <div class="flex shrink-0 items-center gap-8">
+      <div class="flex items-center gap-5">
+        <img src="/ratings/lonsec-wordmark.png" alt={ratings.lonsecAlt} width="138" height="88" class="h-[72px] w-auto" />
+        <img src="/ratings/lonsec-investment-grade.png" alt={ratings.badgeAlt} width="92" height="92" class="h-[80px] w-[80px]" />
+      </div>
+      {reportUrl && <Button label={ratings.buttonLabel} href={reportUrl} style="secondary" />}
     </div>
-    {reportUrl && <Button label={ratings.buttonLabel} href={reportUrl} style="secondary" />}
   </div>
   <!-- Mobile -->
-  <div class="flex flex-col gap-6 px-6 pb-6 pt-4 md:hidden">
-    <p class="text-lead font-medium text-navy">{ratings.mobileTitle}</p>
-    <p class="text-body text-body">{ratings.disclosure}</p>
+  <div class="flex flex-col gap-5 px-6 pb-6 pt-5 md:hidden">
     <div class="flex items-center gap-3.5">
       <img src="/ratings/lonsec-investment-grade.png" alt={ratings.badgeAlt} width="56" height="56" class="h-14 w-14 shrink-0" />
-      <p class="text-body font-medium text-navy">{ratings.headline}</p>
+      <p class="text-body font-medium text-navy">{reportUrl ? ratings.headline : (ratings.headlineFunds ?? ratings.headline)}</p>
     </div>
+    {!reportUrl && ratings.scope && <p class="text-small text-navy">{ratings.scope}</p>}
+    <p class="text-small text-body">{ratings.disclosure}</p>
     {reportUrl && <Button label={ratings.buttonLabel} href={reportUrl} style="secondary" full />}
   </div>
 </div>
