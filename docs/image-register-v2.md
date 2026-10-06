@@ -1,4 +1,27 @@
-# Image register v2 — R2 · proposed set v2 applied (23 Sep 2026)
+# Image register — current set (6 Oct 2026)
+
+## V3 Aerial and Elemental Shots (Figma 357:10769) — the live set, iStock numbers to license
+
+| Slot | iStock | File |
+|---|---|---|
+| Home · hero | 1300760293 | hero-home.webp |
+| Fixed Income Fund · hero, and home fund card (4:5 crop of the same source) | 2196088173 | hero-afi.webp, card-afi.webp |
+| Preferred Income Fund · hero, and home fund card | 1478239548 | hero-pif.webp, card-pif.webp |
+| A− SMA · hero, wholesale card | 2283668742 | hero-a-minus.webp |
+| BBB SMA · hero, wholesale card | 2151710945 | hero-bbb.webp |
+| Protected Equity Portfolio · hero, wholesale card | 2283669788 | hero-pep.webp |
+| Investment Management · hero | 1217516751 | hero-im.webp |
+| Our approach · hero | 1331711688 | hero-approach.webp |
+| Governance & oversight · hero | 1775320942 | hero-governance.webp |
+| Team · hero | 2218305279 | hero-team.webp |
+| Insights · hero | 1173258101 | hero-insights.webp |
+| Document library · hero | 2270013766 | hero-documents.webp |
+| Contact · hero | 2152384691 | hero-contact.webp |
+
+Still placeholder or Unsplash: Governance "How it works" left-right (Unsplash bridge, left-right-governance.webp); Home and Our approach left-rights (left-right-city.webp); insight thumbnails and featured image; headshots. Unused iStock candidates in the frame: 1367460612, 2233117469, 1406515496, 2155242255, 1033677848, 1331882482, 2155242259, 2157500761. After purchase: replace each file from the master at 2000px+ using the export routine below, then remove the watermark note here.
+
+## Earlier set (R2 · proposed set v2, 23 Sep 2026) — superseded, kept for the record
+
 
 Source of truth for what is on the site now, and what has to be licensed before launch. Supersedes the placement columns of `AFM_Image_and_Vector_Register_v1 - Images.csv` (the v1 IDs are kept where the subject carried over). Figma: page **06 · Image Options**, frame `R2 · proposed set v2` (`331:357`); the export clones are in `_EXPORT · v2 image nodes` (`351:478`), one per slot at 4×.
 
