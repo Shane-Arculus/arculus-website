@@ -18,7 +18,7 @@
 | Document library · hero | 2270013766 | hero-documents.webp |
 | Contact · hero | 2152384691 | hero-contact.webp |
 
-Still placeholder or Unsplash: Governance "How it works" left-right (Unsplash bridge, left-right-governance.webp); Home and Our approach left-rights (left-right-city.webp); insight thumbnails and featured image; headshots. Unused iStock candidates in the frame: 1367460612, 2233117469, 1406515496, 2155242255, 1033677848, 1331882482, 2155242259, 2157500761. After purchase: replace each file from the master at 2000px+ using the export routine below, then remove the watermark note here.
+Still placeholder or Unsplash: Governance "How it works" left-right (Unsplash bridge, left-right-governance.webp); Home and Our approach left-rights (left-right-city.webp); insight thumbnails and featured image; headshots. Unused iStock candidates in the frame: 1367460612, 2233117469, 1406515496, 2155242255, 1033677848, 1331882482, 2155242259, 2157500761. Licensed and replaced from the iStock masters on 6 Oct 2026 (each hero is the slot's Figma crop applied to the master, 1080×1080; cards are 4:5 from the AFI and PIF masters). Masters: Jim's Drive folder "images"; keep a copy at Arculus.
 
 ## Earlier set (R2 · proposed set v2, 23 Sep 2026) — superseded, kept for the record
 
