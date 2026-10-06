@@ -260,7 +260,7 @@
     "items": [
       {
         "title": "Product Disclosure Statement",
-        "meta": "PDS · DDH Graham · 1 July 2026 · PDF 1.2 MB",
+        "meta": "PDS · DDH Graham · 5 February 2026 · PDF 0.5 MB",
         "doc": "pif-pds"
       },
       {
@@ -270,11 +270,11 @@
       },
       {
         "title": "Annual report",
-        "meta": "FY2025 · DDH Graham · PDF 2.4 MB",
-        "doc": "pif-annual-fy2025"
+        "meta": "FY2026 · DDH Graham · PDF 0.6 MB",
+        "doc": "pif-annual-fy2026"
       }
     ],
-    "_note": "[Unverified] meta strings (dates, sizes) are placeholders from the frame; derive from documents.json at build"
+    "_note": "Meta strings derived from documents.json rows (6 Oct 2026); keep in step when the library changes."
   },
   "documents": {
     "title": "Documents & statements",
@@ -282,8 +282,9 @@
     "items": [
       "pif-pds",
       "pif-tmd",
-      "pif-monthly-2026-06",
-      "pif-annual-fy2025"
+      "pif-fact-sheet-2026-08",
+      "pif-monthly-2026-08",
+      "pif-annual-fy2026"
     ],
     "button": {
       "label": "View all documents",

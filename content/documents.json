@@ -1,6 +1,6 @@
 {
   "verified": false,
-  "_note": "Seeded from the Document library frame. Sizes ('1.2 MB') on the frame are placeholders — set from real files. 'Showing 7 of 24' on the frame implies a longer monthly-report archive: confirm how far back to publish. 22 Sep: monthly rows realigned to the site's 30 June data (June, May, April placeholders) — replace with the real 12-month set under C9.",
+  "_note": "Rebuilt 6 Oct 2026 from Jim's Drive archive: 13 monthly reports per fund (Aug 2025–Aug 2026), current PDS/TMD, FY2026 audited financial statements, August 2026 fact sheets. Policies & notices rows still [TO SET] (C-tasks). Lonsec rows are request rows.",
   "page": {
     "breadcrumb": [
       "Home",
@@ -18,8 +18,8 @@
     "filters": [
       "All",
       "PDS & TMD",
+      "Fact sheets",
       "Monthly reports",
-      "Quarterly updates",
       "Annual reports",
       "Policies & notices"
     ],
@@ -66,10 +66,10 @@
       "fund": "afi",
       "category": "PDS & TMD",
       "title": "Product Disclosure Statement",
-      "meta": "PDS · DDH Graham · 1 July 2026",
-      "date": "2026-07-01",
-      "path": "[TO SET]",
-      "size": null,
+      "meta": "PDS · DDH Graham · 29 November 2024",
+      "date": "2024-11-29",
+      "path": "/documents/afi-pds.pdf",
+      "size": "0.5 MB",
       "wholesaleOnly": false
     },
     {
@@ -77,10 +77,21 @@
       "fund": "afi",
       "category": "PDS & TMD",
       "title": "Target Market Determination",
-      "meta": "TMD · 1 July 2026",
-      "date": "2026-07-01",
-      "path": "[TO SET]",
-      "size": null,
+      "meta": "TMD · Version 6 · 13 November 2025",
+      "date": "2025-11-13",
+      "path": "/documents/afi-tmd.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-fact-sheet-2026-08",
+      "fund": "afi",
+      "category": "Fact sheets",
+      "title": "Fact sheet — August 2026",
+      "meta": "Fact sheet · 31 August 2026",
+      "date": "2026-08-31",
+      "path": "/documents/afi-fact-sheet-2026-08.pdf",
+      "size": "0.4 MB",
       "wholesaleOnly": false
     },
     {
@@ -95,14 +106,25 @@
       "wholesaleOnly": false
     },
     {
+      "id": "afi-monthly-2026-07",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — July 2026",
+      "meta": "Report · 31 July 2026",
+      "date": "2026-07-31",
+      "path": "/documents/afi-monthly-2026-07.pdf",
+      "size": "0.6 MB",
+      "wholesaleOnly": false
+    },
+    {
       "id": "afi-monthly-2026-06",
       "fund": "afi",
       "category": "Monthly reports",
       "title": "Monthly report — June 2026",
       "meta": "Report · 30 June 2026",
       "date": "2026-06-30",
-      "path": "[TO SET]",
-      "size": null,
+      "path": "/documents/afi-monthly-2026-06.pdf",
+      "size": "0.6 MB",
       "wholesaleOnly": false
     },
     {
@@ -112,10 +134,9 @@
       "title": "Monthly report — May 2026",
       "meta": "Report · 31 May 2026",
       "date": "2026-05-31",
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false,
-      "_note": "Placeholder row until C9 back-fills the real monthly PDFs; the library shows the latest three months."
+      "path": "/documents/afi-monthly-2026-05.pdf",
+      "size": "0.4 MB",
+      "wholesaleOnly": false
     },
     {
       "id": "afi-monthly-2026-04",
@@ -124,30 +145,107 @@
       "title": "Monthly report — April 2026",
       "meta": "Report · 30 April 2026",
       "date": "2026-04-30",
-      "path": "[TO SET]",
-      "size": null,
+      "path": "/documents/afi-monthly-2026-04.pdf",
+      "size": "0.5 MB",
       "wholesaleOnly": false
     },
     {
-      "id": "afi-quarterly-2026-07",
+      "id": "afi-monthly-2026-03",
       "fund": "afi",
-      "category": "Quarterly updates",
-      "title": "Quarterly update — July 2026",
-      "meta": "Update · 9 July 2026",
-      "date": "2026-07-09",
-      "path": "[TO SET]",
-      "size": null,
+      "category": "Monthly reports",
+      "title": "Monthly report — March 2026",
+      "meta": "Report · 31 March 2026",
+      "date": "2026-03-31",
+      "path": "/documents/afi-monthly-2026-03.pdf",
+      "size": "0.5 MB",
       "wholesaleOnly": false
     },
     {
-      "id": "afi-annual-fy2025",
+      "id": "afi-monthly-2026-02",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — February 2026",
+      "meta": "Report · 28 February 2026",
+      "date": "2026-02-28",
+      "path": "/documents/afi-monthly-2026-02.pdf",
+      "size": "0.3 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2026-01",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — January 2026",
+      "meta": "Report · 31 January 2026",
+      "date": "2026-01-31",
+      "path": "/documents/afi-monthly-2026-01.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2025-12",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — December 2025",
+      "meta": "Report · 31 December 2025",
+      "date": "2025-12-31",
+      "path": "/documents/afi-monthly-2025-12.pdf",
+      "size": "0.6 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2025-11",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — November 2025",
+      "meta": "Report · 30 November 2025",
+      "date": "2025-11-30",
+      "path": "/documents/afi-monthly-2025-11.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2025-10",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — October 2025",
+      "meta": "Report · 31 October 2025",
+      "date": "2025-10-31",
+      "path": "/documents/afi-monthly-2025-10.pdf",
+      "size": "0.4 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2025-09",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — September 2025",
+      "meta": "Report · 30 September 2025",
+      "date": "2025-09-30",
+      "path": "/documents/afi-monthly-2025-09.pdf",
+      "size": "0.3 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-monthly-2025-08",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — August 2025",
+      "meta": "Report · 31 August 2025",
+      "date": "2025-08-31",
+      "path": "/documents/afi-monthly-2025-08.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "afi-annual-fy2026",
       "fund": "afi",
       "category": "Annual reports",
-      "title": "Annual report — FY2025",
-      "meta": "Annual report · DDH Graham",
-      "date": "2025-06-30",
-      "path": "[TO SET]",
-      "size": null,
+      "title": "Audited financial statements — FY2026",
+      "meta": "Annual report · DDH Graham · year ended 30 June 2026",
+      "date": "2026-06-30",
+      "path": "/documents/afi-annual-fy2026.pdf",
+      "size": "0.6 MB",
       "wholesaleOnly": false
     },
     {
@@ -168,10 +266,10 @@
       "fund": "pif",
       "category": "PDS & TMD",
       "title": "Product Disclosure Statement",
-      "meta": "PDS · DDH Graham · 1 July 2026",
-      "date": "2026-07-01",
-      "path": "[TO SET]",
-      "size": null,
+      "meta": "PDS · DDH Graham · 5 February 2026",
+      "date": "2026-02-05",
+      "path": "/documents/pif-pds.pdf",
+      "size": "0.5 MB",
       "wholesaleOnly": false
     },
     {
@@ -179,10 +277,21 @@
       "fund": "pif",
       "category": "PDS & TMD",
       "title": "Target Market Determination",
-      "meta": "TMD · 1 July 2026",
-      "date": "2026-07-01",
-      "path": "[TO SET]",
-      "size": null,
+      "meta": "TMD · Version 7 · 5 February 2026",
+      "date": "2026-02-05",
+      "path": "/documents/pif-tmd.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-fact-sheet-2026-08",
+      "fund": "pif",
+      "category": "Fact sheets",
+      "title": "Fact sheet — August 2026",
+      "meta": "Fact sheet · 31 August 2026",
+      "date": "2026-08-31",
+      "path": "/documents/pif-fact-sheet-2026-08.pdf",
+      "size": "0.4 MB",
       "wholesaleOnly": false
     },
     {
@@ -197,14 +306,25 @@
       "wholesaleOnly": false
     },
     {
+      "id": "pif-monthly-2026-07",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — July 2026",
+      "meta": "Report · 31 July 2026",
+      "date": "2026-07-31",
+      "path": "/documents/pif-monthly-2026-07.pdf",
+      "size": "0.7 MB",
+      "wholesaleOnly": false
+    },
+    {
       "id": "pif-monthly-2026-06",
       "fund": "pif",
       "category": "Monthly reports",
       "title": "Monthly report — June 2026",
       "meta": "Report · 30 June 2026",
       "date": "2026-06-30",
-      "path": "[TO SET]",
-      "size": null,
+      "path": "/documents/pif-monthly-2026-06.pdf",
+      "size": "0.5 MB",
       "wholesaleOnly": false
     },
     {
@@ -214,31 +334,118 @@
       "title": "Monthly report — May 2026",
       "meta": "Report · 31 May 2026",
       "date": "2026-05-31",
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false,
-      "_note": "Placeholder row until C9 back-fills the real monthly PDFs; the library shows the latest three months."
-    },
-    {
-      "id": "pif-quarterly-2026-07",
-      "fund": "pif",
-      "category": "Quarterly updates",
-      "title": "Quarterly update — July 2026",
-      "meta": "Update · 9 July 2026",
-      "date": "2026-07-09",
-      "path": "[TO SET]",
-      "size": null,
+      "path": "/documents/pif-monthly-2026-05.pdf",
+      "size": "0.4 MB",
       "wholesaleOnly": false
     },
     {
-      "id": "pif-annual-fy2025",
+      "id": "pif-monthly-2026-04",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — April 2026",
+      "meta": "Report · 30 April 2026",
+      "date": "2026-04-30",
+      "path": "/documents/pif-monthly-2026-04.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2026-03",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — March 2026",
+      "meta": "Report · 31 March 2026",
+      "date": "2026-03-31",
+      "path": "/documents/pif-monthly-2026-03.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2026-02",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — February 2026",
+      "meta": "Report · 28 February 2026",
+      "date": "2026-02-28",
+      "path": "/documents/pif-monthly-2026-02.pdf",
+      "size": "0.7 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2026-01",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — January 2026",
+      "meta": "Report · 31 January 2026",
+      "date": "2026-01-31",
+      "path": "/documents/pif-monthly-2026-01.pdf",
+      "size": "0.4 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2025-12",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — December 2025",
+      "meta": "Report · 31 December 2025",
+      "date": "2025-12-31",
+      "path": "/documents/pif-monthly-2025-12.pdf",
+      "size": "0.9 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2025-11",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — November 2025",
+      "meta": "Report · 30 November 2025",
+      "date": "2025-11-30",
+      "path": "/documents/pif-monthly-2025-11.pdf",
+      "size": "0.5 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2025-10",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — October 2025",
+      "meta": "Report · 31 October 2025",
+      "date": "2025-10-31",
+      "path": "/documents/pif-monthly-2025-10.pdf",
+      "size": "0.6 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2025-09",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — September 2025",
+      "meta": "Report · 30 September 2025",
+      "date": "2025-09-30",
+      "path": "/documents/pif-monthly-2025-09.pdf",
+      "size": "0.4 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2025-08",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — August 2025",
+      "meta": "Report · 31 August 2025",
+      "date": "2025-08-31",
+      "path": "/documents/pif-monthly-2025-08.pdf",
+      "size": "0.6 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-annual-fy2026",
       "fund": "pif",
       "category": "Annual reports",
-      "title": "Annual report — FY2025",
-      "meta": "Annual report · DDH Graham",
-      "date": "2025-06-30",
-      "path": "[TO SET]",
-      "size": null,
+      "title": "Audited financial statements — FY2026",
+      "meta": "Annual report · DDH Graham · year ended 30 June 2026",
+      "date": "2026-06-30",
+      "path": "/documents/pif-annual-fy2026.pdf",
+      "size": "0.6 MB",
       "wholesaleOnly": false
     },
     {
