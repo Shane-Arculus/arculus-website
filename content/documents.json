@@ -84,6 +84,17 @@
       "wholesaleOnly": false
     },
     {
+      "id": "afi-monthly-2026-08",
+      "fund": "afi",
+      "category": "Monthly reports",
+      "title": "Monthly report — August 2026",
+      "meta": "Report · 31 August 2026",
+      "date": "2026-08-31",
+      "path": "/documents/afi-monthly-2026-08.pdf",
+      "size": "1.2 MB",
+      "wholesaleOnly": false
+    },
+    {
       "id": "afi-monthly-2026-06",
       "fund": "afi",
       "category": "Monthly reports",
@@ -172,6 +183,17 @@
       "date": "2026-07-01",
       "path": "[TO SET]",
       "size": null,
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-monthly-2026-08",
+      "fund": "pif",
+      "category": "Monthly reports",
+      "title": "Monthly report — August 2026",
+      "meta": "Report · 31 August 2026",
+      "date": "2026-08-31",
+      "path": "/documents/pif-monthly-2026-08.pdf",
+      "size": "0.4 MB",
       "wholesaleOnly": false
     },
     {

@@ -55,70 +55,70 @@
   },
   "performance": {
     "title": "Performance",
-    "note": "Returns to 30 June 2026, annualised and net of all fees. Cash distributions were 5.00% over the year and have averaged 5.42% p.a. since inception. Past performance is not an indicator of future performance.",
-    "performanceAsAt": "2026-06-30",
+    "note": "Returns to 31 August 2026, annualised and net of all fees. Cash distributions were 5.00% over the year and have averaged 5.38% p.a. since inception. Past performance is not an indicator of future performance.",
+    "performanceAsAt": "2026-08-31",
     "chartTitle": "Performance Comparison",
-    "chartImage": "/charts/pif-2026-06.webp",
+    "chartImage": "/charts/pif-2026-08.webp",
     "chartSeries": [
       "1-year total return",
       "Running yield",
       "Yield to maturity",
       "90-day BBSW"
     ],
-    "tableTitle": "Performance to 30 June 2026 (annualised)",
+    "tableTitle": "Performance to 31 August 2026 (annualised)",
     "table": {
       "columns": [
         "Total return",
-        "Cash distribution",
-        "Growth"
+        "Incl. franking credits",
+        "Cash distribution"
       ],
       "rows": [
         [
           "3 months",
-          "1.98%",
-          "1.08%",
-          "0.90%"
+          "1.24%",
+          "1.31%",
+          "1.07%"
         ],
         [
           "6 months",
-          "2.30%",
-          "2.25%",
-          "0.05%"
+          "2.70%",
+          "2.84%",
+          "2.26%"
         ],
         [
           "1 year",
-          "3.86%",
-          "5.00%",
-          "-1.14%"
+          "3.70%",
+          "3.91%",
+          "5.00%"
         ],
         [
           "2 years",
-          "5.10%",
-          "5.93%",
-          "-0.83%"
+          "4.74%",
+          "5.15%",
+          "5.91%"
         ],
         [
           "3 years",
-          "5.55%",
-          "5.92%",
-          "-0.37%"
+          "5.42%",
+          "5.77%",
+          "5.91%"
         ],
         [
           "5 years",
-          "3.86%",
-          "5.05%",
-          "-1.19%"
+          "3.95%",
+          "4.24%",
+          "5.05%"
         ],
         [
           "Since inception (Oct 2004)",
-          "4.51%",
-          "5.42%",
-          "-0.91%"
+          "4.52%",
+          "4.90%",
+          "5.38%"
         ]
       ]
     },
-    "tableNote": "Fund returns are net of all fees, calculated using exit prices and assuming distributions are reinvested, with no allowance for tax. The distribution component is the amount paid by way of distribution, including net realised capital gains. Numbers may not sum due to rounding.",
-    "_tableNote": "[Unverified] tableNote is the report's footnote condensed; Renny to confirm wording. Figures are the June 2026 monthly report table, reproduced by scripts/perf-from-xlsx.py --asat 2026-06-30 (two cells differ by 0.01 from rounding; the report's figures are used)."
+    "tableNote": "Fund returns are net of all fees, calculated using exit prices and assuming distributions are reinvested, with no allowance for tax. Returns including franking credits incorporate the value of franking credits attributable to the Fund's distributions; an investor's ability to use franking credits depends on their tax circumstances. The distribution component is the amount paid by way of distribution, including net realised capital gains. Numbers may not sum due to rounding.",
+    "_tableNote": "[Unverified] tableNote condenses the August 2026 report's performance table notes 3 to 7; Renny to confirm wording. Table presentation (excl. / incl. franking / distribution) mirrors the report from August 2026."
   },
   "whoItMaySuit": {
     "title": "Who it may suit",
@@ -178,35 +178,35 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "asAt": "30 June 2026",
+    "asAt": "31 August 2026",
     "metrics": [
       [
         "Running yield",
-        "7.19%"
+        "7.18%"
       ],
       [
         "Yield to maturity",
-        "7.93%"
+        "7.99%"
       ],
       [
         "Average margin",
-        "3.47%"
+        "3.44%"
       ],
       [
         "Average years to maturity",
-        "2.92"
+        "2.61"
       ],
       [
         "Number of securities held",
-        "51"
+        "38"
       ],
       [
         "Modified duration",
-        "1.09"
+        "0.61"
       ],
       [
         "Credit duration",
-        "1.60"
+        "1.64"
       ]
     ],
     "allocation": {
@@ -217,15 +217,15 @@
       "rows": [
         [
           "Floating rate notes",
-          "67.3%"
+          "78.5%"
         ],
         [
           "Fixed rate securities",
-          "29.7%"
+          "20.6%"
         ],
         [
           "Cash",
-          "3.0%"
+          "0.9%"
         ]
       ]
     }
@@ -265,8 +265,8 @@
       },
       {
         "title": "Latest monthly report",
-        "meta": "June 2026 · PDF 0.8 MB",
-        "doc": "pif-monthly-2026-06"
+        "meta": "August 2026 · PDF 0.4 MB",
+        "doc": "pif-monthly-2026-08"
       },
       {
         "title": "Annual report",

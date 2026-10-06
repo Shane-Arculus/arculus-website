@@ -24,21 +24,26 @@ COLS = {"total": ["AA","AB","AC","AD","AE","AF","AH"], "distribution": ["AV","AW
 FUNDS = {"GACS": ("afi", "Arculus Fixed Income Fund", "Since inception (Nov 2017)"), "PIF": ("pif", "Arculus Preferred Income Fund", "Since inception (Oct 2004)")}
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 pct = lambda v: f"{v*100:.2f}%"
+growth = lambda t, d: f"{round(t*100, 2) - round(d*100, 2):.2f}%"  # the published report derives growth from the rounded total and distribution, not the raw cells
 longdate = lambda d: d.strftime("%-d %B %Y")
 
-def read(path):
+def read(path, asat=None):
     wb = load_workbook(path, data_only=True); ws = wb.worksheets[0]
     if ws.title not in FUNDS: sys.exit(f"{path}: sheet '{ws.title}' is not GACS or PIF")
     rows = [r for r in range(4, ws.max_row + 1) if isinstance(ws.cell(r, 1).value, dt.datetime)]
+    if asat:
+        rows_at = [r for r in rows if ws.cell(r, 1).value.date() == asat]
+        if not rows_at: sys.exit(f"{path}: no row dated {asat}")
+        rows = rows[: rows.index(rows_at[0]) + 1]
     r = rows[-1]; date = ws.cell(r, 1).value.date()
     cells = {k: [(f"{c}{r}", ws.cell(r, ci(c)).value) for c in cols] for k, cols in COLS.items()}
     cells = {k: v for k, v in cells.items() if any(x[1] is not None for x in v)}
     series = [(ws.cell(x, 1).value.date(), ws.cell(x, ci("AC")).value, f"AC{x}") for x in rows[-43:]]
     return ws.title, date, cells, series, pathlib.Path(path).name
 
-ap = argparse.ArgumentParser(); ap.add_argument("files", nargs=2); ap.add_argument("--apply", action="store_true")
+ap = argparse.ArgumentParser(); ap.add_argument("files", nargs=2); ap.add_argument("--apply", action="store_true"); ap.add_argument("--asat", type=dt.date.fromisoformat, help="use this month-end row instead of the last one (the site follows the latest PUBLISHED report, which can lag the workbook by a month)")
 a = ap.parse_args()
-funds = [read(f) for f in a.files]
+funds = [read(f, a.asat) for f in a.files]
 dates = {f[1] for f in funds}
 if len(dates) != 1: sys.exit(f"the two workbooks end on different months: {dates}")
 date = dates.pop(); ym = date.strftime("%Y-%m")
@@ -53,7 +58,7 @@ for sheet, d, cells, series, fname in funds:
               "### Performance table (workbook → JSON, applied by the script)", "", "| Period | Total return | Cash distribution | Growth | Cells | Checked |", "|---|---|---|---|---|---|"]
     for i, p in enumerate(PERIODS):
         t, dd, g = cells["total"][i], cells["distribution"][i], cells["growth"][i]
-        audit.append(f"| {si if p == 'Since inception' else p} | {pct(t[1])} | {pct(dd[1])} | {pct(g[1])} | {t[0]} · {dd[0]} · {g[0]} | ☐ |")
+        audit.append(f"| {si if p == 'Since inception' else p} | {pct(t[1])} | {pct(dd[1])} | {growth(t[1], dd[1])} | {t[0]} · {dd[0]} · (derived) | ☐ |")
     if "total_franked" in cells:
         audit += ["", "Franking-inclusive figures (not shown on the site until Renny confirms which the table carries):", "", "| Period | Total incl. franking | Distribution incl. franking | Cells |", "|---|---|---|---|"]
         for i, p in enumerate(PERIODS):
@@ -76,7 +81,12 @@ for sheet, d, cells, series, fname in funds:
     if a.apply:
         p = ROOT / "content" / "funds" / f"{slug}.json"; j = json.load(open(p)); perf = j["performance"]
         perf["performanceAsAt"] = d.isoformat(); perf["tableTitle"] = f"Performance to {longdate(d)} (annualised)"
-        perf["table"]["rows"] = [[si if p_ == "Since inception" else p_, pct(cells["total"][i][1]), pct(cells["distribution"][i][1]), pct(cells["growth"][i][1])] for i, p_ in enumerate(PERIODS)]
+        if "total_franked" in cells:  # PIF: mirror the report's franking presentation (Renny, Sep 2026; report format from Aug 2026)
+            perf["table"]["columns"] = ["Total return", "Incl. franking credits", "Cash distribution"]
+            perf["table"]["rows"] = [[si if p_ == "Since inception" else p_, pct(cells["total"][i][1]), pct(cells["total_franked"][i][1]), pct(cells["distribution"][i][1])] for i, p_ in enumerate(PERIODS)]
+        else:
+            perf["table"]["columns"] = ["Total return", "Cash distribution", "Growth"]
+            perf["table"]["rows"] = [[si if p_ == "Since inception" else p_, pct(cells["total"][i][1]), pct(cells["distribution"][i][1]), growth(cells["total"][i][1], cells["distribution"][i][1])] for i, p_ in enumerate(PERIODS)]
         perf["chartImage"] = f"/charts/{slug}-{ym}.webp"
         perf["note"] = re.sub(r"Returns to .*? annualised", f"Returns to {longdate(d)}, annualised", perf["note"])
         perf["note"] = re.sub(r"Cash distributions were [\d.]+% over the year and have averaged [\d.]+% p\.a\. since inception",
