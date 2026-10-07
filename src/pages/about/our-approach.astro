@@ -18,7 +18,7 @@ const a = await getAbout("approach");
   <Header slot="header" />
   <HeroLevel2 title={a.hero.title} description={a.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[a.hero.button]} image={{ src: "/images/hero-approach.webp", alt: "[image register IMG-02]" }} />
   <Breadcrumb items={a.breadcrumb} bg="white" />
-  <LeftRight title={a.whoWeAre.title} paragraphs={a.whoWeAre.paragraphs} image={{ src: "/images/left-right-city.webp", alt: "[image register IMG-04]" }} />
+  <LeftRight title={a.whoWeAre.title} paragraphs={a.whoWeAre.paragraphs} image={{ src: "/images/left-right-about.webp", alt: "Sandstone escarpments at sunset, seen from a ridge through gum branches" }} />
   {a.showRatings && <section class="bg-white"><div class="mx-auto max-w-site px-4 pb-10 md:px-12 md:pb-20"><RatingsRow /></div></section>}
   <ContentColumns title={a.philosophy.title} items={a.philosophy.items.map((it, i) => (i === a.philosophy.items.length - 1 ? [it[0], it[1], a.philosophy.link] as const : it))} bg="white" />
   <TwoColumnsContent columns={[{ title: a.whatWeDo.title, items: a.whatWeDo.items }, { title: a.forOurClients.title, items: a.forOurClients.items }]} />
