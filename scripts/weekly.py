@@ -34,7 +34,8 @@ for broken in re.findall(r"\b([a-z]{1,3}) ([a-z]{2,5})\b", summary):  # "fo rces
     if w in WORDS and not (broken[0] in WORDS and broken[1] in WORDS): summary = summary.replace(f"{broken[0]} {broken[1]}", w)
 slug = f"weekly-{date.isoformat()}"; fname = f"weekly-update-{date.isoformat()}.pdf"
 row = {"slug": slug, "category": a.category, "filter": a.category, "date": date.isoformat(), "title": title, "summary": summary,
-       "readingTime": f"{max(3, pages)} min read", "wholesaleOnly": False, "pdf": f"/documents/{fname}"}
+       "readingTime": f"{max(3, pages)} min read", "wholesaleOnly": False, "pdf": f"/documents/{fname}",
+       "image": "/images/insight-weekly.webp"}  # standing weekly thumbnail (Jim, 7 Oct 2026)
 print(json.dumps(row, indent=2, ensure_ascii=False))
 if a.apply:
     (ROOT / "public" / "documents").mkdir(exist_ok=True); shutil.copy(a.pdf, ROOT / "public" / "documents" / fname)

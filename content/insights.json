@@ -38,7 +38,8 @@
     "collapseAfter": 10,
     "seeMoreLabel": "See more insights",
     "_weeklyNote": "Weekly updates are added with scripts/weekly.py (one PDF + one row). The hub lists newest first and folds after collapseAfter; the home row shows the featured paper, the latest weekly, and the two most recent non-weekly items (Jim, 4 Oct).",
-    "_fundReportsNote": "Monthly fund reports are NOT listed here (Jim, 7 Oct 2026): they live on the fund pages (keyDocuments, documents) and in the Document library only. The quarterly update stays, under its own filter. Hero subtitle and CTA body reworded accordingly — [Unverified] wording with Jim/Renny."
+    "_fundReportsNote": "Monthly fund reports are NOT listed here (Jim, 7 Oct 2026): they live on the fund pages (keyDocuments, documents) and in the Document library only. The quarterly update stays, under its own filter. Hero subtitle and CTA body reworded accordingly — [Unverified] wording with Jim/Renny.",
+    "_thumbnailNote": "Thumbnails are 16:9 WebP at 1550×872 in public/images/insight-*.webp (one master serves featured 775×436, card 437×246, list 200×134). Weekly updates share insight-weekly.webp (scripts/weekly.py sets it). 7 Oct 2026: iStock comps, watermarked, for preview review — see docs/image-register-v2.md V2-17..24; replace with purchased files before launch. japan-at-the-turn still on the placeholder pending its image."
   },
   "featured": "japan-at-the-turn",
   "articles": [
@@ -51,7 +52,8 @@
       "summary": "US payrolls missed badly and the 10-year Treasury still closed higher. Benchmark yields are at the highs of the year in every major market while credit spreads have hardly moved. That is not a contradiction. The forces lifting long yields are not credit forces.",
       "readingTime": "6 min read",
       "wholesaleOnly": false,
-      "pdf": "/documents/weekly-update-2026-10-05.pdf"
+      "pdf": "/documents/weekly-update-2026-10-05.pdf",
+      "image": "/images/insight-weekly.webp"
     },
     {
       "slug": "inflation-linked-bonds-not-a-forecast",
@@ -63,7 +65,8 @@
       "readingTime": "4 min read",
       "wholesaleOnly": false,
       "pdf": "/documents/inflation-linked-bonds-note.pdf",
-      "_note": "PDF is the designed Figma export (07 · Insights, 3 pp, 7 Oct 2026). [Unverified] summary drafted from the note's title and opening; Renny to confirm"
+      "_note": "PDF is the designed Figma export (07 · Insights, 3 pp, 7 Oct 2026). [Unverified] summary drafted from the note's title and opening; Renny to confirm",
+      "image": "/images/insight-inflation-linked-bonds.webp"
     },
     {
       "slug": "japan-at-the-turn",
@@ -88,7 +91,8 @@
       "homeSummary": "On current core PCE the rule sits 100–200bp above the funds rate; in Australia a positive output gap validates the cash rate at a modest trimmed-mean assumption.",
       "readingTime": "8 min read",
       "wholesaleOnly": true,
-      "pdf": "/documents/taylor-rule-sensitivity.pdf"
+      "pdf": "/documents/taylor-rule-sensitivity.pdf",
+      "image": "/images/insight-taylor-rule.webp"
     },
     {
       "slug": "q2-2026-quarterly",
@@ -101,7 +105,8 @@
       "homeSummary": "Rates, credit spreads and duration positioning across both funds, with the portfolio changes made over the quarter.",
       "readingTime": "6 min read",
       "wholesaleOnly": false,
-      "pdf": "[TO SET — 20260709-Quarterly_Update]"
+      "pdf": "[TO SET — 20260709-Quarterly_Update]",
+      "image": "/images/insight-quarterly.webp"
     },
     {
       "slug": "kevin-warsh-background",
@@ -112,7 +117,8 @@
       "summary": "Career, intellectual influences and record of the 17th Chair of the Federal Reserve. Less a doctrinaire hawk than a market-oriented pragmatist: fewer signals, a higher bar for balance-sheet intervention, closer attention to asset prices.",
       "readingTime": "25 min read",
       "wholesaleOnly": true,
-      "pdf": "/documents/kevin-warsh-background.pdf"
+      "pdf": "/documents/kevin-warsh-background.pdf",
+      "image": "/images/insight-kevin-warsh.webp"
     },
     {
       "slug": "hormuz-shock",
@@ -125,7 +131,8 @@
       "homeSummary": "Oil and urea have round-tripped. Sulphur and helium, with no forward curve, kept rising after the strait reopened.",
       "readingTime": "15 min read",
       "wholesaleOnly": true,
-      "pdf": "/documents/hormuz-shock.pdf"
+      "pdf": "/documents/hormuz-shock.pdf",
+      "image": "/images/insight-hormuz-shock.webp"
     },
     {
       "slug": "monetary-policy-outlook-2026-06",
@@ -137,7 +144,8 @@
       "readingTime": "1 min read",
       "wholesaleOnly": false,
       "pdf": "/documents/monetary-policy-outlook-2026-06.pdf",
-      "_note": "[Unverified] the PDF is a single image page with no text layer; date taken from the filename, summary drafted; Renny to confirm"
+      "_note": "[Unverified] the PDF is a single image page with no text layer; date taken from the filename, summary drafted; Renny to confirm",
+      "image": "/images/insight-monetary-policy-2026-06.webp"
     },
     {
       "slug": "getting-yield-seminar",
@@ -148,7 +156,8 @@
       "summary": "Slides and notes from the adviser seminar on building income portfolios in a higher-rate environment.",
       "readingTime": "Slides",
       "wholesaleOnly": false,
-      "pdf": "[TO SET — Getting_Yield_31_May_2026]"
+      "pdf": "[TO SET — Getting_Yield_31_May_2026]",
+      "image": "/images/insight-getting-yield.webp"
     },
     {
       "slug": "weekly-2026-05-25",
@@ -159,7 +168,8 @@
       "summary": "What the week's moves in cash-rate expectations and major-bank paper mean for running yield.",
       "readingTime": "4 min read",
       "wholesaleOnly": false,
-      "pdf": "[TO SET — Weeklyupdate_May_25_2026]"
+      "pdf": "[TO SET — Weeklyupdate_May_25_2026]",
+      "image": "/images/insight-weekly.webp"
     }
   ]
 }
