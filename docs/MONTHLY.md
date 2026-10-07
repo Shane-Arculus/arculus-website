@@ -66,6 +66,8 @@ Upload via GitHub (*Add file → Upload files*, keeping the folders) with the co
 
 ## Quarterly and annual
 
+Monthly reports never get an `insights.json` row (Jim, 7 Oct 2026): they appear on the fund pages and in the Document library only.
+
 A PDF and a `documents.json` row with category "Quarterly updates" or "Annual reports". No chart, no fund-file numbers.
 
 ## Deliberately not part of this

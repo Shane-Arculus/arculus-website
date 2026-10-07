@@ -21,7 +21,10 @@ interface Props {
   class?: string;
 }
 const { rows, title, variant = "facts", caption, class: className = "" } = Astro.props;
-const valueClass = variant === "table" ? "md:w-[88px] md:text-left" : "md:text-right";
+// facts: the label hugs its text (w-px + nowrap) so the value gets the rest of the row, and text-balance keeps
+// any wrapped value in two even lines rather than leaving a single word orphaned (QA, Jim 7 Oct).
+const valueClass = variant === "table" ? "md:w-[88px] md:text-left" : "md:text-right md:text-balance";
+const labelClass = variant === "table" ? "" : "md:w-px md:whitespace-nowrap";
 ---
 <div class:list={["w-full", className]}>
   {title && <h3 class="text-subhead font-semibold text-navy-mid mb-2">{title}</h3>}
@@ -30,7 +33,7 @@ const valueClass = variant === "table" ? "md:w-[88px] md:text-left" : "md:text-r
     <tbody>
       {rows.map(([label, value]) => (
         <tr class="border-b border-line">
-          <th scope="row" class="w-1/2 md:w-auto py-4 pr-4 md:pr-6 text-left align-top font-normal">{label}</th>
+          <th scope="row" class:list={["w-1/2 md:w-auto py-4 pr-4 md:pr-6 text-left align-top font-normal", labelClass]}>{label}</th>
           <td class:list={["w-1/2 md:w-auto py-4 align-top font-medium text-right whitespace-normal", valueClass]}>{value}</td>
         </tr>
       ))}

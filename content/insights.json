@@ -8,7 +8,7 @@
     ],
     "hero": {
       "title": "Insights",
-      "subtitle": "Weekly market commentary, monthly fund reports, seminars and articles from the portfolio management team.",
+      "subtitle": "Weekly market commentary, quarterly updates, seminars and articles from the portfolio management team.",
       "button": {
         "label": "Subscribe",
         "action": "subscribe-modal",
@@ -19,7 +19,7 @@
       "All",
       "Weekly update",
       "Research",
-      "Fund reports",
+      "Quarterly updates",
       "Articles",
       "Seminars & events"
     ],
@@ -28,7 +28,7 @@
     "readLabel": "Read",
     "cta": {
       "title": "Get the weekly commentary",
-      "body": "The weekly market update and monthly fund reports, sent to advisers and investors by email.",
+      "body": "The weekly market update and quarterly fund commentary, sent to advisers and investors by email.",
       "button": {
         "label": "Subscribe",
         "action": "subscribe-modal",
@@ -37,7 +37,8 @@
     },
     "collapseAfter": 10,
     "seeMoreLabel": "See more insights",
-    "_weeklyNote": "Weekly updates are added with scripts/weekly.py (one PDF + one row). The hub lists newest first and folds after collapseAfter; the home row shows the featured paper, the latest weekly, and the two most recent non-weekly items (Jim, 4 Oct)."
+    "_weeklyNote": "Weekly updates are added with scripts/weekly.py (one PDF + one row). The hub lists newest first and folds after collapseAfter; the home row shows the featured paper, the latest weekly, and the two most recent non-weekly items (Jim, 4 Oct).",
+    "_fundReportsNote": "Monthly fund reports are NOT listed here (Jim, 7 Oct 2026): they live on the fund pages (keyDocuments, documents) and in the Document library only. The quarterly update stays, under its own filter. Hero subtitle and CTA body reworded accordingly — [Unverified] wording with Jim/Renny."
   },
   "featured": "japan-at-the-turn",
   "articles": [
@@ -63,28 +64,6 @@
       "wholesaleOnly": false,
       "pdf": "/documents/inflation-linked-bonds-note.pdf",
       "_note": "PDF is the designed Figma export (07 · Insights, 3 pp, 7 Oct 2026). [Unverified] summary drafted from the note's title and opening; Renny to confirm"
-    },
-    {
-      "slug": "afi-monthly-2026-08",
-      "category": "Fund report",
-      "filter": "Fund reports",
-      "date": "2026-08-31",
-      "title": "Arculus Fixed Income Fund — August 2026",
-      "summary": "Monthly performance, portfolio characteristics and market review for the Fixed Income Fund.",
-      "readingTime": "9 min read",
-      "wholesaleOnly": false,
-      "pdf": "/documents/afi-monthly-2026-08.pdf"
-    },
-    {
-      "slug": "pif-monthly-2026-08",
-      "category": "Fund report",
-      "filter": "Fund reports",
-      "date": "2026-08-31",
-      "title": "Arculus Preferred Income Fund — August 2026",
-      "summary": "Monthly performance, portfolio characteristics and market review for the Preferred Income Fund.",
-      "readingTime": "6 min read",
-      "wholesaleOnly": false,
-      "pdf": "/documents/pif-monthly-2026-08.pdf"
     },
     {
       "slug": "japan-at-the-turn",
@@ -114,7 +93,7 @@
     {
       "slug": "q2-2026-quarterly",
       "category": "Quarterly update",
-      "filter": "Fund reports",
+      "filter": "Quarterly updates",
       "date": "2026-07-09",
       "title": "Quarterly update: where the funds are positioned as the rate cycle turns",
       "homeTitle": "Where the funds are positioned as the rate cycle turns",
@@ -181,17 +160,6 @@
       "readingTime": "4 min read",
       "wholesaleOnly": false,
       "pdf": "[TO SET — Weeklyupdate_May_25_2026]"
-    },
-    {
-      "slug": "afi-monthly-2026-04",
-      "category": "Fund report",
-      "filter": "Fund reports",
-      "date": "2026-04-30",
-      "title": "Arculus Fixed Income Fund — April 2026",
-      "summary": "Monthly performance, portfolio composition and commentary.",
-      "readingTime": "PDF",
-      "wholesaleOnly": false,
-      "pdf": "/documents/afi-monthly-2026-04.pdf"
     }
   ]
 }
