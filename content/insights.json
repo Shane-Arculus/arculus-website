@@ -39,7 +39,7 @@
     "seeMoreLabel": "See more insights",
     "_weeklyNote": "Weekly updates are added with scripts/weekly.py (one PDF + one row). The hub lists newest first and folds after collapseAfter; the home row shows the featured paper, the latest weekly, and the two most recent non-weekly items (Jim, 4 Oct).",
     "_fundReportsNote": "Monthly fund reports are NOT listed here (Jim, 7 Oct 2026): they live on the fund pages (keyDocuments, documents) and in the Document library only. The quarterly update stays, under its own filter. Hero subtitle and CTA body reworded accordingly — [Unverified] wording with Jim/Renny.",
-    "_thumbnailNote": "Thumbnails are 16:9 WebP at 1550×872 in public/images/insight-*.webp (one master serves featured 775×436, card 437×246, list 200×134). Weekly updates share insight-weekly.webp (scripts/weekly.py sets it). 7 Oct 2026: iStock comps, watermarked, for preview review — see docs/image-register-v2.md V2-17..24; replace with purchased files before launch. japan-at-the-turn still on the placeholder pending its image."
+    "_thumbnailNote": "Thumbnails are 16:9 WebP at 1550×872 in public/images/insight-*.webp (one master serves featured 775×436, card 437×246, list 200×134). Weekly updates share insight-weekly.webp (scripts/weekly.py sets it). 7 Oct 2026: iStock comps, watermarked, for preview review — see docs/image-register-v2.md V2-17..24; replace with purchased files before launch. japan-at-the-turn: Tokyo skyline supplied by Jim 7 Oct 2026 (source file tokyo-3-day-itinerary-hero-skyline-1600x890.avif) — [Unverified] licence; confirm before launch."
   },
   "featured": "japan-at-the-turn",
   "articles": [
@@ -79,7 +79,7 @@
       "readingTime": null,
       "wholesaleOnly": false,
       "pdf": "/documents/japan-at-the-turn-exec-summary.pdf",
-      "image": "[image register]"
+      "image": "/images/insight-japan-at-the-turn.webp"
     },
     {
       "slug": "taylor-rule-sensitivity",
