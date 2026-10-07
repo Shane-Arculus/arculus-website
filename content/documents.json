@@ -1,6 +1,6 @@
 {
   "verified": false,
-  "_note": "Rebuilt 6 Oct 2026 from Jim's Drive archive: 13 monthly reports per fund (Aug 2025–Aug 2026), current PDS/TMD, FY2026 audited financial statements, August 2026 fact sheets. Policies & notices rows still [TO SET] (C-tasks). Lonsec rows are request rows. 8 Oct: Outlook June quarter 2026 added under both funds (one PDF, two rows) with a Quarterly updates filter.",
+  "_note": "Rebuilt 6 Oct 2026 from Jim's Drive archive: 13 monthly reports per fund (Aug 2025–Aug 2026), current PDS/TMD, FY2026 audited financial statements, August 2026 fact sheets. Policies & notices rows still [TO SET] (C-tasks). Lonsec rows are request rows. 8 Oct: Outlook June quarter 2026 added under both funds (one PDF, two rows) with a Quarterly updates filter. 8 Oct (Jim): Policies & notices removed from the library — the policies are pages on the site (ESG, Privacy, Terms, Cookies, Disclosure), not PDFs.",
   "page": {
     "breadcrumb": [
       "Home",
@@ -8,7 +8,7 @@
     ],
     "hero": {
       "title": "Document library",
-      "subtitle": "Every document issued for the funds: disclosure statements, monthly and quarterly reports, annual reports and policies.",
+      "subtitle": "Every document issued for the funds: disclosure statements, monthly and quarterly reports and annual reports.",
       "button": {
         "label": "Statements for your holding",
         "href": "ssandcRegistry",
@@ -21,8 +21,7 @@
       "Fact sheets",
       "Monthly reports",
       "Quarterly updates",
-      "Annual reports",
-      "Policies & notices"
+      "Annual reports"
     ],
     "searchPlaceholder": "Search documents",
     "seeMoreLabel": "See all documents",
@@ -53,11 +52,6 @@
           "title": "Request a strategy paper",
           "meta": "Wholesale clients only · Contact the team"
         }
-      },
-      {
-        "key": "policies",
-        "title": "Policies & notices",
-        "intro": "Firm-level policies and the notices that govern use of this site."
       }
     ]
   },
@@ -483,72 +477,6 @@
       "wholesaleOnly": false,
       "_note": "Request row, not a download (Jim 23 Sep): the full Lonsec report is not hosted; the link opens the contact form pre-filled with the topic.",
       "download": false
-    },
-    {
-      "id": "esg-policy",
-      "fund": "policies",
-      "category": "Policies & notices",
-      "title": "ESG Policy",
-      "meta": "Policy · PDF",
-      "date": null,
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
-    },
-    {
-      "id": "privacy-notice",
-      "fund": "policies",
-      "category": "Policies & notices",
-      "title": "Privacy Notice",
-      "meta": "Notice",
-      "date": null,
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
-    },
-    {
-      "id": "privacy-policy",
-      "fund": "policies",
-      "category": "Policies & notices",
-      "title": "Privacy Policy",
-      "meta": "Policy · Available on request",
-      "date": null,
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
-    },
-    {
-      "id": "terms",
-      "fund": "policies",
-      "category": "Policies & notices",
-      "title": "Terms & Conditions",
-      "meta": "Notice",
-      "date": null,
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
-    },
-    {
-      "id": "cookie-policy",
-      "fund": "policies",
-      "category": "Policies & notices",
-      "title": "Cookie Policy",
-      "meta": "Notice",
-      "date": null,
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
-    },
-    {
-      "id": "disclosure",
-      "fund": "policies",
-      "category": "Policies & notices",
-      "title": "Disclosure",
-      "meta": "Notice",
-      "date": null,
-      "path": "[TO SET]",
-      "size": null,
-      "wholesaleOnly": false
     }
   ]
 }
