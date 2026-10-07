@@ -11,7 +11,7 @@ person types and a second person checks.
 
 Outputs (for month YYYY-MM, taken from the workbooks' last dated row):
     docs/monthly/YYYY-MM/audit.md              the sign-off sheet (stage 2)
-    docs/monthly/YYYY-MM/chart-<fund>.json     43-month series for scripts/figma-chart-build.js (stage 1)
+    docs/monthly/YYYY-MM/chart-<fund>.json     chart series (AFI 43 months; PIF 26 months + franked bars) for scripts/figma-chart-build.js (stage 1)
 Workbook layout and column map: docs/MONTHLY.md.
 """
 import sys, json, re, argparse, datetime as dt, pathlib
@@ -38,7 +38,10 @@ def read(path, asat=None):
     r = rows[-1]; date = ws.cell(r, 1).value.date()
     cells = {k: [(f"{c}{r}", ws.cell(r, ci(c)).value) for c in cols] for k, cols in COLS.items()}
     cells = {k: v for k, v in cells.items() if any(x[1] is not None for x in v)}
-    series = [(ws.cell(x, 1).value.date(), ws.cell(x, ci("AC")).value, f"AC{x}") for x in rows[-43:]]
+    # Chart window: AFI 43 months of column AC; PIF 26 months (Jul 2024 onward, mirroring the published report chart)
+    # of AC plus BH (1-year return incl. franking credits) as a second bar series.
+    pif = ws.title == "PIF"; win = rows[-26:] if pif else rows[-43:]
+    series = [(ws.cell(x, 1).value.date(), ws.cell(x, ci("AC")).value, f"AC{x}", ws.cell(x, ci("BH")).value if pif else None) for x in win]
     return ws.title, date, cells, series, pathlib.Path(path).name
 
 ap = argparse.ArgumentParser(); ap.add_argument("files", nargs=2); ap.add_argument("--apply", action="store_true"); ap.add_argument("--asat", type=dt.date.fromisoformat, help="use this month-end row instead of the last one (the site follows the latest PUBLISHED report, which can lag the workbook by a month)")
@@ -72,12 +75,15 @@ for sheet, d, cells, series, fname in funds:
         audit.append(f"| {m} | | | ☐ |")
     audit += ["", "### Allocation donut (report PDF → JSON, typed by hand; must sum to 100.0%)", "", "| Sector | Value | PDF page | Checked |", "|---|---|---|---|", "| Floating rate notes | | | ☐ |", "| Fixed rate | | | ☐ |", "| Cash | | | ☐ |", "",
               "### Chart (workbook + report → Figma → export)", "",
-              f"- Bars: 43 months to {d}, workbook column AC rows {series[0][2]}–{series[-1][2]}, written to `docs/monthly/{ym}/chart-{slug}.json` ☐",
+              f"- Bars: {len(series)} months to {d}, workbook column AC rows {series[0][2]}–{series[-1][2]}" + (" plus column BH (1-year return incl. franking)" if slug == "pif" else "") + f", written to `docs/monthly/{ym}/chart-{slug}.json` ☐",
               "- Lines (running yield, yield to maturity, 90-day BBSW): from Renny's series when supplied, otherwise [Unverified] traced from the report chart — state which: ________ ☐",
               f"- Figma `Performance chart v2 · {slug.upper()}` regenerated, `_note` hidden, exported 2×, trimmed to 664×360, saved as `public/charts/{slug}-{ym}.webp`, `chartImage` updated ☐", "",
               "### Documents", "", f"- `{slug}-monthly-{ym}.pdf` in `public/documents/`, a `documents.json` row with size, and `keyDocuments` \"Latest monthly report\" pointing at it ☐", ""]
-    json.dump({"months": [s[0].strftime("%b %Y") for s in series], "bars": [round(s[1]*100, 2) for s in series], "RY": [None]*43, "YTM": [None]*43, "BBSW": [None]*43,
-               "_source": f"{fname} column AC rows {series[0][2]}-{series[-1][2]}; RY/YTM/BBSW to be filled from Renny's series"}, open(out / f"chart-{slug}.json", "w"), indent=0)
+    n = len(series); chart = {"months": [s[0].strftime("%b %Y") for s in series], "bars": [round(s[1]*100, 2) for s in series]}
+    if slug == "pif": chart["bars2"] = [round(s[3]*100, 2) for s in series]
+    chart.update({"RY": [None]*n, "YTM": [None]*n, "BBSW": [None]*n,
+                  "_source": f"{fname} column AC rows {series[0][2]}-{series[-1][2]}" + (" (bars) and column BH same rows (bars2, incl. franking)" if slug == "pif" else "") + "; RY/YTM/BBSW to be filled from Renny's series"})
+    json.dump(chart, open(out / f"chart-{slug}.json", "w"), indent=0)
     if a.apply:
         p = ROOT / "content" / "funds" / f"{slug}.json"; j = json.load(open(p)); perf = j["performance"]
         perf["performanceAsAt"] = d.isoformat(); perf["tableTitle"] = f"Performance to {longdate(d)} (annualised)"

@@ -127,3 +127,7 @@ Note: workbooks run to 30 September; the site follows the latest published repor
 - Build green (`npm run build`) ☐
 - Both fund pages checked against the report PDFs side by side ☐
 - Delta packaged as `Monthly Update - <Month YYYY>` ☐
+
+### PIF chart correction — 7 Oct 2026
+
+Chart rebuilt to match the published August report chart: window cut to Jul 2024–Aug 2026 (26 months); second bar series added, 1-year return incl. franking credits, workbook `PIF_Perf_2026_09_30.xlsx` column BH rows BH242–BH267 (Aug 2026 = 3.91%, agrees with the report table); axes changed to yields 0–12%, returns 0–8% as in the report. Bars column AC unchanged. Lines unchanged (still [Unverified] traced to Jun 2026). Figma frame `396:9521`; `public/charts/pif-2026-08.webp` replaced. ☐

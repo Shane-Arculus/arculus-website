@@ -60,6 +60,7 @@
     "chartTitle": "Performance Comparison",
     "chartImage": "/charts/pif-2026-08.webp",
     "chartSeries": [
+      "1-year return including franking credits",
       "1-year total return",
       "Running yield",
       "Yield to maturity",

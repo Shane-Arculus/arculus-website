@@ -10,7 +10,7 @@ Everything that changes on a fund page, and where the figure comes from:
 
 | # | On the page | File | Source | How it gets there |
 |---|---|---|---|---|
-| 1 | Performance chart bars (43 months, 1-year total return) | Figma → `public/charts/<fund>-<yyyy-mm>.webp` | Workbook column AC, last 43 rows | `scripts/monthly.py` writes `chart-<fund>.json`; `scripts/figma-chart-build.js` draws it (stage 1) |
+| 1 | Performance chart bars — AFI: 43 months, 1-year total return; PIF: 26 months (Jul 2024 onward, matching the report chart), 1-year total return **and** 1-year return incl. franking | Figma → `public/charts/<fund>-<yyyy-mm>.webp` | Workbook column AC (and BH for PIF franked), last rows | `scripts/monthly.py` writes `chart-<fund>.json`; `scripts/figma-chart-build.js` draws it (stage 1) |
 | 2 | Performance chart lines (running yield, yield to maturity, 90-day BBSW) | same | Renny's series behind his chart (not in the workbooks) | typed into `chart-<fund>.json` (stage 1) |
 | 3 | Performance table: 7 periods × Total return, Cash distribution, Growth (AFI) or Total return, Incl. franking credits, Cash distribution (PIF, mirroring the report from Aug 2026) | `content/funds/<fund>.json` → `performance.table` | Workbook last dated row, columns AA–AH, AV–BB, AL–AR | `scripts/monthly.py --apply` (stage 2) |
 | 4 | Note sentence: as-at date, 1-year and since-inception distribution | `performance.note`, `tableTitle`, `performanceAsAt` | Workbook AX, BB and the row date | `--apply` |
@@ -26,7 +26,7 @@ For PIF the workbook also carries franking-inclusive returns (BE–BL, BO–BV).
 
 1. Run `python3 scripts/monthly.py <GACS file> <PIF file>` (dry run). The workbooks usually run a month ahead of the published reports; the site follows the *report*, so add `--asat <yyyy-mm-dd>` for the report's month-end (e.g. `--asat 2026-08-31` when the August reports arrive with September workbooks). It creates `docs/monthly/<yyyy-mm>/` with `audit.md` and `chart-afi.json`, `chart-pif.json` (bars filled from column AC, the three line series empty).
 2. Fill `RY`, `YTM`, `BBSW` in each chart JSON from Renny's series, 43 values each, oldest first. If the series has not arrived, trace from his report chart and mark the audit sheet [Unverified].
-3. In Figma (file `WNKIatY2HASsdD2Kyh1nCp`, page **04 · V1 Layouts**), rebuild each chart with `scripts/figma-chart-build.js` through the Figma MCP: paste the JSON in as `D`, set the axis constants for the fund (PIF: left 16 to -4, right 12 to -4; AFI: left 8 to 0, right 8 to -4), run. It draws a new `Performance chart v2 · <FUND> (<Mon YYYY>)` frame beside the previous one; delete the old frame once the new one is checked.
+3. In Figma (file `WNKIatY2HASsdD2Kyh1nCp`, page **04 · V1 Layouts**), rebuild each chart with `scripts/figma-chart-build.js` through the Figma MCP: paste the JSON in as `D`, set the axis constants for the fund (PIF: left 12 to 0, right 8 to 0, ticks 12/9/6/3/0 and 8/6/4/2/0, `tickEvery: 3`; AFI: left 8 to 0, right 8 to -4, `tickEvery: 6`), run. PIF carries a second bar series `bars2` (column BH, 1-year return incl. franking credits) and a 26-month window from Jul 2024, mirroring the published report chart since Aug 2026; `monthly.py` writes both. It draws a new `Performance chart v2 · <FUND> (<Mon YYYY>)` frame beside the previous one; delete the old frame once the new one is checked.
 4. Hide the `_note` layer, export at 2× PNG, trim everything below the legend (720px tall at 2×), convert to WebP at quality 90, save as `public/charts/<fund>-<yyyy-mm>.webp`.
 
 ## Stage 2 — Figures
