@@ -42,10 +42,10 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
               <span>{item.label}</span>
               <Icon name="chevron-down" size={16} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
             </button>
-            <div id={`dd-${i}`} class="absolute left-0 top-[calc(100%+12px)] hidden w-[280px] rounded-[6px] border border-line bg-white py-3 shadow-sm before:absolute before:inset-x-0 before:top-[-12px] before:h-3" data-dd-panel>
+            <div id={`dd-${i}`} class="dd-panel absolute left-0 top-[calc(100%+12px)] w-[280px] rounded-[6px] border border-line bg-white py-3 shadow-sm before:absolute before:inset-x-0 before:top-[-12px] before:h-3" data-dd-panel>
               <ul>
-                {item.children.filter((child: { footerOnly?: boolean }) => !child.footerOnly).map((child: { label: string; href: string }) => (
-                  <li><a href={resolve(child.href)} class:list={["block px-6 py-2.5 text-body font-medium text-navy hover:bg-cream hover:text-rust focus-visible:bg-cream focus-visible:text-rust focus-visible:outline-none", isCurrent(child.href) && "text-rust"]} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
+                {item.children.filter((child: { footerOnly?: boolean }) => !child.footerOnly).map((child: { label: string; href: string }, j: number) => (
+                  <li class="dd-item" style={`--i:${j}`}><a href={resolve(child.href)} class:list={["block px-6 py-2.5 text-body font-medium text-navy hover:bg-cream hover:text-rust focus-visible:bg-cream focus-visible:text-rust focus-visible:outline-none", isCurrent(child.href) && "text-rust"]} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
                 ))}
               </ul>
             </div>
@@ -79,11 +79,13 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
                   <span>{item.label}</span>
                   <Icon name="chevron-down" size={20} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
                 </button>
-                <ul id={`m-acc-${i}`} class="hidden flex-col gap-6 pl-6 pt-6" data-acc-panel>
-                  {item.children.filter((child: { footerOnly?: boolean }) => !child.footerOnly).map((child: { label: string; href: string }) => (
-                    <li><a href={resolve(child.href)} class="block text-lead text-navy" aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
-                  ))}
-                </ul>
+                <div id={`m-acc-${i}`} class="acc-panel" data-acc-panel>
+                  <ul class="acc-inner flex flex-col gap-6 pl-6 [&>li:first-child]:pt-6">
+                    {item.children.filter((child: { footerOnly?: boolean }) => !child.footerOnly).map((child: { label: string; href: string }) => (
+                      <li><a href={resolve(child.href)} class="block text-lead text-navy" aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</a></li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ) : (
               <a href={item.href} class="block text-lead font-medium text-navy" aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
@@ -112,6 +114,27 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
   </div>
 </header>
 
+<style>
+  /* Motion (Jim, 7 Oct): desktop panel fades and settles from 6px above over 180ms, links follow 30ms apart;
+     close is 120ms with no stagger. Mobile accordion opens on a grid-row transition. All CSS; nothing for the CSP.
+     visibility carries the a11y state: a closed panel is neither focusable nor read, as `hidden` was. */
+  .dd-panel { visibility: hidden; opacity: 0; transform: translateY(-6px);
+    transition: opacity 120ms ease-in, transform 120ms ease-in, visibility 0s linear 120ms; }
+  .dd-panel[data-open] { visibility: visible; opacity: 1; transform: translateY(0);
+    transition: opacity 180ms ease-out, transform 180ms cubic-bezier(0.2, 0.7, 0.2, 1), visibility 0s; }
+  .dd-item { opacity: 0; transform: translateY(4px); transition: opacity 120ms ease-in, transform 120ms ease-in; }
+  .dd-panel[data-open] .dd-item { opacity: 1; transform: none;
+    transition: opacity 200ms ease-out, transform 200ms ease-out; transition-delay: calc(40ms + var(--i) * 30ms); }
+  .acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 220ms ease-out; }
+  .acc-panel[data-open] { grid-template-rows: 1fr; }
+  .acc-inner { min-height: 0; overflow: hidden; visibility: hidden; opacity: 0;
+    transition: opacity 160ms ease-in, visibility 0s linear 160ms; }
+  .acc-panel[data-open] .acc-inner { visibility: visible; opacity: 1; transition: opacity 200ms ease-out 60ms, visibility 0s; }
+  @media (prefers-reduced-motion: reduce) {
+    .dd-panel, .dd-item, .acc-panel, .acc-inner { transition: none !important; }
+  }
+</style>
+
 <script>
   const header = document.querySelector<HTMLElement>("[data-header]");
   if (header) {
@@ -123,15 +146,15 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
       for (const it of items) {
         if (it === except) continue;
         it.querySelector<HTMLButtonElement>("[data-dd-trigger]")!.setAttribute("aria-expanded", "false");
-        it.querySelector<HTMLElement>("[data-dd-panel]")!.classList.add("hidden");
+        delete it.querySelector<HTMLElement>("[data-dd-panel]")!.dataset.open;
       }
     };
     const hoverable = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     for (const it of items) {
       const trigger = it.querySelector<HTMLButtonElement>("[data-dd-trigger]")!;
       const panel = it.querySelector<HTMLElement>("[data-dd-panel]")!;
-      const open = () => { closeAll(it); trigger.setAttribute("aria-expanded", "true"); panel.classList.remove("hidden"); };
-      const close = () => { trigger.setAttribute("aria-expanded", "false"); panel.classList.add("hidden"); };
+      const open = () => { closeAll(it); trigger.setAttribute("aria-expanded", "true"); panel.dataset.open = ""; };
+      const close = () => { trigger.setAttribute("aria-expanded", "false"); delete panel.dataset.open; };
       trigger.addEventListener("click", () => (trigger.getAttribute("aria-expanded") === "true" ? close() : open()));
       // Desktop with a mouse: open on hover, close 150ms after the pointer leaves (covers the gap and the panel).
       if (hoverable) {
@@ -167,8 +190,7 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
         const open = trig.getAttribute("aria-expanded") === "true";
         const panel = document.getElementById(trig.getAttribute("aria-controls")!)!;
         trig.setAttribute("aria-expanded", String(!open));
-        panel.classList.toggle("hidden", open);
-        panel.classList.toggle("flex", !open);
+        if (open) delete panel.dataset.open; else panel.dataset.open = "";
       });
     }
 
