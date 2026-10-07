@@ -20,8 +20,7 @@
       "Weekly update",
       "Research",
       "Quarterly updates",
-      "Articles",
-      "Seminars & events"
+      "Articles"
     ],
     "latestTitle": "Latest",
     "listTitle": "All insights",
@@ -99,14 +98,15 @@
       "category": "Quarterly update",
       "filter": "Quarterly updates",
       "date": "2026-07-09",
-      "title": "Quarterly update: where the funds are positioned as the rate cycle turns",
-      "homeTitle": "Where the funds are positioned as the rate cycle turns",
-      "summary": "Rates, credit spreads and duration positioning across the Fixed Income and Preferred Income Funds, with the portfolio changes made over the quarter.",
-      "homeSummary": "Rates, credit spreads and duration positioning across both funds, with the portfolio changes made over the quarter.",
-      "readingTime": "6 min read",
+      "title": "Outlook: June quarter 2026",
+      "homeTitle": "Outlook: June quarter 2026",
+      "summary": "The quarterly outlook: dangerous times ahead, the baby-boomer shift, timing and technical analysis, the June 2026 review of AUD fixed income and credit markets, and the above-BBB– portfolio positioning report.",
+      "homeSummary": "Dangerous times ahead, timing, the June 2026 AUD fixed income and credit review, and the portfolio positioning report.",
+      "readingTime": "29 pages",
       "wholesaleOnly": false,
-      "pdf": "[TO SET — 20260709-Quarterly_Update]",
-      "image": "/images/insight-quarterly.webp"
+      "pdf": "/documents/quarterly-update-2026-q2.pdf",
+      "image": "/images/insight-quarterly.webp",
+      "_note": "Title taken from the document cover (\"Outlook — June Qtr 2026\"); summary drafted from its contents directory [Unverified] — Renny to confirm. Earlier placeholder title (\"where the funds are positioned as the rate cycle turns\") retired 8 Oct."
     },
     {
       "slug": "kevin-warsh-background",
@@ -148,28 +148,17 @@
       "image": "/images/insight-monetary-policy-2026-06.webp"
     },
     {
-      "slug": "getting-yield-seminar",
-      "category": "Seminar",
-      "filter": "Seminars & events",
-      "date": "2026-05-31",
-      "title": "Getting yield: the case for income before growth",
-      "summary": "Slides and notes from the adviser seminar on building income portfolios in a higher-rate environment.",
-      "readingTime": "Slides",
-      "wholesaleOnly": false,
-      "pdf": "[TO SET — Getting_Yield_31_May_2026]",
-      "image": "/images/insight-getting-yield.webp"
-    },
-    {
       "slug": "weekly-2026-05-25",
       "category": "Weekly update",
       "filter": "Weekly update",
       "date": "2026-05-25",
-      "title": "Weekly update: RBA holds, bank spreads tighten",
-      "summary": "What the week's moves in cash-rate expectations and major-bank paper mean for running yield.",
-      "readingTime": "4 min read",
+      "title": "Weekly update: 25 May 2026",
+      "summary": "A pivotal week for the Treasury market: FOMC minutes confirm the hawkish drift, the US 10-year breaks out above 4.60% before easing on Iran headlines, and a weak jobs print lifts unemployment to 4.5%.",
+      "readingTime": "9 pages",
       "wholesaleOnly": false,
-      "pdf": "[TO SET — Weeklyupdate_May_25_2026]",
-      "image": "/images/insight-weekly.webp"
+      "pdf": "/documents/weekly-update-2026-05-25.pdf",
+      "image": "/images/insight-weekly.webp",
+      "_note": "Summary drafted from page 2 of the PDF [Unverified] — Renny to confirm. Earlier placeholder title (\"RBA holds, bank spreads tighten\") retired 8 Oct; cover image downsampled from 16 MB to 0.6 MB for the web."
     }
   ]
 }

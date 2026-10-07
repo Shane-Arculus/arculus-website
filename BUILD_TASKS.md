@@ -80,7 +80,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [x] T26 Insight page `src/pages/insights/[slug].astro` — kicker, title, date, download, summary, PDF in a same-origin iframe; list rows and cards link to it (4 Oct). Long-term: in-page report versions, parked
 - [x] T33 Weekly update: `scripts/weekly.py` intake (PDF → row), "Weekly update" tab (was Market commentary), home row rule (featured + latest weekly + two newest non-weekly), hub fold after 10 — `docs/WEEKLY.md` (4 Oct). No CMS until a second author exists
-- [ ] T27 Team headshot fallback: navy initials monogram (SVG, generated from the name) in `ProfileModule` when `photo` is a placeholder — agreed 22 Sep instead of grey silhouettes; real headshots still preferred (C5)
+- [x] T27 Closed 7 Oct (Jim): launch without headshots — names, titles and bios only; `photo` is optional per person and renders only when set. No monogram fallback. Headshots become a post-launch content task once Renny approves them.
 - [x] T28 Fund tables: `scripts/monthly.py` (audit sheet, chart series, `--apply` to the fund JSON) and `docs/MONTHLY.md` rewritten as the four-stage runbook, 23 Sep. Earlier: workbook → JSON mapping done and verified against the June reports (22 Sep); superseded by `scripts/monthly.py`. Open: whether the PIF table shows franked or unfranked totals (Renny); the chart lines (RY, YTM, BBSW) still come from Renny's chart, not the workbooks
 - [x] C9 Library and hub back-filled from Jim's Drive archive (6 Oct): 13 monthly reports per fund Aug 2025–Aug 2026, current PDS and TMD, FY2026 audited financial statements, August fact sheets (new "Fact sheets" category); research PDFs wired to their insight pages; two new research insights (inflation-linked bonds note 25 Sep, monetary policy outlook Jun 2026 [Unverified dates/summaries]) and the two August fund reports added. Still missing from the archive: Q2 quarterly update, Getting Yield seminar deck, 25 May weekly; Policies & notices PDFs (C-tasks)
 
@@ -101,7 +101,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 
 - [x] R2 · proposed set v2 applied: 13 hero images and the Governance left-right exported at 4× from Figma, WebP, wired per page (each page now has its own file; BBB/PEP/IM no longer borrow AFI/A−/placeholder). Register: `docs/image-register-v2.md`
 - [ ] C10 Licence inventory: home hero is a stock screenshot — Jim will replace it before launch with a non-architecture image (brief written 23 Sep; 12-image shortlist in `docs/image-register-v2.md`, none yet preferred); confirm photographer/URL for the nine [Unverified] Unsplash rows; decide on Team reusing the Governance image
-- [ ] C11 Remaining placeholders: home and Our approach left-right, Governance investment-committee left-right, insight thumbnails/featured, headshots
+- [ ] C11 Remaining placeholders: home hero (C10); comps to replace (L5). Left-rights and insight thumbnails carry comps as of 7 Oct; headshots deliberately absent (T27)
 
 ## 6e · Security review (23 Sep)
 
@@ -121,7 +121,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)
 - [ ] L2 DNS cutover; SSL; test forms, attestation and Olivia123 links on production domain
 - [x] L3 `docs/MONTHLY.md` — the monthly runbook: export the two charts from Figma at 2× → WebP, edit the two fund JSON files (as-at date, chart filename, table, note, portfolio metrics, allocation rows, latest-document ids), add the two PDFs and their `documents.json` blocks, commit via GitHub's uploader; with a worked example and what to do when a build fails — 17 Sep
-- [ ] L5 **Before launch:** replace the iStock comps in `left-right-about.webp` (1479518000), `left-right-committee.webp` (1181346734) and the eight `insight-*.webp` thumbnails (register V2-17..24) with purchased masters, same crops (docs/image-register-v2.md V2-15/16). Watermarked comps are on preview only, 7 Oct 2026.
+- [ ] L5 **Before launch:** replace the iStock comps in `left-right-about.webp` (1479518000), `left-right-committee.webp` (1181346734) and the seven `insight-*.webp` thumbnails (register V2-17..23) with purchased masters, same crops (docs/image-register-v2.md V2-15/16). Watermarked comps are on preview only, 7 Oct 2026.
 - [ ] L4 Post-launch: test gold external-link colour against rust actions; may revert header button label / external colour
 
 ## Parked (do not resolve in code)
