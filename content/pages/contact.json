@@ -141,10 +141,10 @@
     "columns": [
       {
         "title": "Advisers and wholesale investors",
-        "body": "Strategy papers, mandate discussions, seminars and the weekly commentary. Enquiries go to the portfolio management team.",
+        "body": "Strategy papers, mandate discussions, seminars and the weekly commentary. Use the form above and tell us what you need; enquiries go to the portfolio management team.",
         "button": {
-          "label": "Email the team",
-          "href": "mailto:info@arculus.com.au",
+          "label": "Use the contact form",
+          "href": "#contact-form",
           "style": "primary"
         }
       },
@@ -166,6 +166,7 @@
           "style": "secondary"
         }
       }
-    ]
+    ],
+    "_note": "QA 9 Oct (Jim): advisers column points at the form on this page, not a mailto — papers are requested through the form. Body sentence adjusted to say so [Unverified]."
   }
 }

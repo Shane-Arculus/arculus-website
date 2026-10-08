@@ -20,7 +20,7 @@ const { ui, forms, externalUrls } = site;
 const resolve = (href: string) => (href in externalUrls ? externalUrls[href as keyof typeof externalUrls] : href);
 const privacyLinked = (label: string) => label.replace("Privacy Notice", `<a href="/privacy" class="underline">Privacy Notice</a>`);
 ---
-<section class="bg-white">
+<section id="contact-form" class="scroll-mt-24 bg-white">
   <div class="mx-auto flex max-w-site flex-col gap-12 px-4 pb-16 pt-10 md:flex-row md:gap-24 md:px-12 md:pb-24 md:pt-20">
     <div class="flex flex-col gap-6 md:w-[788px] md:shrink-0" data-contact>
       <form action={forms.formspreeEndpoint} method="post" novalidate class="flex flex-col gap-6" data-contact-form>
