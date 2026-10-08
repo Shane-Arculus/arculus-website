@@ -36,7 +36,7 @@ const aboutHref = home.leftRightButton.href;
   <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={home.hero.buttons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />
   <FundCards id="funds" title={home.funds.title} cards={cards} buttons={home.funds.cardButtons} showRatings={home.funds.showRatings} />
   <ImportantDisclosure />
-  <LeftRight blocks={home.leftRight.map((lr) => ({ title: lr.title, paragraphs: [lr.body] }))} image={{ src: "/images/left-right-about.webp", alt: "Sandstone escarpments at sunset, seen from a ridge through gum branches" }} button={{ label: home.leftRightButton.label, href: aboutHref, style: "secondary" }} />
+  <LeftRight blocks={home.leftRight.map((lr) => ({ title: lr.title, paragraphs: Array.isArray(lr.body) ? lr.body : [lr.body] }))} image={{ src: "/images/left-right-about.webp", alt: "Sandstone escarpments at sunset, seen from a ridge through gum branches" }} button={{ label: home.leftRightButton.label, href: aboutHref, style: "secondary" }} />
   <ProductCards title={home.productCards.title} cards={home.productCards.cards} />
   <InsightsRow title={home.insights.title} button={home.insights.button} featured={featured} list={list} />
   <ImportantInformation variant="generic" />

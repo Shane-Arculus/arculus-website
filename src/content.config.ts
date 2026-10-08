@@ -165,7 +165,7 @@ const im = defineCollection({
 // ---------- about/*.json ----------
 const hero2 = z.object({ title: z.string(), subtitle: z.string(), button });
 const cta = z.object({ title: z.string(), body: z.string(), button });
-const person = z.object({ name: z.string(), title: z.string(), bio: z.string(), photo: z.string() });
+const person = z.object({ name: z.string(), title: z.string(), bio: z.string(), photo: z.string().optional() }); // photo: set per person when a headshot is approved (launch without, Jim 7 Oct)
 const about = defineCollection({
   loader: load("about/*.json"),
   schema: z.discriminatedUnion("kind", [
@@ -248,7 +248,7 @@ const pages = defineCollection({
         cards: z.array(z.object({ fund: z.enum(["afi", "pif"]), title: z.string(), subtitle: z.string(), rate: z.string(), rateNote: z.string() })),
         cardButtons: z.array(button), showRatings: z.boolean(),
       }),
-      leftRight: z.array(z.object({ title: z.string(), body: z.string(), image: z.string() })),
+      leftRight: z.array(z.object({ title: z.string(), body: z.union([z.string(), z.array(z.string())]), image: z.string() })), // body: one paragraph or several (Renny's points, 9 Oct)
       leftRightButton: link,
       productCards: z.object({ title: z.string(), cards: z.array(z.object({ title: z.string(), subtitle: z.string(), button, _note: note })) }),
       insights: z.object({ title: z.string(), button, featured: z.string(), list: z.array(z.string()) }),

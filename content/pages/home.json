@@ -51,13 +51,13 @@
   "leftRight": [
     {
       "title": "How we invest",
-      "body": "Capital preservation comes first. We hold investment grade bonds issued under Australian law, in Australian dollars, and set duration by where we are in the rate cycle rather than by an index. Income comes from getting that read right, not from moving down the credit curve.",
-      "image": "[image register]"
+      "body": "We are an absolute return manager: benchmark unaware, varying duration at different points in the economic cycle. We don’t take a performance fee, so we are capital preservation focused. The investment universe for all our funds is Australian issuers only in AUD, with no leverage, directly or through derivatives.",
+      "image": "/images/left-right-about.webp"
     },
     {
       "title": "Independent oversight",
-      "body": "Arculus makes the investment decisions but does not hold, value or administer the assets. Four parties are involved in every transaction. Three of them are independent of us.",
-      "image": "[image register]"
+      "body": "We don’t own the funds or administer them like other fund managers. The funds are monitored for mandate compliance by DDH Graham ($17bn FUM) and valued by SS&C. There are 4 eyes on every transaction: Custody - Administration - Investment Management and the Responsible Entity.",
+      "image": "/images/left-right-about.webp"
     }
   ],
   "leftRightButton": {
@@ -98,5 +98,6 @@
       "q2-2026-quarterly",
       "hormuz-shock"
     ]
-  }
+  },
+  "_leftRightNote": "Home carries two summaries stitched from Renny's sentences (block 1 = his points 2, 1, 4; block 2 = his point 3 untouched), agreed with Jim 9 Oct 2026; the full six points live on Our approach > How we invest."
 }
