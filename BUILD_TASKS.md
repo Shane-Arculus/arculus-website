@@ -121,7 +121,7 @@ T7 is the checkpoint: if the build is running well past estimate by then, revisi
 - [ ] L1 Staging review against the compliance register, page by page (Cloudflare Workers staging, noindex)
 - [ ] L2 DNS cutover; SSL; test forms, attestation and Olivia123 links on production domain
 - [x] L3 `docs/MONTHLY.md` — the monthly runbook: export the two charts from Figma at 2× → WebP, edit the two fund JSON files (as-at date, chart filename, table, note, portfolio metrics, allocation rows, latest-document ids), add the two PDFs and their `documents.json` blocks, commit via GitHub's uploader; with a worked example and what to do when a build fails — 17 Sep
-- [ ] L5 **Before launch:** replace the iStock comps in `left-right-about.webp` (1479518000), `left-right-committee.webp` (1181346734) and the seven `insight-*.webp` thumbnails (register V2-17..23) with purchased masters, same crops (docs/image-register-v2.md V2-15/16). Watermarked comps are on preview only, 7 Oct 2026.
+- [ ] L5 **Before launch:** replace the iStock comps in `left-right-about.webp` (1479518000), `left-right-committee.webp` (1181346734), `left-right-structure.webp` (1450243776) and the seven `insight-*.webp` thumbnails (register V2-17..23) with purchased masters, same crops (docs/image-register-v2.md V2-15/16). Watermarked comps are on preview only, 7 Oct 2026.
 - [ ] L4 Post-launch: test gold external-link colour against rust actions; may revert header button label / external colour
 
 ## Parked (do not resolve in code)
