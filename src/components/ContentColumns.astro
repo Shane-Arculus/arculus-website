@@ -8,22 +8,28 @@ import Section from "./Section.astro";
 import Icon from "./Icon.astro";
 type IconName = Parameters<typeof Icon>[0]["name"];
 type Link = { label: string; href: string; external?: boolean };
-interface Props { title: string; items: readonly (readonly [string, string] | readonly [string, string, Link])[]; icons?: IconName[]; bg?: "cream" | "white"; columns?: 3 | 4; link?: Link; titleSize?: "h3" | "h1"; }
-const { title, items, icons = [], bg = "cream", columns = items.length >= 4 ? 4 : 3, link, titleSize = "h3" } = Astro.props;
+interface Props { title: string; items: readonly (readonly [string, string] | readonly [string, string, Link])[]; icons?: IconName[]; bg?: "cream" | "white"; columns?: 3 | 4; link?: Link; titleSize?: "h3" | "h1"; split?: number; pad?: "default" | "tight" | "none"; }
+// split: the first N items sit with the title inside a cream card (the "Who to contact" card treatment); the rest follow on the band (Our approach, Jim 9 Oct).
+const { title, items, icons = [], bg = "cream", columns = items.length >= 4 ? 4 : 3, link, titleSize = "h3", split, pad = "default" } = Astro.props;
+const groups = split ? [items.slice(0, split), items.slice(split)] : [items];
 ---
-<Section bg={bg}>
-  <div class="flex flex-col gap-6 md:gap-12">
-    <h2 class:list={["font-medium text-navy", titleSize === "h1" ? "text-h5 md:text-h3" : "text-h3"]}>{title}</h2>
-    <div class:list={["flex flex-col gap-6 md:grid md:gap-x-0 md:gap-y-12", columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3"]}>
-      {items.map(([heading, body, l], i) => (
-        <div class:list={["flex flex-col gap-3 md:gap-6 md:border-l md:border-line-warm md:pl-9 md:pr-9 md:last:pr-0", columns === 4 ? "md:[&:nth-child(4n+1)]:border-l-0 md:[&:nth-child(4n+1)]:pl-0" : "md:[&:nth-child(3n+1)]:border-l-0 md:[&:nth-child(3n+1)]:pl-0"]}>
-          {icons[i] && <Icon name={icons[i]} size={24} class="text-rust-hi" />}
-          <h3 class="text-lead font-medium text-navy">{heading}</h3>
-          <p>{body}</p>
-          {l && <a href={l.href} target={l.external ? "_blank" : undefined} rel={l.external ? "noopener noreferrer" : undefined} class:list={["inline-flex items-center gap-1 font-medium hover:underline", l.external ? "text-gold" : "text-rust"]}>{l.label}<Icon name={l.external ? "arrow-up-right" : "chevron-right"} size={14} /></a>}
+<Section bg={bg} pad={pad}>
+  <div class="flex flex-col gap-10 md:gap-14">
+    {groups.map((group, g) => (
+      <div class:list={["flex flex-col gap-6 md:gap-12", split && g === 0 && "rounded-lg bg-cream px-6 py-8 md:px-12 md:py-12", split && g === 1 && "px-0 md:px-12"]}>
+        {g === 0 && <h2 class:list={["font-medium text-navy", titleSize === "h1" ? "text-h5 md:text-h3" : "text-h3"]}>{title}</h2>}
+        <div class:list={["flex flex-col gap-6 md:grid md:gap-x-0 md:gap-y-12", columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3"]}>
+          {group.map(([heading, body, l], i) => (
+            <div class:list={["flex flex-col gap-3 md:gap-6 md:border-l md:border-line-warm md:pl-9 md:pr-9 md:last:pr-0", columns === 4 ? "md:[&:nth-child(4n+1)]:border-l-0 md:[&:nth-child(4n+1)]:pl-0" : "md:[&:nth-child(3n+1)]:border-l-0 md:[&:nth-child(3n+1)]:pl-0"]}>
+              {g === 0 && icons[i] && <Icon name={icons[i]} size={24} class="text-rust-hi" />}
+              <h3 class="text-lead font-medium text-navy">{heading}</h3>
+              <p>{body}</p>
+              {l && <a href={l.href} target={l.external ? "_blank" : undefined} rel={l.external ? "noopener noreferrer" : undefined} class:list={["inline-flex items-center gap-1 font-medium hover:underline", l.external ? "text-gold" : "text-rust"]}>{l.label}<Icon name={l.external ? "arrow-up-right" : "chevron-right"} size={14} /></a>}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-    {link && <a href={link.href} class="inline-flex items-center gap-1 self-start font-medium text-rust hover:underline">{link.label}<Icon name="chevron-right" size={14} /></a>}
+        {g === groups.length - 1 && link && <a href={link.href} class="inline-flex items-center gap-1 self-start font-medium text-rust hover:underline">{link.label}<Icon name="chevron-right" size={14} /></a>}
+      </div>
+    ))}
   </div>
 </Section>

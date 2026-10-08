@@ -20,7 +20,7 @@ const a = await getAbout("approach");
   <Breadcrumb items={a.breadcrumb} bg="white" />
   <LeftRight title={a.whoWeAre.title} paragraphs={a.whoWeAre.paragraphs} image={{ src: "/images/left-right-about.webp", alt: "Sandstone escarpments at sunset, seen from a ridge through gum branches" }} />
   {a.showRatings && <section class="bg-white"><div class="mx-auto max-w-site px-4 pb-10 md:px-12 md:pb-20"><RatingsRow /></div></section>}
-  <ContentColumns title={a.philosophy.title} items={a.philosophy.items.map((it) => (it[0] === "Independent oversight" ? [it[0], it[1], a.philosophy.link] as const : it))} columns={3} bg="white" />
+  <ContentColumns title={a.philosophy.title} items={a.philosophy.items.map((it) => (it[0] === "Independent oversight" ? [it[0], it[1], a.philosophy.link] as const : it[0] === "ESG" ? [it[0], it[1], a.philosophy.esgLink] as const : it))} columns={3} split={3} pad="tight" bg="white" />
   <TwoColumnsContent columns={[{ title: a.whatWeDo.title, items: a.whatWeDo.items }, { title: a.forOurClients.title, items: a.forOurClients.items }]} />
   <CtaBanner title={a.cta.title} body={a.cta.body} button={a.cta.button} />
   <ImportantInformation variant="generic" />

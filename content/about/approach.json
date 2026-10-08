@@ -57,7 +57,11 @@
       "label": "More on governance & oversight",
       "href": "/about/governance-and-oversight"
     },
-    "_note": "Renny's six points, verbatim (9 Oct 2026, via Jim). Card headings are Jim/Claude's short labels over his text — [Unverified] with Renny. Replaced the three drafted 'Our philosophy' cards."
+    "_note": "Renny's six points, verbatim (9 Oct 2026, via Jim). Card headings are Jim/Claude's short labels over his text — [Unverified] with Renny. Replaced the three drafted 'Our philosophy' cards.",
+    "esgLink": {
+      "label": "More on ESG",
+      "href": "/about/esg"
+    }
   },
   "whatWeDo": {
     "title": "What we do",

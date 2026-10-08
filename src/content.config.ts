@@ -173,7 +173,7 @@ const about = defineCollection({
       kind: z.literal("approach"), ...base, breadcrumb, hero: hero2,
       whoWeAre: z.object({ title: z.string(), paragraphs: z.array(z.string()), image: z.string(), _note: note }),
       showRatings: z.boolean(),
-      philosophy: z.object({ title: z.string(), items: pairs, link }),
+      philosophy: z.object({ title: z.string(), items: pairs, link, esgLink: link.optional() }),
       whatWeDo: z.object({ title: z.string(), items: z.array(z.union([z.string(), z.object({ text: z.string(), link })])), _note: note }),
       forOurClients: z.object({ title: z.string(), items: z.array(z.string()) }),
       cta,
