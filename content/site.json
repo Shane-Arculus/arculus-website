@@ -21,7 +21,8 @@
           "label": "Environmental, Social & Governance",
           "href": "/about/esg"
         }
-      ]
+      ],
+      "href": "/about/our-approach"
     },
     {
       "label": "Funds",
@@ -60,7 +61,8 @@
           "href": "/wholesale#private-mandates",
           "footerOnly": true
         }
-      ]
+      ],
+      "href": "/wholesale"
     },
     {
       "label": "Investment Management",
@@ -230,5 +232,6 @@
     "closeDialog": "Close",
     "noResults": "Nothing matches that filter.",
     "_formNote": "[Unverified] error-banner and failure wording — the frame shows the banner but its text was not captured"
-  }
+  },
+  "_navNote": " 9 Oct (Jim): About and Wholesale carry an href as well as children — the label is a link (Our approach / Overview) and the chevron opens the dropdown; Funds has no landing page so its label stays a dropdown trigger only."
 }

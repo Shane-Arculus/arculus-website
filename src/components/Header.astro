@@ -5,6 +5,8 @@
  *
  * Desktop ≥768: logo · nav (About ▾, Funds ▾, Wholesale ▾, Investment Management,
  * Insights, Contact) · gold external button · search icon (→ /search).
+ * About and Wholesale (items with an href AND children, Jim 9 Oct): the label is a link to the landing page and the
+ * chevron is the dropdown button; hover still opens the panel. Funds has no landing page and keeps the whole-label trigger.
  * Dropdown: 280px panel flush with the trigger's left edge, 12px below the
  * label (QA 16 Sep: hanging from the header bottom sat too far away), opens on
  * hover for mouse users (Jim, 17 Sep) and on click/Enter for touch and keyboard,
@@ -38,10 +40,19 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
       <ul class="flex items-center gap-6">
         {nav.map((item, i) => item.children ? (
           <li class="relative" data-dd>
+            {item.href ? (
+              <div class:list={["flex items-center gap-1 py-2 text-body font-medium text-navy [&:has([aria-expanded=true])]:text-rust", isCurrent(item.children[0]?.href?.split("/").slice(0,2).join("/")) && "text-rust"]} data-dd-group>
+                <a href={item.href} class="hover:text-rust focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-navy" aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+                <button type="button" class="flex items-center hover:text-rust focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-navy [&[aria-expanded=true]]:text-rust" aria-expanded="false" aria-controls={`dd-${i}`} aria-label={`${item.label} menu`} data-dd-trigger>
+                  <Icon name="chevron-down" size={16} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
+                </button>
+              </div>
+            ) : (
             <button type="button" class:list={["flex items-center gap-1 py-2 text-body font-medium text-navy hover:text-rust focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-navy [&[aria-expanded=true]]:text-rust", isCurrent(item.children[0]?.href?.split("/").slice(0,2).join("/")) && "text-rust"]} aria-expanded="false" aria-controls={`dd-${i}`} data-dd-trigger>
               <span>{item.label}</span>
               <Icon name="chevron-down" size={16} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
             </button>
+            )}
             <div id={`dd-${i}`} class="dd-panel absolute left-0 top-[calc(100%+12px)] w-[280px] rounded-[6px] border border-line bg-white py-3 shadow-sm before:absolute before:inset-x-0 before:top-[-12px] before:h-3" data-dd-panel>
               <ul>
                 {item.children.filter((child: { footerOnly?: boolean }) => !child.footerOnly).map((child: { label: string; href: string }, j: number) => (
@@ -75,10 +86,19 @@ const isCurrent = (href?: string) => !!href && (href === "/" ? current === "/" :
           <li class="border-b border-line py-6 first:pt-0">
             {item.children ? (
               <div>
+                {item.href ? (
+                  <div class="flex w-full items-center justify-between text-lead font-medium text-navy">
+                    <a href={item.href} class="block" aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+                    <button type="button" class="flex h-8 w-8 items-center justify-center text-navy [&[aria-expanded=true]]:text-rust-hi" aria-expanded="false" aria-controls={`m-acc-${i}`} aria-label={`${item.label} menu`} data-acc-trigger>
+                      <Icon name="chevron-down" size={20} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
+                    </button>
+                  </div>
+                ) : (
                 <button type="button" class="flex w-full items-center justify-between text-lead font-medium text-navy [&[aria-expanded=true]]:text-rust-hi" aria-expanded="false" aria-controls={`m-acc-${i}`} data-acc-trigger>
                   <span>{item.label}</span>
                   <Icon name="chevron-down" size={20} class="transition-transform [[aria-expanded=true]>&]:rotate-180" />
                 </button>
+                )}
                 <div id={`m-acc-${i}`} class="acc-panel" data-acc-panel>
                   <ul class="acc-inner flex flex-col gap-6 pl-6 [&>li:first-child]:pt-6">
                     {item.children.filter((child: { footerOnly?: boolean }) => !child.footerOnly).map((child: { label: string; href: string }) => (
