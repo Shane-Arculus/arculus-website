@@ -18,7 +18,7 @@
 | Document library · hero | 2270013766 | hero-documents.webp |
 | Contact · hero | 2152384691 | hero-contact.webp |
 
-Still placeholder or Unsplash: Governance "How it works" left-right (Unsplash bridge, left-right-governance.webp); Home and Our approach left-rights (left-right-city.webp); insight thumbnails and featured image; headshots. Unused iStock candidates in the frame: 1367460612, 2233117469, 1406515496, 2155242255, 1033677848, 1331882482, 2155242259, 2157500761. Licensed and replaced from the iStock masters on 6 Oct 2026 (each hero is the slot's Figma crop applied to the master, 1080×1080; cards are 4:5 from the AFI and PIF masters). Masters: Jim's Drive folder "images"; keep a copy at Arculus.
+Still placeholder or Unsplash: Governance "How it works" left-right (Unsplash bridge, left-right-governance.webp); Home and Our approach left-rights (left-right-city.webp); insight thumbnails and featured image; headshots. Unused iStock candidates in the frame: 1367460612, 2233117469, 1406515496, 2155242255, 1033677848, 1331882482, 2155242259, 2157500761. Licensed and replaced from the iStock masters on 6 Oct 2026 (each hero is the slot's Figma crop applied to the master, 1080×1080; cards are 4:5 from the AFI and PIF masters; re-cut 9 Oct per Mike/Jim — AFI: left edge of the master, full height, x 0–66 %; PIF: master rotated 25° anticlockwise, window x 13–45 %, y 34–82 % of the frame, so the shoreline runs top-left to bottom-right. Figma card fills not updated — the exports are the master for these two). Masters: Jim's Drive folder "images"; keep a copy at Arculus.
 
 ## Earlier set (R2 · proposed set v2, 23 Sep 2026) — superseded, kept for the record
 

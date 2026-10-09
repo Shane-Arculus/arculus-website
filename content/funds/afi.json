@@ -13,7 +13,7 @@
     "subtitle": "Australian sovereign and senior bank bonds, actively managed to preserve capital and earn income through the rate cycle.",
     "buttons": [
       {
-        "label": "Apply via Olivia123",
+        "label": "Apply directly online",
         "href": "olivia123",
         "style": "external"
       },
@@ -231,9 +231,9 @@
     "columns": [
       {
         "title": "Online",
-        "body": "Apply and complete identity verification in one step through Olivia123. Applications are processed by the Fund's registry, operated by SS&C.",
+        "body": "Apply and complete identity verification in one step online. Applications are processed by the Fund's registry, operated by SS&C.",
         "button": {
-          "label": "Apply via Olivia123",
+          "label": "Apply directly online",
           "href": "olivia123",
           "style": "external"
         },
