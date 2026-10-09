@@ -23,6 +23,8 @@ interface Props {
   title: string; description?: string; kicker?: string;
   theme?: "light" | "navy"; layout?: "full" | "compact";
   bg?: "afi" | "pif" | "compact";
+  /** short: the frame's 460 band with a 390 ellipse — Our approach (Jim, 9 Oct) so content sits nearer the fold. */
+  height?: "default" | "short";
   titleColor?: "navy" | "rust";
   buttons?: { label: string; href?: string; action?: string; style?: "primary" | "secondary" | "external" }[];
   stats?: readonly (readonly [string, string])[];
@@ -30,13 +32,13 @@ interface Props {
   /** navy theme only: which Figma radial — 1 A−/IM (default), 2 BBB, 3 PEP */
   radial?: 1 | 2 | 3;
 }
-const { title, description, kicker, theme = "light", layout = "full", bg = "compact", titleColor = "navy", buttons = [], stats = [], image, radial = 1 } = Astro.props;
+const { title, description, kicker, theme = "light", layout = "full", bg = "compact", titleColor = "navy", buttons = [], stats = [], image, radial = 1, height = "default" } = Astro.props;
 const light = theme === "light";
 const titleCls = light ? (titleColor === "rust" ? "text-rust-hi" : "text-navy") : "text-white";
 const bodyCls = light ? "text-body" : "text-white";
 const kickerCls = light ? "text-rust-hi" : "text-orange";
-const bandH = "md:min-h-[650px]"; // compact was 501 in the frames; Jim (22 Sep) wants every inner-page hero the same height
-const imgSize = 540; // frame 581; pulled in at QA (Jim 23 Sep) so the ellipse clears the band edges
+const bandH = height === "short" ? "md:min-h-[460px]" : "md:min-h-[650px]"; // compact was 501 in the frames; Jim (22 Sep) wants every inner-page hero the same height — except where a page opts into "short" (9 Oct)
+const imgSize = height === "short" ? 390 : 540; // frame 581; pulled in at QA (Jim 23 Sep) so the ellipse clears the band edges
 ---
 <section class:list={["relative overflow-hidden", light ? "bg-cream" : ["text-white hero-radial", `hero-radial-${radial}`]]}>
   {!light && <div class="hero-radial-layer" aria-hidden="true"></div>}
@@ -47,7 +49,7 @@ const imgSize = 540; // frame 581; pulled in at QA (Jim 23 Sep) so the ellipse c
     </picture>
   )}
   <div class:list={["relative mx-auto flex max-w-site flex-col px-4 py-10 md:flex-row md:items-center md:gap-4 md:px-12 md:py-0", bandH]}>
-    <div class="flex flex-col gap-4 md:w-[664px] md:gap-6 md:py-20 md:pr-[50px]">
+    <div class:list={["flex flex-col gap-4 md:w-[664px] md:gap-6 md:pr-[50px]", height === "short" ? "md:py-12" : "md:py-20"]}>
       <div class="flex flex-col gap-3 md:gap-4">
         {kicker && <p class:list={["text-kicker font-semibold uppercase tracking-kicker md:text-[14px]", kickerCls]}>{kicker}</p>}
         <h1 class:list={["whitespace-pre-line text-display-sm font-medium md:text-display", titleCls]}>{title}</h1>

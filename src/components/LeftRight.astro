@@ -8,14 +8,15 @@
 import Section from "./Section.astro";
 import Button from "./Button.astro";
 type Block = { title: string; paragraphs: readonly string[] };
-interface Props { title?: string; paragraphs?: readonly string[]; blocks?: readonly Block[]; image: { src: string; alt: string }; button?: { label: string; href?: string; style?: "primary" | "secondary" | "external" }; flip?: boolean; bg?: "white" | "cream"; }
-const { title, paragraphs = [], blocks, image, button, flip = false, bg = "white" } = Astro.props;
+interface Props { title?: string; paragraphs?: readonly string[]; blocks?: readonly Block[]; image: { src: string; alt: string }; button?: { label: string; href?: string; style?: "primary" | "secondary" | "external" }; flip?: boolean; bg?: "white" | "cream"; pad?: "default" | "tight" | "none"; compact?: boolean; }
+const { title, paragraphs = [], blocks, image, button, flip = false, bg = "white", pad = "default", compact = false } = Astro.props;
+// compact: 520×540 image instead of 664×689 (Our approach "Who we are", Jim 9 Oct)
 // Home (123:31759) stacks two text blocks beside one image; other pages pass a single title + paragraphs.
 const items: readonly Block[] = blocks ?? [{ title: title ?? "", paragraphs }];
 ---
-<Section bg={bg}>
+<Section bg={bg} pad={pad}>
   <div class:list={["flex flex-col gap-6 md:flex-row md:items-center md:gap-[130px]", flip && "md:flex-row-reverse"]}>
-    <img src={image.src} alt={image.alt} width="664" height="689" loading="lazy" decoding="async" class="aspect-[664/689] w-full rounded-lg object-cover md:w-[664px] md:shrink-0" />
+    <img src={image.src} alt={image.alt} width="664" height="689" loading="lazy" decoding="async" class:list={["aspect-[664/689] w-full rounded-lg object-cover md:shrink-0", compact ? "md:w-[520px]" : "md:w-[664px]"]} />
     <div class="flex flex-col gap-6 md:gap-9">
       {items.map((b) => (
         <div class="flex flex-col gap-3 md:gap-4">
