@@ -19,12 +19,14 @@
     "title": "Who we are",
     "paragraphs": [
       "Arculus Funds Management (GCI Australia AFSL 346034) is an Australian fixed income manager, operating since 2013. We manage over $1.2bn (AUD) across two retail unit trusts, wholesale strategies and private mandates for family offices, charities and wealth advisory groups.",
+      "Everything we do rests on three things: preserve capital, pay consistent income, and stay liquid. We are an absolute return manager, benchmark unaware, and we hold only Australian dollar securities issued under Australian law — no leverage, no currency risk and no structured credit. The universe is narrow by design. It keeps the portfolios simple to understand and easy to exit.",
+      "Our process runs top-down and bottom-up. The Investment Committee meets every week to set duration and credit targets against our macroeconomic view; the investment team then selects individual securities on their own credit work, with every investment grade issuer carrying an internal shadow rating before it is held. Portfolio decisions are made by the committee and implemented by the Head of Portfolio Management, so the link between our research and what the funds hold is direct.",
       "The team has amassed more than a century's collective knowledge through several full market cycles, across fixed income, equities, derivatives and hybrids. That experience shapes a simple view: in fixed income, the money you don't lose matters more than the yield you chase."
     ],
     "image": "[image register]",
-    "_note": "[Unverified] $1.2bn FUM figure — confirm with Renny"
+    "_note": "[Unverified] $1.2bn FUM figure — confirm with Renny (Lonsec's June 2026 reports say $1.1bn at Dec 2025). Paragraphs 2 and 3 drafted 9 Oct 2026 (Jim/Claude) from the Lonsec reviews' process and philosophy sections and Renny's six points — three pillars, absolute return, Australian-only universe, weekly IC, shadow ratings; [Unverified] with Renny before sign-off. Paragraphs 1 and 4 are the earlier approved copy."
   },
-  "showRatings": true,
+  "showRatings": false,
   "philosophy": {
     "title": "How we invest",
     "items": [
@@ -98,5 +100,6 @@
       "href": "/contact",
       "style": "primary"
     }
-  }
+  },
+  "_ratingsNote": "Lonsec ratings bar removed from this page (Jim, 9 Oct 2026) to bring the approach content up the page; it stays on the two fund pages."
 }
