@@ -26,7 +26,7 @@ Rule for the build: nothing in `content/` marked `[Unverified]` or `[TO SET]` sh
 | Q11 | Wholesale landing Important Information reuses the A− SMA sentence ("Investment in the A− SMA carries risk…"). Needs a strategy-neutral sentence. | `site.json` importantInformation.wholesale; `wholesale/landing.json` | Compliance |
 | Q12 | IM Important Information omits the "Portfolio figures are sourced…" sentence. Confirm final wording. IM entity name and minimum portfolio ("$20m indicated") still TBC. | `im.json` | Renny |
 | Q13 | Governance page carries "[Renny to confirm membership and the specific role of the committee]" (Investment Committee: Ellis, Saba, McQueen). | `about/governance.json` | Renny |
-| Q14 | "We manage over $1.2bn (AUD)" and "operating since 2013" on Our approach. Confirm figure and date. | `about/approach.json` | Renny |
+| Q14 | ~~"We manage over $1.2bn (AUD)"~~ Resolved 11 Oct 2026: Renny removed all total FUM references; firm sentence is his wording. "Operating since 2013" still to confirm. | `about/approach.json` | Renny |
 | Q15 | Disclosure page has no copy. Footer and document library both link to it. | `legal/disclosure.md` | Compliance |
 | Q16 | Cookie Policy: frame carries the old Google-Analytics-era draft with eleven query marks. Site runs cookieless Cloudflare Web Analytics and two third-party forms. A short replacement draft is in `legal/cookies.md`. Approve or amend. | `legal/cookies.md` | Compliance |
 | Q17 | Terms and Privacy Notice carry drafting notes from the old site: "(overriding?)" (Privacy, Introduction); "(or 'appropriate'?)" (Terms, Disclaimer). Resolve each. | `legal/privacy.md`, `legal/terms.md` | Compliance |
@@ -52,8 +52,8 @@ All from the frames, all against the latest monthly report.
 | PIF | Portfolio | Running yield 7.19% · YTM 7.93% · avg margin 3.47% · avg years to maturity 2.92 · 51 securities · modified duration 1.09 · credit duration 1.60 · FRN 67.3% / fixed 29.7% / cash 3.0% |
 | PIF | Fees | Mgmt 0.72% p.a. incl. GST · buy–sell +0.15%/−0.15% · no performance fee · min $2,000 · up to 30% below investment grade |
 | PIF | NAV | $108m at 31 January 2026 (Q10) |
-| A− SMA | At a glance (31 July 2026) | $374.2m · running yield 6.25% · modified duration 0.09 yrs · min rating A− · margin BBSW +143bps · fee 0.25% p.a. · min $50m · inception 1994 · effective duration 2.70 yrs (key risks) |
-| BBB SMA | At a glance (31 July 2026) | $148.6m · running yield 6.17% · weighted term to call 1.86 yrs · min rating BBB− · margin BBSW +180bps · fee 0.25% p.a. · min $50m · inception Jan 2019 (fund est. 2011) · issuer cap 20% / line cap 11% |
+| A− SMA | At a glance (31 July 2026) | $374.2m · running yield 6.25% · modified duration 0.09 yrs · min rating A− · margin BBSW +143bps · fee 0.25% p.a. · min $20m (Renny 11 Oct 2026, was $50m) · inception 1994 · effective duration 2.70 yrs (key risks) |
+| BBB SMA | At a glance (31 July 2026) | $148.6m · running yield 6.17% · weighted term to call 1.86 yrs · min rating BBB− · margin BBSW +180bps · fee 0.25% p.a. · min $20m (Renny 11 Oct 2026, was $50m) · inception Jan 2019 (fund est. 2011) · issuer cap 20% / line cap 11% |
 | PEP | At a glance | ~98% protection per position · 1.2× exposure · 15–40 positions · quarterly collar · 20% gearing overlay. No performance or modelled figures on-page. |
 | IM | Fees | 0.20% p.a. service fee capped at $200,000 · nil platform fee · transactions 0.10% · Arculus fund fee waived on own funds · min portfolio TBC |
 | Private mandates | Facts | Min AUD $50m · quarterly report + annual meeting · negotiable fees |
@@ -94,7 +94,7 @@ Walk every page on staging against this list. Tick when the page shows the appro
 
 **About**
 - [ ] Governance: RE named as DDH Graham with correct duties; four roles; Investment Committee note removed (Q13)
-- [ ] Approach: FUM and founding date confirmed (Q14); ratings block Lonsec only
+- [ ] Approach: no FUM figure (Q14 resolved 11 Oct); founding date confirmed; ratings block removed from page
 - [ ] Team: eight real headshots, no silhouette placeholder
 - [ ] ESG: exclusion list confirmed against holdings (Q21)
 

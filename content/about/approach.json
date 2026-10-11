@@ -18,11 +18,11 @@
   "whoWeAre": {
     "title": "Who we are",
     "paragraphs": [
-      "Arculus Funds Management (GCI Australia AFSL 346034) is an Australian fixed income manager, operating since 2013. We manage over $1.2bn across two retail unit trusts, wholesale strategies and private mandates for family offices, charities and wealth advisory groups.",
+      "Arculus Funds Management (GCI Australia AFSL 346034) is an Australian fixed income manager, operating since 2013. We are the investment manager for two retail unit funds and a number of wholesale strategies and private mandates, for family offices, charities and wealth advisory groups.",
       "The team has worked through several full market cycles, across fixed income, equities, derivatives and hybrids. That experience shapes a simple view: in fixed income, the money you don't lose matters more than the yield you chase. It also shapes how we are paid. We charge no performance fee on any fund, so we are paid for capital preservation and income, not for taking risk."
     ],
     "image": "[image register]",
-    "_note": "Flow rework 9 Oct 2026 (Jim/Claude): two paragraphs — the firm, then the view and the incentive point from the PIF deck ('paid for capital preservation and income, not for taking risk'). [Unverified] $1.2bn FUM — Lonsec's June 2026 reports say $1.1bn at Dec 2025. Hero subtitle is Jim's (9 Oct)."
+    "_note": "Flow rework 9 Oct 2026 (Jim/Claude): two paragraphs — the firm, then the view and the incentive point from the PIF deck ('paid for capital preservation and income, not for taking risk'). Renny 11 Oct 2026: no total FUM figure anywhere on the site; firm sentence is his wording verbatim. Hero subtitle is Jim's (9 Oct)."
   },
   "showRatings": false,
   "philosophy": {

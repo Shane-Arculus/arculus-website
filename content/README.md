@@ -27,7 +27,7 @@ Placeholders: `[TO SET]` = a value Jim supplies (URL, path, ID). `[Unverified]` 
 2. Wholesale landing Important Information reuses the A− SMA risk sentence. Needs a generic sentence.
 3. IM Important Information omits the "Portfolio figures…" sentence; IM entity name and minimum portfolio ($20m indicated) still TBC.
 4. Governance page carries the frame note "[Renny to confirm membership and the specific role of the committee]".
-5. "$1.2bn FUM" on Our approach; "operating since 2013".
+5. "Operating since 2013" on Our approach (FUM figure removed on Renny's instruction 11 Oct 2026 — no total FUM anywhere on the site).
 6. Contact page: office address, SS&C investor services phone/email, IDR/AFCA statement all TBC. The old Cookie Policy listed a Bondi Beach correspondence address and a Hobart registered address; the Privacy Notice lists Hobart for both.
 7. Disclosure page has no copy at all.
 8. Cookie Policy: the frame carries the old Google-Analytics-era draft. A short cookieless draft is in `legal/cookies.md` for review.
