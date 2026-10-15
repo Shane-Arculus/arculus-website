@@ -27,8 +27,8 @@ const im = await getIm();
   <Breadcrumb items={im.breadcrumb} />
   <Statement title={im.statement.title} points={im.statement.points} footnote={im.statement.footnote} />
   <StrategyAbout about={{ title: im.about.title, paragraphs: im.about.paragraphs }} glance={im.atAGlance} />
-  <div id={im.howWeBuild.anchor} class="scroll-mt-24"><ContentColumns title={im.howWeBuild.title} items={im.howWeBuild.items} /></div>
-  <TwoColumnsContent title={im.keyRisks.title} paragraphs={im.keyRisks.paragraphs} />
+  <div id={im.howWeBuild.anchor} class="scroll-mt-24"><ContentColumns pad="medium" title={im.howWeBuild.title} items={im.howWeBuild.items} /></div>
+  <TwoColumnsContent title={im.keyRisks.title} paragraphs={im.keyRisks.paragraphs} pad="medium" />
   <CtaBanner title={im.cta.title} body={im.cta.body} button={im.cta.button} />
   <ImportantInformation variant="wholesale" riskSubject={im.importantInformation.riskSubject} asAt={im.importantInformation.asAt} />
   <AttestationModal />

@@ -29,7 +29,7 @@ else {
 }
 ---
 <section class="bg-cream" aria-labelledby="important-information-title">
-  <div class:list={["mx-auto max-w-site px-4 py-10 md:py-20", props.variant === "generic" ? "md:flex md:gap-4 md:px-12" : "md:px-[84px]"]}>
+  <div class:list={["mx-auto max-w-site px-4 py-10 md:py-16", props.variant === "generic" ? "md:flex md:gap-4 md:px-12" : "md:px-[84px]"]}>
     <h2 id="important-information-title" class:list={["mb-6 text-base font-medium text-navy", props.variant === "generic" ? "md:mb-0 md:w-[323px] md:shrink-0 md:text-small" : "md:sr-only"]}>{ii.title}</h2>
     <div class="flex flex-col gap-4 text-small text-body">
       {paragraphs.map((p) => <p>{p}</p>)}

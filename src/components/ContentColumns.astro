@@ -8,7 +8,7 @@ import Section from "./Section.astro";
 import Icon from "./Icon.astro";
 type IconName = Parameters<typeof Icon>[0]["name"];
 type Link = { label: string; href: string; external?: boolean };
-interface Props { title: string; items: readonly (readonly [string, string] | readonly [string, string, Link])[]; icons?: IconName[]; bg?: "cream" | "white"; columns?: 3 | 4; link?: Link; titleSize?: "h3" | "h1"; split?: number; pad?: "default" | "tight" | "none"; }
+interface Props { title: string; items: readonly (readonly [string, string] | readonly [string, string, Link])[]; icons?: IconName[]; bg?: "cream" | "white"; columns?: 3 | 4; link?: Link; titleSize?: "h3" | "h1"; split?: number; pad?: "default" | "medium" | "tight" | "none"; }
 // split: the first N items sit with the title inside a cream card (the "Who to contact" card treatment); the rest follow on the band (Our approach, Jim 9 Oct).
 const { title, items, icons = [], bg = "cream", columns = items.length >= 4 ? 4 : 3, link, titleSize = "h3", split, pad = "default" } = Astro.props;
 const groups = split ? [items.slice(0, split), items.slice(split)] : [items];

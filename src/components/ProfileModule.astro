@@ -3,15 +3,15 @@
  * ProfileModule — Figma 158:11910 / 160:3008 / 158:12106 → 209:12092….
  * White band, H1 title + Lead intro, three columns of profile cards (97px
  * round photo, Lead Medium name, SemiBold navy title, body bio) with warm separators.
- * QA 23 Sep (Jim): photos render only when a real path is set (placeholders hidden until the headshots arrive), titles bold, wider column padding.
+ * QA 23 Sep (Jim): titles bold, wider column padding. 7 Oct (Jim): launch without headshots — `photo` is optional and the image renders only when set.
  * Two-person groups keep the three-column rhythm (the frame uses an invisible
  * spacer card). Mobile stacks.
  */
 import Section from "./Section.astro";
-interface Props { title: string; intro?: string; people: readonly { name: string; title: string; bio: string; photo: string }[]; }
-const { title, intro, people } = Astro.props;
+interface Props { pad?: "default" | "medium" | "tight" | "none"; title: string; intro?: string; people: readonly { name: string; title: string; bio: string; photo?: string }[]; }
+const { pad = "default", title, intro, people } = Astro.props;
 ---
-<Section bg="white">
+<Section bg="white" pad={pad}>
   <div class="flex flex-col gap-8 md:gap-[60px]">
     <div class="flex flex-col gap-3">
       <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
@@ -20,7 +20,7 @@ const { title, intro, people } = Astro.props;
     <ul class="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-9">
       {people.map((p) => (
         <li class="flex flex-col gap-4 md:border-l md:border-line-warm md:px-12 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
-          {p.photo && !p.photo.startsWith("[") && <img src={p.photo} alt={p.name} width="97" height="97" loading="lazy" class="h-[97px] w-[97px] rounded-full object-cover" />}
+          {p.photo && <img src={p.photo} alt={p.name} width="97" height="97" loading="lazy" class="h-[97px] w-[97px] rounded-full object-cover" />}
           <div class="flex flex-col gap-0.5">
             <p class="text-lead font-medium text-navy">{p.name}</p>
             <p class="text-body font-semibold text-navy">{p.title}</p>

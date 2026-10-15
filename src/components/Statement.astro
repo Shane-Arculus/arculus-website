@@ -5,10 +5,10 @@
  * Mobile stacks the pillars. Used on wholesale strategy pages and IM.
  */
 import Section from "./Section.astro";
-interface Props { title: string; points: readonly (readonly [string, string])[]; footnote?: string; bg?: "cream" | "white"; }
-const { title, points, footnote, bg = "cream" } = Astro.props;
+interface Props { title: string; points: readonly (readonly [string, string])[]; footnote?: string; bg?: "cream" | "white"; pad?: "default" | "medium" | "tight" | "none"; }
+const { title, points, footnote, bg = "cream", pad = "medium" } = Astro.props;
 ---
-<Section bg={bg}>
+<Section bg={bg} pad={pad}>
   <div class="flex flex-col gap-4 md:gap-9">
     <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
     <div class="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-14">

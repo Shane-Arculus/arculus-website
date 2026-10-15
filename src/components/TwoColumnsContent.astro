@@ -8,13 +8,13 @@ import Icon from "./Icon.astro";
 import Section from "./Section.astro";
 type ListItem = string | { text: string; link: { label: string; href: string } };
 type Column = { title?: string; paragraphs?: readonly string[]; items?: readonly ListItem[] };
-interface Props { title?: string; paragraphs?: readonly string[]; columns?: readonly [Column, Column]; bg?: "white" | "cream"; }
-const { title, paragraphs = [], columns, bg = "white" } = Astro.props;
+interface Props { title?: string; paragraphs?: readonly string[]; columns?: readonly [Column, Column]; bg?: "white" | "cream"; pad?: "default" | "medium" | "tight" | "none"; }
+const { title, paragraphs = [], columns, bg = "white", pad = "default" } = Astro.props;
 // Default: one title, paragraphs split across two columns (key risks). `columns` gives each column its own title and paragraphs/bullets (Approach: What we do / For our clients).
 const mid = Math.ceil(paragraphs.length / 2);
 const cols: readonly [Column, Column] = columns ?? [{ title, paragraphs: paragraphs.slice(0, mid) }, { paragraphs: paragraphs.slice(mid) }];
 ---
-<Section bg={bg}>
+<Section bg={bg} pad={pad}>
   <div class="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-4">
     {cols.map((c, i) => (
       <div class:list={["flex flex-col gap-4 md:gap-9", i === 0 && "md:pr-12", i === 1 && !c.title && "md:pt-[74px]"]}>

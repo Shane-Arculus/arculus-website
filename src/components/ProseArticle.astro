@@ -9,7 +9,7 @@ interface Props { title: string; lead?: string; Content: any; note?: string; }
 const { title, lead, Content, note } = Astro.props;
 ---
 <section class="bg-white">
-  <div class="mx-auto max-w-site px-4 pb-16 pt-10 md:px-12 md:pb-24 md:pt-12">
+  <div class="mx-auto max-w-site px-4 pb-16 pt-10 md:px-12 md:pb-16 md:pt-12">
     <article class="flex max-w-[888px] flex-col gap-8 md:gap-12">
       <header class="flex flex-col gap-4">
         <h1 class="text-h3 font-medium text-navy md:text-h1">{title}</h1>

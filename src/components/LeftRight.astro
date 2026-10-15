@@ -8,7 +8,7 @@
 import Section from "./Section.astro";
 import Button from "./Button.astro";
 type Block = { title: string; paragraphs: readonly string[] };
-interface Props { title?: string; paragraphs?: readonly string[]; blocks?: readonly Block[]; image: { src: string; alt: string }; button?: { label: string; href?: string; style?: "primary" | "secondary" | "external" }; flip?: boolean; bg?: "white" | "cream"; pad?: "default" | "tight" | "none"; compact?: boolean; }
+interface Props { title?: string; paragraphs?: readonly string[]; blocks?: readonly Block[]; image: { src: string; alt: string }; button?: { label: string; href?: string; style?: "primary" | "secondary" | "external" }; flip?: boolean; bg?: "white" | "cream"; pad?: "default" | "medium" | "tight" | "none"; compact?: boolean; }
 const { title, paragraphs = [], blocks, image, button, flip = false, bg = "white", pad = "default", compact = false } = Astro.props;
 // compact: 520×540 image instead of 664×689 (Our approach "Who we are", Jim 9 Oct)
 // Home (123:31759) stacks two text blocks beside one image; other pages pass a single title + paragraphs.

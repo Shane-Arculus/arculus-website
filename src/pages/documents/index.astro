@@ -41,14 +41,14 @@ const wholesale = p.sections.find((s) => s.key === "wholesale");
     {p.sections.map((s) => {
       if (s.key === "wholesale") {
         return (
-          <Documents id="wholesale-strategies" title={s.title} intro={s.intro} button={s.button} filterable
+          <Documents pad="medium" id="wholesale-strategies" title={s.title} intro={s.intro} button={s.button} filterable
             items={[{ title: s.row!.title, href: s.button?.href ?? "/contact", meta: s.row!.meta, size: null, download: false, filter: "wholesale" }]} sizeLabel={p.fileLabel ?? "PDF"} />
         );
       }
       const items = byFund(s.key);
       const fund = s.key === "afi" || s.key === "pif";
       return (
-        <Documents id={`documents-${s.key}`} title={s.title} intro={s.intro} items={items} filterable
+        <Documents pad="medium" id={`documents-${s.key}`} title={s.title} intro={s.intro} items={items} filterable
           collapseAfter={fund ? p.collapseAfter : undefined} seeMoreLabel={p.seeMoreLabel} showingLabel={fund ? p.showingLabel : undefined} sizeLabel={p.fileLabel ?? "PDF"} />
       );
     })}

@@ -37,8 +37,8 @@ const images: Record<string, string> = { "a-minus": "/images/hero-a-minus.webp",
   <Statement title={s.statement.title} points={s.statement.points} footnote={s.statement.footnote} />
   <StrategyAtAGlance items={s.strategyAtAGlance} ladder={s.ladder as 1 | 2 | 3} />
   <StrategyAbout about={{ title: s.about.title, paragraphs: [s.about.body] }} glance={s.atAGlance} />
-  <ContentColumns title={s.processRiskControls.title} items={s.processRiskControls.items} />
-  <TwoColumnsContent title={s.keyRisks.title} paragraphs={s.keyRisks.paragraphs} />
+  <ContentColumns title={s.processRiskControls.title} items={s.processRiskControls.items} pad="medium" />
+  <TwoColumnsContent title={s.keyRisks.title} paragraphs={s.keyRisks.paragraphs} pad="medium" />
   <CtaBanner title={s.cta.title} body={s.cta.body} button={s.cta.button} />
   <ImportantInformation variant="wholesale" riskSubject={s.importantInformation.riskSubject} asAt={s.importantInformation.asAt.startsWith("[") ? null : s.importantInformation.asAt} />
   <AttestationModal />

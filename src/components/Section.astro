@@ -2,11 +2,12 @@
 /**
  * Section — the standard band: full-width background, 1340 container,
  * 80/48 padding on desktop, 40/16 on mobile. Every content module uses it.
+ * QA 14 Oct (Jim): sparse pages scrolled too far — "medium" (64) added; the fund pages keep "default" (80).
  */
-interface Props extends astroHTML.JSX.HTMLAttributes { bg?: "white" | "cream" | "sand" | "navy-deep"; class?: string; id?: string; pad?: "default" | "tight" | "none"; }
+interface Props extends astroHTML.JSX.HTMLAttributes { bg?: "white" | "cream" | "sand" | "navy-deep"; class?: string; id?: string; pad?: "default" | "medium" | "tight" | "none"; }
 const { bg = "white", class: className = "", id, pad = "default", ...rest } = Astro.props;
 const bgs = { white: "bg-white", cream: "bg-cream", sand: "bg-sand", "navy-deep": "bg-navy-deep text-white" };
-const pads = { default: "px-4 py-10 md:px-12 md:py-20", tight: "px-4 py-8 md:px-12 md:py-12", none: "" };
+const pads = { default: "px-4 py-10 md:px-12 md:py-20", medium: "px-4 py-8 md:px-12 md:py-16", tight: "px-4 py-8 md:px-12 md:py-12", none: "" };
 ---
 <section id={id} class:list={[bgs[bg], className]} {...rest}>
   <div class:list={["mx-auto max-w-site", pads[pad]]}><slot /></div>

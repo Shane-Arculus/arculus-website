@@ -14,7 +14,7 @@ import DownloadSlice from "./DownloadSlice.astro";
 import Button from "./Button.astro";
 import Icon from "./Icon.astro";
 import { getSite } from "../content/loaders";
-interface Props {
+interface Props { pad?: "default" | "medium" | "tight" | "none";
   title: string; intro?: string;
   items: readonly { title: string; href: string; meta?: string; size?: string | null; filter?: string; download?: boolean }[];
   viewAll?: { label: string; href: string };
@@ -28,13 +28,13 @@ interface Props {
   /** Set when the section's rows carry `filter` and the section should hide when every row is hidden. */
   filterable?: boolean;
 }
-const { title, intro, items, viewAll, collapseAfter, seeMoreLabel, showingLabel, sizeLabel, button, bg = "white", id, filterable = false } = Astro.props;
+const { pad = "default", title, intro, items, viewAll, collapseAfter, seeMoreLabel, showingLabel, sizeLabel, button, bg = "white", id, filterable = false } = Astro.props;
 const { ui } = await getSite();
 const collapsed = collapseAfter !== undefined && items.length > collapseAfter;
 const uid = id ?? `docs-${Math.random().toString(36).slice(2, 7)}`;
 const showing = (n: number) => (showingLabel ?? "").replace("{n}", String(n)).replace("{total}", String(items.length));
 ---
-<Section bg={bg} id={id} data-filter-section={filterable ? "" : undefined}>
+<Section bg={bg} pad={pad} id={id} data-filter-section={filterable ? "" : undefined}>
   <div class="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-4">
     <div class="flex flex-col gap-4 md:gap-9 md:pr-12">
       <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2>
