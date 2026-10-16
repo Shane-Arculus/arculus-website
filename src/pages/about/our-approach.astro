@@ -12,13 +12,16 @@ import Section from "../../components/Section.astro";
 import Icon from "../../components/Icon.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import ImportantInformation from "../../components/ImportantInformation.astro";
-import { getAbout } from "../../content/loaders";
+import { getAbout, getSite } from "../../content/loaders";
 const a = await getAbout("approach");
 const g = await getAbout("governance");
+const site = await getSite();
+const ext = site.externalUrls as Record<string, string>;
+const heroButton = { ...a.hero.button, href: a.hero.button.href && a.hero.button.href in ext ? ext[a.hero.button.href] : a.hero.button.href };
 ---
 <Base title={`${a.hero.title} — Arculus Funds Management`} description={a.hero.subtitle}>
   <Header slot="header" />
-  <HeroLevel2 title={a.hero.title} description={a.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[a.hero.button]} image={{ src: "/images/hero-approach.webp", alt: "[image register IMG-02]" }} height="short" />
+  <HeroLevel2 title={a.hero.title} description={a.hero.subtitle} theme="light" layout="compact" bg="compact" buttons={[heroButton]} image={{ src: "/images/hero-approach.webp", alt: "[image register IMG-02]" }} height="short" />
   <Breadcrumb items={a.breadcrumb} bg="white" />
   <AboutIntro title={a.whoWeAre.title} showTitle={a.whoWeAre.showTitle ?? true} paragraphs={a.whoWeAre.paragraphs} quickLinks={a.quickLinks ?? []} sub={a.whoWeAre.philosophy} />
   {a.fourEyes && <FourEyes id="four-eyes" title={a.fourEyes.title} intro={a.fourEyes.intro} link={a.fourEyes.link} roles={g.fourRoles.items} />}

@@ -38,6 +38,7 @@
   --color-banner-copy: #D6D1C6; /* body copy on the navy-mid contact banner */ /* search result URL line */ /* column separators on white bands (profile module) */ /* white card border on cream bands (ratings bar, performance card) */ /* [Unverified] secondary button stroke on frames */ /* decorative outline strokes on navy gradient bands */
   --color-line-strong: #7E868F; /* [Unverified] raw hex on frames: footer outline button, search field border */
   --color-gold: #8A6A2A; /* was #B08A3C (Figma 'Antique gold'); darkened for WCAG AA — white on gold 5.0:1, gold on cream 4.6:1. [Unverified] with Jim */
+  --color-gold-bright: #93712B; /* external BUTTON fill (Jim 17 Oct): brighter and warmer than --color-gold #8A6A2A while keeping white copy at WCAG AA (4.55:1). Figma's Antique gold #B08A3C fails with white (3.2:1). Gold text links keep --color-gold. */
   --color-error: #B82823;
   --color-transparent: transparent;
   --color-current: currentColor;

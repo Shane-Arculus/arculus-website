@@ -163,7 +163,7 @@ const im = defineCollection({
 });
 
 // ---------- about/*.json ----------
-const hero2 = z.object({ title: z.string(), subtitle: z.string(), button });
+const hero2 = z.object({ title: z.string(), subtitle: z.string(), button, _buttonNote: note });
 const cta = z.object({ title: z.string(), body: z.string(), button });
 const person = z.object({ name: z.string(), title: z.string(), bio: z.string(), photo: z.string().optional() }); // photo: set per person when a headshot is approved (launch without, Jim 7 Oct)
 const about = defineCollection({
@@ -245,7 +245,7 @@ const pages = defineCollection({
   schema: z.discriminatedUnion("kind", [
     z.object({
       kind: z.literal("home"), ...base,
-      hero: z.object({ title: z.string(), subtitle: z.string(), buttons: z.array(button), image: z.string().optional() }),
+      hero: z.object({ title: z.string(), subtitle: z.string(), buttons: z.array(button), image: z.string().optional(), _buttonNote: note }),
       funds: z.object({
         title: z.string(),
         cards: z.array(z.object({ fund: z.enum(["afi", "pif"]), title: z.string(), subtitle: z.string(), rate: z.string(), rateNote: z.string() })),

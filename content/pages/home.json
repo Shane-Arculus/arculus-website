@@ -11,12 +11,13 @@
         "style": "secondary"
       },
       {
-        "label": "Explore the funds",
-        "href": "#funds",
-        "style": "primary"
+        "label": "Apply directly online",
+        "href": "olivia123",
+        "style": "external"
       }
     ],
-    "image": "[image register IMG-01]"
+    "image": "[image register IMG-01]",
+    "_buttonNote": "17 Oct 2026 (Jim): 'Explore the funds' swapped for a direct Olivia123 apply link (fund cards sit directly below). href is a key in site.json externalUrls."
   },
   "funds": {
     "title": "Our funds",

@@ -10,10 +10,11 @@
     "title": "About Arculus",
     "subtitle": "An Australian fixed income manager, unconflicted at every decision-making point.",
     "button": {
-      "label": "See the funds",
-      "href": "/#funds",
-      "style": "secondary"
-    }
+      "label": "Apply directly online",
+      "href": "olivia123",
+      "style": "external"
+    },
+    "_buttonNote": "17 Oct 2026 (Jim): 'See the funds' swapped for a direct Olivia123 apply link. href is a key in site.json externalUrls, resolved in the page."
   },
   "whoWeAre": {
     "title": "Who we are",

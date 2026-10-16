@@ -23,6 +23,8 @@ const cards = await Promise.all(home.funds.cards.map(async (c) => ({
   ...c, href: fundHref[c.fund], investHref: site.externalUrls.olivia123,
   image: { src: `/images/card-${c.fund}.webp`, alt: `[image register ${c.fund === "afi" ? "IMG-02" : "IMG-03"}]` },
 })));
+const ext = site.externalUrls as Record<string, string>;
+const heroButtons = home.hero.buttons.map((b) => ({ ...b, href: b.href && b.href in ext ? ext[b.href] : b.href }));
 const featured = await getArticle(home.insights.featured);
 // Home row rule (Jim, 4 Oct): the featured paper, then the latest weekly update and the two most recent non-weekly items — so the weekly cadence never buries the research. home.insights.list is no longer used.
 const ins = await getInsights();
@@ -32,7 +34,7 @@ const list = [latestWeekly, ...sorted.filter((a) => a.category !== "Weekly updat
 ---
 <Base title="Arculus Funds Management — Income management that preserves capital" description={home.hero.subtitle}>
   <Header slot="header" />
-  <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={home.hero.buttons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />
+  <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={heroButtons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />
   <FundCards id="funds" title={home.funds.title} cards={cards} buttons={home.funds.cardButtons} showRatings={home.funds.showRatings} />
   <ImportantDisclosure />
   {home.pillars && <Pillars id="why-arculus" title={home.pillars.title} intro={home.pillars.intro} items={home.pillars.items} button={home.pillars.button} />}
