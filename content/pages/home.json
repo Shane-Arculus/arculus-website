@@ -64,6 +64,37 @@
     "label": "About Arculus",
     "href": "/about/our-approach"
   },
+  "pillars": {
+    "title": "Why invest with Arculus",
+    "intro": "We are the investment manager for two retail unit funds, wholesale strategies and private mandates for family offices, charities and wealth advisory groups. Our funds are built for investors whose priorities are income and capital preservation.",
+    "items": [
+      {
+        "title": "Capital preservation first",
+        "body": "Australian issuers only, in AUD. No leverage. No RMBS, ABS, CMBS or property developer exposure.",
+        "icon": "wallet"
+      },
+      {
+        "title": "Absolute return",
+        "body": "Benchmark unaware. Duration is set by where we are in the economic cycle, not by an index.",
+        "icon": "calendar-range"
+      },
+      {
+        "title": "No performance fee",
+        "body": "A flat management fee on every fund. Selling fees received by Arculus are rebated to the fund through the administrator.",
+        "icon": "handshake"
+      },
+      {
+        "title": "Independent oversight",
+        "body": "Arculus does not hold, value or administer the assets. Four eyes on every transaction: custody, administration, investment management and the Responsible Entity.",
+        "icon": "landmark"
+      }
+    ],
+    "button": {
+      "label": "About Arculus",
+      "href": "/about/our-approach"
+    },
+    "_note": "Kapstream flow (Jim, 16 Oct 2026); copy rewritten 17 Oct in a straight register for advisers and sophisticated investors, built from Renny's own points and the approved V1/Governance wording. [RENNY] 'No leverage' applies to the funds; confirm it sits cleanly beside the PEP gearing. 17 Oct: intro and first title are Jim's Figma edits."
+  },
   "productCards": {
     "title": "Wholesale & AIM",
     "cards": [
@@ -99,5 +130,5 @@
       "hormuz-shock"
     ]
   },
-  "_leftRightNote": "Home carries two summaries stitched from Renny's sentences (block 1 = his points 2, 1, 4; block 2 = his point 3 untouched), agreed with Jim 9 Oct 2026; the full six points live on Our approach > How we invest."
+  "_leftRightNote": "Home carries two summaries stitched from Renny's sentences (block 1 = his points 2, 1, 4; block 2 = his point 3 untouched), agreed with Jim 9 Oct 2026; the full six points live on Our approach > How we invest. 16 Oct 2026: left-right blocks no longer rendered (replaced by pillars); kept for the record."
 }

@@ -1,7 +1,7 @@
 ---
 /**
  * Home — Figma 01A · Homepage Alt 123:31753 → 207:16548.
- * Order: header · hero-level-1 · fund-cards · important-disclosure · left-right
+ * Order: header · hero-level-1 · fund-cards · important-disclosure · pillars (Why invest, 16 Oct 2026 — replaced the left-right)
  * · product-cards · insights-row · important-information (generic) · footer.
  */
 import Base from "../layouts/Base.astro";
@@ -10,7 +10,7 @@ import Footer from "../components/Footer.astro";
 import HeroLevel1 from "../components/HeroLevel1.astro";
 import FundCards from "../components/FundCards.astro";
 import ImportantDisclosure from "../components/ImportantDisclosure.astro";
-import LeftRight from "../components/LeftRight.astro";
+import Pillars from "../components/Pillars.astro";
 import ProductCards from "../components/ProductCards.astro";
 import InsightsRow from "../components/InsightsRow.astro";
 import ImportantInformation from "../components/ImportantInformation.astro";
@@ -29,14 +29,13 @@ const ins = await getInsights();
 const sorted = [...ins.articles].filter((a) => a.slug !== home.insights.featured).sort((a, b) => b.date.localeCompare(a.date));
 const latestWeekly = sorted.find((a) => a.category === "Weekly update");
 const list = [latestWeekly, ...sorted.filter((a) => a.category !== "Weekly update").slice(0, 2)].filter(Boolean) as typeof sorted;
-const aboutHref = home.leftRightButton.href;
 ---
 <Base title="Arculus Funds Management — Income management that preserves capital" description={home.hero.subtitle}>
   <Header slot="header" />
   <HeroLevel1 title={home.hero.title} subtitle={home.hero.subtitle} buttons={home.hero.buttons} image={{ src: "/images/hero-home.webp", alt: "[image register IMG-01]" }} />
   <FundCards id="funds" title={home.funds.title} cards={cards} buttons={home.funds.cardButtons} showRatings={home.funds.showRatings} />
   <ImportantDisclosure />
-  <LeftRight blocks={home.leftRight.map((lr) => ({ title: lr.title, paragraphs: Array.isArray(lr.body) ? lr.body : [lr.body] }))} image={{ src: "/images/left-right-about.webp", alt: "Sandstone escarpments at sunset, seen from a ridge through gum branches" }} button={{ label: home.leftRightButton.label, href: aboutHref, style: "secondary" }} />
+  {home.pillars && <Pillars id="why-arculus" title={home.pillars.title} intro={home.pillars.intro} items={home.pillars.items} button={home.pillars.button} />}
   <ProductCards title={home.productCards.title} cards={home.productCards.cards} />
   <InsightsRow title={home.insights.title} button={home.insights.button} featured={featured} list={list} />
   <ImportantInformation variant="generic" />

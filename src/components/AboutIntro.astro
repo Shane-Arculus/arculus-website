@@ -1,0 +1,41 @@
+---
+/**
+ * AboutIntro — "Who we are" statement with a quick-links rail (Jim, 16 Oct
+ * 2026; Kapstream flow). White band. Left: H2 and paragraphs. Right (stacks
+ * below on mobile): the About cluster's other pages.
+ */
+import Section from "./Section.astro";
+import Icon from "./Icon.astro";
+interface Props {
+  title: string;
+  paragraphs: readonly string[];
+  quickLinks: readonly { label: string; href: string }[];
+  showTitle?: boolean;
+  sub?: { title: string; paragraphs: readonly string[] };
+}
+const { title, paragraphs, quickLinks, showTitle = true, sub } = Astro.props;
+---
+<Section bg="white" pad="medium">
+  <div class="flex flex-col gap-10 md:grid md:grid-cols-[minmax(0,1fr)_360px] md:gap-24">
+    <div class="flex max-w-[820px] flex-col gap-5">
+      {showTitle ? <h2 class="text-h5 font-medium text-navy md:text-h3">{title}</h2> : <h2 class="sr-only">{title}</h2>}
+      {paragraphs.map((p) => <p class="text-lead">{p}</p>)}
+      {sub && (
+        <div class="mt-6 flex flex-col gap-4 md:mt-8">
+          <h2 class="text-h5 font-medium text-navy md:text-h3">{sub.title}</h2>
+          {sub.paragraphs.map((p) => <p class="text-lead">{p}</p>)}
+        </div>
+      )}
+    </div>
+    <nav aria-label="About Arculus" class="flex flex-col self-start md:w-[360px]">
+      <p class="pb-3 text-kicker font-semibold uppercase tracking-kicker text-rust">Quick links</p>
+      <ul class="border-b border-line-warm">
+        {quickLinks.map((l) => (
+          <li class="border-t border-line-warm">
+            <a href={l.href} class="flex items-center justify-between gap-3 py-4 font-medium text-navy hover:text-rust">{l.label}<Icon name="chevron-right" size={16} class="text-rust-hi" /></a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</Section>

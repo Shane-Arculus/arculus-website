@@ -2,7 +2,7 @@
 /**
  * HeroLevel1 — the home hero. Figma 123:31755 → 226:9398.
  * Warm mesh background (public/heroes/hero-home-*.webp), title Display navy,
- * subtitle 24 navy-deep, two buttons (secondary then primary), ellipse photo
+ * subtitle 20 navy-deep (was 24; Jim 17 Oct: too big and distracting), two buttons (secondary then primary), ellipse photo
  * right. Mobile stacks: copy, full-width buttons, then the whole ellipse at 280px
  * (QA 5 Oct, Jim: the frame's 260px band cut the image at the bottom; the full shape is shown instead). Was: a 260px band showing the
  * top of the photo.
@@ -25,7 +25,7 @@ const { title, subtitle, buttons, image } = Astro.props;
     <div class="flex flex-col gap-8 px-4 pt-10 md:w-[664px] md:gap-6 md:px-0 md:pt-0">
       <div class="flex flex-col gap-3 md:gap-4">
         <h1 class="text-display-sm font-medium text-navy md:text-display">{title}</h1>
-        <p class="text-h6 text-navy-deep md:text-h5">{subtitle}</p>
+        <p class="text-lead text-navy-deep md:text-h6">{subtitle}</p>
       </div>
       <div class="flex flex-col gap-3 md:flex-row md:gap-4">
         {buttons.map((b) => <Button label={b.label} href={b.href} style={b.style} full class="md:w-auto" />)}

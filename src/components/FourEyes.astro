@@ -1,0 +1,39 @@
+---
+/**
+ * FourEyes — "Four eyes on every transaction" (Jim, 16 Oct 2026). Navy-deep
+ * band so it reads apart from the white and cream modules around it; the four
+ * roles come from governance.json (single source) and sit in translucent
+ * boxed cards. Icons match the Governance page.
+ */
+import Section from "./Section.astro";
+import Icon from "./Icon.astro";
+type Link = { label: string; href: string; external?: boolean };
+interface Props {
+  id?: string;
+  title: string;
+  intro: string;
+  link: Link;
+  roles: readonly { title: string; body: string; link: Link }[];
+}
+const { id, title, intro, link, roles } = Astro.props;
+const icons = ["briefcase-business", "landmark", "database-backup", "shield-check"] as const;
+---
+<Section bg="navy-deep" id={id}>
+  <div class="flex flex-col gap-8 md:gap-12">
+    <div class="flex max-w-[820px] flex-col gap-4">
+      <h2 class="text-h5 font-medium text-white md:text-h3">{title}</h2>
+      <p class="text-lead text-footer-copy">{intro}</p>
+      <a href={link.href} class="inline-flex items-center gap-1 self-start font-medium text-outline-warm hover:underline">{link.label}<Icon name="chevron-right" size={14} /></a>
+    </div>
+    <ul class="grid gap-4 md:grid-cols-4 md:gap-6">
+      {roles.map((r, i) => (
+        <li class="flex flex-col gap-4 rounded-lg border border-white/15 bg-white/5 p-6 md:p-8">
+          <Icon name={icons[i]} size={24} class="text-outline-warm" />
+          <h3 class="text-lead font-medium text-white">{r.title}</h3>
+          <p class="text-footer-copy">{r.body}</p>
+          <a href={r.link.href} target={r.link.external ? "_blank" : undefined} rel={r.link.external ? "noopener noreferrer" : undefined} class="mt-auto inline-flex items-center gap-1 self-start font-medium text-outline-warm hover:underline">{r.link.label}<Icon name={r.link.external ? "arrow-up-right" : "chevron-right"} size={14} /></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Section>

@@ -7,8 +7,8 @@
     "Our approach"
   ],
   "hero": {
-    "title": "Our approach",
-    "subtitle": "We are a fixed income fund manager for people looking for capital preservation alongside income.",
+    "title": "About Arculus",
+    "subtitle": "An Australian fixed income manager, unconflicted at every decision-making point.",
     "button": {
       "label": "See the funds",
       "href": "/#funds",
@@ -19,10 +19,42 @@
     "title": "Who we are",
     "paragraphs": [
       "Arculus Funds Management (GCI Australia AFSL 346034) is an Australian fixed income manager, operating since 2013. We are the investment manager for two retail unit funds and a number of wholesale strategies and private mandates, for family offices, charities and wealth advisory groups.",
-      "The team has worked through several full market cycles, across fixed income, equities, derivatives and hybrids. That experience shapes a simple view: in fixed income, the money you don't lose matters more than the yield you chase. It also shapes how we are paid. We charge no performance fee on any fund, so we are paid for capital preservation and income, not for taking risk."
+      "Arculus takes its name from the Roman god of strongboxes. The investment team has decades of experience across fixed income, equities, derivatives and hybrids, through several full market cycles."
     ],
     "image": "[image register]",
-    "_note": "Flow rework 9 Oct 2026 (Jim/Claude): two paragraphs — the firm, then the view and the incentive point from the PIF deck ('paid for capital preservation and income, not for taking risk'). Renny 11 Oct 2026: no total FUM figure anywhere on the site; firm sentence is his wording verbatim. Hero subtitle is Jim's (9 Oct)."
+    "_note": "Flow rework 9 Oct 2026 (Jim/Claude): two paragraphs — the firm, then the view and the incentive point from the PIF deck ('paid for capital preservation and income, not for taking risk'). Renny 11 Oct 2026: no total FUM figure anywhere on the site; firm sentence is his wording verbatim. Hero subtitle is Jim's (9 Oct). 16 Oct 2026 (Jim/Claude, Kapstream flow): para 1 is Renny's firm sentence, unchanged; para 2 trimmed to the experience point ('decades' per Jim) — the 'money you don't lose' line retired as too floaty and the performance-fee point now lives in the home pillars and How we invest; para 3 is the name note [RENNY] to confirm he wants it on the site. 17 Oct: tightened to a straight register (Jim); name line cut to one factual sentence [RENNY] to confirm. 17 Oct: para 2 is Jim's Figma edit (name + experience merged). 17 Oct: section heading hidden (Jim's Figma — hero already reads 'About Arculus'); name/experience paragraph tightened; philosophy block added beneath.",
+    "showTitle": false,
+    "philosophy": {
+      "title": "If we can't analyse it properly, we don't own it",
+      "paragraphs": [
+        "Fixed income management is about minimising risk: geopolitical and global macroeconomic, domestic macroeconomic, interest rate, government policy, regulatory and issuer-specific.",
+        "We manage it through top-down macroeconomic analysis and bottom-up credit analysis. Every issuer has a three-way model with credit ratios and a quarterly credit note. Portfolios are analysed daily against the administrator's valuations. Securities too opaque for that work, including RMBS, ABS and CMBS, are excluded."
+      ],
+      "_note": "17 Oct 2026 (Jim): built from Renny's own answers (risk levels, three-way models, quarterly credit notes, daily analysis on administrator valuations, structured credit excluded for lack of transparency). [RENNY] to confirm."
+    }
+  },
+  "quickLinks": [
+    {
+      "label": "Governance & oversight",
+      "href": "/about/governance-and-oversight"
+    },
+    {
+      "label": "Team",
+      "href": "/about/team"
+    },
+    {
+      "label": "Environmental, Social & Governance",
+      "href": "/about/esg"
+    }
+  ],
+  "fourEyes": {
+    "title": "Four eyes on every transaction",
+    "intro": "Arculus makes the investment decisions. It does not hold the assets, value them, or sign off on its own mandate compliance. Those roles sit with three independent institutions.",
+    "link": {
+      "label": "More on governance & oversight",
+      "href": "/about/governance-and-oversight"
+    },
+    "_note": "Intro is the Governance page's approved sentence. Roles are read from governance.json so the two pages never drift."
   },
   "showRatings": false,
   "philosophy": {
@@ -37,16 +69,8 @@
         "We are an absolute return manager. What this means is that we are benchmark unaware and will vary duration at different points in the economic cycle. In times of rising rates we are very low fixed duration and due to the systemic economic risk of the rate rises also currently low credit spread duration. When rates peak, we will increase duration and benefit from the capital gains in a falling rate environment."
       ],
       [
-        "Independent oversight",
-        "We don’t own the funds or administer them like other fund managers. The funds are monitored for mandate compliance by DDH Graham ($17bn FUM) and valued by SS&C. There are 4 eyes on every transaction: Custody - Administration - Investment Management and the Responsible Entity."
-      ],
-      [
         "Australian issuers, AUD only",
         "The investment universe for all our funds is Australian issuers only in AUD. What this means is that there is no currency risk, and regulatory risk changes are limited to Australia and bonds that are issued under Australian law. We do not employ leverage either directly or through the use of derivatives."
-      ],
-      [
-        "ESG",
-        "We have a strong and simple ESG approach that will deliver an ESG outcome that is easily explained."
       ],
       [
         "No securitised or property exposure",
@@ -57,11 +81,33 @@
       "label": "More on governance & oversight",
       "href": "/about/governance-and-oversight"
     },
-    "_note": "Renny's six points, verbatim (9 Oct 2026, via Jim). Card headings are Jim/Claude's short labels over his text — [Unverified] with Renny. Replaced the three drafted 'Our philosophy' cards.",
+    "_note": "Renny's six points, verbatim (9 Oct 2026, via Jim). Card headings are Jim/Claude's short labels over his text — [Unverified] with Renny. Replaced the three drafted 'Our philosophy' cards. 17 Oct 2026 (Jim): 'Independent oversight' dropped (covered by the Four eyes module) and 'ESG' moved to its own module below; four points remain, Renny's wording unchanged.",
     "esgLink": {
       "label": "More on ESG",
       "href": "/about/esg"
-    }
+    },
+    "_retired": [
+      [
+        "Independent oversight",
+        "We don’t own the funds or administer them like other fund managers. The funds are monitored for mandate compliance by DDH Graham ($17bn FUM) and valued by SS&C. There are 4 eyes on every transaction: Custody - Administration - Investment Management and the Responsible Entity."
+      ],
+      [
+        "ESG",
+        "We have a strong and simple ESG approach that will deliver an ESG outcome that is easily explained."
+      ]
+    ]
+  },
+  "esg": {
+    "title": "Environmental, social and governance",
+    "paragraphs": [
+      "The same ESG policy applies across all our mandates. Our credit analysis looks first at each issuer's governance structures.",
+      "We do not invest in gambling, fossil fuel mining, weapons, tobacco or drugs, and we exclude any business that relies on a supply chain using modern slavery."
+    ],
+    "link": {
+      "label": "More on ESG",
+      "href": "/about/esg"
+    },
+    "_note": "Light overview drawn from the ESG page wording (17 Oct 2026, Jim). [RENNY] to confirm."
   },
   "whatWeDo": {
     "title": "What we do",
@@ -100,5 +146,6 @@
     }
   },
   "_ratingsNote": "Lonsec ratings bar removed from this page (Jim, 9 Oct 2026) to bring the approach content up the page; it stays on the two fund pages.",
-  "_whatWeDoNote": "'What we do' retired 9 Oct 2026 — every item restated the How we invest tiles. Kept in the file for the record; not rendered."
+  "_whatWeDoNote": "'What we do' retired 9 Oct 2026 — every item restated the How we invest tiles. Kept in the file for the record; not rendered.",
+  "_flowNote": "16 Oct 2026 (Jim): page order is hero · Who we are + quick links · Four eyes (navy) · How we invest (Renny's six points) · CTA. The 'Who we are' image left-right and 'For our clients' list are no longer rendered."
 }

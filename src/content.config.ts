@@ -171,9 +171,12 @@ const about = defineCollection({
   schema: z.discriminatedUnion("kind", [
     z.object({
       kind: z.literal("approach"), ...base, breadcrumb, hero: hero2,
-      whoWeAre: z.object({ title: z.string(), paragraphs: z.array(z.string()), image: z.string(), _note: note }),
+      whoWeAre: z.object({ title: z.string(), showTitle: z.boolean().optional(), paragraphs: z.array(z.string()), image: z.string(), _note: note, philosophy: z.object({ title: z.string(), paragraphs: z.array(z.string()), _note: note }).optional() }),
+      quickLinks: z.array(link).optional(),
+      fourEyes: z.object({ title: z.string(), intro: z.string(), link, _note: note }).optional(),
       showRatings: z.boolean(),
-      philosophy: z.object({ title: z.string(), items: pairs, link, esgLink: link.optional() }),
+      philosophy: z.object({ title: z.string(), items: pairs, link, esgLink: link.optional(), _note: note, _retired: pairs.optional() }),
+      esg: z.object({ title: z.string(), paragraphs: z.array(z.string()), link, _note: note }).optional(),
       whatWeDo: z.object({ title: z.string(), items: z.array(z.union([z.string(), z.object({ text: z.string(), link })])), _note: note }),
       forOurClients: z.object({ title: z.string(), items: z.array(z.string()) }),
       cta,
@@ -250,6 +253,7 @@ const pages = defineCollection({
       }),
       leftRight: z.array(z.object({ title: z.string(), body: z.union([z.string(), z.array(z.string())]), image: z.string() })), // body: one paragraph or several (Renny's points, 9 Oct)
       leftRightButton: link,
+      pillars: z.object({ title: z.string(), intro: z.string(), items: z.array(z.object({ title: z.string(), body: z.string(), icon: z.string() })), button: link, _note: note }).optional(),
       productCards: z.object({ title: z.string(), cards: z.array(z.object({ title: z.string(), subtitle: z.string(), button, _note: note })) }),
       insights: z.object({ title: z.string(), button, featured: z.string(), list: z.array(z.string()) }),
     }),
