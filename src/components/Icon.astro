@@ -3,7 +3,7 @@
  * Lucide icons, inlined (ISC licence, lucide.dev). Only the glyphs the site
  * uses are here; add a path when a module needs another Lucide icon.
  */
-interface Props { name: "chevron-down" | "chevron-up" | "chevron-right" | "search" | "menu" | "x" | "arrow-up-right" | "download" | "file-text" | "file-check" | "layout-grid" | "briefcase" | "wallet" | "handshake" | "mail"; size?: number; class?: string; }
+interface Props { name: "chevron-down" | "chevron-up" | "chevron-right" | "search" | "menu" | "x" | "arrow-up-right" | "download" | "file-text" | "file-check" | "layout-grid" | "briefcase" | "wallet" | "handshake" | "mail" | "briefcase-business" | "landmark" | "database-backup" | "shield-check"; size?: number; class?: string; }
 const { name, size = 24, class: className = "" } = Astro.props;
 const paths: Record<Props["name"], string> = {
   "chevron-down": "m6 9 6 6 6-6",
@@ -21,6 +21,10 @@ const paths: Record<Props["name"], string> = {
   "handshake": "m11 17 2 2a1 1 0 1 0 3-3M14 14l2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.54l.34.23a5.79 5.79 0 0 0 5.78.5l.07-.03M21 3 3 3M3 5v9M21 5v9M8 12l-4.5 4.5a1 1 0 1 0 3 3l1-1",
   "mail": "M22 7 13.03 12.7a1.94 1.94 0 0 1-2.06 0L2 7M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z",
   "file-text": "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7ZM14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8",
+  "briefcase-business": "M12 12h.01M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M22 13a18.15 18.15 0 0 1-20 0M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z",
+  "landmark": "M10 18v-7M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949zM14 18v-7M18 18v-7M3 22h18M6 18v-7",
+  "database-backup": "M3 5a9 3 0 1 0 18 0a9 3 0 1 0-18 0M3 12a9 3 0 0 0 5 2.69M21 9.3V5M3 5v14a9 3 0 0 0 6.47 2.88M12 12v4h4M13 20a5 5 0 0 0 9-3 4.5 4.5 0 0 0-4.5-4.5c-1.33 0-2.54.54-3.41 1.41L12 16",
+  "shield-check": "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zM9 12l2 2 4-4",
 };
 ---
 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class={className}><path d={paths[name]} /></svg>
