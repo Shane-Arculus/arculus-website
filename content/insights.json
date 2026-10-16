@@ -43,6 +43,18 @@
   "featured": "japan-at-the-turn",
   "articles": [
     {
+      "slug": "weekly-2026-10-12",
+      "category": "Weekly update",
+      "filter": "Weekly update",
+      "date": "2026-10-12",
+      "title": "The auctions did what the data could not",
+      "summary": "The US 10-year touched its highest yield since 2002 on Wednesday and then fell, not on the data but on two well-bid Treasury auctions. Credit stayed in a stand-off between holders who will not sell and buyers who want more spread.",
+      "readingTime": "7 min read",
+      "wholesaleOnly": false,
+      "pdf": "/documents/weekly-update-2026-10-12.pdf",
+      "image": "/images/insight-weekly.webp"
+    },
+    {
       "slug": "weekly-2026-10-05",
       "category": "Weekly update",
       "filter": "Weekly update",
@@ -159,6 +171,21 @@
       "pdf": "/documents/weekly-update-2026-05-25.pdf",
       "image": "/images/insight-weekly.webp",
       "_note": "Summary drafted from page 2 of the PDF [Unverified] — Renny to confirm. Earlier placeholder title (\"RBA holds, bank spreads tighten\") retired 8 Oct; cover image downsampled from 16 MB to 0.6 MB for the web."
+    },
+    {
+      "slug": "q4-2025-quarterly",
+      "category": "Quarterly update",
+      "filter": "Quarterly updates",
+      "date": "2025-12-01",
+      "title": "Outlook: December 2025",
+      "homeTitle": "Outlook: December 2025",
+      "summary": "The December 2025 outlook: a look back at the calls of the past five years, the rates outlook in the US and Australia, the Japanese yen carry trade, the Australian economic outlook and credit margins.",
+      "homeSummary": "Five years of calls in review, rates in the US and Australia, the yen carry trade and credit margins.",
+      "readingTime": "22 pages",
+      "wholesaleOnly": false,
+      "pdf": "/documents/quarterly-update-2025-12.pdf",
+      "image": "/images/insight-quarterly.webp",
+      "_note": "Title taken from the document cover (\"Outlook — December 2025\"); summary drafted from its section headings [Unverified]. PDF is Jim's Word export (16 Oct 2026)."
     }
   ]
 }

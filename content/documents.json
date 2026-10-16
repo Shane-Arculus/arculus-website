@@ -1,6 +1,6 @@
 {
   "verified": false,
-  "_note": "Rebuilt 6 Oct 2026 from Jim's Drive archive: 13 monthly reports per fund (Aug 2025–Aug 2026), current PDS/TMD, FY2026 audited financial statements, August 2026 fact sheets. Policies & notices rows still [TO SET] (C-tasks). Lonsec rows are request rows. 8 Oct: Outlook June quarter 2026 added under both funds (one PDF, two rows) with a Quarterly updates filter. 8 Oct (Jim): Policies & notices removed from the library — the policies are pages on the site (ESG, Privacy, Terms, Cookies, Disclosure), not PDFs.",
+  "_note": "Rebuilt 6 Oct 2026 from Jim's Drive archive: 13 monthly reports per fund (Aug 2025–Aug 2026), current PDS/TMD, FY2026 audited financial statements, August 2026 fact sheets. Policies & notices rows still [TO SET] (C-tasks). Lonsec rows are request rows. 8 Oct: Outlook June quarter 2026 added under both funds (one PDF, two rows) with a Quarterly updates filter. 8 Oct (Jim): Policies & notices removed from the library — the policies are pages on the site (ESG, Privacy, Terms, Cookies, Disclosure), not PDFs. 16 Oct: Outlook December 2025 added under both funds (one PDF, two rows).",
   "page": {
     "breadcrumb": [
       "Home",
@@ -244,6 +244,17 @@
       "wholesaleOnly": false
     },
     {
+      "id": "afi-quarterly-2025-12",
+      "fund": "afi",
+      "category": "Quarterly updates",
+      "title": "Outlook — December 2025",
+      "meta": "Quarterly update · Arculus · 1 December 2025",
+      "date": "2025-12-01",
+      "path": "/documents/quarterly-update-2025-12.pdf",
+      "size": "3.6 MB",
+      "wholesaleOnly": false
+    },
+    {
       "id": "afi-annual-fy2026",
       "fund": "afi",
       "category": "Annual reports",
@@ -452,6 +463,17 @@
       "date": "2026-07-09",
       "path": "/documents/quarterly-update-2026-q2.pdf",
       "size": "3.7 MB",
+      "wholesaleOnly": false
+    },
+    {
+      "id": "pif-quarterly-2025-12",
+      "fund": "pif",
+      "category": "Quarterly updates",
+      "title": "Outlook — December 2025",
+      "meta": "Quarterly update · Arculus · 1 December 2025",
+      "date": "2025-12-01",
+      "path": "/documents/quarterly-update-2025-12.pdf",
+      "size": "3.6 MB",
       "wholesaleOnly": false
     },
     {
